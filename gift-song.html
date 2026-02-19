@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#f5e6d3">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>노래 선물하기 | 스타벅스 라디오카페</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="노래 선물하기 | 스타벅스 라디오카페" />
+  <meta property="og:description" content="소중한 사람에게 노래를 선물하세요!" />
+  <meta property="og:image" content="https://og-image.jpg" />
+  <meta property="og:url" content="https://gift-song.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f5e6d3;
+      --body-out1: #e8d5b0; --body-out2: #d4c09a;
+      --body-in1: #FFF8E7; --body-in2: #F5ECD8;
+      --accent: #C8A96E;
+      --accent-glow: rgba(200,169,110,0.5);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f0dcc4 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(200,169,110,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(200,169,110,0.04) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Gift Song Card */
+    .gift-card {
+      background: linear-gradient(145deg, #FFF8E7, #F5ECD8);
+      border: 1px solid rgba(139,105,20,0.15);
+      border-radius: 20px; padding: 24px;
+      width: 100%; max-width: 360px;
+      text-align: center;
+      box-shadow: 0 40px 80px rgba(100,70,30,0.15), 0 0 40px rgba(200,169,110,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      position: relative; z-index: 1;
+    }
+    .gift-title {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      color: #8B6914; letter-spacing: 3px; margin-bottom: 16px;
+      text-shadow: none;
+    }
+    .gift-categories {
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px;
+    }
+    .gift-cat-btn {
+      padding: 6px 14px; border-radius: 16px;
+      border: 1px solid rgba(139,105,20,0.2);
+      background: rgba(255,255,255,0.5); color: #A08050;
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .gift-cat-btn.active {
+      border-color: #C8A96E; color: #8B6914;
+      background: rgba(200,169,110,0.15);
+    }
+    .gift-song-list {
+      max-height: 160px; overflow-y: auto; margin-bottom: 14px;
+    }
+    .gift-song-list::-webkit-scrollbar { width: 4px; }
+    .gift-song-list::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.4); border-radius: 2px; }
+    .gift-song-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; margin-bottom: 4px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.12);
+      background: rgba(139,105,20,0.06); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gift-song-item:hover { border-color: rgba(200,169,110,0.5); }
+    .gift-song-item.selected {
+      border-color: #C8A96E; background: rgba(200,169,110,0.15);
+    }
+    .gift-song-name {
+      font-family: 'Inter', sans-serif; font-size: 14px; color: #3a2a10;
+    }
+    .gift-song-item.selected .gift-song-name { color: #8B6914; font-weight: 600; }
+    .gift-step2 { display: none; }
+    .gift-step2.active { display: block; }
+    .gift-selected-info {
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+      color: #8B6914; margin-bottom: 12px;
+    }
+    .gift-msg-input {
+      width: 100%; padding: 12px; border-radius: 12px;
+      border: 2px solid rgba(139,105,20,0.2);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      outline: none; resize: none; min-height: 60px;
+      margin-bottom: 12px;
+    }
+    .gift-msg-input:focus { border-color: #C8A96E; }
+    .gift-msg-input::placeholder { color: rgba(100,70,30,0.4); }
+    .gift-link-box {
+      display: flex; gap: 8px; margin-bottom: 8px;
+    }
+    .gift-link-box input {
+      flex: 1; padding: 10px 12px; border-radius: 10px;
+      border: 2px solid rgba(139,105,20,0.2);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 11px; outline: none;
+    }
+    .gift-link-box button {
+      padding: 10px 16px; border-radius: 10px;
+      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
+      color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .gift-copied {
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      color: #8B6914; margin-bottom: 12px;
+    }
+    .gift-copied.hidden { display: none; }
+    .gift-share-btn {
+      width: 100%; padding: 12px;
+      background: transparent; border: 1px solid #C8A96E;
+      border-radius: 12px; color: #8B6914;
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; margin-bottom: 8px;
+    }
+    .gift-share-btn:hover { background: linear-gradient(135deg, #C8A96E, #b89858); color: #fff; }
+    .gift-share-btn.hidden { display: none; }
+    .gift-guide {
+      text-align: left; margin-top: 14px; padding: 12px 14px;
+      background: rgba(139,105,20,0.06); border-radius: 10px;
+      border-left: 3px solid #C8A96E;
+    }
+    .gift-guide p {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: #A08050; line-height: 1.6;
+      margin: 0 0 8px 0;
+    }
+    .gift-guide p:last-child { margin-bottom: 0; }
+    .gift-btn-row {
+      display: flex; gap: 8px; margin-top: 10px;
+    }
+    .gift-btn-next {
+      flex: 1; padding: 12px; border-radius: 12px;
+      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
+      color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gift-btn-next:disabled { opacity: 0.3; cursor: default; }
+    .gift-btn-next:not(:disabled):hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .gift-btn-back {
+      padding: 12px 16px; border-radius: 12px;
+      background: transparent; border: 1px solid rgba(139,105,20,0.3);
+      color: #A08050; font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gift-btn-back:hover { border-color: #C8A96E; color: #8B6914; }
+    .gift-close {
+      width: 100%; padding: 10px; margin-top: 4px;
+      background: transparent; border: none;
+      color: rgba(139,105,20,0.4); font-family: 'Inter', sans-serif;
+      font-size: 13px; cursor: pointer; transition: color 0.2s;
+    }
+    .gift-close:hover { color: #8B6914; }
+
+    /* Chat Panel - 전체 화면 (크림/골드 테마) */
+    .chat-panel {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(145deg, #FFF8E7, #F2E8D0);
+      border: none;
+      z-index: 100; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(200,169,110,0.12);
+      border-bottom: 1px solid rgba(200,169,110,0.25);
+      flex-shrink: 0;
+    }
+    .chat-header-title {
+      font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+      color: #8B6914; letter-spacing: 2px;
+    }
+    .chat-header-info {
+      font-family: 'Inter', sans-serif; font-size: 11px; color: #A08050;
+    }
+    .chat-back-btn {
+      background: none; border: 1px solid rgba(139,105,20,0.4);
+      color: #8B6914; font-size: 12px; padding: 4px 10px;
+      border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    #chatBody {
+      flex: 1; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-nickname-box { padding: 24px 16px; text-align: center; }
+    .chat-nickname-box input {
+      padding: 12px 16px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.3);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      text-align: center; outline: none; width: 65%;
+    }
+    .chat-nickname-box input:focus { border-color: #C8A96E; }
+    .chat-nickname-box button {
+      margin-left: 8px; padding: 12px 20px; border-radius: 10px;
+      background: #C8A96E; border: none; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      font-weight: 700; cursor: pointer;
+    }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 12px 16px;
+      display: flex; flex-direction: column;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.4); border-radius: 2px; }
+    .chat-msg {
+      margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px;
+      line-height: 1.5; word-break: break-word;
+      display: flex; flex-direction: column; max-width: 78%;
+    }
+    .chat-msg.me { align-self: flex-end; align-items: flex-end; }
+    .chat-msg.other { align-self: flex-start; align-items: flex-start; }
+    .chat-msg-name {
+      font-weight: 700; color: #8B6914; font-size: 13px; margin-bottom: 3px;
+    }
+    .chat-msg.me .chat-msg-name { color: #A08050; }
+    .chat-msg-bubble {
+      padding: 8px 14px; border-radius: 14px;
+      line-height: 1.5; color: #3a2a10;
+    }
+    .chat-msg.other .chat-msg-bubble {
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-top-left-radius: 4px;
+    }
+    .chat-msg.me .chat-msg-bubble {
+      background: #C8A96E; color: #fff;
+      border-top-right-radius: 4px;
+    }
+    .chat-msg-system {
+      text-align: center; color: #A08050;
+      font-size: 13px; font-style: italic; margin: 6px 0;
+      align-self: center;
+    }
+    .chat-input-box {
+      display: flex; gap: 8px; padding: 10px 16px;
+      border-top: 1px solid rgba(200,169,110,0.25);
+    }
+    .chat-input-box input {
+      flex: 1; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.25);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
+    }
+    .chat-input-box input:focus { border-color: #C8A96E; }
+    .chat-input-box button {
+      padding: 10px 16px; border-radius: 10px;
+      background: #C8A96E; border: none; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="gift-card">
+  <div class="gift-title">노래 선물하기</div>
+  <!-- Step 1: Song Selection -->
+  <div id="giftStep1">
+    <div class="gift-categories" id="giftCategories"></div>
+    <div class="gift-song-list" id="giftSongList"></div>
+    <div class="gift-guide">
+      <p>1. 다섯 가지 축하 유형 중에 하나를 선택합니다.</p>
+      <p>2. 위 두 개의 버튼 중에서 원하는 버튼을 하나 선택합니다.</p>
+      <p>3. 아래의 '다음' 버튼을 선택합니다.</p>
+    </div>
+    <div class="gift-btn-row">
+      <button class="gift-btn-back" onclick="history.back()">이전</button>
+      <button class="gift-btn-next" id="giftNextBtn" disabled onclick="giftGoStep2()">다음</button>
+    </div>
+  </div>
+  <!-- Step 2: Message + Share -->
+  <div class="gift-step2" id="giftStep2">
+    <div class="gift-selected-info" id="giftSelectedInfo"></div>
+    <textarea class="gift-msg-input" id="giftMsgInput" placeholder="선물 메시지를 입력하세요..." maxlength="100" oninput="updateGiftLink()"></textarea>
+    <div class="gift-link-box">
+      <input type="text" readonly id="giftLink">
+      <button onclick="copyGiftLink()">복사</button>
+    </div>
+    <div class="gift-copied hidden" id="giftCopied">링크가 복사되었습니다!</div>
+    <div class="gift-guide">
+      <p>1. 선물 메시지를 입력하세요.</p>
+      <p>2. 복사 버튼을 선택하고 선물하고 싶은 사람의 카톡 창이나 문자 메시지 창으로 가서 붙여넣기를 합니다.</p>
+      <p>3. 선물을 받은 상대방과 대화할 수 있는 채팅창으로 이동합니다.</p>
+    </div>
+    <div class="gift-btn-row">
+      <button class="gift-btn-back" onclick="giftGoStep1()">이전</button>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Panel (전체화면) -->
+<div class="chat-panel" id="chatPanel" style="display:none;">
+  <div class="chat-header">
+    <button class="chat-back-btn" onclick="closeChatPanel()">&#9664; 이전</button>
+    <span class="chat-header-title">CHAT</span>
+    <span class="chat-header-info" id="chatHeaderInfo"></span>
+  </div>
+  <div id="chatBody">
+    <div class="chat-nickname-box" id="chatNicknameBox">
+      <input type="text" id="chatNicknameInput" placeholder="닉네임 입력" maxlength="12" onkeydown="if(event.key==='Enter')joinChat()">
+      <button onclick="joinChat()">입장</button>
+    </div>
+    <div class="chat-messages hidden" id="chatMessages"></div>
+    <div class="chat-input-box hidden" id="chatInputBox">
+      <input type="text" id="chatMsgInput" placeholder="메시지 입력..." maxlength="200" onkeydown="if(event.key==='Enter')sendChatMsg()">
+      <button onclick="sendChatMsg()">전송</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // === Supabase Config ===
+  var SUPABASE_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
+  var supabaseClient = null;
+
+  // === Chat State ===
+  var chatChannel = null;
+  var chatRoomId = null;
+  var chatNickname = '';
+  var chatActive = false;
+  var chatPeerCount = 0;
+  var chatAutoHidden = false;
+
+  // === Gift Song Data ===
+  var GIFT_SONGS = [
+    { id:'birthday-1', category:'생일축하', name:'생일 축하합니다', file:'gift-songs/birthday-1.wav', tts:'생일 축하합니다! 태어나줘서 고마워요. 오늘 하루도 행복하세요!' },
+    { id:'birthday-2', category:'생일축하', name:'Happy Birthday To You', file:'gift-songs/birthday-2.wav', tts:'Happy Birthday to you! 생일을 진심으로 축하드립니다. 늘 건강하고 행복하세요!' },
+    { id:'wedding-1', category:'결혼축하', name:'결혼 축하합니다', file:'gift-songs/wedding-1.wav', tts:'결혼을 진심으로 축하합니다! 두 분의 앞날에 사랑과 행복이 가득하길 바랍니다.' },
+    { id:'wedding-2', category:'결혼축하', name:'Wedding March', file:'gift-songs/wedding-2.wav', tts:'아름다운 결혼을 축하드려요! 함께하는 모든 날들이 축복으로 가득하길 기원합니다.' },
+    { id:'cheer-1', category:'응원', name:'힘내세요', file:'gift-songs/cheer-1.wav', tts:'힘내세요! 당신은 충분히 잘하고 있어요. 항상 응원하고 있습니다!' },
+    { id:'cheer-2', category:'응원', name:'You Can Do It', file:'gift-songs/cheer-2.wav', tts:'You can do it! 할 수 있어요! 포기하지 마세요. 당신의 노력은 반드시 빛날 거예요!' },
+    { id:'thanks-1', category:'감사', name:'감사합니다', file:'gift-songs/thanks-1.wav', tts:'진심으로 감사합니다. 당신 덕분에 제 하루가 더 따뜻해졌어요.' },
+    { id:'thanks-2', category:'감사', name:'Thank You', file:'gift-songs/thanks-2.wav', tts:'Thank you so much! 고마운 마음을 이 노래에 담아 전합니다.' },
+    { id:'love-1', category:'사랑', name:'사랑합니다', file:'gift-songs/love-1.wav', tts:'사랑합니다. 당신이 있어 매일이 행복해요. 언제나 곁에 있을게요.' },
+    { id:'love-2', category:'사랑', name:'Love Song', file:'gift-songs/love-2.wav', tts:'You are my love. 당신을 사랑하는 마음을 이 노래로 전합니다.' }
+  ];
+  var GIFT_CATEGORIES = ['생일축하','결혼축하','응원','감사','사랑'];
+  var selectedGiftSong = null;
+  var giftStep = 1;
+
+  // === Audio ===
+  var audio = null;
+  var hlsInstance = null;
+
+  function generateRoomId(){
+    var chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    var id = '';
+    for(var i = 0; i < 8; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
+    return id;
+  }
+
+  // === Init ===
+  document.addEventListener('DOMContentLoaded', function(){
+    selectedGiftSong = null;
+    giftStep = 1;
+    document.getElementById('giftNextBtn').disabled = true;
+    renderGiftCategories();
+    renderGiftSongs(GIFT_CATEGORIES[0]);
+    var uid = localStorage.getItem('radioUsername');
+    if(uid){ initSupabase(); if(supabaseClient) supabaseClient.from('feature_usage').insert({user_id:uid, feature:'gift_song'}).then(function(){}); }
+    // 닉네임 자동 채우기 (발신자만)
+    if(!new URLSearchParams(location.search).get('room')){
+      var savedNick = localStorage.getItem('radioUsername') || '';
+      if(savedNick){ var ci = document.getElementById('chatNicknameInput'); if(ci && !ci.value) ci.value = savedNick; }
+    }
+  });
+
+  function renderGiftCategories(){
+    var box = document.getElementById('giftCategories');
+    box.innerHTML = '';
+    GIFT_CATEGORIES.forEach(function(cat, i){
+      var btn = document.createElement('button');
+      btn.className = 'gift-cat-btn' + (i === 0 ? ' active' : '');
+      btn.textContent = cat;
+      btn.onclick = function(){
+        box.querySelectorAll('.gift-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        renderGiftSongs(cat);
+      };
+      box.appendChild(btn);
+    });
+  }
+
+  function renderGiftSongs(category){
+    var list = document.getElementById('giftSongList');
+    list.innerHTML = '';
+    var songs = GIFT_SONGS.filter(function(s){ return s.category === category; });
+    songs.forEach(function(song){
+      var item = document.createElement('div');
+      item.className = 'gift-song-item' + (selectedGiftSong && selectedGiftSong.id === song.id ? ' selected' : '');
+      item.innerHTML = '<span class="gift-song-name">' + song.name + '</span>';
+      item.onclick = function(){
+        selectedGiftSong = song;
+        list.querySelectorAll('.gift-song-item').forEach(function(el){ el.classList.remove('selected'); });
+        item.classList.add('selected');
+        document.getElementById('giftNextBtn').disabled = false;
+      };
+      list.appendChild(item);
+    });
+  }
+
+  function giftGoStep2(){
+    if(!selectedGiftSong) return;
+    if(!chatRoomId) chatRoomId = generateRoomId();
+    document.getElementById('giftStep1').style.display = 'none';
+    document.getElementById('giftStep2').classList.add('active');
+    document.getElementById('giftSelectedInfo').textContent = selectedGiftSong.category + ' - ' + selectedGiftSong.name;
+    updateGiftLink();
+  }
+
+  function giftGoStep1(){
+    document.getElementById('giftStep2').classList.remove('active');
+    document.getElementById('giftStep1').style.display = '';
+  }
+
+  function updateGiftLink(){
+    var msg = document.getElementById('giftMsgInput').value.trim();
+    var base = location.pathname.replace(/[^\/]*$/, '') + 'lp-player.html';
+    var url = location.origin + base + '?gift=' + selectedGiftSong.id + '&room=' + chatRoomId;
+    if(msg) url += '&msg=' + encodeURIComponent(msg);
+    document.getElementById('giftLink').value = url;
+  }
+
+  function saveSongGift(){
+    try {
+      initSupabase();
+      if(!supabaseClient) return;
+      var msg = document.getElementById('giftMsgInput').value.trim();
+      supabaseClient.from('song_gifts').insert({
+        room_id: chatRoomId,
+        song_id: selectedGiftSong ? selectedGiftSong.id : null,
+        song_name: selectedGiftSong ? selectedGiftSong.name : null,
+        sender_message: msg || null
+      }).then(function(){});
+    } catch(e){}
+  }
+
+  function copyGiftLink(){
+    updateGiftLink();
+    var input = document.getElementById('giftLink');
+    input.select();
+    navigator.clipboard.writeText(input.value).then(function(){
+      document.getElementById('giftCopied').classList.remove('hidden');
+      setTimeout(function(){ document.getElementById('giftCopied').classList.add('hidden'); }, 2000);
+      saveSongGift();
+      openChatPanel();
+    }).catch(function(){
+      document.execCommand('copy');
+      document.getElementById('giftCopied').classList.remove('hidden');
+      setTimeout(function(){ document.getElementById('giftCopied').classList.add('hidden'); }, 2000);
+      saveSongGift();
+      openChatPanel();
+    });
+  }
+
+  function nativeShareGift(){
+    if(!navigator.share || !selectedGiftSong) return;
+    updateGiftLink();
+    navigator.share({
+      title: selectedGiftSong.name + ' - 노래 선물',
+      text: selectedGiftSong.name + ' 노래를 선물합니다!',
+      url: document.getElementById('giftLink').value
+    }).catch(function(){});
+  }
+
+  function sendGift(){
+    updateGiftLink();
+    var url = document.getElementById('giftLink').value;
+    navigator.clipboard.writeText(url).then(function(){}).catch(function(){ document.execCommand('copy'); });
+    // 보내는 사람도 선물곡 재생
+    playGiftSong(selectedGiftSong);
+    // 채팅 패널 오픈
+    openChatPanel();
+  }
+
+  function playGiftSong(song){
+    var mp3Url = SUPABASE_URL + '/storage/v1/object/public/photo-albums/' + song.file;
+    if(!audio) audio = new Audio();
+    audio.pause(); audio.src='';
+    audio.src = mp3Url;
+    audio.onerror = function(){
+      // MP3 파일 없으면 TTS로 폴백
+      if(song.tts && window.speechSynthesis){
+        var utter = new SpeechSynthesisUtterance(song.tts);
+        utter.lang = 'ko-KR';
+        utter.rate = 0.9;
+        speechSynthesis.speak(utter);
+      }
+    };
+    audio.addEventListener('canplay', function cp(){
+      audio.removeEventListener('canplay', cp);
+      audio.play().catch(function(){
+        if(song.tts && window.speechSynthesis){
+          var utter = new SpeechSynthesisUtterance(song.tts);
+          utter.lang = 'ko-KR';
+          utter.rate = 0.9;
+          speechSynthesis.speak(utter);
+        }
+      });
+    });
+    audio.load();
+  }
+
+  function loadStream(url){
+    if(hlsInstance){hlsInstance.destroy();hlsInstance=null;}
+    if(!audio) audio = new Audio();
+    audio.pause(); audio.src='';
+    if(Hls.isSupported()&&url.includes('.m3u8')){
+      hlsInstance=new Hls(); hlsInstance.loadSource(url); hlsInstance.attachMedia(audio);
+      hlsInstance.on(Hls.Events.MANIFEST_PARSED,function(){
+        audio.play().catch(function(){});
+      });
+    } else {
+      audio.src=url;
+      audio.addEventListener('canplay',function cp(){audio.removeEventListener('canplay',cp);
+        audio.play().catch(function(){});
+      });
+      audio.load();
+    }
+  }
+
+  // === Supabase Init ===
+  function initSupabase(){
+    if(supabaseClient) return;
+    if(!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+
+  // === Chat Functions ===
+  function openChatPanel(){
+    initSupabase();
+    var panel = document.getElementById('chatPanel');
+    panel.style.display = 'flex';
+    if(chatNickname){
+      document.getElementById('chatNicknameBox').classList.add('hidden');
+      document.getElementById('chatMessages').classList.remove('hidden');
+      document.getElementById('chatInputBox').classList.remove('hidden');
+      if(!chatActive) connectChat();
+    }
+  }
+
+  function closeChatPanel(){
+    document.getElementById('chatPanel').style.display = 'none';
+  }
+
+  function joinChat(){
+    var input = document.getElementById('chatNicknameInput');
+    var name = input.value.trim();
+    if(!name){ input.focus(); return; }
+    chatNickname = name;
+    document.getElementById('chatNicknameBox').classList.add('hidden');
+    document.getElementById('chatMessages').classList.remove('hidden');
+    document.getElementById('chatInputBox').classList.remove('hidden');
+    document.getElementById('chatMsgInput').focus();
+    connectChat();
+  }
+
+  function connectChat(){
+    if(!supabaseClient || !chatRoomId || chatActive) return;
+    chatActive = true;
+    var channelName = 'listen-' + chatRoomId;
+    chatChannel = supabaseClient.channel(channelName, {
+      config: { broadcast: { self: false } }
+    });
+    chatChannel.on('broadcast', { event: 'message' }, function(payload){
+      addChatMessage(payload.payload.name, payload.payload.text);
+    });
+    chatChannel.on('broadcast', { event: 'join' }, function(payload){
+      chatPeerCount++;
+      addSystemMessage(payload.payload.name + '님이 입장했습니다.');
+    });
+    chatChannel.on('broadcast', { event: 'leave' }, function(payload){
+      chatPeerCount = Math.max(0, chatPeerCount - 1);
+      addSystemMessage(payload.payload.name + '님이 퇴장했습니다.');
+    });
+    chatChannel.subscribe(function(status){
+      if(status === 'SUBSCRIBED'){
+        chatChannel.send({
+          type: 'broadcast', event: 'join',
+          payload: { name: chatNickname }
+        });
+        addSystemMessage('채팅에 연결되었습니다.');
+      }
+    });
+  }
+
+  function disconnectChat(){
+    if(chatChannel && chatActive){
+      chatChannel.send({
+        type: 'broadcast', event: 'leave',
+        payload: { name: chatNickname }
+      });
+      supabaseClient.removeChannel(chatChannel);
+      chatChannel = null;
+      chatActive = false;
+    }
+  }
+
+  function sendChatMsg(){
+    var input = document.getElementById('chatMsgInput');
+    var text = input.value.trim();
+    if(!text || !chatChannel || !chatActive) return;
+    chatChannel.send({
+      type: 'broadcast', event: 'message',
+      payload: { name: chatNickname, text: text }
+    });
+    addChatMessage(chatNickname, text, true);
+    input.value = '';
+    input.focus();
+  }
+
+  function addChatMessage(name, text, isMe){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (isMe ? 'me' : 'other');
+    var nameSpan = document.createElement('div');
+    nameSpan.className = 'chat-msg-name';
+    nameSpan.textContent = name;
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+    div.appendChild(nameSpan);
+    div.appendChild(bubble);
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function addSystemMessage(text){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg-system';
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  window.addEventListener('beforeunload', function(){
+    disconnectChat();
+  });
+</script>
+</body>
+</html>

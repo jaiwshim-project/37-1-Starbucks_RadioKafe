@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#f5e6d3">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>라디오카페 | 사용법</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="사용법 | 스타벅스 라디오카페" />
+  <meta property="og:description" content="스타벅스 라디오카페 사용법을 확인하세요!" />
+  <meta property="og:image" content="https://og-image.jpg" />
+  <meta property="og:url" content="https://manual.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f0dcc4 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(200,169,110,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(200,169,110,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .manual-card {
+      width: 100%; max-width: 520px;
+      background: linear-gradient(145deg, #e8d5b0, #d4c09a);
+      border-radius: 28px; padding: 3px;
+      box-shadow:
+        0 40px 80px rgba(100,70,30,0.15),
+        0 0 40px rgba(200,169,110,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.3);
+      position: relative; z-index: 1;
+    }
+
+    .manual-inner {
+      background: linear-gradient(145deg, #FFF8E7, #F5ECD8);
+      border-radius: 25px; padding: 40px 30px;
+      position: relative;
+    }
+
+    /* 나사 장식 */
+    .screw {
+      position: absolute; width: 10px; height: 10px;
+      background: linear-gradient(145deg, #d4c09a, #b89858);
+      border-radius: 50%;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .screw::after {
+      content: ''; position: absolute;
+      top: 50%; left: 50%; width: 60%; height: 1px;
+      background: #8B6914; transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .screw-tl { top: 12px; left: 12px; }
+    .screw-tr { top: 12px; right: 12px; }
+    .screw-bl { bottom: 12px; left: 12px; }
+    .screw-br { bottom: 12px; right: 12px; }
+
+    /* 스피커 */
+    .speaker {
+      background: linear-gradient(145deg, #e8d5b0, #d4c09a);
+      border-radius: 8px; padding: 8px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(139,105,20,0.15);
+    }
+    .speaker-label {
+      text-align: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 10px; letter-spacing: 4px;
+      color: #8B6914;
+    }
+
+    /* 헤더 */
+    .manual-header {
+      text-align: center; margin-bottom: 30px;
+      position: relative;
+    }
+
+    .manual-icon {
+      width: 80px; height: 80px; margin: 0 auto 20px;
+      background: linear-gradient(135deg, #C8A96E, #b89858);
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 10px 30px rgba(200,169,110,0.3);
+    }
+
+    .manual-title {
+      font-family: 'Outfit', sans-serif; font-size: 24px;
+      font-weight: 800; color: #8B6914;
+      letter-spacing: 2px; margin-bottom: 8px;
+    }
+
+    .manual-subtitle {
+      font-size: 13px; color: #A08050;
+    }
+
+    /* 카테고리 구분선 */
+    .category-divider {
+      display: flex; align-items: center; gap: 10px;
+      margin: 28px 0 16px;
+    }
+    .category-divider::before, .category-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: rgba(139,105,20,0.2);
+    }
+    .category-label {
+      font-family: 'Orbitron', monospace; font-size: 10px;
+      color: #C8A96E; letter-spacing: 3px; font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* 섹션 */
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      color: #C8A96E; letter-spacing: 1px;
+      margin-bottom: 10px; font-weight: 600;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .section-title::before {
+      content: ''; width: 4px; height: 16px;
+      background: #C8A96E; border-radius: 2px;
+    }
+
+    .section-emoji {
+      font-size: 16px;
+    }
+
+    .step-list {
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .step-item {
+      background: rgba(139,105,20,0.06);
+      border: 1px solid rgba(139,105,20,0.12);
+      border-radius: 12px; padding: 12px 14px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+
+    .step-number {
+      width: 22px; height: 22px; flex-shrink: 0;
+      background: linear-gradient(135deg, #C8A96E, #b89858);
+      border-radius: 50%; display: flex;
+      align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif; font-size: 11px;
+      font-weight: 700; color: #fff;
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-size: 13px; color: #3a2a10;
+      font-weight: 600; margin-bottom: 3px;
+    }
+
+    .step-desc {
+      font-size: 11px; color: #A08050;
+      line-height: 1.5;
+    }
+
+    /* LCD 팁 박스 */
+    .tip-box {
+      background: linear-gradient(180deg, #FFF5E0, #F2E8D0);
+      border-radius: 12px; padding: 14px;
+      margin-bottom: 20px;
+      border: 2px solid rgba(139,105,20,0.2);
+      box-shadow: inset 0 2px 8px rgba(100,70,30,0.1);
+    }
+
+    .tip-title {
+      font-family: 'Orbitron', monospace; font-size: 11px;
+      color: #8B6914; letter-spacing: 3px; font-weight: 700;
+      text-shadow: 0 0 10px rgba(200,169,110,0.4);
+      margin-bottom: 8px; text-align: center;
+    }
+
+    .tip-text {
+      font-size: 11px; color: #A08050;
+      line-height: 1.7; text-align: center;
+    }
+
+    /* 스크린샷 */
+    .screenshot-container {
+      margin-bottom: 20px;
+      width: 70%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .screenshot-box {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid rgba(200,169,110,0.2);
+      box-shadow: 0 8px 24px rgba(100,70,30,0.1);
+    }
+    .screenshot-box img {
+      width: 100%;
+      display: block;
+    }
+    .screenshot-caption {
+      text-align: center;
+      font-size: 11px;
+      color: #A08050;
+      margin-top: 8px;
+    }
+    .marker {
+      position: absolute;
+      width: 22px; height: 22px;
+      background: #C8A96E;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px; font-weight: 700;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(200,169,110,0.5);
+      border: 2px solid #fff;
+    }
+    .marker-desc {
+      margin-top: 14px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .marker-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 11px; color: #3a2a10;
+      line-height: 1.5;
+    }
+    .marker-num {
+      width: 20px; height: 20px; flex-shrink: 0;
+      background: #C8A96E;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Outfit', sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: #fff;
+    }
+
+    /* 링크 버튼 */
+    .link-section {
+      display: flex; justify-content: center; gap: 12px;
+      flex-wrap: wrap; margin-bottom: 20px;
+    }
+
+    .link-btn {
+      padding: 12px 28px; border-radius: 24px;
+      background: linear-gradient(135deg, #C8A96E, #b89858);
+      color: #fff; text-decoration: none;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      font-weight: 700; letter-spacing: 1px;
+      transition: all 0.2s;
+    }
+
+    .link-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(200,169,110,0.4);
+    }
+
+    /* 푸터 */
+    .manual-footer {
+      padding-top: 16px;
+      border-top: 1px solid rgba(139,105,20,0.15);
+      text-align: center;
+    }
+
+    .copyright {
+      font-size: 11px; color: rgba(139,105,20,0.4);
+    }
+
+    /* PDF 다운로드 버튼 */
+    .pdf-download-btn {
+      position: absolute; top: 50%; right: 0;
+      transform: translateY(-50%);
+      background: linear-gradient(135deg, #C8A96E, #b89858);
+      border: none; border-radius: 10px;
+      color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 11px; font-weight: 700;
+      padding: 8px 14px;
+      cursor: pointer; transition: all 0.2s;
+      box-shadow: 0 3px 12px rgba(200,169,110,0.4);
+      display: flex; align-items: center; gap: 5px;
+    }
+    .pdf-download-btn:hover {
+      transform: translateY(-50%) translateY(-2px);
+      box-shadow: 0 5px 20px rgba(200,169,110,0.5);
+    }
+    .pdf-download-btn:active { transform: translateY(-50%) scale(0.95); }
+    .pdf-download-btn.downloading {
+      opacity: 0.7; pointer-events: none;
+    }
+    @media print { .pdf-download-btn { display: none; } }
+
+    /* 기능 요약 테이블 */
+    .feature-summary {
+      margin-bottom: 20px;
+    }
+    .feature-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 6px;
+    }
+    .feature-chip {
+      background: rgba(139,105,20,0.06);
+      border: 1px solid rgba(139,105,20,0.12);
+      border-radius: 8px; padding: 8px 4px;
+      text-align: center;
+      font-size: 10px; color: #3a2a10; font-weight: 500;
+      line-height: 1.3;
+    }
+    .feature-chip-num {
+      font-family: 'Orbitron', monospace;
+      font-size: 9px; color: #C8A96E;
+      display: block; margin-bottom: 2px;
+    }
+
+    /* PDF 버튼 숨김 (인쇄/캡처 시) */
+  </style>
+</head>
+<body>
+  <div class="manual-card">
+    <div class="manual-inner">
+      <div class="screw screw-tl"></div>
+      <div class="screw screw-tr"></div>
+      <div class="screw screw-bl"></div>
+      <div class="screw screw-br"></div>
+
+      <div class="speaker">
+        <div class="speaker-label">USER MANUAL</div>
+      </div>
+
+      <div class="manual-header">
+        <div class="manual-icon">📻</div>
+        <div class="manual-title">사용법</div>
+        <div class="manual-subtitle">스타벅스 라디오카페 이용 가이드</div>
+        <button class="pdf-download-btn" id="pdfBtn" onclick="downloadPDF()">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          PDF
+        </button>
+      </div>
+
+      <!-- ============================================ -->
+      <!--  PART 1: 기본 사용법                          -->
+      <!-- ============================================ -->
+      <div class="category-divider">
+        <span class="category-label">BASIC</span>
+      </div>
+
+      <div class="section">
+        <div class="section-title">로그인</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">사용자 선택 또는 등록</div>
+              <div class="step-desc">기존 사용자를 검색하여 선택하거나, "새 사용자 등록" 버튼으로 신규 등록하세요. 비밀번호는 숫자 4자리입니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot-container">
+        <div class="screenshot-box">
+          <img src="landing-screen.jpg" alt="랜딩 페이지">
+          <div class="marker" style="top:12%;left:50%;transform:translateX(-50%);">1</div>
+          <div class="marker" style="top:38%;left:50%;transform:translateX(-50%);">2</div>
+          <div class="marker" style="top:60%;left:50%;transform:translateX(-50%);">3</div>
+          <div class="marker" style="top:82%;left:50%;transform:translateX(-50%);">4</div>
+        </div>
+        <div class="screenshot-caption">로그인 / 랜딩 페이지</div>
+        <div class="marker-desc">
+          <div class="marker-item"><div class="marker-num">1</div><span>STEREO RADIO 헤더 + 스타벅스 라디오카페 로고</span></div>
+          <div class="marker-item"><div class="marker-num">2</div><span>USER SELECT - 사용자 검색 및 선택</span></div>
+          <div class="marker-item"><div class="marker-num">3</div><span>검색 결과 - 사용자 목록 표시</span></div>
+          <div class="marker-item"><div class="marker-num">4</div><span>새 사용자 등록 / 하단 메뉴(사용법, 관리자)</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">라디오 듣기</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">사진 선택 + 모드 진입</div>
+              <div class="step-desc">로그인 후 추억 사진 6장을 선택하고, ANALOG 또는 DIGITAL 버튼으로 라디오 모드에 진입합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">방송국 선택 + 재생</div>
+              <div class="step-desc">아날로그: FM 튜닝 다이얼로 주파수를 맞추거나, 프리셋 버튼으로 방송국을 선택합니다. 디지털: 채널 리스트에서 방송국을 선택합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">볼륨 + 테마</div>
+              <div class="step-desc">볼륨 노브로 소리를 조절하고, 상단 색상 버튼으로 11가지 테마(우드, 크림, 블랙, 말차 라떼, 실버, 사이버, 로즈, 바닐라 크림, 갤럭시, 핫핑크, 스카이)를 선택하세요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot-container">
+        <div class="screenshot-box">
+          <img src="digital-screen.jpg" alt="디지털 라디오 화면">
+          <div class="marker" style="top:2%;left:30%;">1</div>
+          <div class="marker" style="top:6%;left:84%;">2</div>
+          <div class="marker" style="top:13%;left:50%;transform:translateX(-50%);">3</div>
+          <div class="marker" style="top:25%;left:50%;transform:translateX(-50%);">4</div>
+          <div class="marker" style="top:38%;left:50%;transform:translateX(-50%);">5</div>
+          <div class="marker" style="top:50%;left:50%;transform:translateX(-50%);">6</div>
+          <div class="marker" style="top:62%;left:50%;transform:translateX(-50%);">7</div>
+          <div class="marker" style="top:78%;left:50%;transform:translateX(-50%);">8</div>
+        </div>
+        <div class="screenshot-caption">디지털 모드</div>
+        <div class="marker-desc">
+          <div class="marker-item"><div class="marker-num">1</div><span>테마 색상 선택 (11가지)</span></div>
+          <div class="marker-item"><div class="marker-num">2</div><span>전원 버튼 (로그아웃)</span></div>
+          <div class="marker-item"><div class="marker-num">3</div><span>사진 슬롯 + ANALOG/DIGITAL 모드 전환</span></div>
+          <div class="marker-item"><div class="marker-num">4</div><span>LCD 디스플레이 (시간, 날짜)</span></div>
+          <div class="marker-item"><div class="marker-num">5</div><span>FM 튜닝 다이얼</span></div>
+          <div class="marker-item"><div class="marker-num">6</div><span>프리셋 방송국 + 소확행 아이템 바로가기</span></div>
+          <div class="marker-item"><div class="marker-num">7</div><span>볼륨, 재생/정지, EQ 컨트롤</span></div>
+          <div class="marker-item"><div class="marker-num">8</div><span>기념일 ANNIVERSARY + DASHBOARD</span></div>
+        </div>
+      </div>
+
+      <div class="screenshot-container">
+        <div class="screenshot-box">
+          <img src="analog-screen.jpg" alt="아날로그 라디오 화면">
+          <div class="marker" style="top:2%;left:30%;">1</div>
+          <div class="marker" style="top:10%;left:50%;transform:translateX(-50%);">2</div>
+          <div class="marker" style="top:24%;left:50%;transform:translateX(-50%);">3</div>
+          <div class="marker" style="top:40%;left:50%;transform:translateX(-50%);">4</div>
+          <div class="marker" style="top:55%;left:20%;">5</div>
+          <div class="marker" style="top:55%;left:80%;">6</div>
+          <div class="marker" style="top:75%;left:50%;transform:translateX(-50%);">7</div>
+        </div>
+        <div class="screenshot-caption">아날로그 모드</div>
+        <div class="marker-desc">
+          <div class="marker-item"><div class="marker-num">1</div><span>테마 색상 선택 (11가지)</span></div>
+          <div class="marker-item"><div class="marker-num">2</div><span>사진 슬롯 + DIGITAL 모드 전환</span></div>
+          <div class="marker-item"><div class="marker-num">3</div><span>이퀄라이저 + FM 튜닝 밴드</span></div>
+          <div class="marker-item"><div class="marker-num">4</div><span>LCD 디스플레이 (주파수, MHz)</span></div>
+          <div class="marker-item"><div class="marker-num">5</div><span>VOLUME 노브</span></div>
+          <div class="marker-item"><div class="marker-num">6</div><span>TUNING 노브</span></div>
+          <div class="marker-item"><div class="marker-num">7</div><span>소확행 아이템 9가지 버튼</span></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">사진첩 관리</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">사진 선택 + 저장</div>
+              <div class="step-desc">"갤러리에서 6장 한번에 선택" 또는 슬롯 개별 클릭으로 사진을 선택합니다. "사진첩 저장"으로 클라우드에 저장됩니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">사진첩 불러오기</div>
+              <div class="step-desc">"사진첩 열기"로 저장된 사진첩을 언제든 불러올 수 있습니다. 사진 클릭 시 크게 볼 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="screenshot-container">
+        <div class="screenshot-box">
+          <img src="photo-select-screen.jpg" alt="사진 선택 화면">
+          <div class="marker" style="top:10%;left:50%;transform:translateX(-50%);">1</div>
+          <div class="marker" style="top:30%;left:50%;transform:translateX(-50%);">2</div>
+          <div class="marker" style="top:56%;left:30%;">3</div>
+          <div class="marker" style="top:56%;left:70%;">4</div>
+          <div class="marker" style="top:66%;left:30%;">5</div>
+          <div class="marker" style="top:66%;left:70%;">6</div>
+          <div class="marker" style="top:82%;left:50%;transform:translateX(-50%);">7</div>
+        </div>
+        <div class="screenshot-caption">사진 선택 화면</div>
+        <div class="marker-desc">
+          <div class="marker-item"><div class="marker-num">1</div><span>PHOTO SELECT 안내 (상단 4장 + 하단 2장)</span></div>
+          <div class="marker-item"><div class="marker-num">2</div><span>사진 슬롯 6개 미리보기</span></div>
+          <div class="marker-item"><div class="marker-num">3</div><span>갤러리에서 6장 한번에 선택</span></div>
+          <div class="marker-item"><div class="marker-num">4</div><span>사진선택 초기화</span></div>
+          <div class="marker-item"><div class="marker-num">5</div><span>새 사진첩 저장</span></div>
+          <div class="marker-item"><div class="marker-num">6</div><span>사진첩 불러오기</span></div>
+          <div class="marker-item"><div class="marker-num">7</div><span>ANALOG / DIGITAL 모드 진입 버튼</span></div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!--  PART 2: 9가지 소확행 기능                    -->
+      <!-- ============================================ -->
+      <div class="category-divider">
+        <span class="category-label">11 FEATURES</span>
+      </div>
+
+      <div class="feature-summary">
+        <div class="feature-grid">
+          <div class="feature-chip"><span class="feature-chip-num">01</span>같이듣기</div>
+          <div class="feature-chip"><span class="feature-chip-num">02</span>노래 선물</div>
+          <div class="feature-chip"><span class="feature-chip-num">03</span>노래+음성</div>
+          <div class="feature-chip"><span class="feature-chip-num">04</span>라디오 엽서</div>
+          <div class="feature-chip"><span class="feature-chip-num">05</span>타임캡슐</div>
+          <div class="feature-chip"><span class="feature-chip-num">06</span>DJ 사연</div>
+          <div class="feature-chip"><span class="feature-chip-num">07</span>음악 궁합</div>
+          <div class="feature-chip"><span class="feature-chip-num">08</span>포토앨범</div>
+          <div class="feature-chip"><span class="feature-chip-num">09</span>일기쓰기</div>
+          <div class="feature-chip"><span class="feature-chip-num">10</span>타로 카드</div>
+          <div class="feature-chip"><span class="feature-chip-num">11</span>오늘의 운세</div>
+        </div>
+      </div>
+
+      <!-- 1. 같이듣기 -->
+      <div class="section">
+        <div class="section-title">1. 같이듣기 초대</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">초대 링크 생성</div>
+              <div class="step-desc">"같이듣기 초대" 버튼을 누르면 초대 링크가 생성됩니다. 링크를 복사하여 상대방에게 보내세요.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">함께 듣기 + 채팅</div>
+              <div class="step-desc">상대방이 링크로 접속하면 같은 방송을 함께 들을 수 있습니다. 호스트만 튜닝/볼륨을 조절하며, 실시간 채팅으로 대화합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. 노래 선물 -->
+      <div class="section">
+        <div class="section-title">2. 노래 선물하기</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">곡 선택 + 메시지</div>
+              <div class="step-desc">카테고리(생일축하, 결혼축하, 응원, 감사, 사랑)에서 축하곡을 선택하고 메시지를 작성합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">LP 플레이어로 감상</div>
+              <div class="step-desc">받는 사람이 링크를 열면 LP 플레이어가 나타나고, 재생 시 폭죽 애니메이션과 함께 축하곡이 재생됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. 노래+음성 -->
+      <div class="section">
+        <div class="section-title">3. 노래+음성 선물하기</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">곡 선택 + 음성 녹음</div>
+              <div class="step-desc">축하곡을 선택한 후 마이크 버튼으로 음성 메시지를 녹음합니다(최대 30초). 미리듣기로 확인 가능합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">감상</div>
+              <div class="step-desc">받는 사람은 LP 플레이어에서 폭죽 → 음성 메시지 → 축하곡 순서로 감상합니다. 채팅도 가능합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. 라디오 엽서 -->
+      <div class="section">
+        <div class="section-title">4. 라디오 엽서 보내기</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">디자인 선택 + 메시지</div>
+              <div class="step-desc">4가지 빈티지 디자인(마이크, 바이닐, 레트로 라디오, 커피컵) 중 선택하고 메시지를 작성합니다(최대 200자).</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">엽서 감상</div>
+              <div class="step-desc">받는 사람이 링크를 열면 봉투가 열리는 애니메이션과 함께 엽서가 등장하고, 타이프라이터 효과로 메시지가 표시됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. 타임캡슐 -->
+      <div class="section">
+        <div class="section-title">5. 추억의 타임캡슐</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">개봉 일시 + 메시지 설정</div>
+              <div class="step-desc">캡슐을 열 날짜와 시간(시/분/초)을 설정하고 메시지를 작성합니다. 당일부터 최대 1년 후까지 지정 가능합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">카운트다운 + 개봉</div>
+              <div class="step-desc">설정한 시간 전까지 잠긴 캡슐과 카운트다운이 표시됩니다. 시간이 되면 캡슐이 열리며 메시지가 공개됩니다. 채팅하기 버튼으로 대화할 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. DJ 사연 -->
+      <div class="section">
+        <div class="section-title">6. DJ 사연 보내기</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">사연 작성 + 음성 녹음(선택)</div>
+              <div class="step-desc">사연을 작성하고(최대 500자), 원하면 음성 메시지도 녹음합니다. 링크를 복사하여 상대방에게 보내세요.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">사연 감상</div>
+              <div class="step-desc">받는 사람이 링크를 열면 "ON AIR" 라디오 스튜디오 화면에서 타이프라이터 효과로 사연이 표시되고, 음성/TTS로 재생됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. 음악 궁합 -->
+      <div class="section">
+        <div class="section-title">7. 음악 궁합 테스트</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">방 만들기 + 초대</div>
+              <div class="step-desc">"음악 궁합" 버튼을 누르면 테스트 방이 생성됩니다. 초대 링크를 상대방에게 보내세요.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">취향 선택</div>
+              <div class="step-desc">상대방이 입장하면 "비 오는 날 듣고 싶은 음악은?" 같은 10개의 음악 취향 질문에 각자 답변합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">궁합 결과</div>
+              <div class="step-desc">두 사람의 답변을 비교하여 궁합 퍼센트를 보여줍니다. 질문별로 서로의 선택을 비교하고 채팅으로 이야기를 나눠보세요.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. 포토앨범 -->
+      <div class="section">
+        <div class="section-title">8. 라디오 포토앨범</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">사진 업로드</div>
+              <div class="step-desc">"포토앨범" 버튼을 누르고 사진을 업로드합니다(최대 10장, 각 10MB 이하). 드래그&드롭도 가능합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">공유 + 감상</div>
+              <div class="step-desc">링크를 복사하여 보내면, 받는 사람은 슬라이드쇼(자동/수동)와 그리드 뷰로 사진을 감상합니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. 일기쓰기 -->
+      <div class="section">
+        <div class="section-title">9. 일기쓰기</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">일기 작성</div>
+              <div class="step-desc">오늘의 기분을 선택하고 일기를 작성합니다. 사진도 최대 3장까지 첨부할 수 있습니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">일기 목록</div>
+              <div class="step-desc">작성한 일기는 날짜별로 정리됩니다. 이전 일기를 열어보거나 수정할 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. 타로 카드 -->
+      <div class="section">
+        <div class="section-title">10. 타로 카드</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">타로 카드 뽑기</div>
+              <div class="step-desc">방송국 목록에서 "타로 점보기"를 선택하면 타로 카드를 뽑을 수 있습니다. 카드를 클릭하면 뒤집어지며 결과가 나타납니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">카드 해석 확인</div>
+              <div class="step-desc">뽑은 카드의 의미와 오늘의 메시지를 확인하세요. 매일 새로운 카드를 뽑아볼 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. 오늘의 운세 -->
+      <div class="section">
+        <div class="section-title">11. 오늘의 운세</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">생년월일 입력</div>
+              <div class="step-desc">방송국 목록에서 "오늘의 운세"를 선택하고 생년월일을 입력하면 매일 새로운 운세를 확인할 수 있습니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">운세 확인 + 생일 알림</div>
+              <div class="step-desc">오늘의 총운, 애정운, 금전운 등을 확인하세요. 내 생일까지 며칠 남았는지 알림 서비스도 제공됩니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!--  PART 3: 대시보드                             -->
+      <!-- ============================================ -->
+      <div class="category-divider">
+        <span class="category-label">DASHBOARD</span>
+      </div>
+
+      <div class="section">
+        <div class="section-title">사용자 대시보드</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">기념일 관리</div>
+              <div class="step-desc">생일, 결혼기념일 등 소중한 기념일을 등록하면 디지털 화면에 D-day가 자동으로 표시됩니다. 수정/삭제도 대시보드에서 합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">기능 사용 현황</div>
+              <div class="step-desc">11가지 소확행 기능의 사용 횟수를 확인할 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!--  TIP                                         -->
+      <!-- ============================================ -->
+      <div class="tip-box">
+        <div class="tip-title">TIP</div>
+        <div class="tip-text">
+          모든 "링크 공유" 기능은<br>
+          같은 방식으로 작동합니다:<br>
+          링크 복사 → 상대방에게 전달 → 클릭하여 감상<br><br>
+          보내는 사람의 닉네임은 자동으로 채워지고,<br>
+          받는 사람의 닉네임은 직접 입력합니다.<br><br>
+          라디오를 들으며 추억의 사진과 함께<br>
+          소중한 사람에게 마음을 전해 보세요.
+        </div>
+      </div>
+
+      <!-- ============================================ -->
+      <!--  PART 5: 랜딩 페이지 (소개)                    -->
+      <!-- ============================================ -->
+      <div class="category-divider">
+        <span class="category-label">LANDING</span>
+      </div>
+
+      <div class="section">
+        <div class="section-title">소개 페이지 (랜딩)</div>
+        <div class="step-list">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <div class="step-title">소개 페이지 접속 방법</div>
+              <div class="step-desc">로그인 화면 상단의 "라디오카페 소개 보기" 버튼 또는 메인 페이지 하단 푸터의 "소개" 링크를 클릭하면 랜딩 페이지로 이동합니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <div class="step-title">주요 기능 소개</div>
+              <div class="step-desc">실시간 스트리밍, 아날로그 & 디지털 모드, 11가지 테마, 추억 사진 앨범, 소확행 아이템, 기념일 대시보드, 타로 카드, 오늘의 운세 등 주요 기능을 한눈에 확인할 수 있습니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <div class="step-title">화면 스크린샷</div>
+              <div class="step-desc">아날로그 모드, 디지털 모드, 사용자 선택 화면 등 실제 앱 화면을 미리 확인할 수 있습니다.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <div class="step-title">11가지 감성 테마 미리보기</div>
+              <div class="step-desc">우드, 크림, 블랙, 말차 라떼, 실버, 사이버, 로즈, 바닐라 크림, 갤럭시, 핫핑크, 스카이 등 11가지 테마의 색상을 미리 살펴보세요.</div>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <div class="step-title">Our Story</div>
+              <div class="step-desc">스타벅스 라디오카페를 만든 이야기를 읽어보세요. 7080 시절 라디오와 함께한 추억을 떠올리며, 그 따뜻한 감성을 다시 느낄 수 있습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <div class="tip-title">LANDING PAGE</div>
+        <div class="tip-text">
+          소개 페이지 주소:<br>
+          <strong>starbucks-radiocafe/landing.html</strong><br><br>
+          라디오카페가 처음이라면<br>
+          소개 페이지에서 전체 기능을 미리 살펴보고<br>
+          "LISTEN NOW" 버튼으로 바로 시작하세요.
+        </div>
+      </div>
+
+      <div class="link-section">
+        <a href="landing.html" class="link-btn">소개 페이지</a>
+        <a href="#" class="link-btn" onclick="event.preventDefault();history.back()">← 이전</a>
+      </div>
+
+      <div class="manual-footer">
+        <div class="copyright">&copy; 2026 Hyein Cho. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script>
+  var svgIcon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+
+  function restoreBtn(btn){
+    btn.classList.remove('downloading');
+    btn.innerHTML = svgIcon + ' PDF';
+  }
+
+  function downloadPDF(){
+    var btn = document.getElementById('pdfBtn');
+
+    if(typeof html2canvas === 'undefined' || typeof jspdf === 'undefined') {
+      btn.style.display = 'none';
+      window.print();
+      btn.style.display = '';
+      return;
+    }
+
+    btn.classList.add('downloading');
+    btn.innerHTML = '준비중...';
+    btn.style.visibility = 'hidden';
+
+    var card = document.querySelector('.manual-card');
+
+    // PDF용: 모든 텍스트 글자 크기 2px 축소
+    var allTextEls = card.querySelectorAll('*');
+    var originalSizes = [];
+    allTextEls.forEach(function(el) {
+      var cs = window.getComputedStyle(el);
+      var size = parseFloat(cs.fontSize);
+      originalSizes.push({ el: el, size: el.style.fontSize });
+      if (size > 4) {
+        el.style.fontSize = (size - 2) + 'px';
+      }
+    });
+
+    // PDF용: 배경색을 흰색으로 임시 변경
+    var origBgStyles = [];
+    var bgEls = [card, card.querySelector('.manual-inner')];
+    card.querySelectorAll('.step-item, .tip-box, .speaker, .feature-chip, .screenshot-box').forEach(function(el){ bgEls.push(el); });
+    bgEls.forEach(function(el) {
+      if (!el) return;
+      origBgStyles.push({ el: el, bg: el.style.background, bgColor: el.style.backgroundColor });
+      el.style.background = '#ffffff';
+    });
+    // 외부 카드 테두리(그라데이션) → 흰색
+    card.style.background = '#ffffff';
+    card.querySelector('.manual-inner').style.background = '#ffffff';
+
+    // WYSIWYG: 화면에 보이는 그대로 캡처
+    html2canvas(card, {
+      scale: 2, allowTaint: true, useCORS: true,
+      backgroundColor: '#ffffff', logging: false, imageTimeout: 0
+    }).then(function(canvas){
+      // 글자 크기 복원
+      originalSizes.forEach(function(item) {
+        item.el.style.fontSize = item.size;
+      });
+      // 배경색 복원
+      origBgStyles.forEach(function(item) {
+        item.el.style.background = item.bg;
+        item.el.style.backgroundColor = item.bgColor;
+      });
+      btn.style.visibility = '';
+
+      var pdf = new jspdf.jsPDF('p','mm','a4');
+      var pageW = pdf.internal.pageSize.getWidth();
+      var pageH = pdf.internal.pageSize.getHeight();
+      var margin = 8;
+      var contentW = pageW - margin * 2;
+      var maxH = pageH - margin * 2;
+
+      // 캔버스를 PDF 너비에 맞춰 비율 계산
+      var pxPerMm = canvas.width / contentW;
+      var sliceH_px = Math.floor(maxH * pxPerMm);
+      var srcY = 0;
+      var pageIndex = 0;
+
+      while(srcY < canvas.height) {
+        if(pageIndex > 0) pdf.addPage();
+
+        // 페이지 배경색 (흰색)
+        pdf.setFillColor(255, 255, 255);
+        pdf.rect(0, 0, pageW, pageH, 'F');
+
+        // 현재 페이지에 들어갈 슬라이스 높이
+        var sh = Math.min(sliceH_px, canvas.height - srcY);
+
+        // 슬라이스 캔버스 생성
+        var slice = document.createElement('canvas');
+        slice.width = canvas.width;
+        slice.height = sh;
+        slice.getContext('2d').drawImage(canvas, 0, srcY, canvas.width, sh, 0, 0, canvas.width, sh);
+
+        var sliceMm = (sh / pxPerMm);
+        pdf.addImage(slice.toDataURL('image/jpeg', 0.92), 'JPEG', margin, margin, contentW, sliceMm);
+
+        srcY += sh;
+        pageIndex++;
+      }
+
+      pdf.save('라디오카페_사용법.pdf');
+      restoreBtn(btn);
+
+    }).catch(function(e){
+      // 글자 크기 복원
+      originalSizes.forEach(function(item) {
+        item.el.style.fontSize = item.size;
+      });
+      // 배경색 복원
+      origBgStyles.forEach(function(item) {
+        item.el.style.background = item.bg;
+        item.el.style.backgroundColor = item.bgColor;
+      });
+      btn.style.visibility = '';
+      console.error('PDF 생성 오류:', e);
+      restoreBtn(btn);
+      btn.style.display = 'none';
+      window.print();
+      btn.style.display = '';
+    });
+  }
+  </script>
+</body>
+</html>
