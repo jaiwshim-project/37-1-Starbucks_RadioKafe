@@ -1864,7 +1864,7 @@
 
     .photo-select-screen {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-      background: linear-gradient(135deg, #040a18 0%, #081830 30%, #0a2040 60%, #061428 100%);
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
       z-index: 10000;
       display: flex; align-items: flex-start; justify-content: center;
       padding: 16px;
@@ -1874,9 +1874,9 @@
     .photo-select-screen::before {
       content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(ellipse at 20% 30%, rgba(100,200,255,0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 70%, rgba(60,160,255,0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 50% 50%, rgba(80,180,255,0.05) 0%, transparent 60%);
+        radial-gradient(ellipse at 20% 30%, rgba(0,112,74,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(0,112,74,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0,112,74,0.06) 0%, transparent 60%);
       pointer-events: none;
       animation: neonBgPulse 6s ease-in-out infinite;
     }
@@ -1890,26 +1890,26 @@
     .photo-select-screen.hidden { display: none; }
     .photo-radio-body {
       width: 100%; max-width: 420px;
-      background: linear-gradient(145deg, #0c1e3a, #081428);
+      background: linear-gradient(145deg, #00704A, #004d33);
       border-radius: 28px;
       padding: 3px;
       margin: auto 0; flex-shrink: 0;
       box-shadow:
         0 40px 80px rgba(0,0,0,0.6),
-        0 0 40px rgba(100,200,255,0.15),
-        0 0 80px rgba(60,160,255,0.08),
+        0 0 40px rgba(0,112,74,0.2),
+        0 0 80px rgba(0,112,74,0.1),
         inset 0 1px 0 rgba(255,255,255,0.08);
-      border: 2px solid rgba(100,200,255,0.5);
+      border: 2px solid rgba(0,112,74,0.6);
       position: relative;
     }
     .photo-radio-body::before {
       content: ''; position: absolute; top: -2px; left: 15%; right: 15%; height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(100,200,255,0.9), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,196,122,0.9), transparent);
       z-index: 3;
-      box-shadow: 0 0 12px rgba(100,200,255,0.6);
+      box-shadow: 0 0 12px rgba(0,196,122,0.6);
     }
     .photo-radio-inner {
-      background: linear-gradient(160deg, #0e1e38 0%, #0a1828 50%, #081420 100%);
+      background: linear-gradient(160deg, #1E3932 0%, #163028 50%, #0e2520 100%);
       border-radius: 25px;
       padding: 24px 18px;
       position: relative;
@@ -1918,33 +1918,33 @@
     .photo-radio-inner::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background:
-        repeating-linear-gradient(90deg, rgba(100,200,255,0.015) 0px, transparent 1px, transparent 3px),
-        repeating-linear-gradient(0deg, rgba(100,200,255,0.01) 0px, transparent 1px, transparent 3px);
+        repeating-linear-gradient(90deg, rgba(0,112,74,0.04) 0px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(0deg, rgba(0,112,74,0.03) 0px, transparent 1px, transparent 3px);
       pointer-events: none; border-radius: inherit;
     }
     /* Neon trim line */
     .photo-radio-inner::after {
       content: ''; position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
-      border: 1px solid rgba(100,200,255,0.15);
+      border: 1px solid rgba(0,112,74,0.2);
       border-radius: 16px; pointer-events: none;
-      box-shadow: inset 0 0 20px rgba(100,200,255,0.03);
+      box-shadow: inset 0 0 20px rgba(0,112,74,0.04);
     }
     /* Speaker grille top */
     .photo-speaker {
-      background: linear-gradient(180deg, #06101e, #0c1828);
+      background: linear-gradient(180deg, #0e2520, #081a14);
       border-radius: 14px;
       padding: 10px 12px;
       margin-bottom: 16px;
-      border: 2px solid rgba(102,187,255,0.45);
+      border: 2px solid rgba(0,112,74,0.5);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(102,187,255,0.08);
+      box-shadow: 0 0 10px rgba(0,112,74,0.1);
     }
     .photo-speaker::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
       background-image:
-        radial-gradient(circle, rgba(102,187,255,0.08) 0.8px, transparent 0.8px),
-        radial-gradient(circle, rgba(102,187,255,0.04) 0.8px, transparent 0.8px);
+        radial-gradient(circle, rgba(0,112,74,0.12) 0.8px, transparent 0.8px),
+        radial-gradient(circle, rgba(0,112,74,0.06) 0.8px, transparent 0.8px);
       background-size: 5px 5px, 5px 5px;
       background-position: 0 0, 2.5px 2.5px;
     }
@@ -1953,8 +1953,8 @@
       font-family: 'Orbitron', monospace;
       font-size: 9px; letter-spacing: 5px;
       font-weight: 900;
-      color: #00c47a;
-      text-shadow: 0 0 10px rgba(102,187,255,0.5), 0 0 4px rgba(102,187,255,0.3);
+      color: #00704A;
+      text-shadow: 0 0 10px rgba(0,196,122,0.5), 0 0 4px rgba(0,196,122,0.3);
       position: relative; z-index: 1;
     }
     /* Brand */
@@ -1987,7 +1987,7 @@
     .photo-brand::after {
       content: ''; display: block;
       width: 80px; height: 1px; margin: 12px auto 0;
-      background: linear-gradient(90deg, transparent, rgba(102,187,255,0.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,196,122,0.6), transparent);
     }
     /* Landing page button */
     .landing-btn {
@@ -2011,23 +2011,23 @@
     }
     /* LCD area - instructions */
     .photo-lcd {
-      background: linear-gradient(180deg, #020a14, #061018);
+      background: linear-gradient(180deg, #061510, #041008);
       border-radius: 14px;
       padding: 16px 18px;
       margin-bottom: 16px;
-      border: 2px solid rgba(102,187,255,0.4);
+      border: 2px solid rgba(0,112,74,0.45);
       text-align: center;
       position: relative; z-index: 1;
-      box-shadow: inset 0 2px 10px rgba(0,0,0,0.8), 0 0 8px rgba(102,187,255,0.1);
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.8), 0 0 8px rgba(0,112,74,0.1);
     }
     .photo-lcd::before {
       content: ''; position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(102,187,255,0.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0,196,122,0.6), transparent);
     }
     .photo-lcd-title {
       font-family: 'Orbitron', monospace;
-      font-size: 14px; color: #99DDFF; letter-spacing: 3px;
-      text-shadow: 0 0 16px rgba(153,221,255,0.7), 0 0 6px rgba(153,221,255,0.4);
+      font-size: 14px; color: #D4E9E2; letter-spacing: 3px;
+      text-shadow: 0 0 16px rgba(0,196,122,0.5), 0 0 6px rgba(0,196,122,0.3);
       margin-bottom: 8px; font-weight: 700;
     }
     .photo-lcd-sub {
@@ -2038,8 +2038,8 @@
     .photo-lcd-count {
       font-family: 'Orbitron', monospace;
       font-size: 24px; font-weight: 900;
-      color: #f0d890; margin-top: 10px;
-      text-shadow: 0 0 20px rgba(240,216,144,0.8), 0 0 8px rgba(240,216,144,0.5);
+      color: #CBA258; margin-top: 10px;
+      text-shadow: 0 0 20px rgba(203,162,88,0.8), 0 0 8px rgba(203,162,88,0.5);
       animation: landingPulse 2s ease-in-out infinite;
     }
     /* Photo grid */
@@ -2055,8 +2055,8 @@
       position: relative;
       aspect-ratio: 1;
       border-radius: 12px;
-      border: 2px dashed rgba(100,200,255,0.45);
-      background: rgba(100,200,255,0.03);
+      border: 2px dashed rgba(0,112,74,0.5);
+      background: rgba(0,112,74,0.05);
       display: flex; align-items: center; justify-content: center;
       cursor: pointer;
       overflow: hidden;
@@ -2064,13 +2064,13 @@
       box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
     }
     .photo-slot:hover {
-      border-color: rgba(100,200,255,0.8);
-      background: rgba(100,200,255,0.06);
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 18px rgba(100,200,255,0.2);
+      border-color: rgba(0,196,122,0.8);
+      background: rgba(0,112,74,0.1);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 18px rgba(0,112,74,0.25);
     }
     .photo-slot.filled {
-      border: 2px solid rgba(100,200,255,0.6);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 14px rgba(100,200,255,0.2);
+      border: 2px solid rgba(0,196,122,0.6);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 14px rgba(0,112,74,0.2);
     }
     .photo-slot.filled img {
       width: 100%; height: 100%; object-fit: cover;
@@ -2079,7 +2079,7 @@
     .photo-slot .slot-label {
       position: absolute; bottom: 4px; left: 0; right: 0;
       text-align: center; font-size: 9px;
-      color: rgba(100,200,255,0.7);
+      color: rgba(0,196,122,0.7);
       font-family: 'Orbitron', monospace;
       font-weight: 700; letter-spacing: 0.5px;
     }
@@ -2090,9 +2090,9 @@
       padding: 8px 0 4px; bottom: 0;
     }
     .photo-slot .slot-icon {
-      font-size: 26px; color: rgba(100,200,255,0.4); transition: all 0.3s;
+      font-size: 26px; color: rgba(0,112,74,0.5); transition: all 0.3s;
     }
-    .photo-slot:hover .slot-icon { color: rgba(100,200,255,0.8); }
+    .photo-slot:hover .slot-icon { color: rgba(0,196,122,0.9); }
     .photo-slot .remove-photo {
       position: absolute; top: 4px; right: 4px;
       width: 22px; height: 22px; border-radius: 50%;
@@ -2105,42 +2105,42 @@
     }
     /* Control area */
     .photo-controls {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
       position: relative; z-index: 1;
     }
     .photo-batch-btn {
-      background: linear-gradient(135deg, rgba(100,200,255,0.12), rgba(60,160,255,0.06));
-      color: rgba(100,200,255,0.9); border: 2px solid rgba(100,200,255,0.45);
-      padding: 12px 28px; border-radius: 24px;
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      color: rgba(0,196,122,0.9); border: 2px solid rgba(0,112,74,0.5);
+      padding: 8px 20px; border-radius: 24px;
       font-size: 13px; font-weight: 700; font-family: 'Outfit', sans-serif;
       cursor: pointer; letter-spacing: 0.5px;
       transition: all 0.3s ease;
       backdrop-filter: blur(4px);
     }
     .photo-batch-btn:hover {
-      background: linear-gradient(135deg, rgba(100,200,255,0.22), rgba(60,160,255,0.12));
-      border-color: rgba(100,200,255,0.7);
-      color: #88DDFF;
-      box-shadow: 0 4px 24px rgba(100,200,255,0.25);
+      background: linear-gradient(135deg, rgba(0,112,74,0.28), rgba(0,77,51,0.15));
+      border-color: rgba(0,196,122,0.7);
+      color: #D4E9E2;
+      box-shadow: 0 4px 24px rgba(0,112,74,0.3);
     }
     .photo-batch-btn:active { transform: scale(0.97); }
     .photo-batch-row {
       display: flex; gap: 10px; align-items: center; justify-content: center;
     }
     .photo-select-or {
-      font-size: 10px; color: rgba(100,200,255,0.4);
+      font-size: 10px; color: rgba(0,112,74,0.5);
       font-family: 'Orbitron', monospace; letter-spacing: 3px; font-weight: 600;
     }
     .photo-save-load-row {
-      display: flex; gap: 12px; margin-bottom: 8px;
+      display: flex; gap: 8px; margin-bottom: 0;
     }
     .photo-save-btn, .photo-load-btn {
-      background: linear-gradient(135deg, rgba(100,200,255,0.15), rgba(60,160,255,0.08));
-      color: #88CCFF; border: 2px solid rgba(100,200,255,0.45);
-      padding: 10px 24px; border-radius: 20px;
+      background: linear-gradient(135deg, rgba(0,112,74,0.18), rgba(0,77,51,0.1));
+      color: #7ab8a0; border: 2px solid rgba(0,112,74,0.5);
+      padding: 8px 18px; border-radius: 20px;
       font-size: 13px; font-weight: 700; font-family: 'Outfit', sans-serif;
-      cursor: pointer; letter-spacing: 1px;
-      box-shadow: 0 4px 16px rgba(60,160,255,0.2);
+      cursor: pointer; letter-spacing: 0.5px;
+      box-shadow: 0 4px 16px rgba(0,112,74,0.2);
       transition: all 0.3s ease;
     }
     .photo-save-btn {
@@ -2150,66 +2150,66 @@
       opacity: 1; pointer-events: auto;
     }
     .photo-load-btn {
-      background: linear-gradient(135deg, rgba(80,220,160,0.15), rgba(60,180,120,0.08));
-      color: #66DDAA; border-color: rgba(80,220,160,0.45);
-      box-shadow: 0 4px 16px rgba(80,220,160,0.2);
+      background: linear-gradient(135deg, rgba(0,160,90,0.18), rgba(0,112,74,0.1));
+      color: #D4E9E2; border-color: rgba(0,160,90,0.5);
+      box-shadow: 0 4px 16px rgba(0,112,74,0.2);
     }
     .photo-save-btn.ready:hover, .photo-load-btn:hover {
       transform: translateY(-2px);
     }
     .photo-save-btn.ready:hover {
-      background: linear-gradient(135deg, rgba(100,200,255,0.25), rgba(60,160,255,0.15));
-      box-shadow: 0 6px 24px rgba(60,160,255,0.3);
-      color: #AADDFF;
+      background: linear-gradient(135deg, rgba(0,112,74,0.3), rgba(0,77,51,0.18));
+      box-shadow: 0 6px 24px rgba(0,112,74,0.35);
+      color: #D4E9E2;
     }
     .photo-load-btn:hover {
-      background: linear-gradient(135deg, rgba(80,220,160,0.25), rgba(60,180,120,0.15));
-      box-shadow: 0 6px 24px rgba(80,220,160,0.3);
-      color: #88EEBB;
+      background: linear-gradient(135deg, rgba(0,160,90,0.3), rgba(0,112,74,0.18));
+      box-shadow: 0 6px 24px rgba(0,112,74,0.35);
+      color: #fff;
     }
     .photo-save-btn.ready:active, .photo-load-btn:active { transform: scale(0.97); }
     .photo-reset-btn {
-      background: linear-gradient(135deg, rgba(100,200,255,0.08), rgba(60,160,255,0.04));
-      color: rgba(100,200,255,0.7); border: 2px solid rgba(100,200,255,0.3);
-      padding: 8px 20px; border-radius: 16px;
-      font-size: 12px; font-weight: 600; font-family: 'Outfit', sans-serif;
-      cursor: pointer; letter-spacing: 1px;
+      background: linear-gradient(135deg, rgba(0,112,74,0.08), rgba(0,77,51,0.04));
+      color: rgba(0,196,122,0.7); border: 2px solid rgba(0,112,74,0.3);
+      padding: 8px 16px; border-radius: 16px;
+      font-size: 13px; font-weight: 600; font-family: 'Outfit', sans-serif;
+      cursor: pointer; letter-spacing: 0.5px;
       box-shadow: 0 3px 12px rgba(0,0,0,0.3);
       transition: all 0.3s ease;
     }
     .photo-reset-btn:hover {
-      background: linear-gradient(135deg, rgba(100,200,255,0.15), rgba(60,160,255,0.08));
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
       transform: translateY(-2px);
-      box-shadow: 0 5px 18px rgba(100,200,255,0.15);
-      color: #88DDFF;
+      box-shadow: 0 5px 18px rgba(0,112,74,0.2);
+      color: #D4E9E2;
     }
     .photo-reset-btn:active { transform: scale(0.97); }
     .album-list-popup {
       display: none; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      background: linear-gradient(145deg, #0e1e38, #081428);
-      border: 2px solid rgba(100,200,255,0.4);
+      background: linear-gradient(145deg, #163028, #0e2218);
+      border: 2px solid rgba(0,112,74,0.45);
       border-radius: 16px; padding: 0; min-width: 280px; max-width: 320px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(100,200,255,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(0,112,74,0.15);
       z-index: 1000;
     }
     .album-list-popup.visible { display: block; }
     .album-list-header {
       display: flex; justify-content: space-between; align-items: center;
-      padding: 12px 16px; border-bottom: 1px solid rgba(100,200,255,0.2);
-      color: #88CCFF; font-family: 'Outfit', sans-serif; font-weight: 600;
+      padding: 12px 16px; border-bottom: 1px solid rgba(0,112,74,0.25);
+      color: #D4E9E2; font-family: 'Outfit', sans-serif; font-weight: 600;
     }
     .album-list-close {
-      background: none; border: none; color: rgba(100,200,255,0.6);
+      background: none; border: none; color: rgba(0,196,122,0.6);
       font-size: 20px; cursor: pointer; padding: 0 4px;
     }
-    .album-list-close:hover { color: #88DDFF; }
+    .album-list-close:hover { color: #D4E9E2; }
     .album-list-content {
       max-height: 250px; overflow-y: auto; padding: 8px;
     }
     .album-list-content::-webkit-scrollbar { width: 6px; }
     .album-list-content::-webkit-scrollbar-thumb {
-      background: rgba(100,200,255,0.3); border-radius: 3px;
+      background: rgba(0,112,74,0.4); border-radius: 3px;
     }
     .album-item {
       display: flex; align-items: center; gap: 10px;
@@ -2218,8 +2218,8 @@
       transition: all 0.2s; border: 1px solid transparent;
     }
     .album-item:hover {
-      background: rgba(100,200,255,0.08);
-      border-color: rgba(100,200,255,0.3);
+      background: rgba(0,112,74,0.12);
+      border-color: rgba(0,112,74,0.35);
     }
     .album-item-icon { font-size: 20px; }
     .album-item-name {
@@ -2228,7 +2228,7 @@
       overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
     }
     .album-item-count {
-      color: rgba(100,200,255,0.6); font-size: 11px;
+      color: rgba(0,196,122,0.7); font-size: 11px;
       font-family: 'Inter', sans-serif;
     }
     .album-item-delete {
@@ -2246,7 +2246,7 @@
     }
     .album-list-empty {
       text-align: center; padding: 30px 20px;
-      color: rgba(100,200,255,0.5); font-size: 13px;
+      color: rgba(0,196,122,0.5); font-size: 13px;
       font-family: 'Inter', sans-serif;
     }
     .mode-select-row {
@@ -2258,12 +2258,12 @@
       opacity: 1; pointer-events: auto;
     }
     .mode-btn {
-      background: linear-gradient(135deg, #4a9eee, #3580cc);
-      color: #fff; border: 2px solid rgba(100,200,255,0.6);
-      padding: 14px 32px; border-radius: 28px;
-      font-size: 14px; font-weight: 900; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #00704A, #004d33);
+      color: #D4E9E2; border: 2px solid rgba(0,112,74,0.6);
+      padding: 9px 24px; border-radius: 28px;
+      font-size: 13px; font-weight: 900; font-family: 'Outfit', sans-serif;
       cursor: pointer; letter-spacing: 2px;
-      box-shadow: 0 6px 24px rgba(60,160,255,0.35);
+      box-shadow: 0 4px 16px rgba(0,112,74,0.4);
       transition: all 0.3s ease;
       flex: 1; max-width: 180px;
     }
@@ -2272,29 +2272,29 @@
     }
     .mode-btn:hover {
       transform: translateY(-2px);
-      background: linear-gradient(135deg, #5cb0ff, #4a9eee);
-      box-shadow: 0 8px 32px rgba(60,160,255,0.45), 0 0 24px rgba(100,200,255,0.2);
+      background: linear-gradient(135deg, #00885c, #005c3d);
+      box-shadow: 0 8px 32px rgba(0,112,74,0.5), 0 0 24px rgba(0,196,122,0.2);
     }
     .mode-btn:active { transform: scale(0.97); animation: none; }
     .analog-btn {
-      background: linear-gradient(135deg, #2a7acc, #1e60aa);
-      border-color: rgba(60,160,255,0.5);
+      background: linear-gradient(135deg, #005c3d, #003d28);
+      border-color: rgba(0,112,74,0.5);
     }
     .analog-btn:hover {
-      background: linear-gradient(135deg, #3a8add, #2a7acc);
+      background: linear-gradient(135deg, #006b48, #004d33);
     }
     /* Screws */
     .photo-screw {
       position: absolute; width: 8px; height: 8px;
-      background: linear-gradient(145deg, #1a2848, #0e1e38);
-      border-radius: 50%; border: 1px solid rgba(102,187,255,0.15);
+      background: linear-gradient(145deg, #CBA258, #A07830);
+      border-radius: 50%; border: 1px solid rgba(203,162,88,0.3);
       z-index: 2;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 0 4px rgba(203,162,88,0.3);
     }
     .photo-screw::after {
       content: ''; position: absolute; top: 50%; left: 50%;
       transform: translate(-50%,-50%) rotate(35deg);
-      width: 4px; height: 0.5px; background: rgba(102,187,255,0.3);
+      width: 4px; height: 0.5px; background: rgba(139,94,20,0.8);
     }
     .photo-screw-tl { top: 10px; left: 10px; }
     .photo-screw-tr { top: 10px; right: 10px; }
@@ -2303,18 +2303,18 @@
 
     /* === SONG DOWNLOAD BUTTON on Photo Screen === */
     .song-open-btn {
-      background: linear-gradient(135deg, rgba(100,200,255,0.12), rgba(60,160,255,0.06));
-      color: rgba(100,200,255,0.9); border: 2px solid rgba(100,200,255,0.4);
-      padding: 11px 24px; border-radius: 22px;
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      color: rgba(0,196,122,0.9); border: 2px solid rgba(0,112,74,0.45);
+      padding: 8px 20px; border-radius: 22px;
       font-size: 13px; font-weight: 700; font-family: 'Outfit', sans-serif;
       cursor: pointer; letter-spacing: 0.5px;
       transition: all 0.3s ease; width: 100%;
-      backdrop-filter: blur(4px); margin-top: 4px;
+      backdrop-filter: blur(4px); margin-top: 0;
     }
     .song-open-btn:hover {
-      background: linear-gradient(135deg, rgba(100,200,255,0.22), rgba(60,160,255,0.12));
-      border-color: rgba(100,200,255,0.7); color: #88DDFF;
-      box-shadow: 0 4px 24px rgba(100,200,255,0.25);
+      background: linear-gradient(135deg, rgba(0,112,74,0.28), rgba(0,77,51,0.15));
+      border-color: rgba(0,196,122,0.7); color: #D4E9E2;
+      box-shadow: 0 4px 24px rgba(0,112,74,0.3);
     }
     .song-open-btn:active { transform: scale(0.97); }
 
@@ -3440,7 +3440,7 @@
         <span class="footer-divider">|</span>
         <a href="admin.html" class="footer-link">관리자</a>
         <span class="footer-divider">|</span>
-        <a href="about.html" class="footer-link">Hyein Cho</a>
+        <a href="about.html" class="footer-link">팀스</a>
       </div>
     </div>
   </div>
@@ -3452,8 +3452,8 @@
     <button class="about-close" onclick="hideAbout()">&times;</button>
     <div class="about-header">
       <div class="about-avatar"><img src="profile.jpg" alt="Hyein Cho"></div>
-      <div class="about-name">RadioKafe Team (Hyein Cho)</div>
-      <div class="about-title">Starbucks × RadioKafe · 인셀랩 대표 · 서양화가</div>
+      <div class="about-name">팀스</div>
+      <div class="about-title">Starbucks × RadioKafe · 스타벅스 라디오카페 제작팀</div>
     </div>
     <div class="about-body">
       <p class="about-intro">안녕하세요! 스타벅스 라디오카페를 만든 심재우입니다.</p>
@@ -3536,7 +3536,7 @@
       </div>
 
       <div class="photo-brand">
-        <span class="photo-brand-text"><span class="photo-brand-clara">스타벅스</span> <span class="photo-brand-cafe">라디오카페</span> - 15개 방송듣기</span>
+        <span class="photo-brand-text"><span class="photo-brand-clara">스타벅스</span> <span class="photo-brand-cafe">라디오카페</span></span>
         <span class="photo-brand-sub">나만의 추억 사진을 보면서 라디오 방송을 들으세요!</span>
       </div>
 
@@ -3599,6 +3599,10 @@
       </div>
 
       <input type="file" id="slotFileInput" accept="image/*" style="display:none">
+
+      <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,112,74,0.3); text-align:center; font-size:10px; color:#4a8a72;">
+        &copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent,#00704A);font-weight:700;text-decoration:none;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html" style="color:#4a8a72;text-decoration:none;">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html" style="color:#4a8a72;text-decoration:none;">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html" style="color:#4a8a72;text-decoration:none;"><strong>팀스</strong></a>
+      </div>
     </div>
   </div>
 </div>
@@ -3781,7 +3785,7 @@
     </div>
 
     <div class="radio-footer">
-      <div class="footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>Hyein Cho</strong></a></div>
+      <div class="footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
     </div>
   </div>
 </div>

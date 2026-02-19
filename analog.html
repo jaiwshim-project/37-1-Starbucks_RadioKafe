@@ -642,23 +642,24 @@
       display: none;
       width: 30px; height: 30px;
       border-radius: 50%;
-      background: var(--accent-muted);
-      border: 2px dashed var(--neon-light);
-      color: var(--text-dim);
+      background: rgba(203,162,88,0.15);
+      border: 2px dashed #CBA258;
+      color: #CBA258;
       font-size: 18px; line-height: 1;
       cursor: pointer;
       flex-shrink: 0;
       align-self: center;
       margin-left: 3px;
       transition: all 0.3s ease;
+      box-shadow: 0 0 6px rgba(203,162,88,0.2);
     }
     .photo-upload-btn:hover {
-      background: var(--neon-light);
-      color: var(--player-bg);
-      box-shadow: 0 0 8px var(--neon-light-glow);
+      background: rgba(203,162,88,0.35);
+      color: #fff;
+      border-color: #e8c870;
+      box-shadow: 0 0 12px rgba(203,162,88,0.5);
     }
     .photo-upload-btn.has-photos { display: flex; align-items: center; justify-content: center; }
-    #analogPhotoBtn { color: #ffd700; }
     .brand-photos { display: contents; }
 
     @keyframes eqBounce { 0%{height:6px} 50%{height:40px} 100%{height:12px} }
@@ -1162,25 +1163,26 @@
       padding: 0 4px;
     }
     .analog-listen-together-btn {
-      background: linear-gradient(135deg, #FFF8E7, #F2E8D0);
-      border: 1px solid #C8A96E;
-      color: #8B6914;
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      border: 1px solid #A07830;
+      color: #D4E9E2;
       font-family: 'Inter', sans-serif;
-      font-size: 12px; font-weight: 700;
+      font-size: 10px; font-weight: 700;
       letter-spacing: -0.3px;
       padding: 8px 0;
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 0 8px rgba(200,169,110,0.3);
+      box-shadow: 0 0 8px rgba(0,112,74,0.2);
       white-space: nowrap;
       flex: 1;
       min-width: 0;
     }
     .analog-listen-together-btn:hover {
-      background: #C8A96E;
+      background: linear-gradient(135deg, #00704A, #004d33);
       color: #fff;
-      box-shadow: 0 0 16px rgba(200,169,110,0.5);
+      border-color: rgba(0,196,122,0.7);
+      box-shadow: 0 0 16px rgba(0,112,74,0.4);
     }
     /* Listen Together Modal */
     .listen-together-modal {
@@ -1766,7 +1768,7 @@
 
     <!-- Footer -->
     <div class="analog-footer">
-      <div class="analog-footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>Hyein Cho</strong></a></div>
+      <div class="analog-footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
     </div>
   </div>
 </div>

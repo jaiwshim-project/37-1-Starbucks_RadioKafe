@@ -1605,20 +1605,22 @@
       display: none;
       width: 30px; height: 30px;
       border-radius: 50%;
-      background: var(--accent-muted);
-      border: 2px dashed var(--neon-light);
-      color: var(--text-dim);
+      background: rgba(203,162,88,0.15);
+      border: 2px dashed #CBA258;
+      color: #CBA258;
       font-size: 18px; line-height: 1;
       cursor: pointer;
       flex-shrink: 0;
       align-self: center;
       margin-left: 3px;
       transition: all 0.3s ease;
+      box-shadow: 0 0 6px rgba(203,162,88,0.2);
     }
     .photo-upload-btn:hover {
-      background: var(--neon-light);
-      color: var(--player-bg);
-      box-shadow: 0 0 8px var(--neon-light-glow);
+      background: rgba(203,162,88,0.35);
+      color: #fff;
+      border-color: #e8c870;
+      box-shadow: 0 0 12px rgba(203,162,88,0.5);
     }
     .photo-upload-btn.has-photos { display: flex; align-items: center; justify-content: center; }
     .brand-photos { display: contents; }
@@ -2087,7 +2089,7 @@
     </div>
 
     <div class="radio-footer">
-      <div class="footer-text">&copy; 2026 <a href="about.html"><strong>Hyein Cho</strong></a></div>
+      <div class="footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
     </div>
   </div>
 </div>

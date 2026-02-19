@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#f5e6d3">
+<html lang="ko" style="background:#0a1f17">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,15 +15,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #f5e6d3;
-      --body-out1: #e8d5b0; --body-out2: #d4c09a;
-      --body-in1: #FFF8E7; --body-in2: #F5ECD8;
-      --accent: #C8A96E;
-      --accent-glow: rgba(200,169,110,0.5);
+      --bg: #0a1f17;
+      --accent: #00704A;
+      --accent-glow: rgba(0,112,74,0.5);
+      --gold: #CBA258;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f0dcc4 100%);
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -34,72 +33,72 @@
 
     /* Listen Together Card */
     .ltm-card {
-      background: linear-gradient(145deg, #FFF8E7, #F5ECD8);
-      border: 1px solid rgba(139,105,20,0.15);
+      background: #1E3932;
+      border: 1px solid rgba(0,112,74,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 340px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(100,70,30,0.15), 0 0 40px rgba(200,169,110,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
     }
     .ltm-logo {
       font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700;
-      color: #8B6914; letter-spacing: 2px; margin-bottom: 6px;
+      color: #D4E9E2; letter-spacing: 2px; margin-bottom: 6px;
       text-shadow: none;
     }
     .ltm-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #8B6914; letter-spacing: 3px; margin-bottom: 16px;
+      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
       text-shadow: none;
     }
     .ltm-station {
       font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700;
-      color: #3a2a10; margin-bottom: 4px;
+      color: #D4E9E2; margin-bottom: 4px;
     }
     .ltm-freq {
       font-family: 'Orbitron', monospace; font-size: 12px;
-      color: #C8A96E; letter-spacing: 2px; margin-bottom: 20px;
+      color: #CBA258; letter-spacing: 2px; margin-bottom: 20px;
     }
     .ltm-link-box {
       display: flex; gap: 8px; margin-bottom: 8px;
     }
     .ltm-link-box input {
       flex: 1; padding: 10px 12px; border-radius: 10px;
-      border: 2px solid rgba(139,105,20,0.2);
-      background: rgba(255,255,255,0.7); color: #3a2a10;
+      border: 2px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
       font-family: 'Inter', sans-serif; font-size: 11px;
       outline: none;
     }
     .ltm-link-box button {
       padding: 10px 16px; border-radius: 10px;
-      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
-      color: #fff; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none;
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
       font-size: 13px; font-weight: 700; cursor: pointer;
       transition: all 0.2s; white-space: nowrap;
     }
-    .ltm-link-box button:hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .ltm-link-box button:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
     .ltm-greeting {
       width: 100%; padding: 10px 14px; border-radius: 10px;
-      border: 2px solid rgba(139,105,20,0.2);
-      background: rgba(255,255,255,0.7); color: #3a2a10;
+      border: 2px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
       font-family: 'Inter', sans-serif; font-size: 13px;
       outline: none; margin-bottom: 10px; box-sizing: border-box;
       text-align: center;
     }
-    .ltm-greeting:focus { border-color: #C8A96E; }
-    .ltm-greeting::placeholder { color: rgba(100,70,30,0.4); }
+    .ltm-greeting:focus { border-color: #00704A; }
+    .ltm-greeting::placeholder { color: #7ab8a0; }
     .ltm-copied {
       font-family: 'Inter', sans-serif; font-size: 12px;
-      color: #C8A96E; margin-bottom: 12px;
+      color: #00704A; margin-bottom: 12px;
     }
     .ltm-copied.hidden { display: none; }
     .ltm-guide {
       text-align: left; margin-top: 24px; margin-bottom: 24px; padding: 12px 14px;
-      background: rgba(139,105,20,0.06); border-radius: 10px;
-      border-left: 3px solid #C8A96E;
+      background: rgba(0,112,74,0.08); border-radius: 10px;
+      border-left: 3px solid #00704A;
     }
     .ltm-guide p {
       font-family: 'Inter', sans-serif; font-size: 13px;
-      color: #3a2a10; line-height: 1.6;
+      color: #b8d8cc; line-height: 1.6;
       margin: 0 0 8px 0;
     }
     .ltm-guide p:last-child { margin-bottom: 0; }
@@ -107,7 +106,7 @@
     /* No station warning */
     .no-station {
       font-family: 'Inter', sans-serif; font-size: 14px;
-      color: #A08050; margin-bottom: 16px;
+      color: #7ab8a0; margin-bottom: 16px;
       line-height: 1.6;
     }
 
@@ -115,13 +114,13 @@
     .back-link {
       display: inline-block; margin-top: 12px;
       font-family: 'Outfit', sans-serif; font-size: 14px;
-      color: #fff; text-decoration: none;
-      background: linear-gradient(135deg, #C8A96E, #b89858);
+      color: #D4E9E2; text-decoration: none;
+      background: linear-gradient(135deg, #00704A, #004d33);
       border: none; border-radius: 12px;
       padding: 10px 24px; transition: all 0.2s;
     }
     .back-link:hover {
-      box-shadow: 0 8px 24px rgba(200,169,110,0.4);
+      box-shadow: 0 8px 24px rgba(0,112,74,0.4);
     }
   </style>
 </head>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#f5e6d3">
+<html lang="ko" style="background:#0a1f17">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,15 +15,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #f5e6d3;
-      --body-out1: #e8d5b0; --body-out2: #d4c09a;
-      --body-in1: #FFF8E7; --body-in2: #F5ECD8;
-      --accent: #C8A96E;
-      --accent-glow: rgba(200,169,110,0.5);
+      --bg: #0a1f17;
+      --accent: #00704A;
+      --accent-glow: rgba(0,112,74,0.5);
+      --gold: #CBA258;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f0dcc4 100%);
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -34,24 +33,24 @@
     body::before {
       content: '';
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse at 30% 20%, rgba(200,169,110,0.06) 0%, transparent 50%),
-                  radial-gradient(ellipse at 70% 80%, rgba(200,169,110,0.04) 0%, transparent 50%);
+      background: radial-gradient(ellipse at 30% 20%, rgba(0,112,74,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(0,112,74,0.04) 0%, transparent 50%);
       pointer-events: none; z-index: 0;
     }
 
     /* Gift Card */
     .gift-card {
-      background: linear-gradient(145deg, #FFF8E7, #F5ECD8);
-      border: 1px solid rgba(139,105,20,0.15);
+      background: #1E3932;
+      border: 1px solid rgba(0,112,74,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 360px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(100,70,30,0.15), 0 0 40px rgba(200,169,110,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
       position: relative; z-index: 1;
     }
     .gift-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #8B6914; letter-spacing: 3px; margin-bottom: 16px;
+      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
       text-shadow: none;
     }
     .gift-categories {
@@ -59,90 +58,90 @@
     }
     .gift-cat-btn {
       padding: 6px 14px; border-radius: 16px;
-      border: 1px solid rgba(139,105,20,0.2);
-      background: rgba(255,255,255,0.5); color: #A08050;
+      border: 1px solid rgba(0,112,74,0.3);
+      background: rgba(0,112,74,0.08); color: #7ab8a0;
       font-family: 'Inter', sans-serif; font-size: 12px;
       cursor: pointer; transition: all 0.2s;
     }
     .gift-cat-btn.active {
-      border-color: #C8A96E; color: #8B6914;
-      background: rgba(200,169,110,0.15);
+      border-color: #00704A; color: #D4E9E2;
+      background: rgba(0,112,74,0.2);
     }
     .gift-song-list {
       max-height: 160px; overflow-y: auto; margin-bottom: 14px;
     }
     .gift-song-list::-webkit-scrollbar { width: 4px; }
-    .gift-song-list::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.4); border-radius: 2px; }
+    .gift-song-list::-webkit-scrollbar-thumb { background: rgba(0,112,74,0.4); border-radius: 2px; }
     .gift-song-item {
       display: flex; align-items: center; justify-content: space-between;
       padding: 10px 14px; margin-bottom: 4px; border-radius: 10px;
-      border: 1px solid rgba(139,105,20,0.12);
-      background: rgba(139,105,20,0.06); cursor: pointer;
+      border: 1px solid rgba(0,112,74,0.2);
+      background: rgba(0,112,74,0.06); cursor: pointer;
       transition: all 0.2s;
     }
-    .gift-song-item:hover { border-color: rgba(200,169,110,0.5); }
+    .gift-song-item:hover { border-color: rgba(0,112,74,0.5); }
     .gift-song-item.selected {
-      border-color: #C8A96E; background: rgba(200,169,110,0.15);
+      border-color: #00704A; background: rgba(0,112,74,0.18);
     }
     .gift-song-name {
-      font-family: 'Inter', sans-serif; font-size: 14px; color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 14px; color: #b8d8cc;
     }
-    .gift-song-item.selected .gift-song-name { color: #8B6914; font-weight: 600; }
+    .gift-song-item.selected .gift-song-name { color: #D4E9E2; font-weight: 600; }
     .gift-step2 { display: none; }
     .gift-step2.active { display: block; }
     .gift-selected-info {
       font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
-      color: #8B6914; margin-bottom: 12px;
+      color: #D4E9E2; margin-bottom: 12px;
     }
     .gift-msg-input {
       width: 100%; padding: 12px; border-radius: 12px;
-      border: 2px solid rgba(139,105,20,0.2);
-      background: rgba(255,255,255,0.7); color: #3a2a10;
+      border: 2px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
       font-family: 'Inter', sans-serif; font-size: 14px;
       outline: none; resize: none; min-height: 60px;
       margin-bottom: 12px;
     }
-    .gift-msg-input:focus { border-color: #C8A96E; }
-    .gift-msg-input::placeholder { color: rgba(100,70,30,0.4); }
+    .gift-msg-input:focus { border-color: #00704A; }
+    .gift-msg-input::placeholder { color: #7ab8a0; }
     .gift-link-box {
       display: flex; gap: 8px; margin-bottom: 8px;
     }
     .gift-link-box input {
       flex: 1; padding: 10px 12px; border-radius: 10px;
-      border: 2px solid rgba(139,105,20,0.2);
-      background: rgba(255,255,255,0.7); color: #3a2a10;
+      border: 2px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
       font-family: 'Inter', sans-serif; font-size: 11px; outline: none;
     }
     .gift-link-box button {
       padding: 10px 16px; border-radius: 10px;
-      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
-      color: #fff; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none;
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
       font-size: 13px; font-weight: 700; cursor: pointer;
       transition: all 0.2s; white-space: nowrap;
     }
-    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
     .gift-copied {
       font-family: 'Inter', sans-serif; font-size: 12px;
-      color: #8B6914; margin-bottom: 12px;
+      color: #00704A; margin-bottom: 12px;
     }
     .gift-copied.hidden { display: none; }
     .gift-share-btn {
       width: 100%; padding: 12px;
-      background: transparent; border: 1px solid #C8A96E;
-      border-radius: 12px; color: #8B6914;
+      background: transparent; border: 1px solid #00704A;
+      border-radius: 12px; color: #D4E9E2;
       font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
       cursor: pointer; transition: all 0.2s; margin-bottom: 8px;
     }
-    .gift-share-btn:hover { background: linear-gradient(135deg, #C8A96E, #b89858); color: #fff; }
+    .gift-share-btn:hover { background: linear-gradient(135deg, #00704A, #004d33); color: #D4E9E2; }
     .gift-share-btn.hidden { display: none; }
     .gift-guide {
       text-align: left; margin-top: 14px; padding: 12px 14px;
-      background: rgba(139,105,20,0.06); border-radius: 10px;
-      border-left: 3px solid #C8A96E;
+      background: rgba(0,112,74,0.08); border-radius: 10px;
+      border-left: 3px solid #00704A;
     }
     .gift-guide p {
       font-family: 'Inter', sans-serif; font-size: 13px;
-      color: #A08050; line-height: 1.6;
+      color: #b8d8cc; line-height: 1.6;
       margin: 0 0 8px 0;
     }
     .gift-guide p:last-child { margin-bottom: 0; }
@@ -151,43 +150,43 @@
     }
     .gift-btn-next {
       flex: 1; padding: 12px; border-radius: 12px;
-      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
-      color: #fff; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none;
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
     .gift-btn-next:disabled { opacity: 0.3; cursor: default; }
-    .gift-btn-next:not(:disabled):hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .gift-btn-next:not(:disabled):hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
     .gift-btn-back {
       padding: 12px 16px; border-radius: 12px;
-      background: transparent; border: 1px solid rgba(139,105,20,0.3);
-      color: #A08050; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(0,112,74,0.4);
+      color: #7ab8a0; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 600; cursor: pointer;
       transition: all 0.2s;
     }
-    .gift-btn-back:hover { border-color: #C8A96E; color: #8B6914; }
+    .gift-btn-back:hover { border-color: #00704A; color: #D4E9E2; }
     .gift-close {
       width: 100%; padding: 10px; margin-top: 4px;
       background: transparent; border: none;
-      color: rgba(139,105,20,0.4); font-family: 'Inter', sans-serif;
+      color: rgba(0,112,74,0.4); font-family: 'Inter', sans-serif;
       font-size: 13px; cursor: pointer; transition: color 0.2s;
     }
-    .gift-close:hover { color: #8B6914; }
+    .gift-close:hover { color: #D4E9E2; }
 
     /* Voice Record */
     .voice-record-area {
       text-align: center; margin: 16px 0; padding: 16px;
-      background: rgba(139,105,20,0.06); border-radius: 14px;
-      border: 1px solid rgba(139,105,20,0.12);
+      background: rgba(0,112,74,0.08); border-radius: 14px;
+      border: 1px solid rgba(0,112,74,0.2);
     }
     .voice-record-btn {
       width: 64px; height: 64px; border-radius: 50%;
-      border: 2px solid #C8A96E; background: rgba(200,169,110,0.15);
-      color: #8B6914; font-size: 28px; cursor: pointer;
+      border: 2px solid #00704A; background: rgba(0,112,74,0.15);
+      color: #D4E9E2; font-size: 28px; cursor: pointer;
       transition: all 0.3s; display: inline-flex;
       align-items: center; justify-content: center;
     }
-    .voice-record-btn:hover { background: rgba(200,169,110,0.3); }
+    .voice-record-btn:hover { background: rgba(0,112,74,0.3); }
     .voice-record-btn.recording {
       background: #ff4444; border-color: #ff4444;
       animation: rec-pulse 1s ease-in-out infinite;
@@ -199,12 +198,12 @@
     .voice-record-time {
       display: block; margin-top: 10px;
       font-family: 'Orbitron', monospace; font-size: 18px;
-      color: #3a2a10; letter-spacing: 2px;
+      color: #D4E9E2; letter-spacing: 2px;
     }
     .voice-record-status {
       display: block; margin-top: 4px;
       font-family: 'Inter', sans-serif; font-size: 12px;
-      color: #A08050;
+      color: #7ab8a0;
     }
     .voice-preview {
       margin-top: 12px; display: flex; align-items: center;
@@ -215,21 +214,21 @@
     }
     .voice-preview-rebtn {
       padding: 6px 14px; border-radius: 10px;
-      border: 1px solid rgba(139,105,20,0.3);
-      background: transparent; color: #A08050;
+      border: 1px solid rgba(0,112,74,0.4);
+      background: transparent; color: #7ab8a0;
       font-family: 'Inter', sans-serif; font-size: 12px;
       cursor: pointer; transition: all 0.2s;
     }
-    .voice-preview-rebtn:hover { border-color: #C8A96E; color: #8B6914; }
+    .voice-preview-rebtn:hover { border-color: #00704A; color: #D4E9E2; }
     .voice-uploading {
       font-family: 'Inter', sans-serif; font-size: 13px;
-      color: #A08050; margin: 12px 0;
+      color: #7ab8a0; margin: 12px 0;
     }
 
-    /* Chat Panel - 전체 화면 (크림/골드 테마) */
+    /* Chat Panel - 전체 화면 (Starbucks 테마) */
     .chat-panel {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(145deg, #FFF8E7, #F2E8D0);
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
       border: none;
       z-index: 100; display: flex; flex-direction: column;
       overflow: hidden;
@@ -237,20 +236,20 @@
     .chat-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 16px;
-      background: rgba(200,169,110,0.12);
-      border-bottom: 1px solid rgba(200,169,110,0.25);
+      background: rgba(0,112,74,0.12);
+      border-bottom: 1px solid rgba(0,112,74,0.25);
       flex-shrink: 0;
     }
     .chat-header-title {
       font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
-      color: #8B6914; letter-spacing: 2px;
+      color: #00704A; letter-spacing: 2px;
     }
     .chat-header-info {
-      font-family: 'Inter', sans-serif; font-size: 11px; color: #A08050;
+      font-family: 'Inter', sans-serif; font-size: 11px; color: #7ab8a0;
     }
     .chat-back-btn {
-      background: none; border: 1px solid rgba(139,105,20,0.4);
-      color: #8B6914; font-size: 12px; padding: 4px 10px;
+      background: none; border: 1px solid rgba(0,112,74,0.4);
+      color: #D4E9E2; font-size: 12px; padding: 4px 10px;
       border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
       white-space: nowrap;
     }
@@ -261,15 +260,15 @@
     .chat-nickname-box { padding: 24px 16px; text-align: center; }
     .chat-nickname-box input {
       padding: 12px 16px; border-radius: 10px;
-      border: 1px solid rgba(139,105,20,0.3);
-      background: rgba(255,255,255,0.7); color: #3a2a10;
+      border: 1px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
       font-family: 'Inter', sans-serif; font-size: 14px;
       text-align: center; outline: none; width: 65%;
     }
-    .chat-nickname-box input:focus { border-color: #C8A96E; }
+    .chat-nickname-box input:focus { border-color: #00704A; }
     .chat-nickname-box button {
       margin-left: 8px; padding: 12px 20px; border-radius: 10px;
-      background: #C8A96E; border: none; color: #fff;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
       font-family: 'Outfit', sans-serif; font-size: 14px;
       font-weight: 700; cursor: pointer;
     }
@@ -278,7 +277,7 @@
       display: flex; flex-direction: column;
     }
     .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.4); border-radius: 2px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(0,112,74,0.4); border-radius: 2px; }
     .chat-msg {
       margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px;
       line-height: 1.5; word-break: break-word;
@@ -287,41 +286,41 @@
     .chat-msg.me { align-self: flex-end; align-items: flex-end; }
     .chat-msg.other { align-self: flex-start; align-items: flex-start; }
     .chat-msg-name {
-      font-weight: 700; color: #8B6914; font-size: 13px; margin-bottom: 3px;
+      font-weight: 700; color: #00704A; font-size: 13px; margin-bottom: 3px;
     }
-    .chat-msg.me .chat-msg-name { color: #A08050; }
+    .chat-msg.me .chat-msg-name { color: #7ab8a0; }
     .chat-msg-bubble {
       padding: 8px 14px; border-radius: 14px;
-      line-height: 1.5; color: #3a2a10;
+      line-height: 1.5; color: #b8d8cc;
     }
     .chat-msg.other .chat-msg-bubble {
-      background: rgba(200,169,110,0.15);
-      border: 1px solid rgba(200,169,110,0.2);
+      background: rgba(0,112,74,0.15);
+      border: 1px solid rgba(0,112,74,0.2);
       border-top-left-radius: 4px;
     }
     .chat-msg.me .chat-msg-bubble {
-      background: #C8A96E; color: #fff;
+      background: linear-gradient(135deg, #00704A, #004d33); color: #D4E9E2;
       border-top-right-radius: 4px;
     }
     .chat-msg-system {
-      text-align: center; color: #A08050;
+      text-align: center; color: #7ab8a0;
       font-size: 13px; font-style: italic; margin: 6px 0;
       align-self: center;
     }
     .chat-input-box {
       display: flex; gap: 8px; padding: 10px 16px;
-      border-top: 1px solid rgba(200,169,110,0.25);
+      border-top: 1px solid rgba(0,112,74,0.25);
     }
     .chat-input-box input {
       flex: 1; padding: 10px 14px; border-radius: 10px;
-      border: 1px solid rgba(139,105,20,0.25);
-      background: rgba(255,255,255,0.7); color: #3a2a10;
+      border: 1px solid rgba(0,112,74,0.3);
+      background: #122820; color: #b8d8cc;
       font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
     }
-    .chat-input-box input:focus { border-color: #C8A96E; }
+    .chat-input-box input:focus { border-color: #00704A; }
     .chat-input-box button {
       padding: 10px 16px; border-radius: 10px;
-      background: #C8A96E; border: none; color: #fff;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
       font-family: 'Outfit', sans-serif; font-size: 13px;
       font-weight: 700; cursor: pointer; white-space: nowrap;
     }
