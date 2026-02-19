@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#f5e6d3">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>포토앨범 | 스타벅스 라디오카페</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="포토앨범 | 스타벅스 라디오카페" />
+  <meta property="og:description" content="소중한 추억을 포토앨범에 담아보세요!" />
+  <meta property="og:image" content="https://og-image.jpg" />
+  <meta property="og:url" content="https://photo-album.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f0dcc4 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    /* Album Card */
+    .album-card {
+      background: linear-gradient(145deg, #FFF8E7, #F5ECD8);
+      border: 1px solid rgba(139,105,20,0.15);
+      border-radius: 20px; padding: 24px;
+      width: 100%; max-width: 400px;
+      text-align: center;
+      box-shadow: 0 40px 80px rgba(100,70,30,0.15), 0 0 40px rgba(200,169,110,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+    }
+    .album-logo {
+      font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700;
+      color: #8B6914; letter-spacing: 2px; margin-bottom: 6px;
+      text-shadow: none;
+    }
+    .album-title {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      color: #8B6914; letter-spacing: 3px; margin-bottom: 16px;
+      text-shadow: none;
+    }
+    .album-back-btn {
+      position: absolute; top: 12px; left: 12px;
+      background: none; border: 1px solid rgba(139,105,20,0.4);
+      color: #8B6914; font-size: 12px; padding: 4px 10px;
+      border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
+      white-space: nowrap; z-index: 10;
+    }
+    .album-back-btn:hover { background: rgba(200,169,110,0.1); }
+    .album-top-bar {
+      position: relative; margin-bottom: 8px;
+    }
+
+    /* Upload Area */
+    .album-upload-area {
+      border: 2px dashed rgba(139,105,20,0.3);
+      border-radius: 16px; padding: 30px;
+      cursor: pointer; transition: all 0.3s;
+      margin-bottom: 16px;
+      background: rgba(255,255,255,0.3);
+    }
+    .album-upload-area:hover, .album-upload-area.dragover {
+      border-color: #C8A96E;
+      background: rgba(200,169,110,0.1);
+    }
+    .album-upload-icon { font-size: 40px; margin-bottom: 8px; }
+    .album-upload-text { font-size: 13px; color: #A08050; }
+    .album-upload-sub { font-size: 11px; color: rgba(139,105,20,0.4); margin-top: 6px; }
+    .album-file-input { display: none; }
+
+    /* Upload Progress */
+    .album-progress {
+      margin: 12px 0;
+      display: none;
+    }
+    .album-progress-bar {
+      width: 100%; height: 4px; border-radius: 2px;
+      background: rgba(139,105,20,0.1); overflow: hidden;
+    }
+    .album-progress-fill {
+      height: 100%; width: 0%; border-radius: 2px;
+      background: #C8A96E;
+      transition: width 0.3s;
+    }
+    .album-progress-text {
+      font-size: 11px; color: #A08050;
+      margin-top: 4px;
+    }
+
+    /* Photo Grid */
+    .album-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 6px; margin: 12px 0;
+    }
+    .album-thumb {
+      position: relative; aspect-ratio: 1;
+      border-radius: 8px; overflow: hidden; cursor: pointer;
+    }
+    .album-thumb img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .album-thumb-delete {
+      position: absolute; top: 4px; right: 4px;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: rgba(0,0,0,0.6); border: none;
+      color: #fff; font-size: 12px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .album-thumb-delete:hover { background: rgba(200,169,110,0.8); }
+
+    /* Link & Copy */
+    .gift-link-box { display: flex; gap: 6px; margin-top: 12px; }
+    .gift-link-box input {
+      flex: 1; padding: 10px; border-radius: 8px;
+      background: rgba(255,255,255,0.7);
+      border: 2px solid rgba(139,105,20,0.2);
+      color: #3a2a10; font-size: 11px;
+      font-family: 'Inter', sans-serif; outline: none;
+    }
+    .gift-link-box button {
+      padding: 10px 16px; border-radius: 8px;
+      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
+      color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+    }
+    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .gift-copied { color: #C8A96E; font-size: 12px; margin-top: 6px; }
+    .album-waiting {
+      color: #A08050; font-size: 12px; margin: 10px 0;
+      font-family: 'Inter', sans-serif; display: flex; align-items: center;
+      justify-content: center; gap: 6px;
+    }
+    .waiting-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      background: #C8A96E; animation: waitPulse 1.2s ease-in-out infinite;
+    }
+    @keyframes waitPulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+    .hidden { display: none !important; }
+
+    /* Action Buttons */
+    .album-action-btn {
+      padding: 10px 20px; border-radius: 12px;
+      background: transparent; border: 1px solid #C8A96E;
+      color: #C8A96E; font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s; margin: 4px;
+    }
+    .album-action-btn:hover { background: rgba(200,169,110,0.15); }
+    .album-actions {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 6px; margin-top: 12px;
+    }
+
+    /* Photo Count */
+    .album-photo-count {
+      font-size: 12px; color: rgba(139,105,20,0.4);
+      margin-bottom: 8px;
+    }
+
+    /* === Slideshow === */
+    .album-slideshow-wrap {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 90; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+    }
+    .album-slideshow-close {
+      position: absolute; top: 12px; right: 12px;
+      background: none; border: 1px solid rgba(255,255,255,0.3);
+      color: #fff; font-size: 14px; padding: 6px 12px;
+      border-radius: 8px; cursor: pointer; z-index: 91;
+      font-family: 'Inter', sans-serif;
+    }
+    .album-slideshow-close:hover { border-color: #C8A96E; color: #C8A96E; }
+    .album-slideshow {
+      position: relative; width: 100%; max-width: 400px;
+      aspect-ratio: 4/3; border-radius: 16px;
+      overflow: hidden; background: #000;
+      margin: 0 auto 16px;
+    }
+    @media (orientation: landscape) {
+      .album-slideshow {
+        max-width: 90vw; max-height: 70vh;
+        aspect-ratio: auto; width: 90vw; height: 70vh;
+      }
+    }
+    .album-slide {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: contain; transition: opacity 0.5s;
+    }
+    .album-slide.hidden { opacity: 0; }
+    .album-slide-controls {
+      display: flex; justify-content: center; align-items: center;
+      gap: 16px; margin-top: 12px;
+    }
+    .album-slide-btn {
+      padding: 8px 16px; border-radius: 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; font-size: 14px; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .album-slide-btn:hover { border-color: #C8A96E; color: #C8A96E; }
+    .album-slide-count { color: rgba(255,255,255,0.6); font-size: 13px; }
+    .album-slide-auto {
+      padding: 8px 14px; border-radius: 10px;
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.4);
+      color: #C8A96E; font-size: 12px; cursor: pointer;
+      font-family: 'Inter', sans-serif;
+    }
+    .album-slide-auto.active {
+      background: #C8A96E; color: #fff;
+      border-color: #C8A96E;
+    }
+
+    /* View Toggle */
+    .album-view-toggle {
+      display: flex; gap: 8px; justify-content: center; margin-bottom: 12px;
+    }
+    .album-view-btn {
+      padding: 6px 14px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.2);
+      background: rgba(255,255,255,0.3); color: #A08050;
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .album-view-btn.active {
+      border-color: #C8A96E; color: #C8A96E;
+      background: rgba(200,169,110,0.15);
+    }
+
+    /* Fullscreen photo viewer (for grid click) */
+    .album-fullview {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95); z-index: 95;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+    }
+    .album-fullview img {
+      max-width: 95%; max-height: 90vh; object-fit: contain;
+      border-radius: 8px;
+    }
+    .album-fullview-close {
+      position: absolute; top: 12px; right: 12px;
+      background: none; border: 1px solid rgba(255,255,255,0.3);
+      color: #fff; font-size: 14px; padding: 6px 12px;
+      border-radius: 8px; cursor: pointer; z-index: 96;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* LP Turntable Overlay */
+    .lp-overlay {
+      position: fixed; bottom: 16px; right: 16px;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%, #333 0%, #111 40%, #333 41%, #111 60%, #333 61%, #222 100%);
+      box-shadow: 0 0 10px rgba(200,169,110,0.3);
+      animation: lpSpin 3s linear infinite;
+      z-index: 50;
+    }
+    .lp-overlay::after {
+      content: ''; position: absolute;
+      top: 50%; left: 50%; width: 12px; height: 12px;
+      background: #C8A96E; border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    @keyframes lpSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* Chat Panel - cream/gold theme */
+    .chat-panel {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(145deg, #FFF8E7, #F2E8D0);
+      border: none;
+      z-index: 100; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(200,169,110,0.12);
+      border-bottom: 1px solid rgba(200,169,110,0.25);
+      flex-shrink: 0;
+    }
+    .chat-header-title {
+      font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+      color: #8B6914; letter-spacing: 2px;
+    }
+    .chat-header-info {
+      font-family: 'Inter', sans-serif; font-size: 11px; color: #A08050;
+    }
+    .chat-back-btn {
+      background: none; border: 1px solid rgba(139,105,20,0.4);
+      color: #8B6914; font-size: 12px; padding: 4px 10px;
+      border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    #chatBody {
+      flex: 1; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-nickname-box { padding: 24px 16px; text-align: center; }
+    .chat-nickname-box input {
+      padding: 12px 16px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.3);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      text-align: center; outline: none; width: 65%;
+    }
+    .chat-nickname-box input:focus { border-color: #C8A96E; }
+    .chat-nickname-box button {
+      margin-left: 8px; padding: 12px 20px; border-radius: 10px;
+      background: #C8A96E; border: none; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      font-weight: 700; cursor: pointer;
+    }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 12px 16px;
+      display: flex; flex-direction: column;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.4); border-radius: 2px; }
+    .chat-msg {
+      margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px;
+      line-height: 1.5; word-break: break-word;
+      display: flex; flex-direction: column; max-width: 78%;
+    }
+    .chat-msg.me { align-self: flex-end; align-items: flex-end; }
+    .chat-msg.other { align-self: flex-start; align-items: flex-start; }
+    .chat-msg-name {
+      font-weight: 700; color: #8B6914; font-size: 13px; margin-bottom: 3px;
+    }
+    .chat-msg.me .chat-msg-name { color: #A08050; }
+    .chat-msg-bubble {
+      padding: 8px 14px; border-radius: 14px;
+      line-height: 1.5; color: #3a2a10;
+    }
+    .chat-msg.other .chat-msg-bubble {
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-top-left-radius: 4px;
+    }
+    .chat-msg.me .chat-msg-bubble {
+      background: #C8A96E; color: #fff;
+      border-top-right-radius: 4px;
+    }
+    .chat-msg-system {
+      text-align: center; color: #A08050;
+      font-size: 13px; font-style: italic; margin: 6px 0;
+      align-self: center;
+    }
+    .chat-input-box {
+      display: flex; gap: 8px; padding: 10px 16px;
+      border-top: 1px solid rgba(200,169,110,0.25);
+    }
+    .chat-input-box input {
+      flex: 1; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.25);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
+    }
+    .chat-input-box input:focus { border-color: #C8A96E; }
+    .chat-input-box button {
+      padding: 10px 16px; border-radius: 10px;
+      background: #C8A96E; border: none; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+
+    /* Empty state */
+    .album-empty {
+      padding: 30px 16px;
+      color: rgba(139,105,20,0.4);
+      font-size: 14px;
+    }
+
+    /* Guide */
+    .album-guide {
+      text-align: left; margin-top: 14px; padding: 12px 14px;
+      background: rgba(139,105,20,0.06); border-radius: 10px;
+      border-left: 3px solid #C8A96E;
+    }
+    .album-guide p {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: #3a2a10; line-height: 1.6;
+      margin: 0 0 8px 0;
+    }
+    .album-guide p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+<body>
+
+<div class="album-card">
+  <div class="album-top-bar">
+    <button class="album-back-btn" onclick="history.back()">&#9664; 이전</button>
+  </div>
+  <div class="album-logo">스타벅스 라디오카페</div>
+  <div class="album-title" id="albumTitle">라디오 포토앨범</div>
+
+  <!-- Creator / Upload Section -->
+  <div id="albumUploadSection">
+    <div class="album-upload-area" id="albumDropZone"
+         onclick="document.getElementById('albumFileInput').click()">
+      <div class="album-upload-icon">📷</div>
+      <div class="album-upload-text">사진을 드래그하거나 클릭하여 업로드</div>
+      <div class="album-upload-sub">최대 10장 / 각 10MB 이하 / JPG, PNG</div>
+    </div>
+    <input type="file" class="album-file-input" id="albumFileInput"
+           accept="image/jpeg,image/png,image/webp" multiple>
+  </div>
+
+  <!-- Upload Progress -->
+  <div class="album-progress" id="albumProgress">
+    <div class="album-progress-bar">
+      <div class="album-progress-fill" id="albumProgressFill"></div>
+    </div>
+    <div class="album-progress-text" id="albumProgressText">업로드 중...</div>
+  </div>
+
+  <!-- Photo Count -->
+  <div class="album-photo-count" id="albumPhotoCount"></div>
+
+  <!-- View Toggle (viewer mode) -->
+  <div class="album-view-toggle hidden" id="albumViewToggle">
+    <button class="album-view-btn active" id="viewGridBtn" onclick="switchView('grid')">그리드</button>
+    <button class="album-view-btn" id="viewSlideBtn" onclick="switchView('slideshow')">슬라이드쇼</button>
+  </div>
+
+  <!-- Photo Grid -->
+  <div class="album-grid" id="albumGrid"></div>
+
+  <!-- Empty State -->
+  <div class="album-empty hidden" id="albumEmpty">아직 사진이 없습니다.</div>
+
+  <!-- Link Box (creator) -->
+  <div id="albumLinkSection" class="hidden">
+    <div class="gift-link-box">
+      <input type="text" readonly id="albumLink">
+      <button onclick="copyAlbumLink()">복사</button>
+    </div>
+    <div class="gift-copied hidden" id="albumCopied">링크가 복사되었습니다!</div>
+    <div class="album-waiting hidden" id="albumWaiting">
+      <span class="waiting-dot"></span> 상대방이 채팅하기를 누르면 채팅이 시작됩니다...
+    </div>
+    <div class="album-guide">
+      <p>1. 복사 버튼을 선택하고 공유하고 싶은 사람의 카톡 창이나 문자 메시지 창으로 가서 붙여넣기를 합니다.</p>
+      <p>2. 상대방이 채팅하기 버튼을 누르면 자동으로 채팅창이 열립니다.</p>
+    </div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="album-actions" id="albumActions">
+    <button class="album-action-btn hidden" id="btnSlideshow" onclick="openSlideshow()">슬라이드쇼</button>
+    <button class="album-action-btn hidden" id="btnAddPhoto" onclick="document.getElementById('albumFileInput').click()">사진 추가</button>
+  </div>
+</div>
+
+<!-- Slideshow Overlay -->
+<div class="album-slideshow-wrap hidden" id="slideshowWrap">
+  <button class="album-slideshow-close" onclick="closeSlideshow()">닫기</button>
+  <div class="album-slideshow" id="slideshowBox"></div>
+  <div class="album-slide-controls">
+    <button class="album-slide-btn" onclick="slidePrev()">&#9664;</button>
+    <span class="album-slide-count" id="slideCount">0 / 0</span>
+    <button class="album-slide-btn" onclick="slideNext()">&#9654;</button>
+    <button class="album-slide-auto" id="slideAutoBtn" onclick="toggleAutoPlay()">자동재생</button>
+  </div>
+</div>
+
+<!-- Full View (click from grid) -->
+<div class="album-fullview hidden" id="albumFullView" onclick="closeFullView()">
+  <button class="album-fullview-close" onclick="event.stopPropagation();closeFullView()">닫기</button>
+  <img id="fullViewImg" src="" alt="">
+</div>
+
+<!-- LP Overlay (viewer mode) -->
+<div class="lp-overlay hidden" id="lpOverlay"></div>
+
+<!-- Chat Panel -->
+<div class="chat-panel" id="chatPanel" style="display:none;">
+  <div class="chat-header">
+    <button class="chat-back-btn" onclick="closeChatPanel()">&#9664; 이전</button>
+    <span class="chat-header-title">CHAT</span>
+    <span class="chat-header-info" id="chatHeaderInfo"></span>
+  </div>
+  <div id="chatBody">
+    <div class="chat-nickname-box" id="chatNicknameBox">
+      <input type="text" id="chatNicknameInput" placeholder="닉네임 입력" maxlength="12" onkeydown="if(event.key==='Enter')joinChat()">
+      <button onclick="joinChat()">입장</button>
+    </div>
+    <div class="chat-messages hidden" id="chatMessages"></div>
+    <div class="chat-input-box hidden" id="chatInputBox">
+      <input type="text" id="chatMsgInput" placeholder="메시지 입력..." maxlength="200" onkeydown="if(event.key==='Enter')sendChatMsg()">
+      <button onclick="sendChatMsg()">전송</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // === Supabase Config ===
+  var SUPABASE_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
+  var supabaseClient = null;
+
+  // === State ===
+  var chatRoomId = null;
+  var isViewer = false;
+  var photos = []; // { fileName, url }
+  var uploadingCount = 0;
+  var MAX_PHOTOS = 10;
+  var MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
+
+  // Slideshow state
+  var slideIndex = 0;
+  var slideAutoPlay = false;
+  var slideTimer = null;
+
+  // Chat state
+  var chatChannel = null;
+  var chatNickname = '';
+  var chatActive = false;
+  var chatPeerCount = 0;
+
+  // Album broadcast channel
+  var albumChannel = null;
+
+  function generateRoomId(){
+    var chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    var id = '';
+    for(var i = 0; i < 8; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
+    return id;
+  }
+
+  function initSupabase(){
+    if(supabaseClient) return;
+    if(!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+
+  // === Init ===
+  document.addEventListener('DOMContentLoaded', function(){
+    initSupabase();
+
+    var urlParams = new URLSearchParams(location.search);
+    var roomParam = urlParams.get('room');
+
+    if(roomParam){
+      // VIEWER mode
+      isViewer = true;
+      chatRoomId = roomParam;
+      document.getElementById('albumTitle').textContent = '라디오 포토앨범';
+      document.getElementById('albumUploadSection').classList.add('hidden');
+      document.getElementById('albumViewToggle').classList.remove('hidden');
+      document.getElementById('btnAddPhoto').classList.remove('hidden');
+      document.getElementById('lpOverlay').classList.remove('hidden');
+      loadPhotosFromSupabase();
+
+      /* Log receiver usage */
+      try {
+        var ruid = localStorage.getItem('radioUsername');
+        if(ruid && supabaseClient) supabaseClient.from('feature_usage').insert({user_id:ruid, feature:'photo_album_received'}).then(function(){});
+      } catch(e){}
+    } else {
+      // CREATOR mode
+      isViewer = false;
+      chatRoomId = generateRoomId();
+      updateAlbumLink();
+    }
+
+    setupDragDrop();
+    setupFileInput();
+    connectAlbumChannel();
+    var uid = localStorage.getItem('radioUsername');
+    if(uid && supabaseClient) supabaseClient.from('feature_usage').insert({user_id:uid, feature:'photo_album'}).then(function(){});
+  });
+
+  // === Link ===
+  function updateAlbumLink(){
+    var base = location.pathname.replace(/[^\/]*$/, '') + 'photo-album.html';
+    var url = location.origin + base + '?room=' + chatRoomId;
+    document.getElementById('albumLink').value = url;
+  }
+
+  function copyAlbumLink(){
+    var input = document.getElementById('albumLink');
+    input.select();
+    navigator.clipboard.writeText(input.value).then(function(){
+      document.getElementById('albumCopied').classList.remove('hidden');
+      setTimeout(function(){ document.getElementById('albumCopied').classList.add('hidden'); }, 2000);
+      waitForReceiver();
+    }).catch(function(){
+      document.execCommand('copy');
+      document.getElementById('albumCopied').classList.remove('hidden');
+      setTimeout(function(){ document.getElementById('albumCopied').classList.add('hidden'); }, 2000);
+      waitForReceiver();
+    });
+  }
+
+  var viewerChannel = null;
+  function waitForReceiver(){
+    var waitEl = document.getElementById('albumWaiting');
+    if(waitEl) waitEl.classList.remove('hidden');
+    if(!supabaseClient){ initSupabase(); }
+    if(!supabaseClient || viewerChannel) return;
+    viewerChannel = supabaseClient.channel('album-notify-' + chatRoomId, {
+      config: { broadcast: { self: false } }
+    });
+    viewerChannel.on('broadcast', { event: 'viewer_opened' }, function(){
+      var w = document.getElementById('albumWaiting');
+      if(w) w.classList.add('hidden');
+      openChatPanel();
+    });
+    viewerChannel.subscribe();
+  }
+
+  function viewerRequestChat(){
+    if(!supabaseClient){ initSupabase(); }
+    if(!supabaseClient){
+      setTimeout(viewerRequestChat, 500);
+      return;
+    }
+    var notifyChannel = supabaseClient.channel('album-notify-' + chatRoomId, {
+      config: { broadcast: { self: false } }
+    });
+    notifyChannel.subscribe(function(status){
+      if(status === 'SUBSCRIBED'){
+        notifyChannel.send({ type: 'broadcast', event: 'viewer_opened', payload: {} });
+        openChatPanel();
+      }
+    });
+  }
+
+  // === Drag & Drop ===
+  function setupDragDrop(){
+    var zone = document.getElementById('albumDropZone');
+    if(!zone) return;
+
+    zone.addEventListener('dragover', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      zone.classList.add('dragover');
+    });
+    zone.addEventListener('dragleave', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      zone.classList.remove('dragover');
+    });
+    zone.addEventListener('drop', function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      zone.classList.remove('dragover');
+      var files = e.dataTransfer.files;
+      handleFiles(files);
+    });
+  }
+
+  function setupFileInput(){
+    var input = document.getElementById('albumFileInput');
+    input.addEventListener('change', function(){
+      handleFiles(input.files);
+      input.value = '';
+    });
+  }
+
+  // === File Handling ===
+  function handleFiles(fileList){
+    if(!fileList || fileList.length === 0) return;
+
+    var remaining = MAX_PHOTOS - photos.length - uploadingCount;
+    if(remaining <= 0){
+      alert('최대 ' + MAX_PHOTOS + '장까지 업로드할 수 있습니다.');
+      return;
+    }
+
+    var files = [];
+    for(var i = 0; i < Math.min(fileList.length, remaining); i++){
+      var f = fileList[i];
+      if(!f.type.match(/^image\/(jpeg|png|webp)$/)){
+        alert(f.name + ': 지원하지 않는 형식입니다. (JPG, PNG만 가능)');
+        continue;
+      }
+      if(f.size > MAX_FILE_SIZE){
+        alert(f.name + ': 파일 크기가 10MB를 초과합니다.');
+        continue;
+      }
+      files.push(f);
+    }
+
+    if(files.length === 0) return;
+
+    uploadingCount += files.length;
+    showProgress(0, files.length);
+
+    var uploaded = 0;
+    files.forEach(function(file){
+      compressImage(file, 1200, function(blob){
+        uploadPhotoToSupabase(blob, function(success, fileName){
+          uploaded++;
+          uploadingCount--;
+          showProgress(uploaded, files.length);
+          if(success){
+            var url = SUPABASE_URL + '/storage/v1/object/public/photo-albums/albums/' + chatRoomId + '/' + fileName;
+            photos.push({ fileName: fileName, url: url });
+            renderGrid();
+            updateUIAfterUpload();
+            // Broadcast photo_added
+            broadcastPhotoAdded(fileName);
+          }
+          if(uploaded >= files.length){
+            hideProgress();
+          }
+        });
+      });
+    });
+  }
+
+  // === Image Compression (다단계: 최종 1MB 이하 보장) ===
+  var MAX_COMPRESSED_SIZE = 1 * 1024 * 1024; // 1MB
+
+  function compressImage(file, maxWidth, callback){
+    var reader = new FileReader();
+    reader.onload = function(e){
+      var img = new Image();
+      img.onload = function(){
+        var w = img.width, h = img.height;
+        if(w > maxWidth){
+          h = Math.round(h * maxWidth / w);
+          w = maxWidth;
+        }
+        var canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, w, h);
+
+        // 다단계 압축: 0.8 → 0.6 → 0.4 → 0.3 순으로 시도
+        var qualities = [0.8, 0.6, 0.4, 0.3];
+        function tryCompress(qi){
+          canvas.toBlob(function(blob){
+            if(blob.size <= MAX_COMPRESSED_SIZE || qi >= qualities.length - 1){
+              callback(blob);
+            } else {
+              tryCompress(qi + 1);
+            }
+          }, 'image/jpeg', qualities[qi]);
+        }
+        tryCompress(0);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // === Upload ===
+  function uploadPhotoToSupabase(blob, callback){
+    initSupabase();
+    if(!supabaseClient){
+      if(callback) callback(false, null);
+      return;
+    }
+    var fileName = 'photo-' + Date.now() + '-' + Math.random().toString(36).substr(2, 4) + '.jpg';
+    var filePath = 'albums/' + chatRoomId + '/' + fileName;
+    supabaseClient.storage.from('photo-albums').upload(filePath, blob, {
+      contentType: 'image/jpeg',
+      upsert: false
+    }).then(function(result){
+      if(result.error){
+        console.log('업로드 오류:', result.error);
+        if(callback) callback(false, null);
+      } else {
+        if(callback) callback(true, fileName);
+      }
+    }).catch(function(err){
+      console.log('업로드 실패:', err);
+      if(callback) callback(false, null);
+    });
+  }
+
+  // === Delete Photo ===
+  function deletePhoto(index){
+    if(index < 0 || index >= photos.length) return;
+    var photo = photos[index];
+    var filePath = 'albums/' + chatRoomId + '/' + photo.fileName;
+
+    initSupabase();
+    if(supabaseClient){
+      supabaseClient.storage.from('photo-albums').remove([filePath]).then(function(){
+        // removed
+      }).catch(function(err){
+        console.log('삭제 실패:', err);
+      });
+    }
+
+    photos.splice(index, 1);
+    renderGrid();
+    updateUIAfterUpload();
+  }
+
+  // === Load Photos (Viewer) ===
+  function loadPhotosFromSupabase(){
+    initSupabase();
+    if(!supabaseClient || !chatRoomId) return;
+
+    supabaseClient.storage.from('photo-albums').list('albums/' + chatRoomId, {
+      limit: 20,
+      sortBy: { column: 'created_at', order: 'asc' }
+    }).then(function(result){
+      if(result.error){
+        console.log('목록 로드 오류:', result.error);
+        return;
+      }
+      var files = result.data || [];
+      photos = [];
+      files.forEach(function(f){
+        if(f.name && f.name.match(/\.(jpg|jpeg|png|webp)$/i)){
+          var url = SUPABASE_URL + '/storage/v1/object/public/photo-albums/albums/' + chatRoomId + '/' + f.name;
+          photos.push({ fileName: f.name, url: url });
+        }
+      });
+      renderGrid();
+      updateUIAfterUpload();
+      if(photos.length > 0 && isViewer){
+        // default: start slideshow for viewer
+        openSlideshow();
+      } else if(photos.length === 0){
+        document.getElementById('albumEmpty').classList.remove('hidden');
+      }
+    }).catch(function(err){
+      console.log('목록 로드 실패:', err);
+    });
+  }
+
+  // === Progress ===
+  function showProgress(current, total){
+    var prog = document.getElementById('albumProgress');
+    prog.style.display = 'block';
+    var pct = total > 0 ? Math.round((current / total) * 100) : 0;
+    document.getElementById('albumProgressFill').style.width = pct + '%';
+    document.getElementById('albumProgressText').textContent =
+      '업로드 중... (' + current + '/' + total + ')';
+  }
+
+  function hideProgress(){
+    setTimeout(function(){
+      document.getElementById('albumProgress').style.display = 'none';
+      document.getElementById('albumProgressFill').style.width = '0%';
+    }, 500);
+  }
+
+  // === Render Grid ===
+  function renderGrid(){
+    var grid = document.getElementById('albumGrid');
+    grid.innerHTML = '';
+    var empty = document.getElementById('albumEmpty');
+
+    if(photos.length === 0){
+      empty.classList.remove('hidden');
+      return;
+    }
+    empty.classList.add('hidden');
+
+    photos.forEach(function(photo, idx){
+      var thumb = document.createElement('div');
+      thumb.className = 'album-thumb';
+
+      var img = document.createElement('img');
+      img.src = photo.url;
+      img.alt = '사진 ' + (idx + 1);
+      img.onclick = (function(i){
+        return function(){ openFullView(i); };
+      })(idx);
+      thumb.appendChild(img);
+
+      // Delete button (always available for creator, also for viewer who added)
+      var del = document.createElement('button');
+      del.className = 'album-thumb-delete';
+      del.innerHTML = '&times;';
+      del.onclick = (function(i){
+        return function(e){
+          e.stopPropagation();
+          deletePhoto(i);
+        };
+      })(idx);
+      thumb.appendChild(del);
+
+      grid.appendChild(thumb);
+    });
+
+    document.getElementById('albumPhotoCount').textContent =
+      photos.length + ' / ' + MAX_PHOTOS + '장';
+  }
+
+  // === UI Updates ===
+  function updateUIAfterUpload(){
+    if(photos.length > 0){
+      // Show link section for creator
+      if(!isViewer){
+        document.getElementById('albumLinkSection').classList.remove('hidden');
+      }
+      // Show slideshow button
+      document.getElementById('btnSlideshow').classList.remove('hidden');
+    } else {
+      if(!isViewer){
+        document.getElementById('albumLinkSection').classList.add('hidden');
+      }
+      document.getElementById('btnSlideshow').classList.add('hidden');
+    }
+
+    // Hide upload area if max reached
+    if(photos.length >= MAX_PHOTOS){
+      var uploadSection = document.getElementById('albumUploadSection');
+      if(uploadSection) uploadSection.classList.add('hidden');
+      var addBtn = document.getElementById('btnAddPhoto');
+      if(addBtn) addBtn.classList.add('hidden');
+    }
+  }
+
+  // === View Toggle (Viewer mode) ===
+  function switchView(mode){
+    var gridBtn = document.getElementById('viewGridBtn');
+    var slideBtn = document.getElementById('viewSlideBtn');
+    if(mode === 'slideshow'){
+      gridBtn.classList.remove('active');
+      slideBtn.classList.add('active');
+      openSlideshow();
+    } else {
+      gridBtn.classList.add('active');
+      slideBtn.classList.remove('active');
+      closeSlideshow();
+    }
+  }
+
+  // === Full View (grid click) ===
+  function openFullView(index){
+    if(index < 0 || index >= photos.length) return;
+    document.getElementById('fullViewImg').src = photos[index].url;
+    document.getElementById('albumFullView').classList.remove('hidden');
+  }
+
+  function closeFullView(){
+    document.getElementById('albumFullView').classList.add('hidden');
+  }
+
+  // === Slideshow ===
+  function openSlideshow(){
+    if(photos.length === 0) return;
+    slideIndex = 0;
+    var wrap = document.getElementById('slideshowWrap');
+    wrap.classList.remove('hidden');
+    renderSlide();
+    // 모바일 자동 회전 허용
+    unlockOrientation();
+  }
+
+  function closeSlideshow(){
+    document.getElementById('slideshowWrap').classList.add('hidden');
+    stopAutoPlay();
+    // 세로 모드로 복원
+    lockOrientation();
+  }
+
+  function unlockOrientation(){
+    try {
+      if(screen.orientation && screen.orientation.unlock){
+        screen.orientation.unlock();
+      }
+    } catch(e){}
+  }
+
+  function lockOrientation(){
+    try {
+      if(screen.orientation && screen.orientation.lock){
+        screen.orientation.lock('portrait').catch(function(){});
+      }
+    } catch(e){}
+  }
+
+  function renderSlide(){
+    var box = document.getElementById('slideshowBox');
+    box.innerHTML = '';
+    if(photos.length === 0) return;
+
+    photos.forEach(function(photo, idx){
+      var img = document.createElement('img');
+      img.className = 'album-slide' + (idx !== slideIndex ? ' hidden' : '');
+      img.src = photo.url;
+      img.alt = '사진 ' + (idx + 1);
+      box.appendChild(img);
+    });
+
+    document.getElementById('slideCount').textContent =
+      (slideIndex + 1) + ' / ' + photos.length;
+  }
+
+  function slideNext(){
+    if(photos.length === 0) return;
+    slideIndex = (slideIndex + 1) % photos.length;
+    updateSlideVisibility();
+    broadcastSlideshowSync();
+  }
+
+  function slidePrev(){
+    if(photos.length === 0) return;
+    slideIndex = (slideIndex - 1 + photos.length) % photos.length;
+    updateSlideVisibility();
+    broadcastSlideshowSync();
+  }
+
+  function updateSlideVisibility(){
+    var box = document.getElementById('slideshowBox');
+    var slides = box.querySelectorAll('.album-slide');
+    slides.forEach(function(s, i){
+      if(i === slideIndex){
+        s.classList.remove('hidden');
+      } else {
+        s.classList.add('hidden');
+      }
+    });
+    document.getElementById('slideCount').textContent =
+      (slideIndex + 1) + ' / ' + photos.length;
+  }
+
+  function toggleAutoPlay(){
+    if(slideAutoPlay){
+      stopAutoPlay();
+    } else {
+      startAutoPlay();
+    }
+  }
+
+  function startAutoPlay(){
+    slideAutoPlay = true;
+    document.getElementById('slideAutoBtn').classList.add('active');
+    document.getElementById('slideAutoBtn').textContent = '자동재생 중';
+    slideTimer = setInterval(function(){
+      slideNext();
+    }, 5000);
+  }
+
+  function stopAutoPlay(){
+    slideAutoPlay = false;
+    document.getElementById('slideAutoBtn').classList.remove('active');
+    document.getElementById('slideAutoBtn').textContent = '자동재생';
+    if(slideTimer){
+      clearInterval(slideTimer);
+      slideTimer = null;
+    }
+  }
+
+  // === Album Broadcast Channel ===
+  function connectAlbumChannel(){
+    initSupabase();
+    if(!supabaseClient || !chatRoomId) return;
+
+    var channelName = 'album-' + chatRoomId;
+    albumChannel = supabaseClient.channel(channelName, {
+      config: { broadcast: { self: false } }
+    });
+
+    albumChannel.on('broadcast', { event: 'photo_added' }, function(payload){
+      var data = payload.payload;
+      if(data && data.fileName){
+        var url = SUPABASE_URL + '/storage/v1/object/public/photo-albums/albums/' + chatRoomId + '/' + data.fileName;
+        // Check if already exists
+        var exists = photos.some(function(p){ return p.fileName === data.fileName; });
+        if(!exists){
+          photos.push({ fileName: data.fileName, url: url });
+          renderGrid();
+          updateUIAfterUpload();
+          // If slideshow is open, re-render
+          if(!document.getElementById('slideshowWrap').classList.contains('hidden')){
+            renderSlide();
+          }
+        }
+      }
+    });
+
+    albumChannel.on('broadcast', { event: 'slideshow_sync' }, function(payload){
+      var data = payload.payload;
+      if(data && typeof data.currentIndex === 'number'){
+        slideIndex = data.currentIndex;
+        if(!document.getElementById('slideshowWrap').classList.contains('hidden')){
+          updateSlideVisibility();
+        }
+      }
+    });
+
+    albumChannel.subscribe();
+  }
+
+  function broadcastPhotoAdded(fileName){
+    if(!albumChannel) return;
+    albumChannel.send({
+      type: 'broadcast',
+      event: 'photo_added',
+      payload: { fileName: fileName, uploader: chatNickname || 'unknown' }
+    });
+  }
+
+  function broadcastSlideshowSync(){
+    if(!albumChannel) return;
+    albumChannel.send({
+      type: 'broadcast',
+      event: 'slideshow_sync',
+      payload: { currentIndex: slideIndex }
+    });
+  }
+
+  // === Chat Functions ===
+  function handleChatClick(){
+    if(isViewer){
+      viewerRequestChat();
+    } else {
+      openChatPanel();
+    }
+  }
+
+  function openChatPanel(){
+    initSupabase();
+    var panel = document.getElementById('chatPanel');
+    panel.style.display = 'flex';
+    if(chatNickname){
+      document.getElementById('chatNicknameBox').classList.add('hidden');
+      document.getElementById('chatMessages').classList.remove('hidden');
+      document.getElementById('chatInputBox').classList.remove('hidden');
+      if(!chatActive) connectChat();
+    }
+  }
+
+  function closeChatPanel(){
+    document.getElementById('chatPanel').style.display = 'none';
+  }
+
+  function joinChat(){
+    var input = document.getElementById('chatNicknameInput');
+    var name = input.value.trim();
+    if(!name){ input.focus(); return; }
+    chatNickname = name;
+    document.getElementById('chatNicknameBox').classList.add('hidden');
+    document.getElementById('chatMessages').classList.remove('hidden');
+    document.getElementById('chatInputBox').classList.remove('hidden');
+    document.getElementById('chatMsgInput').focus();
+    connectChat();
+  }
+
+  function connectChat(){
+    if(!supabaseClient || !chatRoomId || chatActive) return;
+    chatActive = true;
+    var channelName = 'listen-' + chatRoomId;
+    chatChannel = supabaseClient.channel(channelName, {
+      config: { broadcast: { self: false } }
+    });
+    chatChannel.on('broadcast', { event: 'message' }, function(payload){
+      addChatMessage(payload.payload.name, payload.payload.text);
+    });
+    chatChannel.on('broadcast', { event: 'join' }, function(payload){
+      chatPeerCount++;
+      addSystemMessage(payload.payload.name + '님이 입장했습니다.');
+    });
+    chatChannel.on('broadcast', { event: 'leave' }, function(payload){
+      chatPeerCount = Math.max(0, chatPeerCount - 1);
+      addSystemMessage(payload.payload.name + '님이 퇴장했습니다.');
+    });
+    chatChannel.subscribe(function(status){
+      if(status === 'SUBSCRIBED'){
+        chatChannel.send({
+          type: 'broadcast', event: 'join',
+          payload: { name: chatNickname }
+        });
+        addSystemMessage('채팅에 연결되었습니다.');
+      }
+    });
+  }
+
+  function disconnectChat(){
+    if(chatChannel && chatActive){
+      chatChannel.send({
+        type: 'broadcast', event: 'leave',
+        payload: { name: chatNickname }
+      });
+      supabaseClient.removeChannel(chatChannel);
+      chatChannel = null;
+      chatActive = false;
+    }
+  }
+
+  function sendChatMsg(){
+    var input = document.getElementById('chatMsgInput');
+    var text = input.value.trim();
+    if(!text || !chatChannel || !chatActive) return;
+    chatChannel.send({
+      type: 'broadcast', event: 'message',
+      payload: { name: chatNickname, text: text }
+    });
+    addChatMessage(chatNickname, text, true);
+    input.value = '';
+    input.focus();
+  }
+
+  function addChatMessage(name, text, isMe){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (isMe ? 'me' : 'other');
+    var nameSpan = document.createElement('div');
+    nameSpan.className = 'chat-msg-name';
+    nameSpan.textContent = name;
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+    div.appendChild(nameSpan);
+    div.appendChild(bubble);
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function addSystemMessage(text){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg-system';
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  window.addEventListener('beforeunload', function(){
+    disconnectChat();
+  });
+</script>
+</body>
+</html>

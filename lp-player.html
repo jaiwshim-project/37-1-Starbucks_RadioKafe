@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>AI Radio Cafe - LP Player</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="LP 플레이어 | 스타벅스 라디오카페" />
+  <meta property="og:description" content="감성적인 LP 플레이어로 음악을 즐기세요!" />
+  <meta property="og:image" content="https://og-image.jpg" />
+  <meta property="og:url" content="https://lp-player.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: linear-gradient(160deg, #0a0a12, #1a0a1e, #0a0a12);
+      min-height: 100vh; overflow-x: hidden;
+      font-family: 'Inter', sans-serif; color: #fff;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: flex-start; padding: 10px 16px 80px;
+    }
+    .hidden { display: none !important; }
+
+    /* ===== Title (턴테이블 내부 상단) ===== */
+    .lp-title {
+      position: absolute; top: 8px; left: 0; width: 100%;
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800;
+      letter-spacing: 2px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+      text-align: center; z-index: 5;
+    }
+    .lp-title-clara { color: #ff44cc; }
+    .lp-title-cafe { color: #b388ff; }
+
+    /* ===== Gift Box ===== */
+    .giftbox-wrap {
+      position: relative; width: 80px; height: 75px;
+      margin: 6px auto 4px; z-index: 20;
+      transition: opacity 1s ease 3.5s;
+    }
+    .giftbox-wrap.done { opacity: 0; pointer-events: none; }
+    .giftbox-base {
+      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+      width: 64px; height: 46px;
+      background: linear-gradient(145deg, #ff6b9d, #e8557a);
+      border-radius: 6px;
+      box-shadow: 0 3px 16px rgba(255,107,157,0.5);
+      overflow: hidden;
+    }
+    .gb-ribbon-v {
+      position: absolute; left: 50%; top: 0; transform: translateX(-50%);
+      width: 10px; height: 100%;
+      background: linear-gradient(90deg, #ffd700, #ffe44d, #ffd700);
+    }
+    .gb-ribbon-h {
+      position: absolute; top: 50%; left: 0; transform: translateY(-50%);
+      width: 100%; height: 10px;
+      background: linear-gradient(180deg, #ffd700, #ffe44d, #ffd700);
+    }
+    .giftbox-lid {
+      position: absolute; bottom: 42px; left: 50%;
+      transform: translateX(-50%);
+      width: 72px; height: 16px;
+      background: linear-gradient(145deg, #ff7fae, #ff6b9d);
+      border-radius: 6px 6px 2px 2px;
+      border-bottom: 2px solid #d44a6e;
+      z-index: 3; overflow: visible;
+      transform-origin: center bottom;
+    }
+    .giftbox-bow {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      font-size: 20px; line-height: 1;
+    }
+    .giftbox-lid.open {
+      animation: lid-pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.6) forwards;
+    }
+    @keyframes lid-pop {
+      0% { transform: translateX(-50%) rotate(0deg) translateY(0); }
+      50% { transform: translateX(-50%) rotate(-30deg) translateY(-60px); }
+      100% { transform: translateX(-50%) rotate(-20deg) translateY(-45px); opacity: 0.5; }
+    }
+
+    /* ===== Fireworks Animation ===== */
+    .confetti-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999; overflow: hidden;
+    }
+    @keyframes confetti-fly {
+      0% { opacity: 1; transform: translate(0, 0) rotate(0deg) scale(1); }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) rotate(var(--rot)) scale(0.2); }
+    }
+    @keyframes confetti-sparkle {
+      0%, 100% { box-shadow: 0 0 3px currentColor; }
+      50% { box-shadow: 0 0 8px currentColor, 0 0 16px currentColor; }
+    }
+    /* 반짝이 별 */
+    @keyframes star-twinkle {
+      0% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+      15% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1.2); }
+      30% { opacity: 0.3; transform: translate(var(--tx), var(--ty)) scale(0.6); }
+      45% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1); }
+      60% { opacity: 0.2; transform: translate(var(--tx), var(--ty)) scale(0.5); }
+      75% { opacity: 1; transform: translate(var(--tx), var(--ty)) scale(1.1); }
+      90% { opacity: 0.8; transform: translate(var(--tx), var(--ty)) scale(0.8); }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0); }
+    }
+    .sparkle-star {
+      position: absolute; pointer-events: none;
+    }
+    .sparkle-star::before, .sparkle-star::after {
+      content: ''; position: absolute;
+      background: var(--star-color);
+    }
+    .sparkle-star::before {
+      width: var(--star-w); height: var(--star-size);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      border-radius: 50%;
+    }
+    .sparkle-star::after {
+      width: var(--star-size); height: var(--star-w);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      border-radius: 50%;
+    }
+
+    /* 하트/이모지 파티클 */
+    .emoji-particle {
+      position: absolute; pointer-events: none;
+      font-size: var(--em-size); line-height: 1;
+      animation: emoji-float var(--em-dur) ease-out var(--em-delay) forwards;
+    }
+    @keyframes emoji-float {
+      0% { opacity: 1; transform: translate(0, 0) scale(0.3) rotate(0deg); }
+      20% { opacity: 1; transform: translate(calc(var(--tx)*0.2), calc(var(--ty)*0.2)) scale(1.3) rotate(var(--rot)); }
+      50% { opacity: 1; transform: translate(calc(var(--tx)*0.5), calc(var(--ty)*0.5)) scale(1) rotate(calc(var(--rot)*0.5)); }
+      80% { opacity: 0.8; }
+      100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.4) rotate(var(--rot)); }
+    }
+
+    /* ===== LP Turntable ===== */
+    .turntable {
+      position: relative; width: 320px; height: 320px;
+      margin: 10px auto 0;
+    }
+    .turntable-base {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: radial-gradient(ellipse at 40% 40%, #2a2028, #1a1018);
+      border-radius: 16px;
+      border: 2px solid rgba(255,107,157,0.2);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6), 0 0 30px rgba(255,107,157,0.08);
+    }
+    .platter {
+      position: absolute; top: 50%; left: 46%; transform: translate(-50%, -50%);
+      width: 240px; height: 240px; border-radius: 50%;
+      background: radial-gradient(circle, #111 18%, #1a1a1a 19%, #0d0d0d 20%,
+        #1a1a1a 22%, #111 24%, #1a1a1a 26%, #0d0d0d 28%,
+        #1a1a1a 30%, #111 35%, #1a1a1a 37%, #0d0d0d 40%,
+        #1a1a1a 44%, #111 48%, #1a1a1a 50%, #0d0d0d 54%,
+        #1a1a1a 58%, #111 62%, #1a1a1a 66%, #0d0d0d 70%,
+        #1a1a1a 74%, #111 78%, #1a1a1a 82%, #0d0d0d 86%,
+        #1a1a1a 90%, #111 94%, #1a1a1a 97%, #0d0d0d 100%);
+      border: 3px solid #222;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8), inset 0 0 30px rgba(0,0,0,0.5);
+    }
+    .platter.spinning {
+      animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+    .record-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 70px; height: 70px; border-radius: 50%;
+      background: radial-gradient(circle, #444 8%, #ff6b9d 10%, #e8557a 45%, #d44a6e 70%, #c43f62 100%);
+      border: 2px solid #b03858;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 12px rgba(255,107,157,0.3);
+    }
+    .record-label-text {
+      font-family: 'Outfit', sans-serif; font-size: 8px; font-weight: 700;
+      color: rgba(255,255,255,0.9); text-align: center;
+      letter-spacing: 1px; line-height: 1.2;
+      max-width: 50px; overflow: hidden;
+    }
+    .record-hole {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #0a0a12; border: 1px solid #333;
+    }
+    /* Tonearm - 피벗 오른쪽 하단, 6시(오른쪽)에서 시계방향으로 LP 위로 */
+    .tonearm-pivot {
+      position: absolute; bottom: 28px; right: 28px;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #888; border: 2px solid #aaa;
+      z-index: 5;
+      box-shadow: 0 0 8px rgba(0,0,0,0.5);
+    }
+    .tonearm {
+      position: absolute; bottom: 26px; right: 32px;
+      width: 4px; height: 140px;
+      background: linear-gradient(to top, #aaa, #888, #777);
+      transform-origin: bottom center;
+      transform: rotate(-90deg);
+      z-index: 4;
+      border-radius: 2px;
+      transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 2px -2px 6px rgba(0,0,0,0.5);
+    }
+    .tonearm.playing { transform: rotate(-10deg); }
+    .tonearm-head {
+      position: absolute; top: -4px; left: -3px;
+      width: 10px; height: 16px;
+      background: linear-gradient(to top, #999, #666);
+      border-radius: 2px 2px 1px 1px;
+    }
+    .tonearm-counter {
+      position: absolute; bottom: 10px; left: -6px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: radial-gradient(circle, #999, #666);
+      border: 1px solid #aaa;
+    }
+
+    /* ===== Gift Info ===== */
+    .gift-info {
+      text-align: center; margin-top: 12px; width: 100%; max-width: 360px;
+    }
+    .gift-song-title {
+      font-family: 'Outfit', sans-serif; font-size: 22px; font-weight: 700;
+      color: #ff6b9d; margin-bottom: 4px;
+    }
+    .gift-song-category {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: rgba(255,255,255,0.4); margin-bottom: 16px;
+    }
+    .gift-message {
+      font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.7;
+      color: rgba(255,255,255,0.85); padding: 16px 20px;
+      background: rgba(255,107,157,0.06);
+      border: 1px solid rgba(255,107,157,0.15);
+      border-radius: 16px; margin-bottom: 20px;
+      word-break: break-word;
+    }
+    .gift-message.hidden { display: none; }
+    .voice-msg-indicator {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 20px; border-radius: 20px;
+      background: rgba(255,107,157,0.1); border: 1px solid rgba(255,107,157,0.2);
+      margin-bottom: 12px; font-family: 'Inter', sans-serif;
+      font-size: 13px; color: rgba(255,255,255,0.7);
+    }
+    .voice-msg-indicator.hidden { display: none; }
+    .voice-msg-icon {
+      font-size: 18px;
+    }
+    .voice-msg-icon.playing {
+      animation: mic-pulse 0.8s ease-in-out infinite;
+    }
+    @keyframes mic-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    /* Play Button */
+    .play-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 36px; border-radius: 30px;
+      background: #ff6b9d; border: none;
+      color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 0 24px rgba(255,107,157,0.4);
+      transition: all 0.3s;
+      letter-spacing: 1px;
+    }
+    .play-btn:hover { box-shadow: 0 0 36px rgba(255,107,157,0.6); transform: scale(1.03); }
+    .play-btn .play-icon {
+      display: inline-block; width: 0; height: 0;
+      border-style: solid; border-width: 7px 0 7px 12px;
+      border-color: transparent transparent transparent #fff;
+    }
+    .play-btn.playing .play-icon {
+      width: 12px; height: 14px; border: none;
+      border-left: 3px solid #fff; border-right: 3px solid #fff;
+    }
+
+    /* Chat Open Button */
+    .chat-open-btn {
+      display: none; margin-top: 16px;
+      padding: 12px 28px; border-radius: 30px;
+      background: transparent; border: 1.5px solid #ff6b9d;
+      color: #ff6b9d; font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      letter-spacing: 1px; transition: all 0.3s;
+    }
+    .chat-open-btn:hover { background: #ff6b9d; color: #fff; }
+
+    /* ===== Chat Panel - 전체 화면 (크림/골드 테마) ===== */
+    .chat-panel {
+      position: fixed; top: 0; left: 0; right: 0;
+      bottom: 56px;
+      background: linear-gradient(145deg, #FFF8E7, #F2E8D0);
+      border: none; border-bottom: 1px solid rgba(200,169,110,0.25);
+      z-index: 100; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(200,169,110,0.12);
+      border-bottom: 1px solid rgba(200,169,110,0.25);
+      flex-shrink: 0;
+    }
+    .chat-header-title {
+      font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+      color: #8B6914; letter-spacing: 2px;
+    }
+    .chat-header-info {
+      font-family: 'Inter', sans-serif; font-size: 11px; color: #A08050;
+    }
+    .chat-back-btn {
+      background: none; border: 1px solid rgba(139,105,20,0.4);
+      color: #8B6914; font-size: 12px; padding: 4px 10px;
+      border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    #chatBody {
+      flex: 1; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-nickname-box { padding: 24px 16px; text-align: center; }
+    .chat-nickname-box input {
+      padding: 12px 16px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.3);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      text-align: center; outline: none; width: 65%;
+    }
+    .chat-nickname-box input:focus { border-color: #C8A96E; }
+    .chat-nickname-box button {
+      margin-left: 8px; padding: 12px 20px; border-radius: 10px;
+      background: #C8A96E; border: none; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      font-weight: 700; cursor: pointer;
+    }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 12px 16px;
+      display: flex; flex-direction: column;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(200,169,110,0.4); border-radius: 2px; }
+    .chat-msg {
+      margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px;
+      line-height: 1.5; word-break: break-word;
+      display: flex; flex-direction: column; max-width: 78%;
+    }
+    .chat-msg.me { align-self: flex-end; align-items: flex-end; }
+    .chat-msg.other { align-self: flex-start; align-items: flex-start; }
+    .chat-msg-name {
+      font-weight: 700; color: #8B6914; font-size: 13px; margin-bottom: 3px;
+    }
+    .chat-msg.me .chat-msg-name { color: #A08050; }
+    .chat-msg-bubble {
+      padding: 8px 14px; border-radius: 14px;
+      line-height: 1.5; color: #3a2a10;
+    }
+    .chat-msg.other .chat-msg-bubble {
+      background: rgba(200,169,110,0.15);
+      border: 1px solid rgba(200,169,110,0.2);
+      border-top-left-radius: 4px;
+    }
+    .chat-msg.me .chat-msg-bubble {
+      background: #C8A96E; color: #fff;
+      border-top-right-radius: 4px;
+    }
+    .chat-msg-system {
+      text-align: center; color: #A08050;
+      font-size: 13px; font-style: italic; margin: 6px 0;
+      align-self: center;
+    }
+    .chat-input-box {
+      display: flex; gap: 8px; padding: 10px 16px;
+      border-top: 1px solid rgba(200,169,110,0.25);
+      flex-shrink: 0;
+    }
+    .chat-input-box input {
+      flex: 1; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid rgba(139,105,20,0.25);
+      background: rgba(255,255,255,0.7); color: #3a2a10;
+      font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
+    }
+    .chat-input-box input:focus { border-color: #C8A96E; }
+    .chat-input-box button {
+      padding: 10px 16px; border-radius: 10px;
+      background: #C8A96E; border: none; color: #fff;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+
+    /* ===== Player Bottom Bar ===== */
+    .player-bar {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      height: 56px; z-index: 101;
+      background: linear-gradient(145deg, #F2E8D0, #E8DCBE);
+      border-top: 1px solid rgba(200,169,110,0.4);
+      display: flex; align-items: center; gap: 12px;
+      padding: 0 16px;
+    }
+    .player-bar-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #C8A96E; border: none; color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(200,169,110,0.4);
+    }
+    .player-bar-btn .bar-play-icon {
+      display: inline-block; width: 0; height: 0;
+      border-style: solid; border-width: 6px 0 6px 10px;
+      border-color: transparent transparent transparent #fff;
+      margin-left: 2px;
+    }
+    .player-bar-btn.playing .bar-play-icon {
+      width: 10px; height: 12px; border: none;
+      border-left: 3px solid #fff; border-right: 3px solid #fff;
+      margin-left: 0;
+    }
+    .player-bar-info {
+      flex: 1; overflow: hidden;
+    }
+    .player-bar-title {
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      color: #8B6914; white-space: nowrap;
+      overflow: hidden; text-overflow: ellipsis; display: block;
+    }
+    .player-bar-sub {
+      font-family: 'Inter', sans-serif; font-size: 11px;
+      color: #A08050;
+    }
+
+    /* Promo Popup */
+    .promo-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7); z-index: 10000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px; opacity: 0;
+      animation: promo-fade-in 0.5s ease forwards;
+    }
+    .promo-overlay.hidden { display: none; }
+    @keyframes promo-fade-in {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    .promo-card {
+      background: linear-gradient(145deg, #1a1020, #2a1030);
+      border: 1px solid #ff6b9d; border-radius: 20px;
+      padding: 32px 24px; text-align: center;
+      max-width: 320px; width: 100%;
+      box-shadow: 0 0 40px rgba(255,107,157,0.3), 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .promo-msg {
+      font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 600;
+      color: rgba(255,255,255,0.9); line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .promo-link-btn {
+      display: inline-block; padding: 14px 32px;
+      border-radius: 30px; background: #ff6b9d; border: none;
+      color: #fff; font-family: 'Outfit', sans-serif;
+      font-size: 15px; font-weight: 700; cursor: pointer;
+      letter-spacing: 1px; text-decoration: none;
+      box-shadow: 0 0 24px rgba(255,107,157,0.4);
+      transition: all 0.3s;
+    }
+    .promo-link-btn:hover { box-shadow: 0 0 36px rgba(255,107,157,0.6); transform: scale(1.03); }
+    .promo-close {
+      display: block; margin-top: 16px; padding: 8px;
+      background: none; border: none;
+      color: rgba(255,255,255,0.4); font-family: 'Inter', sans-serif;
+      font-size: 13px; cursor: pointer; transition: color 0.2s;
+    }
+    .promo-close:hover { color: #fff; }
+
+    /* Footer */
+    .lp-footer {
+      margin-top: 12px; text-align: center;
+      font-size: 10px; color: rgba(255,255,255,0.2);
+      letter-spacing: 1px;
+    }
+    .lp-footer a { color: rgba(255,255,255,0.3); text-decoration: none; }
+    .lp-footer a:hover { color: #ff6b9d; }
+
+    /* Back link */
+    .back-link {
+      display: inline-block; margin-top: 20px;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      color: #ff6b9d; text-decoration: none;
+      border: 1px solid #ff6b9d; border-radius: 12px;
+      padding: 10px 24px; transition: all 0.2s;
+    }
+    .back-link:hover {
+      background: #ff6b9d; color: #fff;
+    }
+
+    /* Ambient glow */
+    .ambient-glow {
+      position: fixed; top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(ellipse at center, rgba(255,107,157,0.03) 0%, transparent 60%);
+      pointer-events: none; z-index: -1;
+    }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+<!-- LP Turntable -->
+<div class="turntable">
+  <div class="turntable-base"></div>
+  <!-- Title (턴테이블 내부 상단) -->
+  <div class="lp-title"><span class="lp-title-clara">스타벅스</span> <span class="lp-title-cafe">라디오카페</span></div>
+  <div class="platter" id="platter">
+    <div class="record-label">
+      <div class="record-label-text" id="labelText">AI RADIO</div>
+    </div>
+    <div class="record-hole"></div>
+  </div>
+  <div class="tonearm" id="tonearm">
+    <div class="tonearm-head"></div>
+    <div class="tonearm-counter"></div>
+  </div>
+  <div class="tonearm-pivot"></div>
+</div>
+
+<!-- Gift Box -->
+<div class="giftbox-wrap" id="giftboxWrap">
+  <div class="giftbox-lid" id="giftboxLid">
+    <div class="gb-ribbon-v"></div>
+    <div class="giftbox-bow">🎀</div>
+  </div>
+  <div class="giftbox-base">
+    <div class="gb-ribbon-v"></div>
+    <div class="gb-ribbon-h"></div>
+  </div>
+</div>
+
+<!-- Gift Info -->
+<div class="gift-info">
+  <div class="gift-song-title" id="songTitle">-</div>
+  <div class="gift-song-category" id="songCategory">-</div>
+  <div class="voice-msg-indicator hidden" id="voiceMsgIndicator">
+    <span class="voice-msg-icon" id="voiceMsgIcon">🎙</span>
+    <span id="voiceMsgText">음성 메시지가 있습니다</span>
+  </div>
+  <div class="gift-message hidden" id="giftMessage"></div>
+  <button class="play-btn" id="playBtn" onclick="togglePlay()">
+    <span class="play-icon"></span>
+    <span id="playBtnText">재생</span>
+  </button>
+  <button class="chat-open-btn" id="chatOpenBtn" onclick="openChatPanel()">💬 채팅</button>
+</div>
+
+<!-- Footer -->
+<div class="lp-footer">
+  &copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a>
+</div>
+
+<!-- Promo Popup -->
+<div class="promo-overlay hidden" id="promoPopup" onclick="if(event.target===this)closePromo()">
+  <div class="promo-card">
+    <div class="promo-msg">스타벅스 라디오카페를 활용해 보세요</div>
+    <a class="promo-link-btn" href="index.html">라디오 카페 연결</a>
+    <button class="promo-close" onclick="closePromo()">닫기</button>
+  </div>
+</div>
+
+<!-- Chat Panel (전체화면) -->
+<div class="chat-panel" id="chatPanel" style="display:none;">
+  <div class="chat-header">
+    <button class="chat-back-btn" onclick="closeChatPanel()">&#9664; 이전</button>
+    <span class="chat-header-title">CHAT</span>
+    <span class="chat-header-info" id="chatHeaderInfo"></span>
+  </div>
+  <div id="chatBody">
+    <div class="chat-nickname-box" id="chatNicknameBox">
+      <input type="text" id="chatNicknameInput" placeholder="닉네임 입력" maxlength="12"
+        onkeydown="if(event.key==='Enter')joinChat()">
+      <button onclick="joinChat()">입장</button>
+    </div>
+    <div class="chat-messages hidden" id="chatMessages"></div>
+    <div class="chat-input-box hidden" id="chatInputBox">
+      <input type="text" id="chatMsgInput" placeholder="메시지 입력..." maxlength="200"
+        onkeydown="if(event.key==='Enter')sendChatMsg()">
+      <button onclick="sendChatMsg()">전송</button>
+    </div>
+  </div>
+</div>
+
+<!-- Player Bottom Bar -->
+<div class="player-bar" id="playerBar" style="display:none;">
+  <button class="player-bar-btn" id="playerBarBtn" onclick="togglePlay()">
+    <span class="bar-play-icon"></span>
+  </button>
+  <div class="player-bar-info">
+    <span class="player-bar-title" id="playerBarTitle">-</span>
+    <span class="player-bar-sub" id="playerBarSub">선물 받은 노래</span>
+  </div>
+</div>
+
+<script>
+  // === Supabase Config ===
+  var SUPABASE_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
+  var supabaseClient = null;
+
+  // === Gift Song Data ===
+  var GIFT_SONGS = [
+    { id:'birthday-1', category:'생일축하', name:'생일 축하합니다', file:'gift-songs/birthday-1.wav', tts:'생일 축하합니다! 태어나줘서 고마워요. 오늘 하루도 행복하세요!' },
+    { id:'birthday-2', category:'생일축하', name:'Happy Birthday To You', file:'gift-songs/birthday-2.wav', tts:'Happy Birthday to you! 생일을 진심으로 축하드립니다. 늘 건강하고 행복하세요!' },
+    { id:'wedding-1', category:'결혼축하', name:'결혼 축하합니다', file:'gift-songs/wedding-1.wav', tts:'결혼을 진심으로 축하합니다! 두 분의 앞날에 사랑과 행복이 가득하길 바랍니다.' },
+    { id:'wedding-2', category:'결혼축하', name:'Wedding March', file:'gift-songs/wedding-2.wav', tts:'아름다운 결혼을 축하드려요! 함께하는 모든 날들이 축복으로 가득하길 기원합니다.' },
+    { id:'cheer-1', category:'응원', name:'힘내세요', file:'gift-songs/cheer-1.wav', tts:'힘내세요! 당신은 충분히 잘하고 있어요. 항상 응원하고 있습니다!' },
+    { id:'cheer-2', category:'응원', name:'You Can Do It', file:'gift-songs/cheer-2.wav', tts:'You can do it! 할 수 있어요! 포기하지 마세요. 당신의 노력은 반드시 빛날 거예요!' },
+    { id:'thanks-1', category:'감사', name:'감사합니다', file:'gift-songs/thanks-1.wav', tts:'진심으로 감사합니다. 당신 덕분에 제 하루가 더 따뜻해졌어요.' },
+    { id:'thanks-2', category:'감사', name:'Thank You', file:'gift-songs/thanks-2.wav', tts:'Thank you so much! 고마운 마음을 이 노래에 담아 전합니다.' },
+    { id:'love-1', category:'사랑', name:'사랑합니다', file:'gift-songs/love-1.wav', tts:'사랑합니다. 당신이 있어 매일이 행복해요. 언제나 곁에 있을게요.' },
+    { id:'love-2', category:'사랑', name:'Love Song', file:'gift-songs/love-2.wav', tts:'You are my love. 당신을 사랑하는 마음을 이 노래로 전합니다.' }
+  ];
+
+  // === State ===
+  var audio = null;
+  var voiceAudio = null;
+  var voiceUrl = null;
+  var isPlaying = false;
+  var currentSong = null;
+  var chatChannel = null;
+  var chatRoomId = null;
+  var chatNickname = '';
+  var chatActive = false;
+  var chatPeerCount = 0;
+  var chatAutoHidden = false;
+
+  // === Init ===
+  function init(){
+    var urlParams = new URLSearchParams(location.search);
+    var giftId = urlParams.get('gift');
+    chatRoomId = urlParams.get('room');
+    var msg = urlParams.get('msg') ? decodeURIComponent(urlParams.get('msg')) : '';
+
+    if(giftId){
+      currentSong = GIFT_SONGS.find(function(s){ return s.id === giftId; });
+    }
+    if(currentSong){
+      document.getElementById('songTitle').textContent = currentSong.name;
+      document.getElementById('songCategory').textContent = currentSong.category;
+      document.getElementById('labelText').textContent = currentSong.name.length > 8
+        ? currentSong.name.substring(0, 8) : currentSong.name;
+    }
+    if(msg){
+      var msgEl = document.getElementById('giftMessage');
+      msgEl.textContent = msg;
+      msgEl.classList.remove('hidden');
+    }
+    // 음성 메시지 처리
+    var voiceId = urlParams.get('voice');
+    if(voiceId){
+      var vext = urlParams.get('vext') || '.webm';
+      voiceUrl = SUPABASE_URL + '/storage/v1/object/public/photo-albums/voice-messages/' + voiceId + vext;
+      document.getElementById('voiceMsgIndicator').classList.remove('hidden');
+    }
+    // 채팅 버튼 표시 (chatRoomId가 있을 때만)
+    if(chatRoomId){
+      document.getElementById('chatOpenBtn').style.display = 'inline-flex';
+    }
+
+    /* Log receiver usage */
+    try {
+      initSupabase();
+      var ruid = localStorage.getItem('radioUsername');
+      if(ruid && supabaseClient){
+        var receivedFeature = voiceId ? 'voice_gift_received' : 'gift_song_received';
+        supabaseClient.from('feature_usage').insert({user_id:ruid, feature:receivedFeature}).then(function(){});
+      }
+    } catch(e){}
+  }
+
+  // === Gift Box + Fireworks Animation ===
+  var giftboxTimer = null;
+
+  function openGiftBox(){
+    var lid = document.getElementById('giftboxLid');
+    var wrap = document.getElementById('giftboxWrap');
+    // Reset for replay
+    if(giftboxTimer) clearTimeout(giftboxTimer);
+    wrap.style.transition = 'none';
+    wrap.style.opacity = '1';
+    wrap.classList.remove('done');
+    lid.classList.remove('open');
+    void lid.offsetWidth;
+    wrap.style.transition = '';
+    // Lid pops open
+    lid.classList.add('open');
+    // Play fireworks sound
+    playFireworkSound();
+    // Fireworks burst - 여러 웨이브로 풍성하게
+    setTimeout(createFireworks, 300);
+    setTimeout(createFireworks, 1500);
+    setTimeout(createFireworks, 3500);
+    setTimeout(createFireworks, 5500);
+    setTimeout(createFireworks, 7500);
+    // Fade out gift box
+    setTimeout(function(){
+      wrap.classList.add('done');
+    }, 9000);
+    // Reset for next replay
+    giftboxTimer = setTimeout(function(){
+      wrap.style.transition = 'none';
+      wrap.style.opacity = '1';
+      wrap.classList.remove('done');
+      lid.classList.remove('open');
+      void wrap.offsetWidth;
+      wrap.style.transition = '';
+    }, 12000);
+  }
+
+  function playFireworkSound(){
+    var ctx = new (window.AudioContext || window.webkitAudioContext)();
+    var t = ctx.currentTime;
+
+    // 1. Launch whoosh (올라가는 소리)
+    var whooshDur = 0.3;
+    var whooshBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * whooshDur), ctx.sampleRate);
+    var whooshData = whooshBuf.getChannelData(0);
+    for(var i = 0; i < whooshData.length; i++){
+      whooshData[i] = (Math.random() * 2 - 1) * Math.sin(Math.PI * i / whooshData.length) * 0.2;
+    }
+    var whoosh = ctx.createBufferSource();
+    whoosh.buffer = whooshBuf;
+    var whooshFilter = ctx.createBiquadFilter();
+    whooshFilter.type = 'bandpass';
+    whooshFilter.frequency.setValueAtTime(1000, t);
+    whooshFilter.frequency.exponentialRampToValueAtTime(4000, t + whooshDur);
+    whoosh.connect(whooshFilter);
+    whooshFilter.connect(ctx.destination);
+    whoosh.start(t);
+
+    // 2. Main explosion (펑! 터지는 소리)
+    var popDur = 0.5;
+    var popBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * popDur), ctx.sampleRate);
+    var popData = popBuf.getChannelData(0);
+    for(var i = 0; i < popData.length; i++){
+      popData[i] = (Math.random() * 2 - 1) * Math.exp(-i / (ctx.sampleRate * 0.06)) * 0.7;
+    }
+    var pop = ctx.createBufferSource();
+    pop.buffer = popBuf;
+    var popFilter = ctx.createBiquadFilter();
+    popFilter.type = 'lowpass';
+    popFilter.frequency.value = 3000;
+    pop.connect(popFilter);
+    popFilter.connect(ctx.destination);
+    pop.start(t + 0.25);
+
+    // 3. Crackle/sparkle (타타탁 잔향 - 10초 동안 지속)
+    for(var c = 0; c < 50; c++){
+      var delay = 0.3 + Math.random() * 8;
+      var dur = 0.03 + Math.random() * 0.08;
+      var cBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * dur), ctx.sampleRate);
+      var cData = cBuf.getChannelData(0);
+      for(var j = 0; j < cData.length; j++){
+        cData[j] = (Math.random() * 2 - 1) * Math.exp(-j / (cData.length * 0.3)) * 0.3;
+      }
+      var cSrc = ctx.createBufferSource();
+      cSrc.buffer = cBuf;
+      var cGain = ctx.createGain();
+      cGain.gain.value = 0.1 + Math.random() * 0.2;
+      cSrc.connect(cGain);
+      cGain.connect(ctx.destination);
+      cSrc.start(t + delay);
+    }
+
+    // 4. 추가 펑펑 7번 (중간중간 터지는 소리)
+    for(var p = 0; p < 7; p++){
+      var pDelay = 1.0 + p * 1.2 + Math.random() * 0.4;
+      var pDur = 0.3 + Math.random() * 0.2;
+      var pBuf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * pDur), ctx.sampleRate);
+      var pData = pBuf.getChannelData(0);
+      for(var k = 0; k < pData.length; k++){
+        pData[k] = (Math.random() * 2 - 1) * Math.exp(-k / (ctx.sampleRate * 0.05)) * 0.4;
+      }
+      var pSrc = ctx.createBufferSource();
+      pSrc.buffer = pBuf;
+      var pFilter = ctx.createBiquadFilter();
+      pFilter.type = 'lowpass';
+      pFilter.frequency.value = 2000 + Math.random() * 2000;
+      pSrc.connect(pFilter);
+      pFilter.connect(ctx.destination);
+      pSrc.start(t + pDelay);
+    }
+
+    // Close context
+    setTimeout(function(){ ctx.close(); }, 12000);
+  }
+
+  function createFireworks(){
+    var box = document.getElementById('giftboxWrap');
+    var rect = box.getBoundingClientRect();
+    var cx = rect.left + rect.width / 2;
+    var cy = rect.top;
+    var screenW = window.innerWidth;
+    var screenH = window.innerHeight;
+
+    var container = document.createElement('div');
+    container.className = 'confetti-container';
+    document.body.appendChild(container);
+
+    var colors = [
+      '#ff6b9d','#ffd700','#00e5ff','#76ff03','#ff4081','#7c4dff',
+      '#ff9100','#e040fb','#64ffda','#ffd740','#ff5252','#448aff',
+      '#69f0ae','#ffab40','#ea80fc','#b2ff59','#ff1744','#00e676',
+      '#fff','#ffeb3b','#f50057','#00bcd4','#8bc34a','#ff5722'
+    ];
+
+    // === 폭죽 파티클 (대량) ===
+    for(var i = 0; i < 120; i++){
+      var piece = document.createElement('div');
+      var color = colors[Math.floor(Math.random() * colors.length)];
+      var w = 3 + Math.random() * 10;
+      var h = w * (0.3 + Math.random() * 1.0);
+      var shapes = ['50%','3px','0'];
+      var br = shapes[Math.floor(Math.random() * shapes.length)];
+
+      // 화면 전체를 채우도록 넓게 퍼짐
+      var angle = Math.random() * Math.PI * 2;
+      var dist = 150 + Math.random() * Math.max(screenW, screenH) * 0.7;
+      var tx = Math.cos(angle) * dist;
+      var ty = Math.sin(angle) * dist - screenH * 0.4;
+      var rot = (Math.random() - 0.5) * 2000;
+      var dur = 2 + Math.random() * 2.5;
+      var delay = Math.random() * 0.8;
+
+      piece.style.cssText =
+        'position:absolute;left:' + cx + 'px;top:' + cy + 'px;' +
+        'width:' + w + 'px;height:' + h + 'px;' +
+        'background:' + color + ';color:' + color + ';border-radius:' + br + ';' +
+        '--tx:' + tx + 'px;--ty:' + ty + 'px;--rot:' + rot + 'deg;' +
+        'animation:confetti-fly ' + dur + 's ease-out ' + delay + 's forwards,' +
+        'confetti-sparkle 0.2s ease-in-out ' + delay + 's 5;';
+
+      container.appendChild(piece);
+    }
+
+    // === 반짝이 별 (화면 전체에 퍼짐) ===
+    for(var s = 0; s < 60; s++){
+      var star = document.createElement('div');
+      star.className = 'sparkle-star';
+      var sColor = colors[Math.floor(Math.random() * colors.length)];
+      var starSize = 6 + Math.random() * 14;
+
+      // 화면 랜덤 위치로 날아감
+      var stx = (Math.random() - 0.5) * screenW * 1.2;
+      var sty = (Math.random() - 0.8) * screenH * 1.2;
+      var sDur = 1.5 + Math.random() * 2;
+      var sDelay = Math.random() * 1.0;
+
+      star.style.cssText =
+        'left:' + cx + 'px;top:' + cy + 'px;' +
+        'width:' + starSize + 'px;height:' + starSize + 'px;' +
+        '--star-color:' + sColor + ';--star-size:' + starSize + 'px;--star-w:' + (starSize * 0.3) + 'px;' +
+        '--tx:' + stx + 'px;--ty:' + sty + 'px;' +
+        'animation:star-twinkle ' + sDur + 's ease-in-out ' + sDelay + 's forwards;';
+
+      container.appendChild(star);
+    }
+
+    // === 하트 / 풍선 / 이모지 파티클 ===
+    var emojis = ['❤️','💖','💕','💗','💝','🎈','🎀','🩷','💜','💛','🧡','💚','🩵','🤍','🎉','🎊','✨','⭐','🌟','💫','🫧'];
+    for(var e = 0; e < 40; e++){
+      var em = document.createElement('div');
+      em.className = 'emoji-particle';
+      em.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      var emAngle = Math.random() * Math.PI * 2;
+      var emDist = 100 + Math.random() * Math.max(screenW, screenH) * 0.6;
+      var emTx = Math.cos(emAngle) * emDist;
+      var emTy = Math.sin(emAngle) * emDist - screenH * 0.3;
+      var emRot = (Math.random() - 0.5) * 720;
+      var emSize = (16 + Math.random() * 24) + 'px';
+      var emDur = (2 + Math.random() * 2.5) + 's';
+      var emDelay = (Math.random() * 1.0) + 's';
+
+      em.style.cssText =
+        'left:' + cx + 'px;top:' + cy + 'px;' +
+        '--em-size:' + emSize + ';--em-dur:' + emDur + ';--em-delay:' + emDelay + ';' +
+        '--tx:' + emTx + 'px;--ty:' + emTy + 'px;--rot:' + emRot + 'deg;';
+
+      container.appendChild(em);
+    }
+
+    // Clean up
+    setTimeout(function(){ container.remove(); }, 6000);
+  }
+
+  // === Audio ===
+  function togglePlay(){
+    if(isPlaying){
+      stopPlay();
+    } else {
+      startPlay();
+    }
+  }
+
+  var lpStartTimer = null;
+
+  function startPlay(){
+    isPlaying = true;
+    document.getElementById('playBtnText').textContent = '정지';
+    document.getElementById('playBtn').classList.add('playing');
+    document.getElementById('playerBarBtn').classList.add('playing');
+
+    // 1단계: 폭죽 먼저 터뜨리기
+    openGiftBox();
+
+    // 2단계: 폭죽 종료(~10초) 후 음성 → 노래 순서 재생
+    lpStartTimer = setTimeout(function(){
+      if(voiceUrl){
+        // 음성 메시지 먼저 재생
+        playVoiceMessage(function(){
+          // 음성 끝나면 LP 회전 + 노래 시작
+          startLpAndSong();
+        });
+      } else {
+        // 음성 없으면 바로 LP + 노래
+        startLpAndSong();
+      }
+    }, 10000);
+  }
+
+  function playVoiceMessage(callback){
+    var icon = document.getElementById('voiceMsgIcon');
+    var text = document.getElementById('voiceMsgText');
+    var called = false;
+    function done(){
+      if(called) return;
+      called = true;
+      if(callback) callback();
+    }
+    icon.classList.add('playing');
+    text.textContent = '음성 메시지 재생 중...';
+    if(!voiceAudio) voiceAudio = new Audio();
+    voiceAudio.pause();
+    voiceAudio.src = voiceUrl;
+    voiceAudio.volume = 1;
+    voiceAudio.onerror = function(){
+      icon.classList.remove('playing');
+      text.textContent = '음성 메시지를 찾을 수 없습니다';
+      done();
+    };
+    voiceAudio.onended = function(){
+      icon.classList.remove('playing');
+      text.textContent = '음성 메시지 재생 완료';
+      done();
+    };
+    voiceAudio.addEventListener('canplay', function cp(){
+      voiceAudio.removeEventListener('canplay', cp);
+      voiceAudio.play().catch(function(e){
+        console.log('음성 메시지 재생 실패:', e);
+        icon.classList.remove('playing');
+        text.textContent = '음성 메시지 재생 실패';
+        done();
+      });
+    });
+    voiceAudio.load();
+  }
+
+  function startLpAndSong(){
+    document.getElementById('platter').classList.add('spinning');
+    document.getElementById('tonearm').classList.add('playing');
+    if(currentSong){
+      var mp3Url = SUPABASE_URL + '/storage/v1/object/public/photo-albums/' + currentSong.file;
+      if(!audio) audio = new Audio();
+      audio.src = mp3Url;
+      audio.volume = 1;
+      audio.play().catch(function(e){
+        console.log('음악 파일 로드 대기 중, TTS 폴백...', e);
+        speakTts();
+      });
+      audio.onended = function(){ stopPlay(); };
+      audio.onerror = function(){
+        console.log('음악 파일 없음, TTS로 재생');
+        speakTts();
+      };
+    }
+  }
+
+  function speakTts(){
+    if(!currentSong || !currentSong.tts || !window.speechSynthesis) return;
+    var utter = new SpeechSynthesisUtterance(currentSong.tts);
+    utter.lang = 'ko-KR';
+    utter.rate = 0.9;
+    utter.onend = function(){ stopPlay(); };
+    speechSynthesis.speak(utter);
+  }
+
+  function stopPlay(){
+    if(lpStartTimer){ clearTimeout(lpStartTimer); lpStartTimer = null; }
+    if(voiceAudio){ voiceAudio.pause(); voiceAudio.currentTime = 0; }
+    if(audio){ audio.pause(); audio.currentTime = 0; }
+    isPlaying = false;
+    document.getElementById('platter').classList.remove('spinning');
+    document.getElementById('tonearm').classList.remove('playing');
+    document.getElementById('playBtnText').textContent = '재생';
+    document.getElementById('playBtn').classList.remove('playing');
+    document.getElementById('playerBarBtn').classList.remove('playing');
+    showPromo();
+  }
+
+  // === Promo Popup ===
+  function showPromo(){
+    setTimeout(function(){
+      document.getElementById('promoPopup').classList.remove('hidden');
+    }, 1000);
+  }
+  function closePromo(){
+    document.getElementById('promoPopup').classList.add('hidden');
+  }
+
+  // === Supabase ===
+  function initSupabase(){
+    if(supabaseClient) return;
+    if(!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+
+  // === Chat ===
+  function openChatPanel(){
+    function showChat(){
+      initSupabase();
+      document.getElementById('chatPanel').style.display = 'flex';
+      document.getElementById('playerBar').style.display = 'flex';
+      if(currentSong){
+        document.getElementById('playerBarTitle').textContent = currentSong.name;
+        document.getElementById('playerBarSub').textContent = currentSong.category;
+      }
+      if(chatNickname){
+        document.getElementById('chatNicknameBox').classList.add('hidden');
+        document.getElementById('chatMessages').classList.remove('hidden');
+        document.getElementById('chatInputBox').classList.remove('hidden');
+        if(!chatActive) connectChat();
+      }
+    }
+    if(window.supabase){
+      showChat();
+    } else {
+      var wait = setInterval(function(){
+        if(window.supabase){ clearInterval(wait); showChat(); }
+      }, 200);
+    }
+  }
+
+  function closeChatPanel(){
+    document.getElementById('chatPanel').style.display = 'none';
+    document.getElementById('playerBar').style.display = 'none';
+  }
+
+  function joinChat(){
+    var input = document.getElementById('chatNicknameInput');
+    var name = input.value.trim();
+    if(!name){ input.focus(); return; }
+    chatNickname = name;
+    document.getElementById('chatNicknameBox').classList.add('hidden');
+    document.getElementById('chatMessages').classList.remove('hidden');
+    document.getElementById('chatInputBox').classList.remove('hidden');
+    document.getElementById('chatMsgInput').focus();
+    connectChat();
+  }
+
+  function connectChat(){
+    if(!supabaseClient || !chatRoomId || chatActive) return;
+    chatActive = true;
+    var channelName = 'listen-' + chatRoomId;
+    chatChannel = supabaseClient.channel(channelName, {
+      config: { broadcast: { self: false } }
+    });
+
+    chatChannel.on('broadcast', { event: 'message' }, function(payload){
+      addChatMessage(payload.payload.name, payload.payload.text);
+    });
+
+    chatChannel.on('broadcast', { event: 'join' }, function(payload){
+      chatPeerCount++;
+      addSystemMessage(payload.payload.name + '님이 입장했습니다.');
+    });
+
+    chatChannel.on('broadcast', { event: 'leave' }, function(payload){
+      chatPeerCount = Math.max(0, chatPeerCount - 1);
+      addSystemMessage(payload.payload.name + '님이 퇴장했습니다.');
+    });
+
+    chatChannel.subscribe(function(status){
+      if(status === 'SUBSCRIBED'){
+        chatChannel.send({
+          type: 'broadcast',
+          event: 'join',
+          payload: { name: chatNickname }
+        });
+        addSystemMessage('채팅에 연결되었습니다.');
+      }
+    });
+  }
+
+  function disconnectChat(){
+    if(chatChannel && chatActive){
+      chatChannel.send({
+        type: 'broadcast',
+        event: 'leave',
+        payload: { name: chatNickname }
+      });
+      supabaseClient.removeChannel(chatChannel);
+      chatChannel = null;
+      chatActive = false;
+    }
+  }
+
+  function sendChatMsg(){
+    var input = document.getElementById('chatMsgInput');
+    var text = input.value.trim();
+    if(!text || !chatChannel || !chatActive) return;
+    chatChannel.send({
+      type: 'broadcast',
+      event: 'message',
+      payload: { name: chatNickname, text: text }
+    });
+    addChatMessage(chatNickname, text, true);
+    input.value = '';
+    input.focus();
+  }
+
+  function addChatMessage(name, text, isMe){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (isMe ? 'me' : 'other');
+    var nameSpan = document.createElement('div');
+    nameSpan.className = 'chat-msg-name';
+    nameSpan.textContent = name;
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+    div.appendChild(nameSpan);
+    div.appendChild(bubble);
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function addSystemMessage(text){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg-system';
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  window.addEventListener('beforeunload', function(){ disconnectChat(); });
+
+  // === Start ===
+  document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>

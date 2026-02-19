@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#0a1f17">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>노래+음성 선물하기 | 스타벅스 라디오카페</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="노래+음성 선물하기 | 스타벅스 라디오카페" />
+  <meta property="og:description" content="노래와 음성 메시지를 함께 선물하세요!" />
+  <meta property="og:image" content="https://og-image.jpg" />
+  <meta property="og:url" content="https://voice-gift.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0a1f17;
+      --accent: #00704A;
+      --accent-glow: rgba(0,112,74,0.5);
+      --gold: #CBA258;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    body::before {
+      content: '';
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(0,112,74,0.06) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(0,112,74,0.04) 0%, transparent 50%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* Gift Card */
+    .gift-card {
+      background: #1E3932;
+      border: 1px solid rgba(0,112,74,0.4);
+      border-radius: 20px; padding: 24px;
+      width: 100%; max-width: 360px;
+      text-align: center;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
+      position: relative; z-index: 1;
+    }
+    .gift-title {
+      font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
+      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
+      text-shadow: none;
+    }
+    .gift-categories {
+      display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin-bottom: 14px;
+    }
+    .gift-cat-btn {
+      padding: 6px 14px; border-radius: 16px;
+      border: 1px solid rgba(0,112,74,0.3);
+      background: rgba(0,112,74,0.08); color: #7ab8a0;
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .gift-cat-btn.active {
+      border-color: #00704A; color: #D4E9E2;
+      background: rgba(0,112,74,0.2);
+    }
+    .gift-song-list {
+      max-height: 160px; overflow-y: auto; margin-bottom: 14px;
+    }
+    .gift-song-list::-webkit-scrollbar { width: 4px; }
+    .gift-song-list::-webkit-scrollbar-thumb { background: rgba(0,112,74,0.4); border-radius: 2px; }
+    .gift-song-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px; margin-bottom: 4px; border-radius: 10px;
+      border: 1px solid rgba(0,112,74,0.2);
+      background: rgba(0,112,74,0.06); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gift-song-item:hover { border-color: rgba(0,112,74,0.5); }
+    .gift-song-item.selected {
+      border-color: #00704A; background: rgba(0,112,74,0.18);
+    }
+    .gift-song-name {
+      font-family: 'Inter', sans-serif; font-size: 14px; color: #b8d8cc;
+    }
+    .gift-song-item.selected .gift-song-name { color: #D4E9E2; font-weight: 600; }
+    .gift-step2 { display: none; }
+    .gift-step2.active { display: block; }
+    .gift-selected-info {
+      font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+      color: #D4E9E2; margin-bottom: 12px;
+    }
+    .gift-msg-input {
+      width: 100%; padding: 12px; border-radius: 12px;
+      border: 2px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      outline: none; resize: none; min-height: 60px;
+      margin-bottom: 12px;
+    }
+    .gift-msg-input:focus { border-color: #00704A; }
+    .gift-msg-input::placeholder { color: #7ab8a0; }
+    .gift-link-box {
+      display: flex; gap: 8px; margin-bottom: 8px;
+    }
+    .gift-link-box input {
+      flex: 1; padding: 10px 12px; border-radius: 10px;
+      border: 2px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
+      font-family: 'Inter', sans-serif; font-size: 11px; outline: none;
+    }
+    .gift-link-box button {
+      padding: 10px 16px; border-radius: 10px;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none;
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s; white-space: nowrap;
+    }
+    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .gift-copied {
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      color: #00704A; margin-bottom: 12px;
+    }
+    .gift-copied.hidden { display: none; }
+    .gift-share-btn {
+      width: 100%; padding: 12px;
+      background: transparent; border: 1px solid #00704A;
+      border-radius: 12px; color: #D4E9E2;
+      font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; margin-bottom: 8px;
+    }
+    .gift-share-btn:hover { background: linear-gradient(135deg, #00704A, #004d33); color: #D4E9E2; }
+    .gift-share-btn.hidden { display: none; }
+    .gift-guide {
+      text-align: left; margin-top: 14px; padding: 12px 14px;
+      background: rgba(0,112,74,0.08); border-radius: 10px;
+      border-left: 3px solid #00704A;
+    }
+    .gift-guide p {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: #b8d8cc; line-height: 1.6;
+      margin: 0 0 8px 0;
+    }
+    .gift-guide p:last-child { margin-bottom: 0; }
+    .gift-btn-row {
+      display: flex; gap: 8px; margin-top: 10px;
+    }
+    .gift-btn-next {
+      flex: 1; padding: 12px; border-radius: 12px;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none;
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 700; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gift-btn-next:disabled { opacity: 0.3; cursor: default; }
+    .gift-btn-next:not(:disabled):hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .gift-btn-back {
+      padding: 12px 16px; border-radius: 12px;
+      background: transparent; border: 1px solid rgba(0,112,74,0.4);
+      color: #7ab8a0; font-family: 'Outfit', sans-serif;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .gift-btn-back:hover { border-color: #00704A; color: #D4E9E2; }
+    .gift-close {
+      width: 100%; padding: 10px; margin-top: 4px;
+      background: transparent; border: none;
+      color: rgba(0,112,74,0.4); font-family: 'Inter', sans-serif;
+      font-size: 13px; cursor: pointer; transition: color 0.2s;
+    }
+    .gift-close:hover { color: #D4E9E2; }
+
+    /* Voice Record */
+    .voice-record-area {
+      text-align: center; margin: 16px 0; padding: 16px;
+      background: rgba(0,112,74,0.08); border-radius: 14px;
+      border: 1px solid rgba(0,112,74,0.2);
+    }
+    .voice-record-btn {
+      width: 64px; height: 64px; border-radius: 50%;
+      border: 2px solid #00704A; background: rgba(0,112,74,0.15);
+      color: #D4E9E2; font-size: 28px; cursor: pointer;
+      transition: all 0.3s; display: inline-flex;
+      align-items: center; justify-content: center;
+    }
+    .voice-record-btn:hover { background: rgba(0,112,74,0.3); }
+    .voice-record-btn.recording {
+      background: #ff4444; border-color: #ff4444;
+      animation: rec-pulse 1s ease-in-out infinite;
+    }
+    @keyframes rec-pulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255,68,68,0.4); }
+      50% { transform: scale(1.08); box-shadow: 0 0 20px 6px rgba(255,68,68,0.3); }
+    }
+    .voice-record-time {
+      display: block; margin-top: 10px;
+      font-family: 'Orbitron', monospace; font-size: 18px;
+      color: #D4E9E2; letter-spacing: 2px;
+    }
+    .voice-record-status {
+      display: block; margin-top: 4px;
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      color: #7ab8a0;
+    }
+    .voice-preview {
+      margin-top: 12px; display: flex; align-items: center;
+      gap: 10px; justify-content: center;
+    }
+    .voice-preview audio {
+      height: 36px; max-width: 200px;
+    }
+    .voice-preview-rebtn {
+      padding: 6px 14px; border-radius: 10px;
+      border: 1px solid rgba(0,112,74,0.4);
+      background: transparent; color: #7ab8a0;
+      font-family: 'Inter', sans-serif; font-size: 12px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .voice-preview-rebtn:hover { border-color: #00704A; color: #D4E9E2; }
+    .voice-uploading {
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      color: #7ab8a0; margin: 12px 0;
+    }
+
+    /* Chat Panel - 전체 화면 (Starbucks 테마) */
+    .chat-panel {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      border: none;
+      z-index: 100; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 16px;
+      background: rgba(0,112,74,0.12);
+      border-bottom: 1px solid rgba(0,112,74,0.25);
+      flex-shrink: 0;
+    }
+    .chat-header-title {
+      font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
+      color: #00704A; letter-spacing: 2px;
+    }
+    .chat-header-info {
+      font-family: 'Inter', sans-serif; font-size: 11px; color: #7ab8a0;
+    }
+    .chat-back-btn {
+      background: none; border: 1px solid rgba(0,112,74,0.4);
+      color: #D4E9E2; font-size: 12px; padding: 4px 10px;
+      border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
+      white-space: nowrap;
+    }
+    #chatBody {
+      flex: 1; display: flex; flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-nickname-box { padding: 24px 16px; text-align: center; }
+    .chat-nickname-box input {
+      padding: 12px 16px; border-radius: 10px;
+      border: 1px solid rgba(0,112,74,0.4);
+      background: #122820; color: #b8d8cc;
+      font-family: 'Inter', sans-serif; font-size: 14px;
+      text-align: center; outline: none; width: 65%;
+    }
+    .chat-nickname-box input:focus { border-color: #00704A; }
+    .chat-nickname-box button {
+      margin-left: 8px; padding: 12px 20px; border-radius: 10px;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      font-weight: 700; cursor: pointer;
+    }
+    .chat-messages {
+      flex: 1; overflow-y: auto; padding: 12px 16px;
+      display: flex; flex-direction: column;
+    }
+    .chat-messages::-webkit-scrollbar { width: 4px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(0,112,74,0.4); border-radius: 2px; }
+    .chat-msg {
+      margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px;
+      line-height: 1.5; word-break: break-word;
+      display: flex; flex-direction: column; max-width: 78%;
+    }
+    .chat-msg.me { align-self: flex-end; align-items: flex-end; }
+    .chat-msg.other { align-self: flex-start; align-items: flex-start; }
+    .chat-msg-name {
+      font-weight: 700; color: #00704A; font-size: 13px; margin-bottom: 3px;
+    }
+    .chat-msg.me .chat-msg-name { color: #7ab8a0; }
+    .chat-msg-bubble {
+      padding: 8px 14px; border-radius: 14px;
+      line-height: 1.5; color: #b8d8cc;
+    }
+    .chat-msg.other .chat-msg-bubble {
+      background: rgba(0,112,74,0.15);
+      border: 1px solid rgba(0,112,74,0.2);
+      border-top-left-radius: 4px;
+    }
+    .chat-msg.me .chat-msg-bubble {
+      background: linear-gradient(135deg, #00704A, #004d33); color: #D4E9E2;
+      border-top-right-radius: 4px;
+    }
+    .chat-msg-system {
+      text-align: center; color: #7ab8a0;
+      font-size: 13px; font-style: italic; margin: 6px 0;
+      align-self: center;
+    }
+    .chat-input-box {
+      display: flex; gap: 8px; padding: 10px 16px;
+      border-top: 1px solid rgba(0,112,74,0.25);
+    }
+    .chat-input-box input {
+      flex: 1; padding: 10px 14px; border-radius: 10px;
+      border: 1px solid rgba(0,112,74,0.3);
+      background: #122820; color: #b8d8cc;
+      font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
+    }
+    .chat-input-box input:focus { border-color: #00704A; }
+    .chat-input-box button {
+      padding: 10px 16px; border-radius: 10px;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      font-weight: 700; cursor: pointer; white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="gift-card">
+  <div class="gift-title">노래+음성 선물하기</div>
+  <!-- Step 1: Song Selection -->
+  <div id="vgStep1">
+    <div class="gift-categories" id="vgCategories"></div>
+    <div class="gift-song-list" id="vgSongList"></div>
+    <div class="gift-btn-row">
+      <button class="gift-btn-back" onclick="history.back()">이전</button>
+      <button class="gift-btn-next" id="vgNextBtn1" disabled onclick="vgGoStep2()">다음</button>
+    </div>
+  </div>
+  <!-- Step 2: Voice Record -->
+  <div class="gift-step2" id="vgStep2">
+    <div class="gift-selected-info" id="vgSelectedInfo"></div>
+    <div class="voice-record-area">
+      <button class="voice-record-btn" id="vgRecordBtn" onclick="toggleVoiceRecord()">🎙</button>
+      <span class="voice-record-time" id="vgRecordTime">0:00</span>
+      <span class="voice-record-status" id="vgRecordStatus">버튼을 눌러 녹음하세요 (최대 30초)</span>
+    </div>
+    <div class="voice-preview" id="vgPreview" style="display:none">
+      <audio id="vgPreviewAudio" controls></audio>
+      <button class="voice-preview-rebtn" onclick="resetVoiceRecord()">다시 녹음</button>
+    </div>
+    <textarea class="gift-msg-input" id="vgMsgInput" placeholder="텍스트 메시지 (선택사항)" maxlength="100"></textarea>
+    <div class="gift-btn-row">
+      <button class="gift-btn-back" onclick="vgGoStep1()">이전</button>
+      <button class="gift-btn-next" id="vgNextBtn2" disabled onclick="vgGoStep3()">다음</button>
+    </div>
+  </div>
+  <!-- Step 3: Share -->
+  <div class="gift-step2" id="vgStep3">
+    <div class="gift-selected-info" id="vgFinalInfo"></div>
+    <div class="voice-uploading" id="vgUploading" style="display:none">음성 파일 업로드 중...</div>
+    <div class="voice-uploading" id="vgUploadStatus" style="display:none;color:#8B6914"></div>
+    <div class="gift-link-box" id="vgLinkBox" style="display:none">
+      <input type="text" readonly id="vgLink">
+      <button onclick="copyVoiceGiftLink()">복사</button>
+    </div>
+    <div class="gift-copied hidden" id="vgCopied">링크가 복사되었습니다!</div>
+    <div class="gift-btn-row" id="vgRetryRow" style="display:none">
+      <button class="gift-btn-next" onclick="retryUpload()">다시 업로드</button>
+    </div>
+    <div class="gift-guide" id="vgStep3Guide" style="display:none">
+      <p>복사 버튼을 선택하고 선물하고 싶은 사람의 카톡 창이나 문자 메시지 창으로 가서 붙여넣기를 합니다.</p>
+      <p>선물을 받은 상대방과 대화할 수 있는 채팅창으로 이동합니다.</p>
+    </div>
+    <div class="gift-btn-row">
+      <button class="gift-btn-back" onclick="vgBackToStep2()">이전</button>
+    </div>
+  </div>
+</div>
+
+<!-- Chat Panel (전체화면) -->
+<div class="chat-panel" id="chatPanel" style="display:none;">
+  <div class="chat-header">
+    <button class="chat-back-btn" onclick="closeChatPanel()">&#9664; 이전</button>
+    <span class="chat-header-title">CHAT</span>
+    <span class="chat-header-info" id="chatHeaderInfo"></span>
+  </div>
+  <div id="chatBody">
+    <div class="chat-nickname-box" id="chatNicknameBox">
+      <input type="text" id="chatNicknameInput" placeholder="닉네임 입력" maxlength="12" onkeydown="if(event.key==='Enter')joinChat()">
+      <button onclick="joinChat()">입장</button>
+    </div>
+    <div class="chat-messages hidden" id="chatMessages"></div>
+    <div class="chat-input-box hidden" id="chatInputBox">
+      <input type="text" id="chatMsgInput" placeholder="메시지 입력..." maxlength="200" onkeydown="if(event.key==='Enter')sendChatMsg()">
+      <button onclick="sendChatMsg()">전송</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.15"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  // === Supabase Config ===
+  var SUPABASE_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+  var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
+  var supabaseClient = null;
+
+  // === Chat State ===
+  var chatChannel = null;
+  var chatRoomId = null;
+  var chatNickname = '';
+  var chatActive = false;
+  var chatPeerCount = 0;
+  var chatAutoHidden = false;
+
+  // === Gift Song Data ===
+  var GIFT_SONGS = [
+    { id:'birthday-1', category:'생일축하', name:'생일 축하합니다', file:'gift-songs/birthday-1.mp3' },
+    { id:'birthday-2', category:'생일축하', name:'Happy Birthday To You', file:'gift-songs/birthday-2.mp3' },
+    { id:'wedding-1', category:'결혼축하', name:'결혼 축하합니다', file:'gift-songs/wedding-1.mp3' },
+    { id:'wedding-2', category:'결혼축하', name:'Wedding March', file:'gift-songs/wedding-2.mp3' },
+    { id:'cheer-1', category:'응원', name:'힘내세요', file:'gift-songs/cheer-1.mp3' },
+    { id:'cheer-2', category:'응원', name:'You Can Do It', file:'gift-songs/cheer-2.mp3' },
+    { id:'thanks-1', category:'감사', name:'감사합니다', file:'gift-songs/thanks-1.mp3' },
+    { id:'thanks-2', category:'감사', name:'Thank You', file:'gift-songs/thanks-2.mp3' },
+    { id:'love-1', category:'사랑', name:'사랑합니다', file:'gift-songs/love-1.mp3' },
+    { id:'love-2', category:'사랑', name:'Love Song', file:'gift-songs/love-2.mp3' }
+  ];
+  var GIFT_CATEGORIES = ['생일축하','결혼축하','응원','감사','사랑'];
+
+  // === Voice Gift State ===
+  var vgSelectedSong = null;
+  var voiceMediaRecorder = null;
+  var voiceChunks = [];
+  var voiceBlob = null;
+  var voiceRecording = false;
+  var voiceRecordTimer = null;
+  var voiceRecordSec = 0;
+  var voiceRoomId = null;
+  var voiceUploaded = false;
+  var voiceMimeType = 'audio/webm';
+  var voiceExtension = '.webm';
+
+  // === Audio ===
+  var audio = null;
+  var hlsInstance = null;
+
+  function generateRoomId(){
+    var chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    var id = '';
+    for(var i = 0; i < 8; i++) id += chars.charAt(Math.floor(Math.random() * chars.length));
+    return id;
+  }
+
+  // === Init ===
+  document.addEventListener('DOMContentLoaded', function(){
+    vgSelectedSong = null;
+    voiceBlob = null;
+    voiceUploaded = false;
+    voiceRecordSec = 0;
+    voiceRoomId = generateRoomId();
+    document.getElementById('vgNextBtn1').disabled = true;
+    document.getElementById('vgNextBtn2').disabled = true;
+    renderVgCategories();
+    renderVgSongs(GIFT_CATEGORIES[0]);
+    var uid = localStorage.getItem('radioUsername');
+    if(uid){ initSupabase(); if(supabaseClient) supabaseClient.from('feature_usage').insert({user_id:uid, feature:'voice_gift'}).then(function(){}); }
+    // 닉네임 자동 채우기 (발신자만)
+    if(!new URLSearchParams(location.search).get('room')){
+      var savedNick = localStorage.getItem('radioUsername') || '';
+      if(savedNick){ var ci = document.getElementById('chatNicknameInput'); if(ci && !ci.value) ci.value = savedNick; }
+    }
+  });
+
+  function renderVgCategories(){
+    var box = document.getElementById('vgCategories');
+    box.innerHTML = '';
+    GIFT_CATEGORIES.forEach(function(cat, i){
+      var btn = document.createElement('button');
+      btn.className = 'gift-cat-btn' + (i === 0 ? ' active' : '');
+      btn.textContent = cat;
+      btn.onclick = function(){
+        box.querySelectorAll('.gift-cat-btn').forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        renderVgSongs(cat);
+      };
+      box.appendChild(btn);
+    });
+  }
+
+  function renderVgSongs(category){
+    var list = document.getElementById('vgSongList');
+    list.innerHTML = '';
+    var songs = GIFT_SONGS.filter(function(s){ return s.category === category; });
+    songs.forEach(function(song){
+      var item = document.createElement('div');
+      item.className = 'gift-song-item' + (vgSelectedSong && vgSelectedSong.id === song.id ? ' selected' : '');
+      item.innerHTML = '<span class="gift-song-name">' + song.name + '</span>';
+      item.onclick = function(){
+        vgSelectedSong = song;
+        list.querySelectorAll('.gift-song-item').forEach(function(el){ el.classList.remove('selected'); });
+        item.classList.add('selected');
+        document.getElementById('vgNextBtn1').disabled = false;
+      };
+      list.appendChild(item);
+    });
+  }
+
+  function vgGoStep2(){
+    if(!vgSelectedSong) return;
+    document.getElementById('vgStep1').style.display = 'none';
+    document.getElementById('vgStep2').classList.add('active');
+    document.getElementById('vgSelectedInfo').textContent = vgSelectedSong.category + ' - ' + vgSelectedSong.name;
+  }
+
+  function vgGoStep1(){
+    if(voiceRecording) stopVoiceRecord();
+    document.getElementById('vgStep2').classList.remove('active');
+    document.getElementById('vgStep1').style.display = '';
+  }
+
+  function toggleVoiceRecord(){
+    if(voiceRecording){
+      stopVoiceRecord();
+    } else {
+      startVoiceRecord();
+    }
+  }
+
+  function startVoiceRecord(){
+    voiceChunks = [];
+    voiceBlob = null;
+    voiceUploaded = false;
+    document.getElementById('vgNextBtn2').disabled = true;
+    document.getElementById('vgPreview').style.display = 'none';
+
+    navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream){
+      // 크로스 브라우저 호환 포맷 선택 (mp4 > webm)
+      var mimeType = '';
+      if(MediaRecorder.isTypeSupported('audio/mp4')){
+        mimeType = 'audio/mp4';
+        voiceMimeType = 'audio/mp4';
+        voiceExtension = '.mp4';
+      } else if(MediaRecorder.isTypeSupported('audio/webm;codecs=opus')){
+        mimeType = 'audio/webm;codecs=opus';
+        voiceMimeType = 'audio/webm';
+        voiceExtension = '.webm';
+      } else if(MediaRecorder.isTypeSupported('audio/webm')){
+        mimeType = 'audio/webm';
+        voiceMimeType = 'audio/webm';
+        voiceExtension = '.webm';
+      }
+      var recOptions = mimeType ? { mimeType: mimeType } : {};
+      voiceMediaRecorder = new MediaRecorder(stream, recOptions);
+      voiceMediaRecorder.ondataavailable = function(e){
+        if(e.data.size > 0) voiceChunks.push(e.data);
+      };
+      voiceMediaRecorder.onstop = function(){
+        stream.getTracks().forEach(function(t){ t.stop(); });
+        voiceBlob = new Blob(voiceChunks, { type: voiceMimeType });
+        var url = URL.createObjectURL(voiceBlob);
+        document.getElementById('vgPreviewAudio').src = url;
+        document.getElementById('vgPreview').style.display = 'flex';
+        document.getElementById('vgRecordStatus').textContent = '녹음 완료!';
+        document.getElementById('vgNextBtn2').disabled = false;
+      };
+      voiceMediaRecorder.start();
+      voiceRecording = true;
+      voiceRecordSec = 0;
+      document.getElementById('vgRecordBtn').classList.add('recording');
+      document.getElementById('vgRecordBtn').textContent = '\u23F9';
+      document.getElementById('vgRecordStatus').textContent = '녹음 중...';
+      updateVoiceTimer();
+      voiceRecordTimer = setInterval(function(){
+        voiceRecordSec++;
+        updateVoiceTimer();
+        if(voiceRecordSec >= 30) stopVoiceRecord();
+      }, 1000);
+    }).catch(function(err){
+      document.getElementById('vgRecordStatus').textContent = '마이크 접근이 거부되었습니다.';
+      console.log('마이크 오류:', err);
+    });
+  }
+
+  function stopVoiceRecord(){
+    if(voiceMediaRecorder && voiceMediaRecorder.state === 'recording'){
+      voiceMediaRecorder.stop();
+    }
+    voiceRecording = false;
+    if(voiceRecordTimer){ clearInterval(voiceRecordTimer); voiceRecordTimer = null; }
+    document.getElementById('vgRecordBtn').classList.remove('recording');
+    document.getElementById('vgRecordBtn').textContent = '🎙';
+  }
+
+  function updateVoiceTimer(){
+    var m = Math.floor(voiceRecordSec / 60);
+    var s = voiceRecordSec % 60;
+    document.getElementById('vgRecordTime').textContent = m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  function resetVoiceRecord(){
+    voiceBlob = null;
+    voiceUploaded = false;
+    voiceRecordSec = 0;
+    document.getElementById('vgPreview').style.display = 'none';
+    document.getElementById('vgRecordTime').textContent = '0:00';
+    document.getElementById('vgRecordStatus').textContent = '버튼을 눌러 녹음하세요 (최대 30초)';
+    document.getElementById('vgNextBtn2').disabled = true;
+  }
+
+  function vgGoStep3(){
+    if(!voiceBlob) return;
+    document.getElementById('vgStep2').classList.remove('active');
+    document.getElementById('vgStep3').classList.add('active');
+    document.getElementById('vgFinalInfo').textContent = vgSelectedSong.category + ' - ' + vgSelectedSong.name + ' + 음성메시지';
+    doVoiceUpload();
+  }
+
+  function doVoiceUpload(){
+    document.getElementById('vgUploading').style.display = '';
+    document.getElementById('vgUploadStatus').style.display = 'none';
+    document.getElementById('vgLinkBox').style.display = 'none';
+    document.getElementById('vgRetryRow').style.display = 'none';
+    document.getElementById('vgStep3Guide').style.display = 'none';
+    document.getElementById('vgLink').value = '';
+    voiceUploaded = false;
+    uploadVoiceToSupabase(function(success){
+      document.getElementById('vgUploading').style.display = 'none';
+      var status = document.getElementById('vgUploadStatus');
+      status.style.display = '';
+      if(success){
+        status.style.color = '#8B6914';
+        status.textContent = '음성 파일 업로드 완료!';
+        updateVoiceGiftLink();
+        document.getElementById('vgLinkBox').style.display = 'flex';
+        document.getElementById('vgStep3Guide').style.display = '';
+      } else {
+        status.style.color = '#ff4444';
+        status.textContent = '음성 파일 업로드 실패. 다시 시도해 주세요.';
+        document.getElementById('vgRetryRow').style.display = 'flex';
+      }
+    });
+  }
+
+  function retryUpload(){
+    doVoiceUpload();
+  }
+
+  function vgBackToStep2(){
+    document.getElementById('vgStep3').classList.remove('active');
+    document.getElementById('vgStep2').classList.add('active');
+  }
+
+  function uploadVoiceToSupabase(callback){
+    initSupabase();
+    if(!supabaseClient || !voiceBlob){
+      if(callback) callback(false);
+      return;
+    }
+    var filePath = 'voice-messages/' + voiceRoomId + voiceExtension;
+    supabaseClient.storage.from('photo-albums').upload(filePath, voiceBlob, {
+      contentType: voiceMimeType,
+      upsert: true
+    }).then(function(result){
+      if(result.error){
+        console.log('음성 업로드 오류:', result.error);
+        if(callback) callback(false);
+      } else {
+        voiceUploaded = true;
+        if(callback) callback(true);
+      }
+    }).catch(function(err){
+      console.log('업로드 실패:', err);
+      if(callback) callback(false);
+    });
+  }
+
+  function updateVoiceGiftLink(){
+    var msg = document.getElementById('vgMsgInput').value.trim();
+    var base = location.pathname.replace(/[^\/]*$/, '') + 'lp-player.html';
+    var url = location.origin + base + '?gift=' + vgSelectedSong.id + '&room=' + voiceRoomId;
+    if(voiceUploaded) url += '&voice=' + voiceRoomId + '&vext=' + encodeURIComponent(voiceExtension);
+    if(msg) url += '&msg=' + encodeURIComponent(msg);
+    document.getElementById('vgLink').value = url;
+  }
+
+  function copyVoiceGiftLink(){
+    updateVoiceGiftLink();
+    var input = document.getElementById('vgLink');
+    input.select();
+    navigator.clipboard.writeText(input.value).then(function(){
+      document.getElementById('vgCopied').classList.remove('hidden');
+      setTimeout(function(){ document.getElementById('vgCopied').classList.add('hidden'); }, 2000);
+      if(!chatRoomId) chatRoomId = voiceRoomId;
+      openChatPanel();
+    }).catch(function(){
+      document.execCommand('copy');
+      document.getElementById('vgCopied').classList.remove('hidden');
+      setTimeout(function(){ document.getElementById('vgCopied').classList.add('hidden'); }, 2000);
+      if(!chatRoomId) chatRoomId = voiceRoomId;
+      openChatPanel();
+    });
+  }
+
+  function nativeShareVoiceGift(){
+    if(!navigator.share || !vgSelectedSong) return;
+    updateVoiceGiftLink();
+    navigator.share({
+      title: vgSelectedSong.name + ' - 노래+음성 선물',
+      text: vgSelectedSong.name + ' 노래와 음성 메시지를 선물합니다!',
+      url: document.getElementById('vgLink').value
+    }).catch(function(){});
+  }
+
+  function sendVoiceGift(){
+    updateVoiceGiftLink();
+    var url = document.getElementById('vgLink').value;
+    navigator.clipboard.writeText(url).then(function(){}).catch(function(){ document.execCommand('copy'); });
+    // 보내는 사람도 선물곡 재생
+    playGiftSong(vgSelectedSong);
+    // 채팅 패널 오픈
+    if(!chatRoomId) chatRoomId = voiceRoomId;
+    openChatPanel();
+  }
+
+  function playGiftSong(song){
+    var mp3Url = SUPABASE_URL + '/storage/v1/object/public/photo-albums/' + song.file;
+    loadStream(mp3Url);
+  }
+
+  function loadStream(url){
+    if(hlsInstance){hlsInstance.destroy();hlsInstance=null;}
+    if(!audio) audio = new Audio();
+    audio.pause(); audio.src='';
+    if(Hls.isSupported()&&url.includes('.m3u8')){
+      hlsInstance=new Hls(); hlsInstance.loadSource(url); hlsInstance.attachMedia(audio);
+      hlsInstance.on(Hls.Events.MANIFEST_PARSED,function(){
+        audio.play().catch(function(){});
+      });
+    } else {
+      audio.src=url;
+      audio.addEventListener('canplay',function cp(){audio.removeEventListener('canplay',cp);
+        audio.play().catch(function(){});
+      });
+      audio.load();
+    }
+  }
+
+  // === Supabase Init ===
+  function initSupabase(){
+    if(supabaseClient) return;
+    if(!window.supabase) return;
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  }
+
+  // === Chat Functions ===
+  function openChatPanel(){
+    initSupabase();
+    var panel = document.getElementById('chatPanel');
+    panel.style.display = 'flex';
+    if(chatNickname){
+      document.getElementById('chatNicknameBox').classList.add('hidden');
+      document.getElementById('chatMessages').classList.remove('hidden');
+      document.getElementById('chatInputBox').classList.remove('hidden');
+      if(!chatActive) connectChat();
+    }
+  }
+
+  function closeChatPanel(){
+    document.getElementById('chatPanel').style.display = 'none';
+  }
+
+  function joinChat(){
+    var input = document.getElementById('chatNicknameInput');
+    var name = input.value.trim();
+    if(!name){ input.focus(); return; }
+    chatNickname = name;
+    document.getElementById('chatNicknameBox').classList.add('hidden');
+    document.getElementById('chatMessages').classList.remove('hidden');
+    document.getElementById('chatInputBox').classList.remove('hidden');
+    document.getElementById('chatMsgInput').focus();
+    connectChat();
+  }
+
+  function connectChat(){
+    if(!supabaseClient || !chatRoomId || chatActive) return;
+    chatActive = true;
+    var channelName = 'listen-' + chatRoomId;
+    chatChannel = supabaseClient.channel(channelName, {
+      config: { broadcast: { self: false } }
+    });
+    chatChannel.on('broadcast', { event: 'message' }, function(payload){
+      addChatMessage(payload.payload.name, payload.payload.text);
+    });
+    chatChannel.on('broadcast', { event: 'join' }, function(payload){
+      chatPeerCount++;
+      addSystemMessage(payload.payload.name + '님이 입장했습니다.');
+    });
+    chatChannel.on('broadcast', { event: 'leave' }, function(payload){
+      chatPeerCount = Math.max(0, chatPeerCount - 1);
+      addSystemMessage(payload.payload.name + '님이 퇴장했습니다.');
+    });
+    chatChannel.subscribe(function(status){
+      if(status === 'SUBSCRIBED'){
+        chatChannel.send({
+          type: 'broadcast', event: 'join',
+          payload: { name: chatNickname }
+        });
+        addSystemMessage('채팅에 연결되었습니다.');
+      }
+    });
+  }
+
+  function disconnectChat(){
+    if(chatChannel && chatActive){
+      chatChannel.send({
+        type: 'broadcast', event: 'leave',
+        payload: { name: chatNickname }
+      });
+      supabaseClient.removeChannel(chatChannel);
+      chatChannel = null;
+      chatActive = false;
+    }
+  }
+
+  function sendChatMsg(){
+    var input = document.getElementById('chatMsgInput');
+    var text = input.value.trim();
+    if(!text || !chatChannel || !chatActive) return;
+    chatChannel.send({
+      type: 'broadcast', event: 'message',
+      payload: { name: chatNickname, text: text }
+    });
+    addChatMessage(chatNickname, text, true);
+    input.value = '';
+    input.focus();
+  }
+
+  function addChatMessage(name, text, isMe){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (isMe ? 'me' : 'other');
+    var nameSpan = document.createElement('div');
+    nameSpan.className = 'chat-msg-name';
+    nameSpan.textContent = name;
+    var bubble = document.createElement('div');
+    bubble.className = 'chat-msg-bubble';
+    bubble.textContent = text;
+    div.appendChild(nameSpan);
+    div.appendChild(bubble);
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function addSystemMessage(text){
+    var container = document.getElementById('chatMessages');
+    var div = document.createElement('div');
+    div.className = 'chat-msg-system';
+    div.textContent = text;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  window.addEventListener('beforeunload', function(){
+    disconnectChat();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TEAMS | 프로필</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="TEAMS | 프로필" />
+  <meta property="og:description" content="스타벅스 라디오카페 제작자 프로필" />
+  <meta property="og:image" content="https://og-image.jpg" />
+  <meta property="og:url" content="https://about.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      height: 100vh; overflow: hidden;
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      display: flex; align-items: stretch; justify-content: center;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body::before {
+      content: ''; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(0,112,74,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0,112,74,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(203,162,88,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .profile-card {
+      width: 100%; max-width: 480px;
+      height: 100vh;
+      background: linear-gradient(145deg, #00704A, #004d33);
+      border-radius: 0; padding: 3px;
+      position: relative; z-index: 1;
+    }
+
+    .profile-inner {
+      background: linear-gradient(160deg, #1E3932 0%, #163028 50%, #1a3530 100%);
+      border-radius: 0; padding: 10px 20px;
+      position: relative; height: 100%;
+      border: 1px solid rgba(0,112,74,0.6);
+      display: flex; flex-direction: column; justify-content: space-evenly;
+    }
+
+    /* 나사 장식 */
+    .screw {
+      position: absolute; width: 10px; height: 10px;
+      background: linear-gradient(145deg, #CBA258, #A07830);
+      border-radius: 50%;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 0 4px rgba(203,162,88,0.3);
+    }
+    .screw::after {
+      content: ''; position: absolute;
+      top: 50%; left: 50%; width: 60%; height: 1px;
+      background: #8B5E14; transform: translate(-50%, -50%) rotate(45deg);
+    }
+    .screw-tl { top: 8px; left: 8px; }
+    .screw-tr { top: 8px; right: 8px; }
+    .screw-bl { bottom: 8px; left: 8px; }
+    .screw-br { bottom: 8px; right: 8px; }
+
+    /* 스피커 */
+    .speaker {
+      background: linear-gradient(145deg, #163028, #0e2520);
+      border-radius: 8px; padding: 3px;
+      border: 1px solid rgba(0,112,74,0.5);
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.3);
+    }
+    .speaker-label {
+      text-align: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 11px; letter-spacing: 4px;
+      color: #00704A; font-weight: 700;
+    }
+
+    /* 프로필 헤더 */
+    .profile-header {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 60px; height: 60px; margin: 0 auto 6px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 16px rgba(0,112,74,0.4), 0 0 0 3px rgba(0,112,74,0.3);
+      overflow: hidden;
+    }
+    .avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      padding: 6px;
+    }
+
+    .name {
+      font-family: 'Outfit', sans-serif; font-size: 18px;
+      font-weight: 800; color: #D4E9E2;
+      letter-spacing: 2px; margin-bottom: 2px;
+    }
+
+    .title {
+      font-size: 10px; color: #7ab8a0;
+      letter-spacing: 0.5px;
+    }
+
+    /* LCD 스타일 소개 */
+    .lcd-box {
+      background: linear-gradient(180deg, #122820, #0e2218);
+      border-radius: 8px; padding: 8px 12px;
+      border: 1px solid rgba(0,112,74,0.4);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 12px rgba(0,112,74,0.08);
+    }
+
+    .lcd-title {
+      font-family: 'Orbitron', monospace; font-size: 9px;
+      color: #00704A; letter-spacing: 3px; font-weight: 700;
+      margin-bottom: 4px; text-align: center;
+    }
+
+    .lcd-text {
+      font-size: 12px; color: #b8d8cc;
+      line-height: 1.6; text-align: center;
+    }
+
+    /* 프로젝트 섹션 */
+    .section-title {
+      font-family: 'Outfit', sans-serif; font-size: 11px;
+      color: #00704A; letter-spacing: 2px;
+      margin-bottom: 4px; text-align: center;
+    }
+
+    .project-list {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+
+    .project-item {
+      background: rgba(0,112,74,0.1);
+      border: 1px solid rgba(0,112,74,0.3);
+      border-radius: 8px; padding: 6px 10px;
+    }
+
+    .project-name {
+      font-family: 'Outfit', sans-serif; font-size: 12px;
+      color: #D4E9E2; font-weight: 600; margin-bottom: 2px;
+    }
+
+    .project-desc {
+      font-size: 10px; color: #8fbfae;
+      line-height: 1.3;
+    }
+
+    /* 링크 버튼 */
+    .link-section {
+      display: flex; justify-content: center;
+    }
+
+    .link-btn {
+      padding: 8px 20px; border-radius: 20px;
+      background: linear-gradient(135deg, #00704A, #004d33);
+      color: #D4E9E2; text-decoration: none;
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      font-weight: 700; letter-spacing: 1px;
+      transition: all 0.2s;
+      display: flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(0,112,74,0.5);
+    }
+
+    .link-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(0,112,74,0.5);
+      background: linear-gradient(135deg, #00885c, #005c3d);
+    }
+
+    /* 푸터 */
+    .profile-footer {
+      padding-top: 4px;
+      border-top: 1px solid rgba(0,112,74,0.3);
+      text-align: center;
+    }
+
+    .copyright {
+      font-size: 10px; color: #4a8a72;
+    }
+  </style>
+</head>
+<body>
+  <div class="profile-card">
+    <div class="profile-inner">
+      <div class="screw screw-tl"></div>
+      <div class="screw screw-tr"></div>
+      <div class="screw screw-bl"></div>
+      <div class="screw screw-br"></div>
+
+      <div class="speaker">
+        <div class="speaker-label">STARBUCKS RADIOKAFE</div>
+      </div>
+
+      <div class="profile-header">
+        <div class="avatar"><img src="starbucks-logo.png" alt="Starbucks RadioKafe"></div>
+        <div class="name">Starbucks RadioKafe Team</div>
+      </div>
+
+      <div class="lcd-box">
+        <div class="lcd-title">팀 소개</div>
+        <div class="lcd-text">
+          안녕하세요, 스타벅스 라디오카페 제작팀입니다.<br><br>
+          깜깜한 밤, 이불 속에 숨어<br>
+          작은 라디오에서 흘러나오던 노래 한 곡.<br>
+          그 선율 하나에 세상 모든 걱정이 사라지던<br>
+          그 시절을 기억하시나요?<br><br>
+          다이얼을 돌릴 때마다 들리던 지직거림,<br>
+          좋아하는 DJ의 목소리를 기다리던 설렘,<br>
+          신청곡이 나올까 두근거리던 그 마음&mdash;<br>
+          저희 팀은 그 따뜻한 순간들을<br>
+          다시 꺼내 드리고 싶어 이 공간을 만들었습니다.<br><br>
+          7080의 그 밤, 라디오와 함께한 당신의 추억이<br>
+          이곳에서 다시 한번 빛나기를 바랍니다.
+        </div>
+      </div>
+
+      <div style="text-align:center; margin:20px 0 10px;">
+        <img src="radio-profile.png" alt="라디오" style="width:80px; height:80px; opacity:0.9;">
+      </div>
+
+      <div>
+        <div class="section-title">SERVICES</div>
+        <div class="project-list">
+          <div class="project-item">
+            <div class="project-name"><span style="color:#87CEEB">스타벅스</span> <span style="color:#87CEEB">라디오카페</span></div>
+            <div class="project-desc">• 나만의 추억 사진과 함께 대한민국 실시간 라디오를 즐기는 웹 앱.<br>• 지인을 초대하여 함께 라디오를 들으면서 채팅을 하고,<br>• 노래 선물과 음성 메세지 선물을 하면서 즐거운 채팅도 하세요.</div>
+            <div class="project-desc" style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.1);">
+              <strong style="color:#87CEEB;">소확행 아이템 9가지</strong><br>
+              ① 같이듣기 초대 · ② 노래 선물하기 · ③ 노래+음성 선물하기<br>
+              ④ 라디오 엽서 · ⑤ 타임캡슐 · ⑥ DJ 사연<br>
+              ⑦ 음악 궁합 · ⑧ 포토앨범 · ⑨ 일기쓰기
+            </div>
+            <div class="project-desc" style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.1);">
+              <strong style="color:#87CEEB;">오늘의 운세 & 타로</strong><br>
+              • 생년월일 기반 매일 새로운 운세를 확인하세요.<br>
+              • 타로 카드를 뽑아 카드가 전하는 메시지로 하루를 시작하세요.
+            </div>
+            <div class="project-desc" style="margin-top:8px; padding-top:8px; border-top:1px solid rgba(255,255,255,0.1);">
+              <strong style="color:#87CEEB;">기념일 대시보드</strong><br>
+              • 소중한 기념일을 등록하고 D-day 카운트다운으로 관리하세요.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="link-section">
+        <a href="javascript:history.back()" class="link-btn">← 이전</a>
+      </div>
+
+      <div class="profile-footer">
+        <div class="copyright">© 2026 Starbucks RadioKafe Team. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
