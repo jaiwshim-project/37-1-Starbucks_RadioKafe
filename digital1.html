@@ -2230,7 +2230,7 @@
     loadAnniversaries();
 
     // 기념일 자동 로그인: sessionStorage에서 사용자명 가져오기
-    var storedUser = sessionStorage.getItem('radioUsername');
+    var storedUser = localStorage.getItem('radioUsername');
     if (storedUser && !annivLoggedUser) {
       annivLoggedUser = storedUser;
       loadAnniversariesFromCloud(storedUser).then(function(data){
@@ -2454,7 +2454,7 @@
   }
 
   async function renderBirthdayInfo(){
-    var loggedUser = annivLoggedUser || sessionStorage.getItem('radioUsername');
+    var loggedUser = annivLoggedUser || localStorage.getItem('radioUsername');
     if(!loggedUser) return;
     var users = await loadAnnivUsers();
     var ud = users[loggedUser];
@@ -2905,7 +2905,7 @@
   }
 
   function openFortuneModal(){
-    var loggedUser = annivLoggedUser || sessionStorage.getItem('radioUsername');
+    var loggedUser = annivLoggedUser || localStorage.getItem('radioUsername');
     if(!loggedUser){
       document.getElementById('fortuneContent').innerHTML=
         '<div class="fortune-login-msg">운세를 확인하려면<br>로그인이 필요합니다.</div>';
@@ -2916,7 +2916,7 @@
       var ud=users[loggedUser];
       if(!ud||!ud.birthYear){
         document.getElementById('fortuneContent').innerHTML=
-          '<div class="fortune-login-msg">생년월일이 등록되지 않은 계정입니다.<br><br>index.html에서 재등록하거나<br>관리자에게 문의해주세요.</div>';
+          '<div class="fortune-login-msg">생년월일이 등록되지 않은 계정입니다.<br><br>user.html에서 재등록하거나<br>관리자에게 문의해주세요.</div>';
         document.getElementById('fortuneOverlay').classList.add('visible');
         return;
       }
@@ -3068,7 +3068,7 @@
   }
 
   function openTarotModal(){
-    var loggedUser=annivLoggedUser||sessionStorage.getItem('radioUsername');
+    var loggedUser=annivLoggedUser||localStorage.getItem('radioUsername');
     if(!loggedUser){
       document.getElementById('tarotContent').innerHTML=
         '<div class="tarot-login-msg">타로를 보려면<br>로그인이 필요합니다.</div>';
@@ -3458,7 +3458,7 @@
   }
 
   function reopenPhotoSelect(){
-    // 독립 파일에서는 index.html로 이동
+    // 독립 파일에서는 user.html로 이동
     location.href='index.html';
   }
 
@@ -3562,7 +3562,17 @@
   }
 
 
-  document.addEventListener('DOMContentLoaded',init);
+  document.addEventListener('DOMContentLoaded', function() {
+    // Auth guard: 로그인/사진 없으면 이전 단계로 이동
+    var _user = localStorage.getItem('radioUsername');
+    var _photos = null;
+    try { _photos = JSON.parse(localStorage.getItem('radioUserPhotos')); } catch(e) {}
+    if (!_user) { window.location.href = 'index.html'; return; }
+    if (!_photos || !Array.isArray(_photos) || _photos.filter(function(p){return p!==null;}).length < 6) {
+      window.location.href = 'photo.html'; return;
+    }
+    init();
+  });
 </script>
 </body>
 </html>

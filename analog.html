@@ -1653,7 +1653,7 @@
     <div class="radio-top-row2">
       <button class="photo-upload-btn has-photos" id="analogPhotoBtn" onclick="location.href='index.html'" title="사진 변경">+</button>
       <span class="analog-photos" id="analogBrandPhotos"></span>
-      <button class="digital-to-analog-btn" onclick="if(currentStation)localStorage.setItem('radio-switch-station',currentStation.id);document.body.style.visibility='hidden';location.href='digital.html'">DIGITAL &#9654;</button>
+      <button class="digital-to-analog-btn" onclick="if(currentStation)localStorage.setItem('radio-switch-station',currentStation.id);document.body.style.visibility='hidden';location.href='digital1.html'">DIGITAL &#9654;</button>
       <button class="power-btn" id="analogPowerBtn" onclick="toggleAnalogPower()" title="전원">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>
       </button>
@@ -3211,6 +3211,15 @@
 
   // === Init on Load ===
   document.addEventListener('DOMContentLoaded', function(){
+    // Auth guard: 로그인/사진 없으면 이전 단계로 이동
+    var _user = localStorage.getItem('radioUsername');
+    var _photos = null;
+    try { _photos = JSON.parse(localStorage.getItem('radioUserPhotos')); } catch(e) {}
+    if (!_user) { window.location.href = 'index.html'; return; }
+    if (!_photos || !Array.isArray(_photos) || _photos.filter(function(p){return p!==null;}).length < 6) {
+      window.location.href = 'photo.html'; return;
+    }
+
     // Restore saved theme or default to wood
     var savedTheme = 'peachtea';
     try {
