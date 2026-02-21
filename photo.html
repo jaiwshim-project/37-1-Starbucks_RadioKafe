@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ko" style="background:#0a1f17">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>사진 선택 | 스타벅스 라디오카페</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="스타벅스 라디오카페 - 사진 선택" />
+  <meta property="og:description" content="나만의 추억 사진을 선택하세요." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;800&display=swap"></noscript>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 16px;
+      overflow-y: auto;
+    }
+
+    /* Background ambient glow */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        radial-gradient(ellipse at 20% 30%, rgba(0,112,74,0.18) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(0,112,74,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(0,112,74,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      animation: neonBgPulse 6s ease-in-out infinite;
+      z-index: 0;
+    }
+
+    @keyframes neonBgPulse {
+      0%, 100% { opacity: 0.8; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes landingPulse {
+      0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(203,162,88,0.8), 0 0 8px rgba(203,162,88,0.5); }
+      50% { opacity: 0.7; text-shadow: 0 0 10px rgba(203,162,88,0.4), 0 0 4px rgba(203,162,88,0.2); }
+    }
+
+    @keyframes landingFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    @keyframes landingShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .photo-radio-body {
+      width: 100%; max-width: 420px;
+      background: linear-gradient(145deg, #00704A, #004d33);
+      border-radius: 28px;
+      padding: 3px;
+      margin: auto 0;
+      flex-shrink: 0;
+      box-shadow:
+        0 40px 80px rgba(0,0,0,0.6),
+        0 0 40px rgba(0,112,74,0.2),
+        0 0 80px rgba(0,112,74,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      border: 2px solid rgba(0,112,74,0.6);
+      position: relative;
+      z-index: 1;
+    }
+    .photo-radio-body::before {
+      content: '';
+      position: absolute; top: -2px; left: 15%; right: 15%; height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(0,196,122,0.9), transparent);
+      z-index: 3;
+      box-shadow: 0 0 12px rgba(0,196,122,0.6);
+    }
+
+    .photo-radio-inner {
+      background: linear-gradient(160deg, #1E3932 0%, #163028 50%, #0e2520 100%);
+      border-radius: 25px;
+      padding: 24px 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .photo-radio-inner::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        repeating-linear-gradient(90deg, rgba(0,112,74,0.04) 0px, transparent 1px, transparent 3px),
+        repeating-linear-gradient(0deg, rgba(0,112,74,0.03) 0px, transparent 1px, transparent 3px);
+      pointer-events: none; border-radius: inherit;
+    }
+    .photo-radio-inner::after {
+      content: '';
+      position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px;
+      border: 1px solid rgba(0,112,74,0.2);
+      border-radius: 16px; pointer-events: none;
+      box-shadow: inset 0 0 20px rgba(0,112,74,0.04);
+    }
+
+    /* Speaker grille top */
+    .photo-speaker {
+      background: linear-gradient(180deg, #0e2520, #081a14);
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-bottom: 16px;
+      border: 2px solid rgba(0,112,74,0.5);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,112,74,0.1);
+    }
+    .photo-speaker::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle, rgba(0,112,74,0.12) 0.8px, transparent 0.8px),
+        radial-gradient(circle, rgba(0,112,74,0.06) 0.8px, transparent 0.8px);
+      background-size: 5px 5px, 5px 5px;
+      background-position: 0 0, 2.5px 2.5px;
+    }
+    .photo-speaker-label {
+      text-align: center;
+      font-family: 'Orbitron', monospace;
+      font-size: 9px; letter-spacing: 5px;
+      font-weight: 900;
+      color: #00704A;
+      text-shadow: 0 0 10px rgba(0,196,122,0.5), 0 0 4px rgba(0,196,122,0.3);
+      position: relative; z-index: 1;
+    }
+
+    /* Brand */
+    .photo-brand {
+      text-align: center; margin-bottom: 16px; position: relative; z-index: 1;
+    }
+    .photo-brand-text {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px; font-weight: 800;
+      letter-spacing: 3px;
+      text-shadow: 0 -1px 0 rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 2px 4px rgba(0,0,0,0.4);
+    }
+    .photo-brand-clara {
+      color: #00c47a;
+      text-shadow: 0 0 12px rgba(0,196,122,0.5);
+    }
+    .photo-brand-cafe {
+      color: #CBA258;
+      text-shadow: 0 0 10px rgba(203,162,88,0.4);
+    }
+    .photo-brand-sub {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 12px; font-weight: 500;
+      color: rgba(212,233,226,0.75);
+      margin-top: 6px;
+      letter-spacing: 1.5px;
+    }
+    .photo-brand::after {
+      content: ''; display: block;
+      width: 80px; height: 1px; margin: 12px auto 0;
+      background: linear-gradient(90deg, transparent, rgba(0,196,122,0.6), transparent);
+    }
+
+    /* LCD area */
+    .photo-lcd {
+      background: linear-gradient(180deg, #061510, #041008);
+      border-radius: 14px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+      border: 2px solid rgba(0,112,74,0.45);
+      text-align: center;
+      position: relative; z-index: 1;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.8), 0 0 8px rgba(0,112,74,0.1);
+    }
+    .photo-lcd::before {
+      content: '';
+      position: absolute; top: -1px; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,196,122,0.6), transparent);
+    }
+    .photo-lcd-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 14px; color: #D4E9E2; letter-spacing: 3px;
+      text-shadow: 0 0 16px rgba(0,196,122,0.5), 0 0 6px rgba(0,196,122,0.3);
+      margin-bottom: 8px; font-weight: 700;
+    }
+    .photo-lcd-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px; color: rgba(0,196,122,0.8); line-height: 1.7; font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    .photo-lcd-count {
+      font-family: 'Orbitron', monospace;
+      font-size: 24px; font-weight: 900;
+      color: #CBA258; margin-top: 10px;
+      text-shadow: 0 0 20px rgba(203,162,88,0.8), 0 0 8px rgba(203,162,88,0.5);
+      animation: landingPulse 2s ease-in-out infinite;
+    }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      width: 100%;
+      margin-bottom: 16px;
+      position: relative; z-index: 1;
+    }
+    .photo-slot {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      border: 2px dashed rgba(0,112,74,0.5);
+      background: rgba(0,112,74,0.05);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .photo-slot:hover {
+      border-color: rgba(0,196,122,0.8);
+      background: rgba(0,112,74,0.1);
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.3), 0 0 18px rgba(0,112,74,0.25);
+    }
+    .photo-slot.filled {
+      border: 2px solid rgba(0,196,122,0.6);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3), 0 0 14px rgba(0,112,74,0.2);
+    }
+    .photo-slot.filled img {
+      width: 100%; height: 100%; object-fit: cover;
+      border-radius: 10px;
+    }
+    .photo-slot .slot-label {
+      position: absolute; bottom: 4px; left: 0; right: 0;
+      text-align: center; font-size: 9px;
+      color: rgba(0,196,122,0.7);
+      font-family: 'Orbitron', monospace;
+      font-weight: 700; letter-spacing: 0.5px;
+    }
+    .photo-slot.filled .slot-label {
+      background: linear-gradient(transparent, rgba(0,0,0,0.7));
+      color: rgba(255,255,255,0.85);
+      border-radius: 0 0 10px 10px;
+      padding: 8px 0 4px; bottom: 0;
+    }
+    .photo-slot .slot-icon {
+      font-size: 26px; color: rgba(0,112,74,0.5); transition: all 0.3s;
+    }
+    .photo-slot:hover .slot-icon { color: rgba(0,196,122,0.9); }
+    .photo-slot .remove-photo {
+      position: absolute; top: 4px; right: 4px;
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(180,60,60,0.85); color: #fff;
+      border: 1px solid rgba(255,255,255,0.15);
+      font-size: 13px; font-weight: 700; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      backdrop-filter: blur(4px);
+    }
+
+    /* Control area */
+    .photo-controls {
+      display: flex; flex-direction: column; align-items: center; gap: 7px;
+      position: relative; z-index: 1;
+    }
+    .photo-batch-btn {
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      color: rgba(0,196,122,0.9); border: 2px solid rgba(0,112,74,0.5);
+      padding: 8px 20px; border-radius: 24px;
+      font-size: 13px; font-weight: 700; font-family: 'Outfit', sans-serif;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+    .photo-batch-btn:hover {
+      background: linear-gradient(135deg, rgba(0,112,74,0.28), rgba(0,77,51,0.15));
+      border-color: rgba(0,196,122,0.7);
+      color: #D4E9E2;
+      box-shadow: 0 4px 24px rgba(0,112,74,0.3);
+    }
+    .photo-batch-btn:active { transform: scale(0.97); }
+    .photo-batch-row {
+      display: flex; gap: 10px; align-items: center; justify-content: center;
+    }
+    .photo-select-or {
+      font-size: 10px; color: rgba(0,112,74,0.5);
+      font-family: 'Orbitron', monospace; letter-spacing: 3px; font-weight: 600;
+    }
+    .photo-save-load-row {
+      display: flex; gap: 8px; margin-bottom: 0;
+    }
+    .photo-save-btn, .photo-load-btn {
+      background: linear-gradient(135deg, rgba(0,112,74,0.18), rgba(0,77,51,0.1));
+      color: #7ab8a0; border: 2px solid rgba(0,112,74,0.5);
+      padding: 8px 18px; border-radius: 20px;
+      font-size: 13px; font-weight: 700; font-family: 'Outfit', sans-serif;
+      cursor: pointer; letter-spacing: 0.5px;
+      box-shadow: 0 4px 16px rgba(0,112,74,0.2);
+      transition: all 0.3s ease;
+    }
+    .photo-save-btn {
+      opacity: 0.3; pointer-events: none;
+    }
+    .photo-save-btn.ready {
+      opacity: 1; pointer-events: auto;
+    }
+    .photo-load-btn {
+      background: linear-gradient(135deg, rgba(0,160,90,0.18), rgba(0,112,74,0.1));
+      color: #D4E9E2; border-color: rgba(0,160,90,0.5);
+      box-shadow: 0 4px 16px rgba(0,112,74,0.2);
+    }
+    .photo-save-btn.ready:hover, .photo-load-btn:hover {
+      transform: translateY(-2px);
+    }
+    .photo-save-btn.ready:hover {
+      background: linear-gradient(135deg, rgba(0,112,74,0.3), rgba(0,77,51,0.18));
+      box-shadow: 0 6px 24px rgba(0,112,74,0.35);
+      color: #D4E9E2;
+    }
+    .photo-load-btn:hover {
+      background: linear-gradient(135deg, rgba(0,160,90,0.3), rgba(0,112,74,0.18));
+      box-shadow: 0 6px 24px rgba(0,112,74,0.35);
+      color: #fff;
+    }
+    .photo-save-btn.ready:active, .photo-load-btn:active { transform: scale(0.97); }
+    .photo-reset-btn {
+      background: linear-gradient(135deg, rgba(0,112,74,0.08), rgba(0,77,51,0.04));
+      color: rgba(0,196,122,0.7); border: 2px solid rgba(0,112,74,0.3);
+      padding: 8px 16px; border-radius: 16px;
+      font-size: 13px; font-weight: 600; font-family: 'Outfit', sans-serif;
+      cursor: pointer; letter-spacing: 0.5px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.3);
+      transition: all 0.3s ease;
+    }
+    .photo-reset-btn:hover {
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      transform: translateY(-2px);
+      box-shadow: 0 5px 18px rgba(0,112,74,0.2);
+      color: #D4E9E2;
+    }
+    .photo-reset-btn:active { transform: scale(0.97); }
+
+    /* Album list popup */
+    .album-list-popup {
+      display: none; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(145deg, #163028, #0e2218);
+      border: 2px solid rgba(0,112,74,0.45);
+      border-radius: 16px; padding: 0; min-width: 280px; max-width: 320px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 20px rgba(0,112,74,0.15);
+      z-index: 1000;
+    }
+    .album-list-popup.visible { display: block; }
+    .album-list-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 12px 16px; border-bottom: 1px solid rgba(0,112,74,0.25);
+      color: #D4E9E2; font-family: 'Outfit', sans-serif; font-weight: 600;
+    }
+    .album-list-close {
+      background: none; border: none; color: rgba(0,196,122,0.6);
+      font-size: 20px; cursor: pointer; padding: 0 4px;
+    }
+    .album-list-close:hover { color: #D4E9E2; }
+    .album-list-content {
+      max-height: 250px; overflow-y: auto; padding: 8px;
+    }
+    .album-list-content::-webkit-scrollbar { width: 6px; }
+    .album-list-content::-webkit-scrollbar-thumb {
+      background: rgba(0,112,74,0.4); border-radius: 3px;
+    }
+    .album-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 12px; margin: 4px 0; border-radius: 10px;
+      background: rgba(0,0,0,0.2); cursor: pointer;
+      transition: all 0.2s; border: 1px solid transparent;
+    }
+    .album-item:hover {
+      background: rgba(0,112,74,0.12);
+      border-color: rgba(0,112,74,0.35);
+    }
+    .album-item-icon { font-size: 20px; }
+    .album-item-name {
+      flex: 1; color: rgba(255,255,255,0.85);
+      font-family: 'Inter', sans-serif; font-size: 13px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .album-item-count {
+      color: rgba(0,196,122,0.7); font-size: 11px;
+      font-family: 'Inter', sans-serif;
+    }
+    .album-item-delete {
+      background: none; border: 1px solid rgba(255,100,100,0.3);
+      color: rgba(255,100,100,0.6); font-size: 14px;
+      width: 26px; height: 26px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center;
+      justify-content: center; flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .album-item-delete:hover {
+      background: rgba(255,100,100,0.15);
+      border-color: rgba(255,100,100,0.6);
+      color: #ff6666;
+    }
+    .album-list-empty {
+      text-align: center; padding: 30px 20px;
+      color: rgba(0,196,122,0.5); font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Mode select row */
+    .mode-select-row {
+      display: flex; gap: 12px; justify-content: center;
+      opacity: 0.2; pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .mode-select-row.ready {
+      opacity: 1; pointer-events: auto;
+    }
+    .mode-btn {
+      background: linear-gradient(135deg, #00704A, #004d33);
+      color: #D4E9E2; border: 2px solid rgba(0,112,74,0.6);
+      padding: 9px 24px; border-radius: 28px;
+      font-size: 13px; font-weight: 900; font-family: 'Outfit', sans-serif;
+      cursor: pointer; letter-spacing: 2px;
+      box-shadow: 0 4px 16px rgba(0,112,74,0.4);
+      transition: all 0.3s ease;
+      flex: 1; max-width: 180px;
+    }
+    .mode-select-row.ready .mode-btn {
+      animation: landingFloat 3s ease-in-out infinite;
+    }
+    .mode-btn:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #00885c, #005c3d);
+      box-shadow: 0 8px 32px rgba(0,112,74,0.5), 0 0 24px rgba(0,196,122,0.2);
+    }
+    .mode-btn:active { transform: scale(0.97); animation: none; }
+    .analog-btn {
+      background: linear-gradient(135deg, #005c3d, #003d28);
+      border-color: rgba(0,112,74,0.5);
+    }
+    .analog-btn:hover {
+      background: linear-gradient(135deg, #006b48, #004d33);
+    }
+
+    /* Screws */
+    .photo-screw {
+      position: absolute; width: 8px; height: 8px;
+      background: linear-gradient(145deg, #CBA258, #A07830);
+      border-radius: 50%; border: 1px solid rgba(203,162,88,0.3);
+      z-index: 2;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 0 4px rgba(203,162,88,0.3);
+    }
+    .photo-screw::after {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%) rotate(35deg);
+      width: 4px; height: 0.5px; background: rgba(139,94,20,0.8);
+    }
+    .photo-screw-tl { top: 10px; left: 10px; }
+    .photo-screw-tr { top: 10px; right: 10px; }
+    .photo-screw-bl { bottom: 10px; left: 10px; }
+    .photo-screw-br { bottom: 10px; right: 10px; }
+
+    /* Song open button */
+    .song-open-btn {
+      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      color: rgba(0,196,122,0.9); border: 2px solid rgba(0,112,74,0.45);
+      padding: 8px 20px; border-radius: 22px;
+      font-size: 13px; font-weight: 700; font-family: 'Outfit', sans-serif;
+      cursor: pointer; letter-spacing: 0.5px;
+      transition: all 0.3s ease; width: 100%;
+      backdrop-filter: blur(4px); margin-top: 0;
+    }
+    .song-open-btn:hover {
+      background: linear-gradient(135deg, rgba(0,112,74,0.28), rgba(0,77,51,0.15));
+      border-color: rgba(0,196,122,0.7); color: #D4E9E2;
+      box-shadow: 0 4px 24px rgba(0,112,74,0.3);
+    }
+    .song-open-btn:active { transform: scale(0.97); }
+
+    /* Landing page button */
+    .landing-btn {
+      display: inline-block;
+      margin: 14px auto 10px;
+      padding: 9px 22px;
+      font-family: 'Orbitron', monospace;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #1a1a2e;
+      background: linear-gradient(135deg, #d4a862, #b8944e);
+      border-radius: 20px;
+      text-decoration: none;
+      box-shadow: 0 0 16px rgba(212,168,98,0.35);
+      transition: transform 0.2s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .landing-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 24px rgba(212,168,98,0.55);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="photo-radio-body">
+    <div class="photo-radio-inner">
+      <div class="photo-screw photo-screw-tl"></div>
+      <div class="photo-screw photo-screw-tr"></div>
+      <div class="photo-screw photo-screw-bl"></div>
+      <div class="photo-screw photo-screw-br"></div>
+
+      <div class="photo-speaker">
+        <div class="photo-speaker-label">STEREO RADIO</div>
+      </div>
+
+      <div class="photo-brand">
+        <span class="photo-brand-text"><span class="photo-brand-clara">스타벅스</span> <span class="photo-brand-cafe">라디오카페</span></span>
+        <span class="photo-brand-sub">나만의 추억 사진을 보면서 라디오 방송을 들으세요!</span>
+      </div>
+
+      <div class="photo-lcd">
+        <div class="photo-lcd-title">PHOTO SELECT</div>
+        <div class="photo-lcd-sub">갤러리에서 사진을 선택하세요<br>상단 4장 + 하단 2장</div>
+        <div class="photo-lcd-count" id="photoCount">0 / 6</div>
+      </div>
+
+      <div class="photo-grid" id="photoGrid">
+        <div class="photo-slot" data-idx="0" onclick="pickSlotPhoto(0)">
+          <span class="slot-icon">+</span>
+          <div class="slot-label">상단 1</div>
+        </div>
+        <div class="photo-slot" data-idx="1" onclick="pickSlotPhoto(1)">
+          <span class="slot-icon">+</span>
+          <div class="slot-label">상단 2</div>
+        </div>
+        <div class="photo-slot" data-idx="2" onclick="pickSlotPhoto(2)">
+          <span class="slot-icon">+</span>
+          <div class="slot-label">상단 3</div>
+        </div>
+        <div class="photo-slot" data-idx="3" onclick="pickSlotPhoto(3)">
+          <span class="slot-icon">+</span>
+          <div class="slot-label">상단 4</div>
+        </div>
+        <div class="photo-slot" data-idx="4" onclick="pickSlotPhoto(4)">
+          <span class="slot-icon">+</span>
+          <div class="slot-label">하단 좌</div>
+        </div>
+        <div class="photo-slot" data-idx="5" onclick="pickSlotPhoto(5)">
+          <span class="slot-icon">+</span>
+          <div class="slot-label">하단 우</div>
+        </div>
+      </div>
+
+      <div class="photo-controls">
+        <div class="photo-batch-row">
+          <button class="photo-batch-btn" onclick="pickAllPhotos()">갤러리에서 6장 한번에 선택</button>
+          <button class="photo-reset-btn" onclick="resetPhotos()">사진선택 초기화</button>
+        </div>
+        <input type="file" id="batchFileInput" accept="image/*" multiple style="display:none">
+        <div class="photo-select-or">- OR -</div>
+        <div class="photo-save-load-row">
+          <button class="photo-save-btn" id="photoSaveBtn" onclick="savePhotosToAlbum()">새 사진첩 저장</button>
+          <button class="photo-load-btn" id="photoLoadBtn" onclick="showAlbumList()">사진첩 불러오기</button>
+        </div>
+        <div class="album-list-popup" id="albumListPopup">
+          <div class="album-list-header">
+            <span>📚 사진첩 목록</span>
+            <button class="album-list-close" onclick="hideAlbumList()">&times;</button>
+          </div>
+          <div class="album-list-content" id="albumListContent"></div>
+        </div>
+        <a class="song-open-btn" href="song.html" style="display:block;text-align:center;text-decoration:none;">축하 노래 MP3 다운로드</a>
+        <div class="mode-select-row" id="modeSelectRow">
+          <button class="mode-btn analog-btn" onclick="goAnalog()">ANALOG</button>
+          <button class="mode-btn digital-btn" onclick="goDigital()">DIGITAL</button>
+        </div>
+      </div>
+
+      <input type="file" id="slotFileInput" accept="image/*" style="display:none">
+
+      <div style="margin-top:16px; padding-top:12px; border-top:1px solid rgba(0,112,74,0.3); text-align:center; font-size:10px; color:#4a8a72;">
+        &copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:#00704A;font-weight:700;text-decoration:none;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html" style="color:#4a8a72;text-decoration:none;">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html" style="color:#4a8a72;text-decoration:none;">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html" style="color:#4a8a72;text-decoration:none;"><strong>팀스</strong></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // === Supabase Config ===
+    var SUPABASE_URL = 'https://haxcktfnuudlqciyljtp.supabase.co';
+    var SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhheGNrdGZudXVkbHFjaXlsanRwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkzMDUwNDAsImV4cCI6MjA4NDg4MTA0MH0.suN7BeaHx3MjaNlMDQa0940P-rMl2XPyk4ksoQEU3YM';
+    var supabase;
+    var BUCKET_NAME = 'photo-albums';
+
+    // === State ===
+    var slotPhotos = [null, null, null, null, null, null];
+    var activeSlotIdx = -1;
+    var currentUsername = '';
+
+    // === Path Encoding Helpers ===
+    function toSafePath(str) {
+      return str.split('').map(function(c) {
+        var code = c.charCodeAt(0);
+        if ((code >= 48 && code <= 57) || (code >= 65 && code <= 90) ||
+            (code >= 97 && code <= 122) || c === '-' || c === '_') {
+          return c;
+        }
+        return '_' + code.toString(16) + '_';
+      }).join('');
+    }
+
+    function fromSafePath(str) {
+      return str.replace(/_([0-9a-f]+)_/gi, function(m, hex) {
+        return String.fromCharCode(parseInt(hex, 16));
+      });
+    }
+
+    // === base64 to Blob ===
+    function dataURLtoBlob(dataURL) {
+      var arr = dataURL.split(',');
+      var mime = arr[0].match(/:(.*?);/)[1];
+      var bstr = atob(arr[1]);
+      var n = bstr.length;
+      var u8arr = new Uint8Array(n);
+      while (n--) u8arr[n] = bstr.charCodeAt(n);
+      return new Blob([u8arr], { type: mime });
+    }
+
+    // === Photo Slot Functions ===
+    function pickSlotPhoto(idx) {
+      activeSlotIdx = idx;
+      var inp = document.getElementById('slotFileInput');
+      inp.value = '';
+      inp.onchange = function() {
+        if (!this.files || !this.files[0]) return;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          slotPhotos[activeSlotIdx] = e.target.result;
+          updateSlotUI(activeSlotIdx);
+          updatePhotoCount();
+        };
+        reader.readAsDataURL(this.files[0]);
+      };
+      inp.click();
+    }
+
+    function removeSlotPhoto(idx, evt) {
+      evt.stopPropagation();
+      slotPhotos[idx] = null;
+      updateSlotUI(idx);
+      updatePhotoCount();
+    }
+
+    function updateSlotUI(idx) {
+      var slot = document.querySelectorAll('.photo-slot')[idx];
+      if (!slot) return;
+      var labels = ['상단 1', '상단 2', '상단 3', '상단 4', '하단 좌', '하단 우'];
+      if (slotPhotos[idx]) {
+        slot.classList.add('filled');
+        slot.innerHTML = '<img src="' + slotPhotos[idx] + '" alt="사진' + (idx + 1) + '">' +
+          '<button class="remove-photo" onclick="removeSlotPhoto(' + idx + ',event)">&times;</button>' +
+          '<div class="slot-label">' + labels[idx] + '</div>';
+      } else {
+        slot.classList.remove('filled');
+        slot.innerHTML = '<span class="slot-icon">+</span><div class="slot-label">' + labels[idx] + '</div>';
+      }
+    }
+
+    function pickAllPhotos() {
+      var inp = document.getElementById('batchFileInput');
+      inp.value = '';
+      inp.onchange = function() {
+        if (!this.files || this.files.length === 0) return;
+        var files = Array.from(this.files).slice(0, 6);
+        var loaded = 0;
+        files.forEach(function(file, i) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            slotPhotos[i] = e.target.result;
+            updateSlotUI(i);
+            loaded++;
+            if (loaded === files.length) {
+              for (var j = files.length; j < 6; j++) {
+                slotPhotos[j] = null;
+                updateSlotUI(j);
+              }
+              updatePhotoCount();
+            }
+          };
+          reader.readAsDataURL(file);
+        });
+      };
+      inp.click();
+    }
+
+    function resetPhotos() {
+      for (var i = 0; i < 6; i++) {
+        slotPhotos[i] = null;
+        updateSlotUI(i);
+      }
+      updatePhotoCount();
+    }
+
+    function updatePhotoCount() {
+      var count = slotPhotos.filter(function(p) { return p !== null; }).length;
+      document.getElementById('photoCount').textContent = count + ' / 6';
+      var modeRow = document.getElementById('modeSelectRow');
+      var saveBtn = document.getElementById('photoSaveBtn');
+      if (count === 6) {
+        modeRow.classList.add('ready');
+        saveBtn.classList.add('ready');
+      } else {
+        modeRow.classList.remove('ready');
+        saveBtn.classList.remove('ready');
+      }
+    }
+
+    // === Navigation ===
+    function goAnalog() {
+      try { localStorage.setItem('radioUserPhotos', JSON.stringify(slotPhotos)); } catch(e) {}
+      document.body.style.visibility = 'hidden';
+      window.location.href = 'analog.html';
+    }
+
+    function goDigital() {
+      try { localStorage.setItem('radioUserPhotos', JSON.stringify(slotPhotos)); } catch(e) {}
+      document.body.style.visibility = 'hidden';
+      window.location.href = 'digital1.html';
+    }
+
+    // === Photo Save/Load (Supabase Album) ===
+    async function savePhotosToAlbum() {
+      var count = slotPhotos.filter(function(p) { return p !== null; }).length;
+      if (count < 6) {
+        alert('6장의 사진을 모두 선택해주세요.');
+        return;
+      }
+
+      var albumName = prompt('사진첩 이름을 입력하세요:', '');
+      if (!albumName || !albumName.trim()) return;
+      albumName = albumName.trim();
+
+      if (!supabase) {
+        alert('Supabase가 초기화되지 않았습니다. 잠시 후 다시 시도해주세요.');
+        return;
+      }
+
+      try {
+        for (var i = 0; i < 6; i++) {
+          var dataUrl = slotPhotos[i];
+          var mimeMatch = dataUrl.match(/data:(image\/\w+);/);
+          var ext = 'jpg';
+          if (mimeMatch && mimeMatch[1]) {
+            var mime = mimeMatch[1];
+            if (mime === 'image/png') ext = 'png';
+            else if (mime === 'image/gif') ext = 'gif';
+            else if (mime === 'image/webp') ext = 'webp';
+          }
+          var fileName = toSafePath(currentUsername) + '/' + toSafePath(albumName) + '/photo_' + (i + 1) + '.' + ext;
+          var blob = dataURLtoBlob(dataUrl);
+
+          var result = await supabase.storage
+            .from(BUCKET_NAME)
+            .upload(fileName, blob, { upsert: true });
+
+          if (result.error) throw result.error;
+        }
+
+        alert('사진첩 "' + albumName + '"에 6장의 사진이 저장되었습니다!');
+      } catch(e) {
+        console.error(e);
+        alert('저장 중 오류가 발생했습니다: ' + e.message);
+      }
+    }
+
+    async function showAlbumList() {
+      if (!supabase) {
+        alert('Supabase가 초기화되지 않았습니다. 잠시 후 다시 시도해주세요.');
+        return;
+      }
+      try {
+        var encodedUser = toSafePath(currentUsername);
+        var result = await supabase.storage
+          .from(BUCKET_NAME)
+          .list(encodedUser, { limit: 100 });
+
+        if (result.error) throw result.error;
+        var data = result.data;
+
+        var albumMap = {};
+        for (var i = 0; i < data.length; i++) {
+          var item = data[i];
+          if (item.name && !item.id) {
+            var decodedName = fromSafePath(item.name);
+            albumMap[item.name] = { name: item.name, displayName: decodedName, count: 0 };
+          }
+        }
+
+        var albumNames = Object.keys(albumMap);
+        for (var j = 0; j < albumNames.length; j++) {
+          var name = albumNames[j];
+          var listResult = await supabase.storage
+            .from(BUCKET_NAME)
+            .list(encodedUser + '/' + name, { limit: 10 });
+          if (listResult.data) albumMap[name].count = listResult.data.length;
+        }
+
+        var albums = Object.values(albumMap).filter(function(a) { return a.count > 0; });
+
+        var popup = document.getElementById('albumListPopup');
+        var content = document.getElementById('albumListContent');
+
+        if (albums.length === 0) {
+          content.innerHTML = '<div class="album-list-empty">저장된 사진첩이 없습니다.<br>먼저 사진을 저장해주세요.</div>';
+        } else {
+          content.innerHTML = '';
+          albums.forEach(function(album) {
+            var itemEl = document.createElement('div');
+            itemEl.className = 'album-item';
+            itemEl.innerHTML = '<span class="album-item-icon">📁</span>' +
+              '<span class="album-item-name">' + album.displayName + '</span>' +
+              '<span class="album-item-count">' + album.count + '장</span>';
+            itemEl.onclick = function() { loadAlbum(album.name); };
+
+            var delBtn = document.createElement('button');
+            delBtn.className = 'album-item-delete';
+            delBtn.innerHTML = '&times;';
+            delBtn.title = '삭제';
+            delBtn.onclick = function(e) {
+              e.stopPropagation();
+              deleteAlbum(album.name, album.displayName);
+            };
+            itemEl.appendChild(delBtn);
+
+            content.appendChild(itemEl);
+          });
+        }
+
+        popup.classList.add('visible');
+      } catch(e) {
+        console.error(e);
+        alert('사진첩 목록을 불러오는 중 오류가 발생했습니다: ' + e.message);
+      }
+    }
+
+    function hideAlbumList() {
+      document.getElementById('albumListPopup').classList.remove('visible');
+    }
+
+    async function deleteAlbum(albumName, displayName) {
+      if (!confirm('"' + displayName + '" 사진첩을 삭제하시겠습니까?')) return;
+      try {
+        var userAlbumPath = toSafePath(currentUsername) + '/' + albumName;
+        var listResult = await supabase.storage
+          .from(BUCKET_NAME)
+          .list(userAlbumPath, { limit: 100 });
+        if (listResult.error) throw listResult.error;
+        var files = listResult.data;
+        if (files && files.length > 0) {
+          var filePaths = files.map(function(f) { return userAlbumPath + '/' + f.name; });
+          var removeResult = await supabase.storage
+            .from(BUCKET_NAME)
+            .remove(filePaths);
+          if (removeResult.error) throw removeResult.error;
+        }
+        alert('"' + displayName + '" 사진첩이 삭제되었습니다.');
+        showAlbumList();
+      } catch(e) {
+        console.error(e);
+        alert('삭제 중 오류가 발생했습니다: ' + e.message);
+      }
+    }
+
+    async function loadAlbum(albumName) {
+      if (!supabase) {
+        alert('Supabase가 초기화되지 않았습니다.');
+        return;
+      }
+      try {
+        var userAlbumPath = toSafePath(currentUsername) + '/' + albumName;
+        var listResult = await supabase.storage
+          .from(BUCKET_NAME)
+          .list(userAlbumPath, { limit: 10 });
+
+        if (listResult.error) throw listResult.error;
+        var files = listResult.data;
+
+        files.sort(function(a, b) {
+          var matchA = a.name.match(/photo_(\d+)/i);
+          var matchB = b.name.match(/photo_(\d+)/i);
+          if (matchA && matchB) return parseInt(matchA[1]) - parseInt(matchB[1]);
+          return a.name.localeCompare(b.name);
+        });
+
+        var imageFiles = files.filter(function(f) {
+          return /\.(jpg|jpeg|png|gif|webp)$/i.test(f.name);
+        }).slice(0, 6);
+
+        if (imageFiles.length === 0) {
+          alert('사진첩에 이미지 파일이 없습니다.');
+          return;
+        }
+
+        slotPhotos = [null, null, null, null, null, null];
+
+        for (var i = 0; i < imageFiles.length; i++) {
+          var filePath = userAlbumPath + '/' + imageFiles[i].name;
+          var urlResult = supabase.storage
+            .from(BUCKET_NAME)
+            .getPublicUrl(filePath);
+
+          var response = await fetch(urlResult.data.publicUrl);
+          var blob = await response.blob();
+          var dataUrl = await new Promise(function(resolve) {
+            var reader = new FileReader();
+            reader.onload = function(e) { resolve(e.target.result); };
+            reader.readAsDataURL(blob);
+          });
+
+          slotPhotos[i] = dataUrl;
+          updateSlotUI(i);
+        }
+
+        for (var j = imageFiles.length; j < 6; j++) {
+          updateSlotUI(j);
+        }
+
+        updatePhotoCount();
+        hideAlbumList();
+        alert('사진첩에서 ' + imageFiles.length + '장을 불러왔습니다!');
+      } catch(e) {
+        console.error(e);
+        alert('불러오기 중 오류가 발생했습니다: ' + e.message);
+      }
+    }
+
+    // === Init ===
+    document.addEventListener('DOMContentLoaded', function() {
+      // 로그인 확인
+      var savedUser = localStorage.getItem('radioUsername');
+      if (!savedUser) {
+        window.location.href = 'index.html';
+        return;
+      }
+      currentUsername = savedUser;
+
+      // Supabase 초기화
+      var waitSupabase = setInterval(function() {
+        if (window.supabase && window.supabase.createClient) {
+          clearInterval(waitSupabase);
+          supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+            global: {
+              fetch: function(url, opts) {
+                opts = opts || {};
+                opts.cache = 'no-store';
+                return fetch(url, opts);
+              }
+            }
+          });
+        }
+      }, 100);
+
+      // 저장된 사진 불러오기
+      try {
+        var saved = localStorage.getItem('radioUserPhotos');
+        if (saved) {
+          var photos = JSON.parse(saved);
+          if (Array.isArray(photos)) {
+            slotPhotos = photos.slice();
+            for (var i = 0; i < 6; i++) updateSlotUI(i);
+            updatePhotoCount();
+          }
+        }
+      } catch(e) {}
+    });
+  </script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#f5e6d3">
+<html lang="ko" style="background:#0a1f17">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,15 +15,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #f5e6d3;
-      --body-out1: #e8d5b0; --body-out2: #d4c09a;
-      --body-in1: #FFF8E7; --body-in2: #F5ECD8;
-      --accent: #C8A96E;
-      --accent-glow: rgba(200,169,110,0.5);
+      --bg: #0a1f17;
+      --accent: #00704A;
+      --accent-glow: rgba(0,112,74,0.5);
+      --gold: #CBA258;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 50%, #f0dcc4 100%);
+      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -35,25 +34,25 @@
       content: '';
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(circle at 20% 80%, rgba(200,169,110,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(200,169,110,0.04) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(0,112,74,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(0,112,74,0.04) 0%, transparent 50%);
       pointer-events: none; z-index: 0;
     }
     .hidden { display: none !important; }
 
     /* ── Card Container ── */
     .diary-card {
-      background: linear-gradient(145deg, #e8d5b0, #d4c09a);
-      border: 1px solid rgba(139,105,20,0.15);
+      background: #1E3932;
+      border: 1px solid rgba(0,112,74,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 380px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(100,70,30,0.15), 0 0 40px rgba(200,169,110,0.15), inset 0 1px 0 rgba(255,255,255,0.3);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
       position: relative; z-index: 1;
     }
     .diary-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #8B6914; letter-spacing: 3px; margin-bottom: 16px;
+      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
     }
 
     /* ── Buttons ── */
@@ -62,69 +61,70 @@
     }
     .diary-btn {
       flex: 1; padding: 12px; border-radius: 12px;
-      background: linear-gradient(135deg, #C8A96E, #b89858); border: none;
-      color: #fff; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #00704A, #004d33); border: none;
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
     .diary-btn:disabled { opacity: 0.3; cursor: default; }
-    .diary-btn:not(:disabled):hover { box-shadow: 0 8px 24px rgba(200,169,110,0.4); }
+    .diary-btn:not(:disabled):hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); background: linear-gradient(135deg, #008a5a, #006644); }
     .diary-btn-back {
       padding: 12px 16px; border-radius: 12px;
-      background: transparent; border: 1px solid rgba(139,105,20,0.2);
-      color: #6a5530; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(0,112,74,0.3);
+      color: #7ab8a0; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 600; cursor: pointer;
       transition: all 0.2s;
     }
-    .diary-btn-back:hover { border-color: rgba(139,105,20,0.4); color: #8B6914; }
+    .diary-btn-back:hover { border-color: rgba(0,112,74,0.6); color: #D4E9E2; background: rgba(0,112,74,0.1); }
     .diary-btn-edit {
       flex: 1; padding: 12px; border-radius: 12px;
-      background: transparent; border: 1px solid #C8A96E;
-      color: #8B6914; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(0,112,74,0.5);
+      color: #7ab8a0; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
-    .diary-btn-edit:hover { background: rgba(200,169,110,0.15); }
+    .diary-btn-edit:hover { background: rgba(0,112,74,0.15); color: #D4E9E2; }
 
     /* ── Type Selector ── */
     .diary-type-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%; padding: 16px; border-radius: 14px;
-      background: rgba(255,255,255,0.4); border: 2px solid rgba(139,105,20,0.15);
-      color: #6a5530; font-family: 'Outfit', sans-serif;
+      background: rgba(0,112,74,0.08); border: 2px solid rgba(0,112,74,0.25);
+      color: #D4E9E2; font-family: 'Outfit', sans-serif;
       font-size: 15px; font-weight: 700; cursor: pointer;
       transition: all 0.3s; margin-bottom: 8px;
     }
-    .diary-type-btn:hover { border-color: rgba(200,169,110,0.5); background: rgba(255,255,255,0.6); }
+    .diary-type-btn:hover { border-color: rgba(0,196,122,0.6); background: rgba(0,112,74,0.18); }
     .diary-type-btn .type-icon { font-size: 22px; }
 
     /* ── Text Diary ── */
     .diary-textarea {
       width: 100%; min-height: 180px; padding: 14px;
-      border-radius: 12px; border: 1px solid rgba(139,105,20,0.2);
-      background: rgba(255,255,255,0.5); resize: vertical;
+      border-radius: 12px; border: 1px solid rgba(0,112,74,0.3);
+      background: #122820; resize: vertical;
       font-family: 'Inter', sans-serif; font-size: 14px;
-      color: #4a3d20; line-height: 1.7;
+      color: #b8d8cc; line-height: 1.7;
     }
-    .diary-textarea:focus { outline: none; border-color: #C8A96E; box-shadow: 0 0 8px rgba(200,169,110,0.3); }
+    .diary-textarea::placeholder { color: #7ab8a0; }
+    .diary-textarea:focus { outline: none; border-color: #00704A; box-shadow: 0 0 8px rgba(0,112,74,0.3); }
     .diary-char-count {
-      text-align: right; font-size: 11px; color: #9a8a6a; margin-top: 4px;
+      text-align: right; font-size: 11px; color: #7ab8a0; margin-top: 4px;
     }
 
     /* ── Voice Recorder ── */
     .diary-recorder {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 20px; border-radius: 14px;
-      background: rgba(255,255,255,0.3); border: 1px solid rgba(139,105,20,0.1);
+      background: rgba(0,112,74,0.06); border: 1px solid rgba(0,112,74,0.2);
     }
     .diary-rec-btn {
       width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(135deg, #C8A96E, #b89858);
-      border: 3px solid rgba(255,255,255,0.4);
-      color: #fff; font-size: 28px; cursor: pointer;
+      background: linear-gradient(135deg, #00704A, #004d33);
+      border: 3px solid rgba(255,255,255,0.15);
+      color: #D4E9E2; font-size: 28px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: all 0.3s;
-      box-shadow: 0 4px 16px rgba(200,169,110,0.4);
+      box-shadow: 0 4px 16px rgba(0,112,74,0.4);
     }
     .diary-rec-btn:hover { transform: scale(1.05); }
     .diary-rec-btn.recording {
@@ -137,13 +137,13 @@
     }
     .diary-rec-time {
       font-family: 'Orbitron', monospace; font-size: 20px;
-      color: #8B6914; font-weight: 700;
+      color: #CBA258; font-weight: 700;
     }
     .diary-rec-status {
-      font-family: 'Inter', sans-serif; font-size: 13px; color: #6a5530;
+      font-family: 'Inter', sans-serif; font-size: 13px; color: #7ab8a0;
     }
     .diary-rec-max {
-      font-size: 11px; color: #9a8a6a;
+      font-size: 11px; color: #7ab8a0;
     }
     .diary-preview-audio {
       width: 100%; margin-top: 8px; border-radius: 8px;
@@ -154,28 +154,28 @@
       margin-top: 12px;
     }
     .diary-photo-label {
-      font-size: 12px; color: #6a5530; margin-bottom: 6px;
+      font-size: 12px; color: #7ab8a0; margin-bottom: 6px;
       text-align: left; font-weight: 600;
     }
     .diary-photo-upload {
-      border: 2px dashed rgba(139,105,20,0.25);
+      border: 2px dashed rgba(0,112,74,0.35);
       border-radius: 12px; padding: 16px;
       cursor: pointer; transition: all 0.3s;
-      background: rgba(255,255,255,0.25);
+      background: rgba(0,112,74,0.05);
       text-align: center;
     }
     .diary-photo-upload:hover {
-      border-color: #C8A96E; background: rgba(255,255,255,0.4);
+      border-color: rgba(0,196,122,0.7); background: rgba(0,112,74,0.12);
     }
     .diary-photo-upload-icon { font-size: 24px; margin-bottom: 4px; }
-    .diary-photo-upload-text { font-size: 12px; color: #9a8a6a; }
+    .diary-photo-upload-text { font-size: 12px; color: #7ab8a0; }
     .diary-photo-thumbs {
       display: flex; gap: 8px; margin-top: 8px;
     }
     .diary-photo-thumb {
       position: relative; width: 80px; height: 80px;
       border-radius: 10px; overflow: hidden;
-      border: 1px solid rgba(139,105,20,0.15);
+      border: 1px solid rgba(0,112,74,0.3);
     }
     .diary-photo-thumb img {
       width: 100%; height: 100%; object-fit: cover;
@@ -188,7 +188,7 @@
       display: flex; align-items: center; justify-content: center;
       line-height: 1;
     }
-    .diary-photo-thumb-del:hover { background: #ff4444; }
+    .diary-photo-thumb-del:hover { background: rgba(180,60,60,0.85); }
     .diary-photo-file { display: none; }
 
     /* ── Detail Photos ── */
@@ -198,7 +198,7 @@
     .diary-detail-photo {
       width: 100px; height: 100px; border-radius: 10px;
       overflow: hidden; cursor: pointer;
-      border: 1px solid rgba(139,105,20,0.12);
+      border: 1px solid rgba(0,112,74,0.3);
     }
     .diary-detail-photo img {
       width: 100%; height: 100%; object-fit: cover;
@@ -218,14 +218,14 @@
     .diary-list-header {
       display: flex; align-items: center; justify-content: space-between;
       margin-top: 20px; margin-bottom: 10px;
-      padding-bottom: 8px; border-bottom: 1px solid rgba(139,105,20,0.15);
+      padding-bottom: 8px; border-bottom: 1px solid rgba(0,112,74,0.25);
     }
     .diary-list-title {
       font-family: 'Outfit', sans-serif; font-size: 14px;
-      font-weight: 700; color: #8B6914;
+      font-weight: 700; color: #00704A;
     }
     .diary-list-count {
-      font-size: 12px; color: #9a8a6a;
+      font-size: 12px; color: #7ab8a0;
     }
     .diary-list {
       max-height: 300px; overflow-y: auto;
@@ -233,48 +233,48 @@
     .diary-item {
       display: flex; align-items: center; gap: 10px;
       padding: 10px 12px; border-radius: 10px;
-      background: rgba(255,255,255,0.35);
-      border: 1px solid rgba(139,105,20,0.08);
+      background: rgba(0,112,74,0.08);
+      border: 1px solid rgba(0,112,74,0.15);
       margin-bottom: 6px; cursor: pointer;
       transition: all 0.2s;
     }
-    .diary-item:hover { background: rgba(255,255,255,0.55); border-color: rgba(200,169,110,0.3); }
+    .diary-item:hover { background: rgba(0,112,74,0.18); border-color: rgba(0,196,122,0.35); }
     .diary-item-no {
       font-family: 'Orbitron', monospace; font-size: 12px;
-      color: #C8A96E; font-weight: 700; min-width: 28px;
+      color: #CBA258; font-weight: 700; min-width: 28px;
     }
     .diary-item-info {
       flex: 1; text-align: left;
     }
     .diary-item-date {
-      font-size: 12px; color: #6a5530; font-weight: 600;
+      font-size: 12px; color: #D4E9E2; font-weight: 600;
     }
     .diary-item-type {
-      font-size: 11px; color: #9a8a6a; margin-top: 2px;
+      font-size: 11px; color: #7ab8a0; margin-top: 2px;
     }
     .diary-item-icon {
-      font-size: 18px; color: #C8A96E;
+      font-size: 18px; color: #00704A;
     }
     .diary-empty {
       padding: 24px; text-align: center;
-      font-size: 13px; color: #9a8a6a;
+      font-size: 13px; color: #7ab8a0;
     }
 
     /* ── Detail View ── */
     .diary-detail-date {
-      font-size: 12px; color: #9a8a6a; margin-bottom: 12px;
+      font-size: 12px; color: #7ab8a0; margin-bottom: 12px;
     }
     .diary-detail-type-badge {
       display: inline-block; padding: 3px 10px; border-radius: 8px;
       font-size: 11px; font-weight: 600; margin-bottom: 12px;
     }
-    .badge-text { background: rgba(139,105,20,0.1); color: #8B6914; }
-    .badge-voice { background: rgba(200,80,80,0.1); color: #c05050; }
+    .badge-text { background: rgba(0,112,74,0.15); color: #00704A; }
+    .badge-voice { background: rgba(200,80,80,0.1); color: #e07070; }
     .diary-detail-content {
       text-align: left; padding: 14px;
-      background: rgba(255,255,255,0.5); border-radius: 12px;
-      border: 1px solid rgba(139,105,20,0.1);
-      font-size: 14px; color: #4a3d20; line-height: 1.7;
+      background: #122820; border-radius: 12px;
+      border: 1px solid rgba(0,112,74,0.2);
+      font-size: 14px; color: #b8d8cc; line-height: 1.7;
       white-space: pre-wrap; word-break: break-word;
       max-height: 250px; overflow-y: auto;
     }
@@ -372,7 +372,7 @@
     <div class="diary-btn-row" style="margin-top:14px;">
       <button class="diary-btn-back" onclick="backToMain()">&#9664; 목록</button>
       <button class="diary-btn-edit" onclick="editDiary()">수정</button>
-      <button class="diary-btn" style="background:linear-gradient(135deg,#e05050,#c03030);" onclick="deleteDiary()">삭제</button>
+      <button class="diary-btn" style="background:linear-gradient(135deg,#c03030,#8b1a1a);" onclick="deleteDiary()">삭제</button>
     </div>
   </div>
 
