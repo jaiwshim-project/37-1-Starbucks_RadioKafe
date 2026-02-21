@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>같이듣기 | 스타벅스 라디오카페</title>
+  <title>같이듣기 | 더불어민주당 라디오카페</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="같이듣기 | 스타벅스 라디오카페" />
+  <meta property="og:title" content="같이듣기 | 더불어민주당 라디오카페" />
   <meta property="og:description" content="친구와 함께 실시간 라디오를 들으며 채팅해요!" />
   <meta property="og:image" content="https://og-image.jpg" />
   <meta property="og:url" content="https://song-chat.html" />
@@ -20,7 +20,7 @@
        7 RADIO DESIGN THEMES
        ============================================ */
 
-    /* 1. Wood Classic (에스프레소) */
+    /* 1. Wood Classic (민주 블루) */
     :root, [data-theme="espresso"] {
       --bg: #1a1a2e;
       --body-out1: #3a2a1a; --body-out2: #2a1c0e;
@@ -41,7 +41,7 @@
       --label-color: #c8b8a0; --freq-mark: #a08868;
       --tick-color: #8a7a60;
       --needle: #ff3333; --needle-glow: rgba(255,51,51,0.6);
-      --led-on: #00ff88; --led-glow: rgba(0,255,136,0.3);
+      --led-on: #66D4FF; --led-glow: rgba(102,212,255,0.3);
       --knob-ind: #d4a862;
       --footer-color: #a09080; --footer-link: #c8b8a0;
       --antenna1: #8a7a6a; --antenna2: #c0b0a0;
@@ -51,7 +51,7 @@
       --neon-light: rgba(255,180,100,0.35); --neon-light-glow: rgba(255,180,100,0.15);
     }
 
-    /* 2. Retro Cream (카페라떼) */
+    /* 2. Retro Cream (연대 크림) */
     [data-theme="latte"] {
       --bg: #d4c5a9;
       --body-out1: #f5e6c8; --body-out2: #e8d5b0;
@@ -113,7 +113,7 @@
       --neon-light: rgba(255,80,120,0.3); --neon-light-glow: rgba(255,80,120,0.12);
     }
 
-    /* 4. Military (말차 라떼) */
+    /* 4. Military (희망 그린) */
     [data-theme="matcha"] {
       --bg: #1a2016;
       --body-out1: #4a5540; --body-out2: #354030;
@@ -144,7 +144,7 @@
       --neon-light: rgba(120,255,80,0.3); --neon-light-glow: rgba(120,255,80,0.12);
     }
 
-    /* 5. Chrome Silver (콜드브루) */
+    /* 5. Chrome Silver (미래 다크) */
     [data-theme="coldbrew"] {
       --bg: #2a2a3a;
       --body-out1: #c0c0cc; --body-out2: #9a9aaa;
@@ -175,7 +175,7 @@
       --neon-light: rgba(120,170,255,0.3); --neon-light-glow: rgba(120,170,255,0.12);
     }
 
-    /* 6. Neon Cyber (프라푸치노) */
+    /* 6. Neon Cyber (자유 스카이) */
     [data-theme="frappuccino"] {
       --bg: #05050f;
       --body-out1: #15152a; --body-out2: #0a0a18;
@@ -206,7 +206,7 @@
       --neon-light: rgba(80,230,255,0.3); --neon-light-glow: rgba(80,230,255,0.12);
     }
 
-    /* 7. Rose Gold (딸기 프라푸치노) */
+    /* 7. Rose Gold (정의 레드) */
     [data-theme="strawberry"] {
       --bg: #1a1018;
       --body-out1: #8a6070; --body-out2: #6a4050;
@@ -237,7 +237,7 @@
       --neon-light: rgba(255,130,200,0.3); --neon-light-glow: rgba(255,130,200,0.12);
     }
 
-    /* 8. Maltese (바닐라 크림) */
+    /* 8. Maltese (평화 베이지) */
     [data-theme="vanilla"] {
       --bg: #f0ebe5;
       --body-out1: #faf8f5; --body-out2: #f0ece6;
@@ -268,7 +268,7 @@
       --neon-light: rgba(222,184,135,0.3); --neon-light-glow: rgba(222,184,135,0.12);
     }
 
-    /* 9. Purple (라벤더 라떼) */
+    /* 9. Purple (공감 퍼플) */
     [data-theme="purple"] {
       --bg: #0e0a1a;
       --body-out1: #1e1040; --body-out2: #140a30;
@@ -302,7 +302,7 @@
       --body-from: #180e38; --body-to: #100828;
     }
 
-    /* 10. Hot Pink (피치 티) */
+    /* 10. Hot Pink (통합 로즈) */
     [data-theme="peachtea"] {
       --bg: #1a0a18;
       --body-out1: #3a1038; --body-out2: #2a0828;
@@ -2011,16 +2011,16 @@
   <div class="theme-switcher analog-theme-switcher" id="analogThemeSwitcher">
     <button class="theme-toggle-btn" id="themeToggleBtn" onclick="toggleThemeDots()" title="테마 감추기">◀</button>
     <div class="theme-dots-wrap" id="themeDotsWrap">
-      <div class="theme-dot" data-t="espresso" title="에스프레소 · 나무결" onclick="setTheme('espresso')"></div>
-      <div class="theme-dot" data-t="latte" title="카페라떼 · 가죽" onclick="setTheme('latte')"></div>
-      <div class="theme-dot" data-t="americano" title="아메리카노 · 카본파이버" onclick="setTheme('americano')"></div>
-      <div class="theme-dot" data-t="matcha" title="말차 라떼 · 캔버스" onclick="setTheme('matcha')"></div>
-      <div class="theme-dot" data-t="coldbrew" title="콜드브루 · 브러시드메탈" onclick="setTheme('coldbrew')"></div>
-      <div class="theme-dot" data-t="frappuccino" title="프라푸치노 · 회로기판" onclick="setTheme('frappuccino')"></div>
-      <div class="theme-dot" data-t="strawberry" title="딸기 프라푸치노 · 대리석" onclick="setTheme('strawberry')"></div>
-      <div class="theme-dot" data-t="vanilla" title="바닐라 크림 · 털 결" onclick="setTheme('vanilla')"></div>
-      <div class="theme-dot" data-t="purple" title="라벤더 라떼 · 성운" onclick="setTheme('purple')"></div>
-      <div class="theme-dot" data-t="peachtea" title="피치 티 · 글로우" onclick="setTheme('peachtea')"></div>
+      <div class="theme-dot" data-t="espresso" title="민주 블루 · 나무결" onclick="setTheme('espresso')"></div>
+      <div class="theme-dot" data-t="latte" title="연대 크림 · 가죽" onclick="setTheme('latte')"></div>
+      <div class="theme-dot" data-t="americano" title="정책 블랙 · 카본파이버" onclick="setTheme('americano')"></div>
+      <div class="theme-dot" data-t="matcha" title="희망 그린 · 캔버스" onclick="setTheme('matcha')"></div>
+      <div class="theme-dot" data-t="coldbrew" title="미래 다크 · 브러시드메탈" onclick="setTheme('coldbrew')"></div>
+      <div class="theme-dot" data-t="frappuccino" title="자유 스카이 · 회로기판" onclick="setTheme('frappuccino')"></div>
+      <div class="theme-dot" data-t="strawberry" title="정의 레드 · 대리석" onclick="setTheme('strawberry')"></div>
+      <div class="theme-dot" data-t="vanilla" title="평화 베이지 · 털 결" onclick="setTheme('vanilla')"></div>
+      <div class="theme-dot" data-t="purple" title="공감 퍼플 · 성운" onclick="setTheme('purple')"></div>
+      <div class="theme-dot" data-t="peachtea" title="통합 로즈 · 글로우" onclick="setTheme('peachtea')"></div>
     </div>
   </div>
 
@@ -2028,7 +2028,7 @@
 
     <!-- Brand & Power (1줄) -->
     <div class="radio-top-row1">
-      <div class="brand"><span class="brand-clara">스타벅스</span> <span class="brand-cafe">라디오카페</span></div>
+      <div class="brand"><span class="brand-clara">더불어민주당</span> <span class="brand-cafe">라디오카페</span></div>
       <button class="power-btn" id="analogPowerBtn" onclick="toggleAnalogPower()" title="전원">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.8 0"/></svg>
       </button>
@@ -2134,7 +2134,7 @@
 
     <!-- Footer -->
     <div class="analog-footer">
-      <div class="analog-footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
+      <div class="analog-footer-text">&copy; 2026 더불어민주당 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
     </div>
   </div>
 </div>
@@ -2405,12 +2405,12 @@
 
   function updateMediaSession() {
     if (!('mediaSession' in navigator)) return;
-    var stName = analogSnappedStation ? analogSnappedStation.name : '스타벅스 라디오카페';
+    var stName = analogSnappedStation ? analogSnappedStation.name : '더불어민주당 라디오카페';
     var stProvider = analogSnappedStation ? analogSnappedStation.provider : '';
     navigator.mediaSession.metadata = new MediaMetadata({
       title: stName,
-      artist: stProvider || '스타벅스 라디오카페',
-      album: '스타벅스 라디오카페',
+      artist: stProvider || '더불어민주당 라디오카페',
+      album: '더불어민주당 라디오카페',
       artwork: [
         { src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect width="128" height="128" rx="20" fill="%23333"/><text x="64" y="72" text-anchor="middle" font-size="48" fill="%23ffd700">📻</text></svg>'), sizes: '128x128', type: 'image/svg+xml' }
       ]

@@ -15,7 +15,17 @@
       "Bash(git init:*)",
       "Bash(git remote add:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(/tmp/verify_digital1.js:*)",
+      "Bash(git -C \"/c/01 Claude-Code/37-1 스타벅스 라디오카페\" status)",
+      "Bash(xargs:*)",
+      "Bash(grep:*)",
+      "WebSearch",
+      "WebFetch(domain:theminjoo.kr)",
+      "Bash(cd:*)",
+      "Bash(python3 \"C:/01 Claude-Code/37-2 더블어민주당 라디오카페/admin.html\" 2>&1 || python \"C:/01 Claude-Code/37-2 더블어민주당 라디오카페/admin.html\" 2>&1)",
+      "Bash(git status:*)"
     ]
   }
 }

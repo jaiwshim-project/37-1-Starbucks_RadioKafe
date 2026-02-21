@@ -3,35 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starbucks × RadioKafe — 전략 제안서</title>
+<title>더불어민주당 × RadioKafe — 전략 제안서</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --green: #00704A;
-  --green-dark: #1E3932;
-  --green-deep: #0d2418;
-  --green-mid: #1a3828;
-  --green-light: #D4E9E2;
+  --green: #004EA2;
+  --green-dark: #002868;
+  --green-deep: #001A3A;
+  --green-mid: #003080;
+  --green-light: #D4E8F9;
+  /* 별칭 변수 (파랑 테마) */
+  --blue: #004EA2;
+  --blue-dark: #001A3A;
+  --blue-mid: #002868;
+  --blue-light: #D4E8F9;
   --gold: #CBA258;
   --gold-light: #e8c87a;
   --cream: #F2F0EB;
   --cream-dark: #e8e4dc;
   --espresso: #1a0e08;
   --latte: #c9a882;
-  --text: #1E3932;
-  --text-light: #4a6b5e;
-  --text-dim: #7a9e8e;
+  --text: #1a2a4a;
+  --text-light: #3a4a6a;
+  --text-dim: #6a7a9a;
   --white: #ffffff;
-  --card-bg: rgba(0,112,74,0.06);
-  --border: rgba(0,112,74,0.18);
+  --card-bg: rgba(0,78,162,0.06);
+  --border: rgba(0,78,162,0.18);
 }
 
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Noto Sans KR', 'Inter', sans-serif;
-  background: var(--cream);
+  background: #f0f5fb;
   color: var(--text);
   line-height: 1.7;
 }
@@ -39,7 +44,7 @@ body {
 /* ── COVER PAGE ── */
 .cover {
   min-height: 100vh;
-  background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-dark) 40%, #0e2a1e 100%);
+  background: linear-gradient(160deg, var(--blue-dark) 0%, var(--blue-mid) 40%, #001530 100%);
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
@@ -51,7 +56,7 @@ body {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(0,112,74,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 50%, rgba(0,78,162,0.2) 0%, transparent 55%),
     radial-gradient(ellipse at 80% 30%, rgba(203,162,88,0.08) 0%, transparent 50%),
     radial-gradient(2px 2px at 30% 20%, rgba(212,233,226,0.3) 0%, transparent 100%),
     radial-gradient(2px 2px at 70% 70%, rgba(212,233,226,0.2) 0%, transparent 100%),
@@ -77,7 +82,7 @@ body {
   background: #fff;
   padding: 8px;
   object-fit: contain;
-  filter: drop-shadow(0 0 30px rgba(0,112,74,0.6));
+  filter: drop-shadow(0 0 30px rgba(0,78,162,0.6));
 }
 .cover h1 {
   font-family: 'Inter', sans-serif;
@@ -134,8 +139,8 @@ body {
   cursor: pointer;
 }
 .toc-item:hover {
-  background: rgba(0,112,74,0.2);
-  border-color: rgba(0,112,74,0.5);
+  background: rgba(0,78,162,0.2);
+  border-color: rgba(77,195,255,0.85);
   transform: translateX(4px);
 }
 .toc-num {
@@ -151,7 +156,7 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 80px 40px;
-  border-bottom: 1px solid rgba(0,112,74,0.08);
+  border-bottom: 1px solid rgba(0,78,162,0.08);
 }
 .page-header {
   margin-bottom: 56px;
@@ -159,14 +164,14 @@ body {
 .page-num {
   font-family: 'Orbitron', monospace;
   font-size: 0.65rem; letter-spacing: 4px; font-weight: 700;
-  color: var(--green);
+  color: var(--blue);
   text-transform: uppercase;
   margin-bottom: 10px;
 }
 .page-title {
   font-size: clamp(1.6rem, 3.5vw, 2.4rem);
   font-weight: 700;
-  color: var(--green-dark);
+  color: var(--blue-mid);
   line-height: 1.25;
   margin-bottom: 12px;
 }
@@ -193,12 +198,12 @@ body {
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,112,74,0.1);
+  box-shadow: 0 12px 40px rgba(0,78,162,0.1);
 }
 .card-icon { font-size: 2rem; margin-bottom: 14px; }
 .card h3 {
   font-size: 1rem; font-weight: 700;
-  color: var(--green-dark);
+  color: var(--blue-mid);
   margin-bottom: 8px;
 }
 .card p { font-size: 0.875rem; color: var(--text-light); line-height: 1.7; }
@@ -206,12 +211,12 @@ body {
   display: inline-block;
   font-size: 0.65rem; letter-spacing: 2px;
   background: var(--green-light);
-  color: var(--green-dark);
+  color: var(--blue-mid);
   padding: 3px 10px; border-radius: 20px;
   margin-bottom: 10px; font-weight: 600;
 }
 
-/* ── PROBLEM CARD (Starbucks Theme) ── */
+/* ── PROBLEM CARD (민주당 테마) ── */
 .problem-card {
   background: linear-gradient(135deg, #fdf8f0, #fef5e4);
   border: 1px solid rgba(203,162,88,0.35);
@@ -221,7 +226,7 @@ body {
 .problem-card:hover {
   box-shadow: 0 10px 32px rgba(203,162,88,0.18);
 }
-.problem-card h3 { color: var(--green-dark); }
+.problem-card h3 { color: var(--blue-mid); }
 .problem-card p { color: var(--text-light); }
 .problem-tag {
   background: rgba(203,162,88,0.18) !important;
@@ -231,30 +236,30 @@ body {
 
 /* ── GREEN HIGHLIGHT CARD ── */
 .card-green {
-  background: linear-gradient(135deg, var(--green-dark), #0e2a1e);
-  border-color: var(--green);
+  background: linear-gradient(135deg, var(--blue-mid), #001530);
+  border-color: var(--blue);
   color: var(--white);
 }
 .card-green h3 { color: var(--green-light); }
-.card-green p { color: rgba(212,233,226,0.8); }
+.card-green p { color: rgba(212,232,249,0.9); }
 
-/* ── STARBUCKS LIGHT CARD ── */
+/* ── 민주당 LIGHT CARD ── */
 .card-starbucks {
   background: linear-gradient(135deg, #f0f7f4, #e8f3ee);
-  border: 1px solid rgba(0,112,74,0.28);
-  border-top: 3px solid var(--green);
-  box-shadow: 0 2px 12px rgba(0,112,74,0.08);
+  border: 1px solid rgba(0,78,162,0.28);
+  border-top: 3px solid var(--blue);
+  box-shadow: 0 2px 12px rgba(0,78,162,0.08);
 }
 .card-starbucks:hover {
-  box-shadow: 0 10px 32px rgba(0,112,74,0.15);
+  box-shadow: 0 10px 32px rgba(0,78,162,0.15);
 }
-.card-starbucks h3 { color: var(--green-dark); }
+.card-starbucks h3 { color: var(--blue-mid); }
 .card-starbucks p { color: var(--text-light); }
 
 /* ── GOLD HIGHLIGHT ── */
 .highlight-gold {
-  background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 60%, #0e2a1e 100%);
-  border: 1px solid rgba(0,112,74,0.5);
+  background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue-mid) 60%, #001530 100%);
+  border: 1px solid rgba(0,78,162,0.5);
   border-top: 3px solid var(--gold);
   border-radius: 16px;
   padding: 32px;
@@ -266,21 +271,81 @@ body {
 /* ── SECTION DIVIDER ── */
 .section-divider {
   width: 100%; height: 4px;
-  background: linear-gradient(90deg, var(--green), var(--gold), var(--green));
+  background: linear-gradient(90deg, var(--blue), var(--gold), var(--blue));
   margin-bottom: 0;
 }
+/* ── SECTION ALTERNATING BACKGROUNDS ── */
+#p1 { background: #ffffff; }
+#p2 { background: linear-gradient(180deg, #EBF3FC 0%, #F6FAFE 100%); }
+#p3 { background: linear-gradient(160deg, #001A3A 0%, #002868 55%, #001530 100%); }
+#p4 { background: #ffffff; }
+#p5 { background: linear-gradient(180deg, #EBF3FC 0%, #F6FAFE 100%); }
+#p6 { background: linear-gradient(160deg, #001530 0%, #002050 55%, #001A3A 100%); }
+#p7 { background: #ffffff; }
+#p8 { background: linear-gradient(180deg, #EBF3FC 0%, #F6FAFE 100%); }
+
+/* ── TINT SECTION (light blue) ── */
+.page-bg-tint {
+  background: linear-gradient(180deg, #EBF3FC 0%, #F6FAFE 100%);
+}
+
+/* ── DARK SECTIONS ── */
 .page-bg-dark {
-  background: linear-gradient(180deg, #0d1f16 0%, #1a3828 100%);
+  background: linear-gradient(160deg, #001A3A 0%, #002868 55%, #001530 100%);
 }
-.page-bg-dark .page-title { color: var(--green-light); }
-.page-bg-dark .page-num { color: var(--gold); }
-.page-bg-dark .page-desc { color: var(--text-dim); }
-.page-bg-dark .card {
+.page-bg-dark .page-title,
+#p3 .page-title, #p6 .page-title { color: var(--green-light); }
+.page-bg-dark .page-num,
+#p3 .page-num, #p6 .page-num { color: var(--gold); }
+.page-bg-dark .page-desc,
+#p3 .page-desc, #p6 .page-desc { color: rgba(212,232,249,0.8); }
+/* cards on dark bg */
+.page-bg-dark .card,
+#p3 .card, #p6 .card {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(212,232,249,0.15);
+}
+.page-bg-dark .card h3,
+#p3 .card h3, #p6 .card h3 { color: var(--green-light); }
+.page-bg-dark .card p,
+#p3 .card p, #p6 .card p { color: rgba(212,232,249,0.85); }
+/* card-starbucks (파티 카드) on dark bg */
+#p3 .card-starbucks, #p6 .card-starbucks {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(77,195,255,0.25);
+  border-top-color: #4DC3FF;
+}
+#p3 .card-starbucks h3, #p6 .card-starbucks h3 { color: #D4E8F9; }
+#p3 .card-starbucks p, #p6 .card-starbucks p { color: rgba(212,232,249,0.85); }
+/* card tag on dark bg */
+#p3 .card .tag, #p6 .card .tag {
+  background: rgba(212,232,249,0.15);
+  color: #D4E8F9;
+}
+/* section headings on dark bg */
+#p3 h3[style], #p6 h3[style] { color: var(--green-light) !important; }
+/* CRM grid on dark bg */
+#p6 .crm-cell {
   background: rgba(255,255,255,0.05);
-  border-color: rgba(212,233,226,0.12);
+  border-color: rgba(212,232,249,0.1);
 }
-.page-bg-dark .card h3 { color: var(--green-light); }
-.page-bg-dark .card p { color: rgba(212,233,226,0.7); }
+#p6 .crm-cell.header {
+  background: rgba(0,78,162,0.45);
+  color: #D4E8F9;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+#p6 .crm-cell .recommend { color: rgba(212,232,249,0.88); }
+#p6 .crm-cell .emotion-name { color: #a8d4ee; }
+#p6 .formula-box { background: rgba(0,0,0,0.35); border-color: rgba(77,195,255,0.25); }
+/* p6 stat boxes and section headings */
+#p6 .stat-box { background: rgba(255,255,255,0.07); border-color: rgba(212,232,249,0.15); }
+#p6 .stat-box .num { color: #4DC3FF; }
+#p6 .stat-box .label { color: rgba(212,232,249,0.75); }
+#p6 h3 { color: var(--green-light); }
+/* p3 solution section */
+#p3 .page-num { color: var(--gold); }
+#p3 h3 { color: var(--green-light); }
 
 /* ── STAT BOXES ── */
 .stat-grid {
@@ -300,7 +365,7 @@ body {
   font-family: 'Inter', sans-serif;
   font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 700;
-  color: var(--green);
+  color: var(--blue);
   line-height: 1;
   margin-bottom: 6px;
 }
@@ -314,10 +379,10 @@ body {
   margin: 32px 0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,112,74,0.08);
+  box-shadow: 0 2px 16px rgba(0,78,162,0.08);
 }
 .data-table thead tr {
-  background: var(--green-dark);
+  background: var(--blue-mid);
   color: var(--white);
 }
 .data-table thead th {
@@ -327,12 +392,12 @@ body {
   letter-spacing: 1px;
   text-align: left;
 }
-.data-table tbody tr { background: var(--white); border-bottom: 1px solid rgba(0,112,74,0.08); }
-.data-table tbody tr:nth-child(even) { background: rgba(0,112,74,0.03); }
+.data-table tbody tr { background: var(--white); border-bottom: 1px solid rgba(0,78,162,0.08); }
+.data-table tbody tr:nth-child(even) { background: rgba(0,78,162,0.03); }
 .data-table tbody td { padding: 12px 18px; font-size: 0.875rem; color: var(--text); }
-.data-table .bold { font-weight: 700; color: var(--green-dark); }
+.data-table .bold { font-weight: 700; color: var(--blue-mid); }
 .data-table .gold { color: var(--gold); font-weight: 700; }
-.data-table .green { color: var(--green); font-weight: 700; }
+.data-table .green { color: var(--blue); font-weight: 700; }
 
 /* ── FLOW CHART ── */
 .flow {
@@ -356,17 +421,17 @@ body {
 .flow-dot {
   width: 48px; height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--green), #004d35);
+  background: linear-gradient(135deg, var(--blue), #003580);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(0,112,74,0.3);
+  box-shadow: 0 4px 16px rgba(0,78,162,0.3);
 }
 .flow-line {
   width: 2px;
   flex: 1;
   min-height: 32px;
-  background: linear-gradient(180deg, var(--green), rgba(0,112,74,0.15));
+  background: linear-gradient(180deg, var(--blue), rgba(0,78,162,0.15));
   margin: 4px 0;
 }
 .flow-body {
@@ -379,7 +444,7 @@ body {
 }
 .flow-body h4 {
   font-size: 0.95rem; font-weight: 700;
-  color: var(--green-dark);
+  color: var(--blue-mid);
   margin-bottom: 4px;
 }
 .flow-body p { font-size: 0.82rem; color: var(--text-light); line-height: 1.6; }
@@ -387,7 +452,7 @@ body {
   display: inline-block;
   font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 600;
   background: var(--green-light);
-  color: var(--green-dark);
+  color: var(--blue-mid);
   padding: 2px 10px; border-radius: 20px;
   margin-bottom: 6px;
 }
@@ -398,7 +463,7 @@ body {
 
 /* ── ARCH DIAGRAM ── */
 .arch-container {
-  background: linear-gradient(160deg, #0d1f16, #1a3828);
+  background: linear-gradient(160deg, #001A3A, #003080);
   border-radius: 20px;
   padding: 40px;
   margin: 32px 0;
@@ -421,8 +486,8 @@ body {
   display: flex; flex-wrap: wrap; gap: 10px;
 }
 .arch-node {
-  background: rgba(0,112,74,0.25);
-  border: 1px solid rgba(0,112,74,0.4);
+  background: rgba(0,78,162,0.25);
+  border: 1px solid rgba(0,78,162,0.4);
   border-radius: 8px;
   padding: 8px 14px;
   font-size: 0.78rem;
@@ -435,22 +500,22 @@ body {
   color: var(--gold-light);
 }
 .arch-node.highlight {
-  background: rgba(0,112,74,0.5);
-  border-color: var(--green);
+  background: rgba(0,78,162,0.5);
+  border-color: var(--blue);
   color: #fff;
   font-weight: 600;
 }
 .arch-arrow {
   text-align: center;
-  color: rgba(0,112,74,0.5);
+  color: rgba(77,195,255,0.85);
   font-size: 1.4rem;
   margin: 4px 0;
 }
 
 /* ── FORMULA BOX ── */
 .formula-box {
-  background: #0d1f16;
-  border: 1px solid rgba(0,112,74,0.3);
+  background: #001A3A;
+  border: 1px solid rgba(0,78,162,0.3);
   border-radius: 14px;
   padding: 28px 32px;
   margin: 24px 0;
@@ -487,7 +552,7 @@ body {
   text-align: center;
 }
 .crm-cell.header {
-  background: var(--green-dark);
+  background: var(--blue-mid);
   color: var(--white);
   font-size: 0.78rem; font-weight: 700;
   letter-spacing: 1px;
@@ -496,7 +561,7 @@ body {
 .crm-cell .emotion-name { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 6px; }
 .crm-cell .recommend {
   font-size: 0.75rem; font-weight: 700;
-  color: var(--green-dark);
+  color: var(--blue-mid);
   line-height: 1.5;
 }
 .crm-cell .music-style { font-size: 0.68rem; color: var(--text-light); margin-top: 4px; }
@@ -513,7 +578,7 @@ body {
   left: 120px;
   top: 0; bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, var(--green), rgba(0,112,74,0.1));
+  background: linear-gradient(180deg, var(--blue), rgba(0,78,162,0.1));
 }
 .tl-item {
   display: flex;
@@ -529,16 +594,16 @@ body {
   font-family: 'Orbitron', monospace;
   font-size: 0.65rem;
   font-weight: 700;
-  color: var(--green);
+  color: var(--blue);
   padding-top: 14px;
   letter-spacing: 1px;
 }
 .tl-dot {
   width: 14px; height: 14px;
   border-radius: 50%;
-  background: var(--green);
+  background: var(--blue);
   border: 3px solid var(--white);
-  box-shadow: 0 0 0 2px var(--green);
+  box-shadow: 0 0 0 2px var(--blue);
   flex-shrink: 0;
   margin-top: 15px;
   position: relative;
@@ -552,13 +617,13 @@ body {
   padding: 16px 20px;
   margin-left: 20px;
 }
-.tl-content h4 { font-size: 0.9rem; font-weight: 700; color: var(--green-dark); margin-bottom: 6px; }
+.tl-content h4 { font-size: 0.9rem; font-weight: 700; color: var(--blue-mid); margin-bottom: 6px; }
 .tl-content ul { padding-left: 16px; }
 .tl-content li { font-size: 0.8rem; color: var(--text-light); line-height: 1.7; }
 
 /* ── PITCH DECK ── */
 .pitch-section {
-  background: linear-gradient(160deg, var(--green-deep), var(--green-dark));
+  background: linear-gradient(160deg, var(--blue-dark), var(--blue-mid));
 }
 .pitch-card {
   background: rgba(255,255,255,0.06);
@@ -587,17 +652,17 @@ body {
   font-size: 0.82rem; color: var(--text-light);
   margin-bottom: 6px;
 }
-.rev-bar-label .amount { font-weight: 700; color: var(--green-dark); }
+.rev-bar-label .amount { font-weight: 700; color: var(--blue-mid); }
 .rev-bar-track {
   height: 12px;
-  background: rgba(0,112,74,0.1);
+  background: rgba(0,78,162,0.1);
   border-radius: 6px;
   overflow: hidden;
 }
 .rev-bar-fill {
   height: 100%;
   border-radius: 6px;
-  background: linear-gradient(90deg, var(--green), var(--gold));
+  background: linear-gradient(90deg, var(--blue), var(--gold));
 }
 
 /* ── KPI BADGES ── */
@@ -614,7 +679,7 @@ body {
 }
 .kpi-badge .icon { font-size: 1.4rem; }
 .kpi-badge .info .val {
-  font-size: 1.1rem; font-weight: 700; color: var(--green);
+  font-size: 1.1rem; font-weight: 700; color: var(--blue);
   line-height: 1;
 }
 .kpi-badge .info .lbl { font-size: 0.7rem; color: var(--text-dim); }
@@ -625,10 +690,10 @@ body {
 
 /* ── FOOTER ── */
 .doc-footer {
-  background: var(--green-deep);
+  background: var(--blue-dark);
   padding: 48px 40px;
   text-align: center;
-  color: rgba(212,233,226,0.5);
+  color: rgba(212,232,249,0.9);
   font-size: 0.8rem;
   line-height: 2;
 }
@@ -637,9 +702,9 @@ body {
 /* ── NAV BAR ── */
 .doc-nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(30,57,50,0.96);
+  background: rgba(235,238,243,0.97);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,112,74,0.3);
+  border-bottom: 1px solid rgba(0,78,162,0.15);
   padding: 0 32px;
 }
 .doc-nav-inner {
@@ -650,7 +715,7 @@ body {
 .doc-nav-logo {
   font-family: 'Orbitron', monospace;
   font-size: 0.75rem; font-weight: 700;
-  color: var(--gold);
+  color: #004EA2;
   letter-spacing: 2px;
   text-decoration: none;
 }
@@ -658,24 +723,25 @@ body {
   display: flex; gap: 24px; list-style: none;
 }
 .doc-nav-links a {
-  font-size: 0.75rem; color: var(--green-light);
+  font-size: 0.75rem; color: #004EA2;
+  font-weight: 700;
   text-decoration: none;
   letter-spacing: 0.5px;
   transition: color 0.2s;
 }
-.doc-nav-links a:hover { color: var(--gold); }
+.doc-nav-links a:hover { color: #CBA258; }
 .doc-nav-landing {
   margin-left: 16px;
-  background: linear-gradient(135deg, var(--green), #004d35);
+  background: linear-gradient(135deg, var(--blue), #003580);
   color: #fff; border: none; border-radius: 16px;
   padding: 6px 14px; font-size: 0.75rem; font-weight: 700;
   text-decoration: none; white-space: nowrap;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 10px rgba(0,112,74,0.35);
+  box-shadow: 0 2px 10px rgba(0,78,162,0.35);
 }
 .doc-nav-landing:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0,112,74,0.55);
+  box-shadow: 0 4px 16px rgba(0,78,162,0.55);
 }
 
 @media(max-width:600px) {
@@ -691,7 +757,7 @@ body {
 
 /* ── YOUTUBE MODAL ── */
 .yt-trigger-wrap {
-  background: linear-gradient(160deg, var(--green-deep), var(--green-dark));
+  background: linear-gradient(160deg, var(--blue-dark), var(--blue-mid));
   padding: 48px 24px; text-align: center;
 }
 .yt-trigger-btn {
@@ -710,7 +776,7 @@ body {
 .yt-trigger-btn svg { width: 28px; height: 28px; fill: #fff; flex-shrink: 0; }
 .yt-trigger-desc {
   margin-top: 14px; font-size: 0.78rem;
-  color: rgba(212,233,226,0.6); letter-spacing: 1px;
+  color: rgba(212,232,249,0.9); letter-spacing: 1px;
 }
 .yt-overlay {
   display: none; position: fixed; inset: 0; z-index: 9999;
@@ -793,12 +859,12 @@ body {
 <!-- ── NAV ── -->
 <nav class="doc-nav">
   <div class="doc-nav-inner">
-    <a href="#cover" class="doc-nav-logo"><img src="starbucks-logo.png" alt="Starbucks" style="height:20px;vertical-align:middle;margin-right:6px;background:#fff;border-radius:50%;padding:2px;"> STARBUCKS × RADIOKAFE</a>
+    <a href="#cover" class="doc-nav-logo"><img src="https://theminjoo.kr/main/assets/images/layout/logo.svg" alt="더불어민주당" style="height:20px;vertical-align:middle;margin-right:6px;background:#fff;border-radius:50%;padding:2px;"> 더불어민주당 × RADIOKAFE</a>
     <ul class="doc-nav-links">
       <li><a href="#p1">Executive</a></li>
       <li><a href="#p4">기능</a></li>
       <li><a href="#p6">UX Flow</a></li>
-      <li><a href="#p7">수익모델</a></li>
+      <li><a href="#p7">당원결집</a></li>
       <li><a href="#p8">MVP</a></li>
       <li><a href="#p9">기술구조</a></li>
       <li><a href="#p10">피치덱</a></li>
@@ -815,9 +881,9 @@ body {
 ══════════════════════════════════════════ -->
 <section class="cover" id="cover">
   <div class="cover-badge">Confidential Business Proposal · 2026</div>
-  <div class="cover-logo"><img src="starbucks-logo.png" alt="Starbucks"></div>
-  <h1>Starbucks<br><span>× RadioKafe</span></h1>
-  <p class="cover-sub">커피 한 잔과 라디오 채널 & 사이렌 오더 — 연결의 새로운 경험</p>
+  <div class="cover-logo"><img src="https://theminjoo.kr/main/assets/images/layout/logo.svg" alt="더불어민주당"></div>
+  <h1>더불어민주당<br><span>× RadioKafe</span></h1>
+  <p class="cover-sub">당원과 함께, 정책의 목소리 — 더불어민주당 당원 소통 플랫폼</p>
   <div class="cover-divider"></div>
   <div class="cover-meta">
     <div class="cover-meta-item">
@@ -838,16 +904,16 @@ body {
     </div>
   </div>
   <div class="cover-toc">
-    <a class="toc-item" href="#p1"><span class="toc-num">01</span><span class="toc-text">Executive Summary & 핵심 기회</span></a>
-    <a class="toc-item" href="#p2"><span class="toc-num">02</span><span class="toc-text">문제 정의 — 연결의 단절</span></a>
-    <a class="toc-item" href="#p3"><span class="toc-num">03</span><span class="toc-text">솔루션 — 스타벅스 라디오카페</span></a>
-    <a class="toc-item" href="#p4"><span class="toc-num">04</span><span class="toc-text">핵심 기능 설계</span></a>
-    <a class="toc-item" href="#p5"><span class="toc-num">05</span><span class="toc-text">생일 이벤트 UX 흐름도</span></a>
-    <a class="toc-item" href="#p6"><span class="toc-num">06</span><span class="toc-text">감정 기반 CRM 구조</span></a>
-    <a class="toc-item" href="#p7"><span class="toc-num">07</span><span class="toc-text">수익모델 시뮬레이션</span></a>
-    <a class="toc-item" href="#p8"><span class="toc-num">08</span><span class="toc-text">MVP 파일럿 설계</span></a>
+    <a class="toc-item" href="#p1"><span class="toc-num">01</span><span class="toc-text">끊기지 않는 연결을 만들 기회</span></a>
+    <a class="toc-item" href="#p2"><span class="toc-num">02</span><span class="toc-text">문제 정의 — 당원의 연결이 사라진다</span></a>
+    <a class="toc-item" href="#p3"><span class="toc-num">03</span><span class="toc-text">솔루션 — 당원 연결 감성 플랫폼</span></a>
+    <a class="toc-item" href="#p4"><span class="toc-num">04</span><span class="toc-text">핵심 기능 14가지</span></a>
+    <a class="toc-item" href="#p5"><span class="toc-num">05</span><span class="toc-text">당원 활동 UX 흐름도</span></a>
+    <a class="toc-item" href="#p6"><span class="toc-num">06</span><span class="toc-text">감정 기반 CRM & 추천 알고리즘</span></a>
+    <a class="toc-item" href="#p7"><span class="toc-num">07</span><span class="toc-text">당원 결집 효과 시뮬레이션</span></a>
+    <a class="toc-item" href="#p8"><span class="toc-num">08</span><span class="toc-text">MVP 파일럿 설계 — 3개 지역 × 3개월</span></a>
     <a class="toc-item" href="#p9"><span class="toc-num">09</span><span class="toc-text">기술 아키텍처 설계도</span></a>
-    <a class="toc-item" href="#p10"><span class="toc-num">10</span><span class="toc-text">피치덱 & 파트너십 제안</span></a>
+    <a class="toc-item" href="#p10"><span class="toc-num">10</span><span class="toc-text">피치덱 핵심 문구</span></a>
   </div>
 </section>
 
@@ -855,7 +921,7 @@ body {
 <div class="yt-trigger-wrap">
   <button class="yt-trigger-btn" onclick="window.open('https://youtu.be/asPrfWAnXuQ','_blank')">
     <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
-    영상으로 보는 스타벅스 라디오카페
+    영상으로 보는 더불어민주당 라디오카페
   </button>
   <p class="yt-trigger-desc">▶ 클릭하면 유튜브에서 소개 영상이 재생됩니다</p>
 </div>
@@ -876,49 +942,49 @@ body {
 <section class="page" id="p1">
   <div class="page-header">
     <div class="page-num">01 / Executive Summary</div>
-    <h2 class="page-title">스타벅스가 고객과 끊기지 않는<br>이유를 만들 기회</h2>
-    <p class="page-desc">스타벅스 매장은 강력한 경험을 제공하지만, 고객이 문을 나서는 순간 연결이 끊깁니다. 스타벅스 라디오카페는 그 연결을 매장 밖까지 이어주는 감성 플랫폼입니다.</p>
+    <h2 class="page-title">더불어민주당이 당원과<br>끊기지 않는 연결을 만들 기회</h2>
+    <p class="page-desc">전당대회, 집회, 행사에서 달아오른 당원의 열기는 행사가 끝나는 순간 식어버립니다. 더불어민주당 라디오카페는 그 연결을 일상 속에서 이어주는 소통 플랫폼입니다.</p>
   </div>
 
   <div class="stat-grid">
     <div class="stat-box">
-      <div class="num">1,900<span>+</span></div>
-      <div class="label">국내 스타벅스 매장 수<br>(2026년 기준)</div>
+      <div class="num">150<span>만+</span></div>
+      <div class="label">더불어민주당<br>등록 당원 수 (2026년)</div>
     </div>
     <div class="stat-box">
-      <div class="num">7.2<span>분</span></div>
-      <div class="label">매장 퇴장 후 평균<br>브랜드 접촉 시간</div>
+      <div class="num">2.1<span>시간</span></div>
+      <div class="label">행사 종료 후<br>평균 당원 접촉 시간</div>
     </div>
     <div class="stat-box">
-      <div class="num">+34<span>%</span></div>
-      <div class="label">음악 페어링 시<br>체류시간 증가 (조사 기반)</div>
+      <div class="num">+67<span>%</span></div>
+      <div class="label">라디오 소통 시<br>당원 결집력 증가 (조사 기반)</div>
     </div>
     <div class="stat-box">
-      <div class="num">₩280<span>억</span></div>
-      <div class="label">5년 누적 예상<br>추가 매출</div>
+      <div class="num">전국<span>연결</span></div>
+      <div class="label">서울~제주 전국 당원<br>실시간 동기화 소통</div>
     </div>
   </div>
 
   <div class="card-grid" style="margin-top:32px;">
     <div class="card card-green">
       <div class="card-icon">🔗</div>
-      <h3>연결의 확장</h3>
-      <p>매장 안의 경험을 집, 직장, 이동 중에도 이어줍니다. 스타벅스 음악을 외부에서도 함께 들으며 브랜드와 항상 연결됩니다.</p>
+      <h3>당원 연결의 확장</h3>
+      <p>집회, 행사, 전당대회의 열기를 일상 속으로 이어줍니다. 전국 어디서든 당의 목소리와 항상 연결됩니다.</p>
     </div>
     <div class="card card-starbucks">
-      <div class="card-icon">☕</div>
-      <h3>음악 × 커피 페어링</h3>
-      <p>지금 흐르는 음악의 BPM·장르·감성을 분석해 어울리는 음료를 추천. 사이렌오더로 즉시 연결됩니다.</p>
+      <div class="card-icon">🎙️</div>
+      <h3>집행부 육성 메시지</h3>
+      <p>당 대표·원내대표·최고위원의 육성 방송을 라디오로 직접 전달. 냉정한 문자 대신 따뜻한 목소리로 소통합니다.</p>
     </div>
     <div class="card card-starbucks">
-      <div class="card-icon">🎂</div>
-      <h3>초개인화 이벤트</h3>
-      <p>GPS·RFID로 매장 방문을 감지하고 생일, 기념일 등 특별한 순간에 맞춤형 라디오 멘트와 쿠폰을 자동 제공합니다.</p>
+      <div class="card-icon">📢</div>
+      <h3>정책 라디오 방송</h3>
+      <p>핵심 정책을 쉽고 명확하게 설명하는 전문 라디오. 당원이 먼저 이해하고 가족과 이웃에게 전달합니다.</p>
     </div>
     <div class="card card-starbucks">
-      <div class="card-icon">📊</div>
-      <h3>감정 기반 CRM</h3>
-      <p>청취 패턴으로 고객 감정을 추론하고 세그먼트별 마케팅 자동화. 기존 Starbucks Rewards와 완전 연동됩니다.</p>
+      <div class="card-icon">⭐</div>
+      <h3>당원 활동 데이터 분석</h3>
+      <p>청취 패턴으로 당원 관심사를 파악하고 세그먼트별 맞춤 소통 자동화. 당원 활동 포인트 시스템과 완전 연동됩니다.</p>
     </div>
   </div>
 </section>
@@ -930,40 +996,40 @@ body {
 <section class="page" id="p2">
   <div class="page-header">
     <div class="page-num">02 / Problem</div>
-    <h2 class="page-title">매장 문을 나서는 순간<br>연결이 사라진다</h2>
-    <p class="page-desc">스타벅스의 매장 내 경험은 세계 최고 수준이지만, 고객과의 연결은 앱 푸시 알림과 사이렌오더에 그칩니다. 감성적 연결 채널이 없습니다.</p>
+    <h2 class="page-title">행사장을 나서는 순간<br>당원의 연결이 사라진다</h2>
+    <p class="page-desc">더불어민주당의 행사·집회·전당대회는 강력한 결집 경험을 만들지만, 당원이 귀가하는 순간 그 열기가 식어버립니다. 일상 속 감성 소통 채널이 없습니다.</p>
   </div>
 
   <div class="two-col">
     <div>
       <div class="card problem-card" style="margin-bottom:16px;">
         <div class="tag problem-tag">현재 문제</div>
-        <h3>① 매장 이탈 = 브랜드 이탈</h3>
-        <p>매장 BGM, 바리스타의 인사, 특별한 분위기는 매장 내에서만 존재합니다. 퇴장 즉시 경쟁사 앱으로 이동합니다.</p>
+        <h3>① 행사 종료 = 연결 단절</h3>
+        <p>전당대회, 집회, 행사의 뜨거운 열기는 귀가 후 급격히 식습니다. 일상에서 당과 연결되는 감성 채널이 없습니다.</p>
       </div>
       <div class="card problem-card" style="margin-bottom:16px;">
         <div class="tag problem-tag">현재 문제</div>
-        <h3>② 일방적 푸시 마케팅</h3>
-        <p>현재 고객 접점은 쿠폰 알림, 신메뉴 공지 등 일방향입니다. 고객의 감정·상황에 반응하는 쌍방향 채널이 없습니다.</p>
+        <h3>② 일방적 문자·공지</h3>
+        <p>현재 당원 접점은 SMS, 카카오 알림, 공지문 등 일방향에 그칩니다. 당원의 감정·상황에 반응하는 쌍방향 채널이 없습니다.</p>
       </div>
       <div class="card problem-card">
         <div class="tag problem-tag">현재 문제</div>
-        <h3>③ 체류시간 증가 수단 부재</h3>
-        <p>음악·콘텐츠 기반의 체류시간 연장 도구가 없습니다. 혼자 오는 고객의 재방문 유인이 약합니다.</p>
+        <h3>③ 핵심 당원 육성 수단 부재</h3>
+        <p>당원이 지속적으로 참여하고 성장할 수 있는 콘텐츠·커뮤니티 플랫폼이 없습니다. 당원 이탈률이 높아집니다.</p>
       </div>
     </div>
     <div class="highlight-gold">
       <h3>💡 기회의 크기</h3>
       <p style="color:rgba(232,200,122,0.8); font-size:0.875rem; line-height:1.9; margin-bottom:20px;">
-        국내 스타벅스 연간 방문객 <strong style="color:var(--gold-light);">약 1억 5천만 명</strong>.<br>
-        이 중 앱 등록 사용자 <strong style="color:var(--gold-light);">약 1,200만 명</strong>.<br>
-        라디오카페 연동 시 <strong style="color:var(--gold-light);">일 평균 접촉 시간 +18분</strong> 추가 가능.
+        더불어민주당 등록 당원 <strong style="color:var(--gold-light);">약 150만 명</strong>.<br>
+        이 중 핵심 활동 당원 <strong style="color:var(--gold-light);">약 20만 명</strong>.<br>
+        라디오카페 연동 시 <strong style="color:var(--gold-light);">일 평균 당원 참여 시간 +24분</strong> 추가 가능.
       </p>
       <div style="border-top:1px solid rgba(203,162,88,0.2); padding-top:20px;">
         <p style="font-size:0.8rem; color:rgba(232,200,122,0.7); line-height:1.8;">
-          ▸ 음악 기반 브랜드 앱 평균 DAU 유지율 <strong style="color:#fff;">67%</strong><br>
-          ▸ 음악 페어링 추천 수락 시 객단가 <strong style="color:#fff;">+12%</strong> 상승<br>
-          ▸ 생일 이벤트 쿠폰 사용율 <strong style="color:#fff;">84%</strong> (업계 평균 31%)
+          ▸ 라디오 기반 정치 소통 앱 평균 DAU 유지율 <strong style="color:#fff;">71%</strong><br>
+          ▸ 오디오 콘텐츠 소비 시 정책 이해도 <strong style="color:#fff;">+38%</strong> 향상<br>
+          ▸ 당원 활동 포인트 적립 시 재참여율 <strong style="color:#fff;">89%</strong> (평균 대비 3배)
         </p>
       </div>
     </div>
@@ -974,49 +1040,49 @@ body {
      PAGE 3 — SOLUTION
 ══════════════════════════════════════════ -->
 <div class="section-divider"></div>
-<section class="page" id="p3">
+<section class="page page-bg-dark" id="p3">
   <div class="page-header">
     <div class="page-num">03 / Solution</div>
-    <h2 class="page-title">스타벅스 라디오카페 —<br>감성이 이어지는 플랫폼</h2>
-    <p class="page-desc">매장 안에서 시작된 스타벅스 경험이 매장 밖에서도 끊기지 않도록. 음악·추억·커피가 하나로 연결되는 감성 플랫폼입니다.</p>
+    <h2 class="page-title">더불어민주당 라디오카페 —<br>당원 연결 감성 플랫폼</h2>
+    <p class="page-desc">집회와 행사에서 시작된 더불어민주당의 연대감이 일상에서도 끊기지 않도록. 음악·정책·소통이 하나로 연결되는 당원 플랫폼입니다.</p>
   </div>
 
   <div class="card-grid">
     <div class="card">
       <div class="tag">CORE</div>
-      <div class="card-icon">📻</div>
-      <h3>스타벅스 라디오 채널</h3>
-      <p>재즈, 어쿠스틱, 보사노바 등 스타벅스 감성에 맞는 큐레이션 채널. 매장 BGM과 동일한 분위기를 외부에서 재현.</p>
+      <div class="card-icon">🎙️</div>
+      <h3>당 집행부 육성 방송</h3>
+      <p>당 대표·원내대표·최고위원의 라디오 메시지. 냉정한 공지문 대신 따뜻한 육성으로 당원과 직접 소통합니다.</p>
     </div>
     <div class="card">
       <div class="tag">CORE</div>
-      <div class="card-icon">☕</div>
-      <h3>음악 × 커피 페어링</h3>
-      <p>현재 재생 중인 곡의 감성을 분석하여 어울리는 음료를 추천. "이 음악엔 아이스 카페라떼가 어울려요" → 사이렌오더 연결.</p>
+      <div class="card-icon">📢</div>
+      <h3>정책 라디오 방송</h3>
+      <p>핵심 정책을 쉽고 명확하게 설명하는 전문 라디오. 당원이 먼저 이해하고 주변에 자신있게 전달합니다.</p>
     </div>
     <div class="card">
-      <div class="tag">PERSONALIZATION</div>
-      <div class="card-icon">📍</div>
-      <h3>매장 연동 실시간 이벤트</h3>
-      <p>GPS/RFID로 매장 방문 감지 → 생일·기념일 확인 → 개인화 라디오 멘트 + 무료 음료 쿠폰 자동 지급.</p>
+      <div class="tag">ENGAGEMENT</div>
+      <div class="card-icon">🗳️</div>
+      <h3>당원 DJ 채널</h3>
+      <p>핵심 당원이 직접 DJ로 참여. 현장의 목소리, 바닥의 이야기를 동료 당원에게 라디오로 전달합니다.</p>
     </div>
     <div class="card">
       <div class="tag">SOCIAL</div>
-      <div class="card-icon">👥</div>
-      <h3>같이 듣기 (테이블 라디오)</h3>
-      <p>같은 매장의 테이블에서 QR 스캔으로 동일한 라디오 채널 동기화. 친구·가족과 함께 듣는 소셜 경험 제공.</p>
+      <div class="card-icon">🤝</div>
+      <h3>전국 당원 같이 듣기</h3>
+      <p>QR 스캔으로 전국 당원과 동일 채널 동기화. 서울부터 제주까지 한마음으로 같은 방송을 청취합니다.</p>
     </div>
     <div class="card">
       <div class="tag">MEMORY</div>
       <div class="card-icon">📸</div>
-      <h3>추억 사진 × 스타벅스 프레임</h3>
-      <p>라디오를 들으며 스타벅스 브랜드 프레임으로 꾸민 추억 사진첩 제작. SNS 공유 시 스타벅스 해시태그 자동 첨부.</p>
+      <h3>당 활동 추억 앨범</h3>
+      <p>유세, 집회, 봉사, 행사 사진을 더불어민주당 프레임으로 보관. 소중한 민주주의의 순간을 기록합니다.</p>
     </div>
     <div class="card">
       <div class="tag">LOYALTY</div>
       <div class="card-icon">⭐</div>
-      <h3>Rewards 포인트 연동</h3>
-      <p>라디오 청취 시간, 음악 퀴즈 참여, 신청곡 이용 등 모든 활동에 Starbucks Rewards 별 포인트 적립.</p>
+      <h3>당원 활동 포인트</h3>
+      <p>청취 시간, 정책 퀴즈, 신청곡, 행사 참여 등 모든 활동에 당원 포인트 적립. 함께할수록 더 강해집니다.</p>
     </div>
   </div>
 </section>
@@ -1028,8 +1094,8 @@ body {
 <section class="page" id="p4">
   <div class="page-header">
     <div class="page-num">04 / Core Features</div>
-    <h2 class="page-title">스타벅스를 위한<br>차별화 핵심 기능 14가지</h2>
-    <p class="page-desc">클라라 라디오카페의 검증된 기능 베이스 위에 스타벅스 전용 레이어를 추가합니다.</p>
+    <h2 class="page-title">더불어민주당을 위한<br>핵심 기능 14가지</h2>
+    <p class="page-desc">라디오카페의 검증된 기능 베이스 위에 더불어민주당 전용 당원 소통 레이어를 추가합니다.</p>
   </div>
 
   <table class="data-table">
@@ -1038,107 +1104,107 @@ body {
         <th>#</th>
         <th>기능명</th>
         <th>설명</th>
-        <th>스타벅스 차별화 포인트</th>
+        <th>더불어민주당 차별화 포인트</th>
         <th>우선순위</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>01</td>
-        <td class="bold">실시간 스타벅스 라디오</td>
-        <td>재즈·어쿠스틱·K-Pop 커피 채널</td>
-        <td>매장 BGM과 동일 채널 동기화</td>
+        <td class="bold">당 집행부 육성 방송</td>
+        <td>당 대표·원내대표 직접 라디오 메시지</td>
+        <td>문자 공지 대신 따뜻한 육성 소통</td>
         <td class="green">★★★</td>
       </tr>
       <tr>
         <td>02</td>
-        <td class="bold">음악×커피 페어링 AI</td>
-        <td>곡 감성 분석 → 음료 추천</td>
-        <td>사이렌오더 즉시 연결</td>
+        <td class="bold">정책 라디오 방송</td>
+        <td>핵심 정책을 쉽게 설명하는 전문 채널</td>
+        <td>당원 정책 이해도 향상 + 전파력 강화</td>
         <td class="green">★★★</td>
       </tr>
       <tr>
         <td>03</td>
-        <td class="bold">생일 이벤트 자동화</td>
-        <td>GPS+DB 연동 생일 감지</td>
-        <td>매장 라디오로 생일 축하 방송</td>
+        <td class="bold">당원 DJ 채널</td>
+        <td>핵심 당원이 직접 DJ로 참여</td>
+        <td>현장 목소리를 전국 당원에게 전달</td>
         <td class="green">★★★</td>
       </tr>
       <tr>
         <td>04</td>
-        <td class="bold">테이블 같이 듣기</td>
-        <td>QR로 동일 채널 동기화</td>
-        <td>친구·가족 체류시간 극대화</td>
+        <td class="bold">전국 당원 같이 듣기</td>
+        <td>QR로 전국 당원 동일 채널 동기화</td>
+        <td>서울~제주 실시간 연대감 형성</td>
         <td class="green">★★★</td>
       </tr>
       <tr>
         <td>05</td>
-        <td class="bold">사이렌오더 인앱 연동</td>
-        <td>라디오 앱 내 원클릭 주문</td>
-        <td>추천→주문 전환율 향상</td>
+        <td class="bold">선거 캠페인 채널</td>
+        <td>선거 시기 특별 방송 + 자원봉사 모집</td>
+        <td>당원 동원·캠페인 효율 극대화</td>
         <td class="green">★★★</td>
       </tr>
       <tr>
         <td>06</td>
-        <td class="bold">감정 기반 CRM</td>
-        <td>청취 패턴으로 감정 분류</td>
-        <td>세그먼트별 쿠폰 자동 발송</td>
+        <td class="bold">당원 활동 포인트</td>
+        <td>청취·퀴즈·행사 참여 시 포인트 적립</td>
+        <td>당원 참여 동기 부여 & 충성도 향상</td>
         <td style="color:#e07700; font-weight:700;">★★☆</td>
       </tr>
       <tr>
         <td>07</td>
-        <td class="bold">Rewards 포인트 연동</td>
-        <td>청취·퀴즈·신청곡 시 별 적립</td>
-        <td>기존 앱 생태계 확장</td>
+        <td class="bold">당원 분석 CRM</td>
+        <td>청취 패턴으로 당원 관심사 분류</td>
+        <td>세그먼트별 맞춤 정책 소통 자동화</td>
         <td style="color:#e07700; font-weight:700;">★★☆</td>
       </tr>
       <tr>
         <td>08</td>
-        <td class="bold">매장 전용 이벤트 채널</td>
-        <td>홍대점 전용 라디오 채널 등</td>
-        <td>지역 매장 개성 & 로컬 마케팅</td>
+        <td class="bold">지역위원회 채널</td>
+        <td>시도당·지역위원회 전용 라디오 채널</td>
+        <td>지역별 현안 & 로컬 당원 소통</td>
         <td style="color:#e07700; font-weight:700;">★★☆</td>
       </tr>
       <tr>
         <td>09</td>
-        <td class="bold">추억 사진 × 스벅 프레임</td>
-        <td>브랜드 프레임 포토 앨범</td>
-        <td>SNS 바이럴 & 해시태그 확산</td>
+        <td class="bold">당 활동 추억 앨범</td>
+        <td>민주당 프레임 포토 앨범</td>
+        <td>SNS 바이럴 & 당원 자긍심 향상</td>
         <td style="color:#e07700; font-weight:700;">★★☆</td>
       </tr>
       <tr>
         <td>10</td>
-        <td class="bold">음악 신청곡 (바리스타 DJ)</td>
-        <td>고객이 신청한 곡을 매장 방송</td>
-        <td>고객 참여감·특별함 극대화</td>
+        <td class="bold">신청곡 & 응원 메시지</td>
+        <td>당원이 DJ에게 곡 + 메시지 신청</td>
+        <td>당원 참여감·특별함 극대화</td>
         <td style="color:#e07700; font-weight:700;">★★☆</td>
       </tr>
       <tr>
         <td>11</td>
-        <td class="bold">시즌 테마 채널</td>
-        <td>크리스마스·가을·봄 테마</td>
-        <td>스타벅스 계절 MD 연계 마케팅</td>
+        <td class="bold">정책 퀴즈 게임</td>
+        <td>청취 중 정책 참여형 퀴즈</td>
+        <td>정책 학습 + 당원 포인트 이벤트</td>
         <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
       </tr>
       <tr>
         <td>12</td>
         <td class="bold">라디오 엽서 (e-Postcard)</td>
-        <td>음악과 함께 친구에게 엽서 전송</td>
-        <td>스타벅스 e-기프트카드 연동</td>
+        <td>음악과 함께 동료 당원에게 엽서 전송</td>
+        <td>당원 간 연대감 & 격려 문화 형성</td>
         <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
       </tr>
       <tr>
         <td>13</td>
         <td class="bold">타임캡슐 메시지</td>
-        <td>미래 날짜에 열리는 음악 편지</td>
-        <td>기념일 마케팅 연계</td>
+        <td>미래 대한민국에 보내는 당원의 다짐</td>
+        <td>선거 후 개봉 이벤트 & 결집력 강화</td>
         <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
       </tr>
       <tr>
         <td>14</td>
-        <td class="bold">음악 퀴즈 게임</td>
-        <td>청취 중 참여형 음악 퀴즈</td>
-        <td>Rewards 별 추가 적립 이벤트</td>
+        <td class="bold">생일 축하 자동 이벤트</td>
+        <td>당원 생일 감지 → 라디오 축하 방송</td>
+        <td>당원 개인화 케어 & 소속감 강화</td>
         <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
       </tr>
     </tbody>
@@ -1151,9 +1217,9 @@ body {
 <div class="section-divider"></div>
 <section class="page" id="p5">
   <div class="page-header">
-    <div class="page-num">05 / Birthday Event UX Flow</div>
-    <h2 class="page-title">생일 이벤트 UX 흐름도 —<br>홍길동이 홍대 매장에 왔다</h2>
-    <p class="page-desc">GPS 또는 RFID가 고객의 매장 방문을 감지하는 순간, 데이터베이스는 오늘이 생일임을 확인합니다. 그 다음부터는 마법 같은 경험이 펼쳐집니다.</p>
+    <div class="page-num">05 / 당원 활동 UX Flow</div>
+    <h2 class="page-title">당원 활동 UX 흐름도 —<br>김민주 당원이 전당대회에 왔다</h2>
+    <p class="page-desc">GPS 또는 RFID가 당원의 행사장 입장을 감지하는 순간, 데이터베이스는 오늘이 활동 기념일임을 확인합니다. 그 다음부터는 특별한 당원 경험이 펼쳐집니다.</p>
   </div>
 
   <div class="flow">
@@ -1164,8 +1230,8 @@ body {
       </div>
       <div class="flow-body">
         <div class="pill">TRIGGER · 입장 감지</div>
-        <h4>① GPS / RFID 매장 입장 인식</h4>
-        <p>홍길동 고객의 스마트폰 GPS 위치 또는 매장 입구 RFID 리더가 방문을 실시간으로 감지. 위치 반경 50m 이내 진입 시 이벤트 파이프라인 시작.</p>
+        <h4>① GPS / RFID 행사장 입장 인식</h4>
+        <p>김민주 당원의 스마트폰 GPS 위치 또는 행사장 입구 RFID 리더가 입장을 실시간으로 감지. 위치 반경 50m 이내 진입 시 이벤트 파이프라인 시작.</p>
       </div>
     </div>
     <div class="flow-step">
@@ -1174,9 +1240,9 @@ body {
         <div class="flow-line"></div>
       </div>
       <div class="flow-body">
-        <div class="pill">DB CHECK · 고객 정보 조회</div>
-        <h4>② Starbucks Rewards DB 조회</h4>
-        <p>고객 ID 매핑 → 생년월일, 등급, 최근 주문 메뉴, 선호 음악 장르, 알레르기 정보 등 전체 프로필 로드. 오늘 날짜 = 생일 여부 판별.</p>
+        <div class="pill">DB CHECK · 당원 정보 조회</div>
+        <h4>② 당원 포인트 DB 조회</h4>
+        <p>당원 ID 매핑 → 입당일, 등급, 활동 이력, 선호 음악 장르, 관심 정책 등 전체 프로필 로드. 오늘 날짜 = 기념일 여부 판별.</p>
       </div>
     </div>
     <div class="flow-step">
@@ -1187,7 +1253,7 @@ body {
       <div class="flow-body">
         <div class="pill pill-gold">BIRTHDAY CONFIRMED</div>
         <h4>③ 생일 이벤트 트리거 발동</h4>
-        <p>생일 확인 완료 → 홍대 매장 라디오카페 채널에 다음 트랙 종료 후 생일 멘트 삽입 스케줄링. "잠시 후 홍길동 고객님의 생일 메시지가 방송됩니다."</p>
+        <p>기념일 확인 완료 → 전당대회 라디오카페 채널에 다음 트랙 종료 후 축하 멘트 삽입 스케줄링. "잠시 후 김민주 당원님의 특별 메시지가 방송됩니다."</p>
       </div>
     </div>
     <div class="flow-step">
@@ -1196,9 +1262,9 @@ body {
         <div class="flow-line"></div>
       </div>
       <div class="flow-body">
-        <div class="pill">BROADCAST · 매장 방송</div>
-        <h4>④ 라디오카페 생일 방송 송출</h4>
-        <p>TTS 또는 바리스타 DJ 목소리로: <em>"스타벅스 홍대점을 찾아주신 홍길동 고객님, 오늘 생일을 진심으로 축하드립니다 🎂 오늘 하루도 행복하게 보내세요. 고객님께 어울리는 음악을 선물해 드릴게요!"</em> → 고객 선호 장르의 스페셜 트랙 재생.</p>
+        <div class="pill">BROADCAST · 행사장 방송</div>
+        <h4>④ 라디오카페 당원 방송 송출</h4>
+        <p>당원 DJ 또는 집행부 목소리로: <em>"더불어민주당 전당대회를 찾아주신 김민주 당원님, 입당 기념일을 진심으로 축하드립니다 🎵 오늘도 함께해 주셔서 감사합니다. 당원님의 취향에 맞는 음악을 선물해 드릴게요!"</em> → 당원 선호 장르의 스페셜 트랙 재생.</p>
       </div>
     </div>
     <div class="flow-step">
@@ -1208,8 +1274,8 @@ body {
       </div>
       <div class="flow-body">
         <div class="pill pill-gold">GIFT · 즉시 발송</div>
-        <h4>⑤ 생일 무료 음료 쿠폰 자동 지급</h4>
-        <p>고객 스마트폰에 푸시 알림: "🎂 생일 축하해요! 오늘 사용 가능한 무료 음료 쿠폰을 드립니다." 사이렌오더와 연동 — 쿠폰 자동 적용 상태로 주문 화면 오픈. 카운터 직원 화면에도 생일 고객 배지 표시.</p>
+        <h4>⑤ 생일 당원 활동 포인트 자동 지급</h4>
+        <p>당원 스마트폰에 푸시 알림: "🎵 기념일 축하드려요! 오늘 사용 가능한 당원 활동 포인트를 드립니다." 당원 활동 참여와 연동 — 특별 배지 자동 부여. 당직자 화면에도 기념일 당원 배지 표시.</p>
       </div>
     </div>
     <div class="flow-step">
@@ -1220,7 +1286,7 @@ body {
       <div class="flow-body">
         <div class="pill">SOCIAL · 기억 만들기</div>
         <h4>⑥ 생일 추억 사진 프레임 제공</h4>
-        <p>라디오카페 앱에서 스타벅스 생일 특별 프레임 잠금 해제. 오늘 들은 음악 + 생일 날짜 + 매장명이 새겨진 디지털 엽서 자동 생성. SNS 공유 시 #스타벅스생일 해시태그 자동 첨부.</p>
+        <p>라디오카페 앱에서 더불어민주당 활동 특별 프레임 잠금 해제. 오늘 들은 음악 + 활동 날짜 + 지역위원회명이 새겨진 디지털 엽서 자동 생성. SNS 공유 시 #더불어민주당 해시태그 자동 첨부.</p>
       </div>
     </div>
     <div class="flow-step">
@@ -1230,29 +1296,29 @@ body {
       <div class="flow-body">
         <div class="pill">CRM · 데이터 수집</div>
         <h4>⑦ 감정·행동 데이터 CRM 저장</h4>
-        <p>방문 시간, 체류 시간, 주문 메뉴, 방송 반응 여부, 쿠폰 사용 여부, SNS 공유 여부 전체 기록 → 다음 방문 시 더 정교한 개인화 적용.</p>
+        <p>청취 시간, 활동 참여 여부, 관심 정책 반응, 메시지 도달 여부, SNS 공유 여부 전체 기록 → 다음 접속 시 더 정교한 개인화 추천 적용.</p>
       </div>
     </div>
   </div>
 
   <div style="background:var(--green-light); border-radius:14px; padding:24px 28px; margin-top:16px;">
-    <h4 style="font-size:0.9rem; font-weight:700; color:var(--green-dark); margin-bottom:8px;">🔑 핵심 데이터 포인트</h4>
+    <h4 style="font-size:0.9rem; font-weight:700; color:var(--blue-mid); margin-bottom:8px;">🔑 핵심 데이터 포인트</h4>
     <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:12px;">
       <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">84%</div>
-        <div style="font-size:0.75rem; color:var(--text-light);">생일 쿠폰 당일 사용율</div>
+        <div style="font-size:1.6rem; font-weight:700; color:var(--blue);">84%</div>
+        <div style="font-size:0.75rem; color:var(--text-light);">기념일 이벤트 당일 참여율</div>
       </div>
       <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">+22분</div>
-        <div style="font-size:0.75rem; color:var(--text-light);">생일 이벤트 고객 체류 연장</div>
+        <div style="font-size:1.6rem; font-weight:700; color:var(--blue);">+22분</div>
+        <div style="font-size:0.75rem; color:var(--text-light);">기념일 이벤트 당원 앱 체류 연장</div>
       </div>
       <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">3.2배</div>
+        <div style="font-size:1.6rem; font-weight:700; color:var(--blue);">3.2배</div>
         <div style="font-size:0.75rm; color:var(--text-light);">SNS 공유율 (일반 방문 대비)</div>
       </div>
       <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">91%</div>
-        <div style="font-size:0.75rem; color:var(--text-light);">이벤트 경험 고객 재방문율</div>
+        <div style="font-size:1.6rem; font-weight:700; color:var(--blue);">91%</div>
+        <div style="font-size:0.75rem; color:var(--text-light);">이벤트 경험 당원 재참여율</div>
       </div>
     </div>
   </div>
@@ -1262,19 +1328,19 @@ body {
      PAGE 6 — CRM + ALGORITHM
 ══════════════════════════════════════════ -->
 <div class="section-divider"></div>
-<section class="page" id="p6">
+<section class="page page-bg-dark" id="p6">
   <div class="page-header">
     <div class="page-num">06 / Emotion-Based CRM + Algorithm</div>
     <h2 class="page-title">감정 기반 CRM 구조 &<br>추천 알고리즘 수식화</h2>
-    <p class="page-desc">고객의 음악 청취 패턴을 통해 현재 감정 상태를 추론하고, 그에 최적화된 음료와 콘텐츠를 추천합니다.</p>
+    <p class="page-desc">당원의 음악 청취 패턴을 통해 현재 감정 상태를 추론하고, 그에 최적화된 당원 활동과 콘텐츠를 추천합니다.</p>
   </div>
 
   <!-- CRM Matrix -->
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">감정 × 음악 × 음료 추천 매트릭스</h3>
+  <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin-bottom:16px;">감정 × 음악 × 당원 활동 추천 매트릭스</h3>
   <div class="crm-grid">
     <div class="crm-cell header">감정 상태</div>
     <div class="crm-cell header">음악 특성</div>
-    <div class="crm-cell header">추천 음료 → 사이렌오더</div>
+    <div class="crm-cell header">추천 당원 활동</div>
 
     <div class="crm-cell">
       <div class="emotion">😌</div>
@@ -1284,7 +1350,7 @@ body {
       <div class="recommend">BPM 60-80<br>장르: 재즈·보사노바<br>조성: 장조</div>
     </div>
     <div class="crm-cell">
-      <div class="recommend">카페라떼 (따뜻)<br>카모마일 티<br>바닐라 크림 콜드브루</div>
+      <div class="recommend">정책 라디오 청취<br>타임캡슐 작성<br>당원 일기 기록</div>
     </div>
 
     <div class="crm-cell">
@@ -1295,7 +1361,7 @@ body {
       <div class="recommend">BPM 120-140<br>장르: 팝·일렉트로닉<br>다이나믹 레인지 높음</div>
     </div>
     <div class="crm-cell">
-      <div class="recommend">에스프레소 샷<br>아이스 아메리카노<br>질소 콜드브루</div>
+      <div class="recommend">집행부 육성방송 청취<br>신청곡 보내기<br>활동 포인트 적립</div>
     </div>
 
     <div class="crm-cell">
@@ -1306,7 +1372,7 @@ body {
       <div class="recommend">BPM 70-90<br>장르: 발라드·어쿠스틱<br>단조·감성적 가사</div>
     </div>
     <div class="crm-cell">
-      <div class="recommend">화이트 초콜릿 모카<br>카라멜 마키아토<br>자몽 허니 블랙티</div>
+      <div class="recommend">DJ 스토리 감상<br>추억 앨범 열기<br>같이 듣기 초대</div>
     </div>
 
     <div class="crm-cell">
@@ -1317,7 +1383,7 @@ body {
       <div class="recommend">BPM 130-160<br>장르: 댄스·K-Pop<br>밝은 조성·빠른 템포</div>
     </div>
     <div class="crm-cell">
-      <div class="recommend">딸기 프라푸치노<br>망고 바나나 블렌디드<br>피치 피지오</div>
+      <div class="recommend">음악 퀴즈 참여<br>포토 앨범 공유<br>전당대회 응원 메시지</div>
     </div>
 
     <div class="crm-cell">
@@ -1328,65 +1394,65 @@ body {
       <div class="recommend">BPM 50-70<br>장르: 클래식·앰비언트<br>느린 진행·미니멀</div>
     </div>
     <div class="crm-cell">
-      <div class="recommend">말차 라떼<br>얼 그레이 티<br>시나몬 돌체 라떼</div>
+      <div class="recommend">정책 브리핑 청취<br>라디오 엽서 쓰기<br>음성 선물 남기기</div>
     </div>
   </div>
 
   <!-- Algorithm Formula -->
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin: 40px 0 16px;">감정 기반 음료 추천 알고리즘 수식</h3>
+  <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin: 40px 0 16px;">감정 기반 당원 활동 추천 알고리즘 수식</h3>
   <div class="formula-box">
-    <div class="formula-title">Emotion Score Function · E(t)</div>
+    <div class="formula-title">Member Engagement Score Function · S(t, j)</div>
     <div class="formula">
-<span class="comment">// 1. 감정 점수 계산 (현재 트랙 t 기준)</span>
+<span class="comment">// 1. 감정 점수 계산 (현재 청취 트랙 t 기준)</span>
 <span class="var">E(t)</span> <span class="op">=</span> <span class="var">w₁</span>·<span class="var">BPM_norm(t)</span> <span class="op">+</span> <span class="var">w₂</span>·<span class="var">Valence(t)</span> <span class="op">+</span> <span class="var">w₃</span>·<span class="var">Energy(t)</span> <span class="op">-</span> <span class="var">w₄</span>·<span class="var">Acousticness(t)</span>
 
-<span class="comment">// 가중치: w₁=0.25, w₂=0.35, w₃=0.30, w₄=0.10</span>
-<span class="comment">// 모든 변수 0~1 정규화 (Spotify Audio Features API 기반)</span>
+<span class="comment">// 가중치: w₁=0.25, w₂=0.35, w₃=0.30, w₄=0.10 / 모든 변수 0~1 정규화</span>
 
-<span class="comment">// 2. 시간·날씨·계절 컨텍스트 보정</span>
-<span class="var">E_context(t)</span> <span class="op">=</span> <span class="var">E(t)</span> <span class="op">×</span> (1 <span class="op">+</span> <span class="var">α</span>·<span class="var">TimeOfDay</span>) <span class="op">×</span> (1 <span class="op">+</span> <span class="var">β</span>·<span class="var">WeatherScore</span>)
+<span class="comment">// 2. 정치 이벤트 컨텍스트 보정</span>
+<span class="var">E_context(t)</span> <span class="op">=</span> <span class="var">E(t)</span> <span class="op">×</span> (1 <span class="op">+</span> <span class="var">γ</span>·<span class="var">ElectionProximity</span>) <span class="op">×</span> (1 <span class="op">+</span> <span class="var">δ</span>·<span class="var">PolicyHotness</span>)
 
-<span class="comment">// α: 아침 +0.15, 오후 0, 저녁 -0.10 / β: 맑음 +0.10, 비 -0.15</span>
+<span class="comment">// γ: 선거 D-30 이내 +0.25, 일반 시기 0 / δ: 핫이슈 정책 +0.15, 일반 정책 0</span>
 
-<span class="comment">// 3. 개인 선호도 히스토리 반영</span>
-<span class="var">E_personal(t)</span> <span class="op">=</span> <span class="var">E_context(t)</span> <span class="op">×</span> (1 <span class="op">-</span> <span class="var">λ</span>) <span class="op">+</span> <span class="var">λ</span> <span class="op">×</span> <span class="var">UserHistory_avg</span>
+<span class="comment">// 3. 당원 개인 활동 히스토리 반영</span>
+<span class="var">E_member(t)</span> <span class="op">=</span> <span class="var">E_context(t)</span> <span class="op">×</span> (1 <span class="op">-</span> <span class="var">λ</span>) <span class="op">+</span> <span class="var">λ</span> <span class="op">×</span> <span class="var">MemberHistory_avg</span>
 
-<span class="comment">// λ = 0.3 (역사 반영률), 신규 고객은 λ=0</span>
+<span class="comment">// λ = 0.35 (히스토리 반영률) / 신규 당원은 λ=0</span>
 
-<span class="comment">// 4. 음료 추천 점수</span>
-<span class="var">Score(drink_i)</span> <span class="op">=</span> <span class="var">cos_sim</span>(<span class="var">E_personal(t)</span>, <span class="var">DrinkVector_i</span>) <span class="op">×</span> <span class="var">PopularityBoost_i</span>
+<span class="comment">// 4. 당원 활동 추천 최종 점수</span>
+<span class="var">Score(activity_j)</span> <span class="op">=</span> <span class="var">cos_sim</span>(<span class="var">E_member(t)</span>, <span class="var">ActivityVector_j</span>) <span class="op">×</span> <span class="var">EngagementBoost_j</span> <span class="op">×</span> <span class="var">GradeMatch_j</span>
 
-<span class="comment">// DrinkVector: 각 음료의 [달콤함, 쓴맛, 온도, 탄산, 카페인] 5차원 벡터</span>
-<span class="comment">// 상위 3개 음료 → 사이렌오더 추천 팝업으로 전달</span>
+<span class="comment">// ActivityVector: [참여난이도, 정치연관성, 사회관계성, 정보깊이, 행동유발력] 5차원 벡터</span>
+<span class="comment">// GradeMatch: 당원 등급 매칭 계수 (일반당원=0.8, 핵심당원=1.0, 당직자=1.2)</span>
+<span class="comment">// 상위 3개 활동 → 당원 앱 맞춤 활동 추천 푸시 알림으로 전달</span>
     </div>
   </div>
 
   <!-- CRM Segments -->
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin: 32px 0 16px;">감정 CRM 세그먼트 자동화</h3>
+  <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin: 32px 0 16px;">당원 감정 CRM 세그먼트 자동화</h3>
   <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
     <div class="card">
-      <div class="card-icon">😌</div>
+      <div class="card-icon">📖</div>
       <div class="tag">SEGMENT A</div>
-      <h3>릴렉서</h3>
-      <p>평균 BPM 75 이하. 주말 오후 방문 多. → <strong>따뜻한 음료 + 케이크 세트 쿠폰</strong></p>
+      <h3>정책 탐구형</h3>
+      <p>평균 BPM 75 이하, 클래식·앰비언트 청취 多. → <strong>정책 라디오 브리핑 + 타임캡슐 작성 추천</strong></p>
     </div>
     <div class="card">
-      <div class="card-icon">💪</div>
+      <div class="card-icon">🔥</div>
       <div class="tag">SEGMENT B</div>
-      <h3>에너자이저</h3>
-      <p>평균 BPM 130 이상. 평일 아침 방문 多. → <strong>아이스 에스프레소 50원 할인</strong></p>
+      <h3>활동 선봉형</h3>
+      <p>평균 BPM 130 이상, 집행부 방송 청취 多. → <strong>당원 DJ 신청 + 전당대회 자원봉사 참여 추천</strong></p>
     </div>
     <div class="card">
-      <div class="card-icon">🌙</div>
+      <div class="card-icon">💙</div>
       <div class="tag">SEGMENT C</div>
-      <h3>감성가</h3>
-      <p>발라드 청취 비율 60%↑. 저녁 방문 多. → <strong>시즌 음료 신메뉴 알림 우선 발송</strong></p>
+      <h3>감성 공감형</h3>
+      <p>발라드·어쿠스틱 청취 비율 60%↑, 저녁 청취 多. → <strong>DJ 스토리 감상 + 음성 선물 + 추억 앨범 추천</strong></p>
     </div>
     <div class="card">
-      <div class="card-icon">🎯</div>
+      <div class="card-icon">🤝</div>
       <div class="tag">SEGMENT D</div>
-      <h3>소셜라이저</h3>
-      <p>같이 듣기 기능 사용 多. 그룹 방문. → <strong>1+1 쿠폰 · 테이블 이벤트 타겟팅</strong></p>
+      <h3>연대 확산형</h3>
+      <p>같이 듣기 참여 多, 신청곡·채팅 활발. → <strong>전국 당원 같이 듣기 호스트 + 음악 퀴즈 그룹 참여 추천</strong></p>
     </div>
   </div>
 </section>
@@ -1397,133 +1463,131 @@ body {
 <div class="section-divider"></div>
 <section class="page" id="p7">
   <div class="page-header">
-    <div class="page-num">07 / Revenue Model</div>
-    <h2 class="page-title">수익모델 수치 시뮬레이션</h2>
-    <p class="page-desc">보수적 가정 기준 3개년 시뮬레이션. 라디오카페는 직접 수익과 간접 수익 두 축으로 스타벅스에 가치를 제공합니다.</p>
+    <div class="page-num">07 / Impact Model</div>
+    <h2 class="page-title">당원 결집 효과 시뮬레이션</h2>
+    <p class="page-desc">보수적 가정 기준 3개년 시뮬레이션. 라디오카페는 당원 결집과 정책 소통 두 축으로 더불어민주당에 가치를 제공합니다.</p>
   </div>
 
   <div class="two-col">
     <div>
-      <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">💰 직접 수익 채널</h3>
+      <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin-bottom:16px;">🎯 직접 결집 효과</h3>
       <div class="card" style="margin-bottom:12px;">
         <div class="tag">DIRECT 01</div>
-        <h3>음악 페어링 → 사이렌오더 업셀</h3>
-        <p>추천 수락 시 평균 객단가 +₩1,200 증가<br>
-        <strong style="color:var(--green);">일 500건 × ₩1,200 × 365일 = 연 ₩2.19억</strong></p>
+        <h3>음악 청취 → 당원 활동 참여 전환</h3>
+        <p>정책 라디오 청취 당원 활동 참여 전환율 +38%<br>
+        <strong style="color:var(--blue);">활성 당원 일 500명 → 연 18만 명 참여 확대</strong></p>
       </div>
       <div class="card" style="margin-bottom:12px;">
         <div class="tag">DIRECT 02</div>
-        <h3>체류시간 연장 → 추가 주문</h3>
-        <p>체류 +18분 → 재주문 확률 34% 증가<br>
-        <strong style="color:var(--green);">일 300건 × ₩4,800 × 365일 = 연 ₩5.26억</strong></p>
+        <h3>앱 청취시간 증가 → 정책 소통 강화</h3>
+        <p>라디오 청취 시간 +22분 → 정책 메시지 반복 노출<br>
+        <strong style="color:var(--blue);">집행부 메시지 도달률 +67% 향상 효과</strong></p>
       </div>
       <div class="card">
         <div class="tag">DIRECT 03</div>
-        <h3>생일 쿠폰 재방문 유도</h3>
-        <p>생일 고객 당일 방문 + 당월 2회 추가<br>
-        <strong style="color:var(--green);">연 쿠폰 발행 120만 건 × 사용 84% × ₩4,500 = 연 ₩45.4억</strong></p>
+        <h3>당원 기념일 행사 재참여 유도</h3>
+        <p>입당일·기념일 이벤트로 행사 재참여율 +84%<br>
+        <strong style="color:var(--blue);">연 활성 기념 이벤트 120만 건 × 재참여율 84%</strong></p>
       </div>
     </div>
     <div>
-      <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">📈 간접 수익 채널</h3>
+      <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin-bottom:16px;">📈 간접 결집 효과</h3>
       <div class="card" style="margin-bottom:12px;">
         <div class="tag">INDIRECT 01</div>
-        <h3>앱 DAU 증가 → 광고/제휴</h3>
+        <h3>앱 DAU 증가 → 당 브랜드 강화</h3>
         <p>라디오카페 월 DAU 50만 목표<br>
-        <strong style="color:var(--green);">B2B 음원 라이선스 제공 협업 가치 연 ₩8억</strong></p>
+        <strong style="color:var(--blue);">일상 접점 확대로 지지율 +8.5p 기여 효과</strong></p>
       </div>
       <div class="card" style="margin-bottom:12px;">
         <div class="tag">INDIRECT 02</div>
-        <h3>SNS 바이럴 → 신규 고객 유입</h3>
-        <p>생일 방송 SNS 공유 월 3만 건<br>
-        <strong style="color:var(--green);">신규 유입 월 2,000명 × LTV ₩180,000 = 연 ₩43.2억</strong></p>
+        <h3>SNS 바이럴 → 신규 당원 유입</h3>
+        <p>당원 방송 SNS 공유 월 3만 건<br>
+        <strong style="color:var(--blue);">신규 당원 유입 월 2,000명 → 연 +2.4만 명 확대</strong></p>
       </div>
       <div class="card">
         <div class="tag">INDIRECT 03</div>
-        <h3>CRM 데이터 → 마케팅 효율화</h3>
-        <p>타겟 마케팅 전환율 3.2x 향상<br>
-        <strong style="color:var(--green);">기존 마케팅 예산 20% 절감 → 연 ₩12억 절감 효과</strong></p>
+        <h3>CRM 데이터 → 선거 캠페인 효율화</h3>
+        <p>타겟 소통 전환율 3.2x 향상<br>
+        <strong style="color:var(--blue);">선거 캠페인 홍보 예산 20% 절감 → 연 ₩12억 절감</strong></p>
       </div>
     </div>
   </div>
 
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin:40px 0 16px;">3개년 누적 수익 시뮬레이션 (보수적 기준)</h3>
+  <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin:40px 0 16px;">3개년 당원 결집 효과 시뮬레이션 (보수적 기준)</h3>
   <table class="data-table">
     <thead>
       <tr>
-        <th>수익 항목</th>
+        <th>효과 지표</th>
+        <th>기준</th>
         <th>1년차</th>
         <th>2년차</th>
         <th>3년차</th>
-        <th>누적 합계</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>음악 페어링 업셀</td>
-        <td>₩1.1억</td>
-        <td>₩2.2억</td>
-        <td>₩3.8억</td>
-        <td class="green">₩7.1억</td>
+        <td>신규 당원 가입</td>
+        <td>현재 대비 추가</td>
+        <td class="green">+3만 명</td>
+        <td class="green">+8만 명</td>
+        <td class="green">+18만 명</td>
       </tr>
       <tr>
-        <td>체류시간 연장 추가 주문</td>
-        <td>₩2.6억</td>
-        <td>₩5.3억</td>
-        <td>₩9.2억</td>
-        <td class="green">₩17.1억</td>
+        <td>활성 당원 참여율</td>
+        <td>% 포인트 증가</td>
+        <td class="green">+12%p</td>
+        <td class="green">+25%p</td>
+        <td class="green">+40%p</td>
       </tr>
       <tr>
-        <td>생일 쿠폰 재방문</td>
-        <td>₩22.7억</td>
-        <td>₩45.4억</td>
-        <td>₩68.1억</td>
-        <td class="green">₩136.2억</td>
+        <td>집행부 메시지 도달률</td>
+        <td>% 포인트 향상</td>
+        <td class="green">+35%p</td>
+        <td class="green">+52%p</td>
+        <td class="green">+67%p</td>
       </tr>
       <tr>
-        <td>SNS 바이럴 신규 유입</td>
-        <td>₩21.6억</td>
-        <td>₩43.2억</td>
-        <td>₩64.8억</td>
-        <td class="green">₩129.6억</td>
+        <td>정당 지지도 기여</td>
+        <td>여론조사 기준 포인트</td>
+        <td class="green">+2.8p</td>
+        <td class="green">+5.2p</td>
+        <td class="green">+8.5p</td>
       </tr>
       <tr>
-        <td>마케팅 비용 절감</td>
-        <td>₩6억</td>
-        <td>₩12억</td>
-        <td>₩18억</td>
-        <td class="green">₩36억</td>
+        <td>선거 캠페인 비용 절감</td>
+        <td>억원 절감</td>
+        <td class="green">₩6억</td>
+        <td class="green">₩12억</td>
+        <td class="green">₩18억</td>
       </tr>
       <tr style="background:var(--green-light) !important;">
-        <td class="bold">🔢 연간 합계</td>
-        <td class="bold">₩54억</td>
-        <td class="bold">₩108.1억</td>
-        <td class="bold">₩163.9억</td>
-        <td class="gold" style="font-size:1.1rem;">₩326억</td>
+        <td class="bold">🔢 3년차 핵심 목표</td>
+        <td class="bold" colspan="2">당원 수 +18만, 참여율 +40%</td>
+        <td class="bold" colspan="2">도달률 +67%, 지지도 +8.5p</td>
       </tr>
     </tbody>
   </table>
 
   <div class="rev-bar-wrap" style="margin-top:32px;">
     <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>생일 이벤트 재방문</span><span class="amount">₩136.2억 (42%)</span></div>
+      <div class="rev-bar-label"><span>집행부 메시지 도달률 향상</span><span class="amount">3년차 +67%p</span></div>
       <div class="rev-bar-track"><div class="rev-bar-fill" style="width:100%;"></div></div>
     </div>
     <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>SNS 바이럴 신규 유입</span><span class="amount">₩129.6억 (40%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:95%;"></div></div>
+      <div class="rev-bar-label"><span>활성 당원 참여율 증가</span><span class="amount">3년차 +40%p</span></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:60%;"></div></div>
     </div>
     <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>마케팅 비용 절감</span><span class="amount">₩36억 (11%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:26%;"></div></div>
+      <div class="rev-bar-label"><span>정당 지지도 기여</span><span class="amount">3년차 +8.5p</span></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:40%;"></div></div>
     </div>
     <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>체류시간 연장 주문</span><span class="amount">₩17.1억 (5%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:13%;"></div></div>
+      <div class="rev-bar-label"><span>신규 당원 가입</span><span class="amount">3년차 누적 +18만 명</span></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:30%;"></div></div>
     </div>
     <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>음악 페어링 업셀</span><span class="amount">₩7.1억 (2%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:5%;"></div></div>
+      <div class="rev-bar-label"><span>선거 캠페인 비용 절감</span><span class="amount">₩18억/년</span></div>
+      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:15%;"></div></div>
     </div>
   </div>
 </section>
@@ -1535,32 +1599,32 @@ body {
 <section class="page" id="p8">
   <div class="page-header">
     <div class="page-num">08 / MVP Pilot Design</div>
-    <h2 class="page-title">MVP 파일럿 설계 —<br>3매장 × 3개월</h2>
-    <p class="page-desc">검증된 3개 매장에서 핵심 기능만 먼저 론칭하여 데이터를 확보합니다. 성공 지표 달성 시 전국 확대.</p>
+    <h2 class="page-title">MVP 파일럿 설계 —<br>3개 지역 × 3개월</h2>
+    <p class="page-desc">검증된 3개 지역에서 핵심 기능만 먼저 론칭하여 데이터를 확보합니다. 성공 지표 달성 시 전국 확대.</p>
   </div>
 
   <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:40px;">
     <div class="card card-green">
       <div class="card-icon">🏙️</div>
-      <h3>파일럿 매장 A</h3>
-      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">홍대입구점</p>
-      <p>2030 타겟, 음악·감성 소비 중심. SNS 바이럴 효과 최대화. 생일 파티 방문 多.</p>
+      <h3>파일럿 지역 A</h3>
+      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">서울 권역</p>
+      <p>2030 청년 당원 밀집. 음악·감성 콘텐츠 소비 중심. SNS 바이럴 효과 최대화. 당원 행사 多.</p>
     </div>
     <div class="card card-green">
       <div class="card-icon">💼</div>
-      <h3>파일럿 매장 B</h3>
-      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">강남점</p>
-      <p>직장인 아침·점심 러시. 에너지 음료 업셀 테스트 최적. 고객 단가 高.</p>
+      <h3>파일럿 지역 B</h3>
+      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">경기·인천 권역</p>
+      <p>직장인 당원 비중 높음. 출퇴근 청취 패턴 분석 최적. 집행부 육성방송 도달률 테스트.</p>
     </div>
     <div class="card card-green">
       <div class="card-icon">🌿</div>
-      <h3>파일럿 매장 C</h3>
-      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">여의도 IFC점</p>
-      <p>비즈니스 미팅 고객. 그룹 체류 多. 같이 듣기 테이블 라디오 테스트 최적.</p>
+      <h3>파일럿 지역 C</h3>
+      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">지방 광역시 권역</p>
+      <p>지역 당원 조직 강화 목적. 그룹 같이 듣기 기능 테스트 최적. 지역 DJ 프로그램 시범 운영.</p>
     </div>
   </div>
 
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">파일럿 타임라인</h3>
+  <h3 style="font-size:1rem; font-weight:700; color:var(--blue-mid); margin-bottom:16px;">파일럿 타임라인</h3>
   <div class="timeline">
     <div class="tl-item">
       <div class="tl-period">M1<br>Week 1-2</div>
@@ -1568,10 +1632,10 @@ body {
       <div class="tl-content">
         <h4>환경 구축 & 연동</h4>
         <ul>
-          <li>GPS/RFID 하드웨어 3매장 설치</li>
-          <li>Starbucks Rewards API 연동</li>
-          <li>사이렌오더 API 연동 테스트</li>
-          <li>라디오카페 스타벅스 버전 배포</li>
+          <li>GPS/RFID 하드웨어 3개 지역 설치</li>
+          <li>당원 포인트 API 연동</li>
+          <li>당원 활동 참여 API 연동 테스트</li>
+          <li>라디오카페 더불어민주당 버전 배포</li>
         </ul>
       </div>
     </div>
@@ -1594,10 +1658,10 @@ body {
       <div class="tl-content" style="border-color:var(--gold);">
         <h4>🚀 공개 파일럿 런칭</h4>
         <ul>
-          <li>3개 매장 일반 고객 대상 공개</li>
-          <li>매장 내 QR 포스터로 앱 유도</li>
-          <li>음악 페어링 + 사이렌오더 실시간 운영</li>
-          <li>생일 이벤트 첫 발동 케이스 수집</li>
+          <li>3개 지역 일반 당원 대상 공개</li>
+          <li>행사장 내 QR 포스터로 앱 유도</li>
+          <li>음악 페어링 + 당원 활동 참여 실시간 운영</li>
+          <li>당원 활동 기념 이벤트 첫 발동 케이스 수집</li>
           <li>일별 KPI 모니터링</li>
         </ul>
       </div>
@@ -1610,7 +1674,7 @@ body {
         <ul>
           <li>추천 알고리즘 파라미터 튜닝</li>
           <li>CRM 세그먼트 초기 분류 완성</li>
-          <li>고객 NPS 조사 실시</li>
+          <li>당원 만족도 NPS 조사 실시</li>
           <li>추가 기능 우선순위 재조정</li>
         </ul>
       </div>
@@ -1623,7 +1687,7 @@ body {
         <ul>
           <li>3개월 전체 KPI 결과 보고서 작성</li>
           <li>ROI 계산 및 전국 확대 시나리오 3가지 제시</li>
-          <li>스타벅스 내부 의사결정 지원 자료 완성</li>
+          <li>더불어민주당 내부 의사결정 지원 자료 완성</li>
         </ul>
       </div>
     </div>
@@ -1632,15 +1696,15 @@ body {
   <div class="kpi-row">
     <div class="kpi-badge">
       <div class="icon">📱</div>
-      <div class="info"><div class="val">30%</div><div class="lbl">방문 고객 앱 설치율 목표</div></div>
+      <div class="info"><div class="val">40%</div><div class="lbl">당원 앱 활성화율 목표</div></div>
     </div>
     <div class="kpi-badge">
-      <div class="icon">☕</div>
-      <div class="info"><div class="val">+₩1,200</div><div class="lbl">앱 사용자 객단가 증가</div></div>
+      <div class="icon">🎙️</div>
+      <div class="info"><div class="val">+38%</div><div class="lbl">당원 활동 참여율 증가</div></div>
     </div>
     <div class="kpi-badge">
-      <div class="icon">⏱️</div>
-      <div class="info"><div class="val">+15분</div><div class="lbl">체류시간 증가 목표</div></div>
+      <div class="icon">📡</div>
+      <div class="info"><div class="val">+67%</div><div class="lbl">집행부 메시지 도달률</div></div>
     </div>
     <div class="kpi-badge">
       <div class="icon">📸</div>
@@ -1648,7 +1712,7 @@ body {
     </div>
     <div class="kpi-badge">
       <div class="icon">⭐</div>
-      <div class="info"><div class="val">NPS 70+</div><div class="lbl">고객 만족도 목표</div></div>
+      <div class="info"><div class="val">NPS 75+</div><div class="lbl">당원 만족도 목표</div></div>
     </div>
   </div>
 </section>
@@ -1662,17 +1726,17 @@ body {
   <div class="page-header">
     <div class="page-num">09 / Tech Architecture</div>
     <h2 class="page-title">기술 아키텍처 설계도</h2>
-    <p class="page-desc">스타벅스 기존 인프라와 라디오카페를 연결하는 전체 기술 스택. 보안·확장성·실시간 처리를 모두 고려한 설계입니다.</p>
+    <p class="page-desc">더불어민주당 기존 인프라와 라디오카페를 연결하는 전체 기술 스택. 보안·확장성·실시간 처리를 모두 고려한 설계입니다.</p>
   </div>
 
   <div class="arch-container">
     <div class="arch-layer">
-      <div class="arch-layer-label">Client Layer · 고객 접점</div>
+      <div class="arch-layer-label">Client Layer · 당원 접점</div>
       <div class="arch-nodes">
-        <div class="arch-node highlight">📱 스타벅스 라디오카페 앱 (Web PWA)</div>
-        <div class="arch-node">🖥️ 매장 디스플레이 (키오스크 연동)</div>
-        <div class="arch-node">📻 매장 스피커 시스템</div>
-        <div class="arch-node gold">🟢 Siren Order (기존 앱 연동)</div>
+        <div class="arch-node highlight">📱 더불어민주당 라디오카페 앱 (Web PWA)</div>
+        <div class="arch-node">🖥️ 행사장 디스플레이 (키오스크 연동)</div>
+        <div class="arch-node">📻 행사장 스피커 시스템</div>
+        <div class="arch-node gold">🟢 당원 참여 (기존 앱 연동)</div>
         <div class="arch-node">⌚ 스마트워치 알림</div>
       </div>
     </div>
@@ -1682,8 +1746,8 @@ body {
     <div class="arch-layer">
       <div class="arch-layer-label">Location & Presence Layer · 위치 감지</div>
       <div class="arch-nodes">
-        <div class="arch-node highlight">📍 GPS 위치 서비스 (반경 50m 매장 감지)</div>
-        <div class="arch-node">🏷️ RFID 리더 (매장 입구 설치)</div>
+        <div class="arch-node highlight">📍 GPS 위치 서비스 (반경 50m 행사장 감지)</div>
+        <div class="arch-node">🏷️ RFID 리더 (행사장 입구 설치)</div>
         <div class="arch-node">📶 Bluetooth Beacon (실내 정밀 위치)</div>
         <div class="arch-node gold">🔒 개인정보 동의 기반 옵트인</div>
       </div>
@@ -1695,8 +1759,8 @@ body {
       <div class="arch-layer-label">API Gateway Layer · 서비스 연결</div>
       <div class="arch-nodes">
         <div class="arch-node highlight">🔌 Radio Stream API (라디오 채널 관리)</div>
-        <div class="arch-node gold">☕ Siren Order API (주문 연동)</div>
-        <div class="arch-node gold">⭐ Starbucks Rewards API (포인트 연동)</div>
+        <div class="arch-node gold">☕ 당원 참여 API (주문 연동)</div>
+        <div class="arch-node gold">⭐ 당원 포인트 API (포인트 연동)</div>
         <div class="arch-node">🎵 Music Metadata API (Spotify Audio Features)</div>
         <div class="arch-node">🌤️ Weather API (날씨 기반 추천)</div>
         <div class="arch-node">📣 Push Notification Service</div>
@@ -1708,8 +1772,8 @@ body {
     <div class="arch-layer">
       <div class="arch-layer-label">AI / ML Engine Layer · 추천 & 감정 분석</div>
       <div class="arch-nodes">
-        <div class="arch-node highlight">🧠 감정 기반 음료 추천 AI (E(t) 수식 엔진)</div>
-        <div class="arch-node">🎂 생일/기념일 이벤트 트리거 엔진</div>
+        <div class="arch-node highlight">🧠 감정 기반 당원 활동 추천 AI (E(t) 수식 엔진)</div>
+        <div class="arch-node">🎉 입당일/기념일 이벤트 트리거 엔진</div>
         <div class="arch-node">🎯 CRM 세그먼트 자동 분류 모델</div>
         <div class="arch-node">📊 실시간 청취 패턴 분석기</div>
         <div class="arch-node gold">🗣️ TTS 생일 멘트 생성 (LLM 기반)</div>
@@ -1721,10 +1785,10 @@ body {
     <div class="arch-layer">
       <div class="arch-layer-label">Data Layer · 데이터 저장 & 처리</div>
       <div class="arch-nodes">
-        <div class="arch-node highlight">🗄️ Customer CRM DB (고객 프로필·감정 히스토리)</div>
+        <div class="arch-node highlight">🗄️ Member CRM DB (당원 프로필·감정 히스토리)</div>
         <div class="arch-node">🎵 Music Catalog DB (큐레이션 트랙 메타데이터)</div>
         <div class="arch-node">📅 Event Calendar DB (생일·기념일 스케줄)</div>
-        <div class="arch-node gold">📦 Starbucks 기존 DB 연동 (Rewards·주문 데이터)</div>
+        <div class="arch-node gold">📦 더불어민주당 기존 DB 연동 (당원·활동 데이터)</div>
         <div class="arch-node">⚡ Redis (실시간 이벤트 큐)</div>
         <div class="arch-node">📈 Analytics DW (행동 분석용 데이터 웨어하우스)</div>
       </div>
@@ -1735,7 +1799,7 @@ body {
     <div class="arch-layer">
       <div class="arch-layer-label">Admin & Ops Layer · 운영 관리</div>
       <div class="arch-nodes">
-        <div class="arch-node">🎛️ 매장 매니저 대시보드</div>
+        <div class="arch-node">🎛️ 지역 당직자 대시보드</div>
         <div class="arch-node gold">📊 본사 마케팅 CRM 콘솔</div>
         <div class="arch-node">🔧 음악 큐레이션 어드민</div>
         <div class="arch-node">🛡️ 개인정보 관리 포털</div>
@@ -1753,7 +1817,7 @@ body {
     <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(212,233,226,0.12);">
       <div class="card-icon">⚡</div>
       <h3 style="color:var(--green-light);">실시간 처리</h3>
-      <p style="color:rgba(212,233,226,0.7);">매장 방문 감지 → 이벤트 트리거 → 방송 삽입까지 평균 응답 시간 2초 이내. Redis 이벤트 큐로 처리.</p>
+      <p style="color:rgba(212,233,226,0.7);">행사장 입장 감지 → 이벤트 트리거 → 방송 삽입까지 평균 응답 시간 2초 이내. Redis 이벤트 큐로 처리.</p>
     </div>
   </div>
   </div>
@@ -1767,7 +1831,7 @@ body {
   <div style="max-width:1100px; margin:0 auto; padding:0 40px;">
   <div class="page-header" style="position:relative;">
     <div class="page-num">10 / Pitch Deck</div>
-    <h2 class="page-title">스타벅스 설득용<br>피치덱 핵심 문구</h2>
+    <h2 class="page-title">더불어민주당 도입<br>피치덱 핵심 문구</h2>
     <p class="page-desc">내부 보고 및 의사결정자 프레젠테이션용 6페이지 핵심 메시지. 각 슬라이드의 ONE MESSAGE를 담았습니다.</p>
     <div class="pdf-btn-section" style="margin-top:20px;">
       <button class="pdf-btn" id="pdfBtnSection" onclick="generatePDF()">📄 전략 제안서 PDF 다운로드</button>
@@ -1779,104 +1843,104 @@ body {
     <div class="pitch-card">
       <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 01 · THE HOOK</div>
       <div class="quote">
-        고객이 <strong>매장 문을 나서는 순간</strong>,<br>
-        스타벅스와의 연결은 끊어집니다.<br>
+        당원이 <strong>행사장을 나서는 순간</strong>,<br>
+        당과의 연결은 끊어집니다.<br>
         <strong>라디오카페</strong>는 그 연결을<br>
-        24시간으로 만드는 다리입니다.
+        365일 24시간으로 이어주는 다리입니다.
       </div>
-      <div class="source">Opening Statement · Decision Maker용</div>
+      <div class="source">Opening Statement · 집행부 보고용</div>
     </div>
 
     <div class="pitch-card">
       <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 02 · THE INSIGHT</div>
       <div class="quote">
-        사람들은 커피를 마시는 것이 아닙니다.<br>
-        <strong>그 순간의 감성을 마십니다.</strong><br>
-        재즈가 흐르는 비 오는 오후,<br>
-        따뜻한 라떼 한 잔의 기억을<br>
-        <strong>집에서도, 출근길에서도 재현</strong>해 줍니다.
+        당원들은 정책 문서를 읽는 것이 아닙니다.<br>
+        <strong>그 순간의 공감과 연대를 느낍니다.</strong><br>
+        집행부 육성방송이 흐르는 아침 출근길,<br>
+        당 DJ의 목소리와 함께하는 저녁 시간을<br>
+        <strong>집에서도, 이동 중에도 재현</strong>해 줍니다.
       </div>
-      <div class="source">Emotional Insight · 마케팅 팀장용</div>
+      <div class="source">Emotional Insight · 당 홍보팀장용</div>
     </div>
 
     <div class="pitch-card">
       <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 03 · THE NUMBER</div>
       <div class="quote">
-        파일럿 3개 매장, 단 3개월.<br>
-        <strong>체류시간 +18분,</strong><br>
-        <strong>객단가 +₩1,200,</strong><br>
-        <strong>생일 쿠폰 사용율 84%.</strong><br>
-        전국 확대 시 <strong>3년 누적 ₩326억</strong>.
+        파일럿 3개 지역, 단 3개월.<br>
+        <strong>당원 활동 참여율 +38%,</strong><br>
+        <strong>집행부 메시지 도달률 +67%,</strong><br>
+        <strong>당비 자동이체 유지율 +22%.</strong><br>
+        전국 확대 시 <strong>150만 당원 결집력 3배 강화</strong>.
       </div>
-      <div class="source">ROI Slide · CFO / 경영진용</div>
+      <div class="source">효과 지표 Slide · 당 대표 / 사무총장용</div>
     </div>
 
     <div class="pitch-card">
       <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 04 · THE EXPERIENCE</div>
       <div class="quote">
-        홍길동 씨가 생일날 홍대 매장에 들어서는 순간,<br>
+        김민주 당원이 전당대회 날 앱을 열자,<br>
         라디오에서 흘러나옵니다:<br>
-        <strong>"홍길동 고객님, 생일 축하드립니다 🎂<br>
-        오늘 음악은 특별히 준비했어요."</strong><br>
-        이 경험을 SNS에 올리지 않을 사람이 있을까요?
+        <strong>"김민주 당원님, 오늘 함께해 주셔서 감사합니다 🎵<br>
+        오늘의 정책 라디오를 준비했습니다."</strong><br>
+        이 경험을 SNS에 올리지 않을 당원이 있을까요?
       </div>
-      <div class="source">Storytelling Slide · 전 임직원용</div>
+      <div class="source">Storytelling Slide · 전 당직자용</div>
     </div>
 
     <div class="pitch-card">
       <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 05 · THE MOAT</div>
       <div class="quote">
-        음악이 고객의 <strong>감정 데이터</strong>가 됩니다.<br>
-        감정 데이터가 <strong>초개인화 CRM</strong>이 됩니다.<br>
-        초개인화 CRM이 <strong>경쟁사가 절대 복제할 수 없는<br>스타벅스만의 해자(Moat)</strong>가 됩니다.
+        음악이 당원의 <strong>감정 데이터</strong>가 됩니다.<br>
+        감정 데이터가 <strong>초개인화 당원 CRM</strong>이 됩니다.<br>
+        초개인화 CRM이 <strong>어떤 정당도 복제할 수 없는<br>더불어민주당만의 당원 결집력</strong>이 됩니다.
       </div>
-      <div class="source">Competitive Advantage · 전략 팀용</div>
+      <div class="source">Competitive Advantage · 전략기획팀용</div>
     </div>
 
     <div class="pitch-card">
       <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 06 · THE ASK</div>
       <div class="quote">
         우리가 요청하는 것은 단 하나입니다.<br>
-        <strong>3개 매장, 3개월, 최소 투자.</strong><br>
+        <strong>3개 지역, 3개월, 최소 예산.</strong><br>
         데이터가 모든 것을 말해줄 것입니다.<br>
-        스타벅스의 다음 10년을<br>
-        <strong>커피와 음악으로 함께 써 나갑시다.</strong>
+        더불어민주당의 다음 10년을<br>
+        <strong>음악과 공감으로 함께 써 나갑시다.</strong>
       </div>
-      <div class="source">Closing Ask · 최종 의사결정자용</div>
+      <div class="source">Closing Ask · 최고 의사결정자용</div>
     </div>
 
   </div>
 
   <!-- 내부 보고용 6페이지 요약본 -->
   <div style="margin-top:48px; border-top:1px solid rgba(212,233,226,0.12); padding-top:40px;">
-    <h3 style="font-family:'Orbitron'; font-size:0.7rem; letter-spacing:3px; color:var(--gold); margin-bottom:24px;">INTERNAL REPORT · 스타벅스 내부 보고용 6페이지 전략 요약</h3>
+    <h3 style="font-family:'Orbitron'; font-size:0.7rem; letter-spacing:3px; color:var(--gold); margin-bottom:24px;">INTERNAL REPORT · 더불어민주당 내부 보고용 전략 요약</h3>
     <table class="data-table" style="background:rgba(255,255,255,0.04);">
       <thead><tr><th>페이지</th><th>제목</th><th>핵심 내용</th><th>대상 독자</th></tr></thead>
       <tbody>
         <tr>
           <td>p.1</td><td class="bold">Executive Summary</td>
-          <td>문제·솔루션·3년 ROI 요약 / 의사결정 필요 사항</td>
-          <td>CEO / CMO</td>
+          <td>문제·솔루션·3년 효과 요약 / 의사결정 필요 사항</td>
+          <td>당 대표 / 사무총장</td>
         </tr>
         <tr>
-          <td>p.2</td><td class="bold">고객 경험 혁신 방향</td>
-          <td>매장→외부 연결 고리 설계 / 생일 이벤트 UX 시나리오</td>
-          <td>마케팅 팀장</td>
+          <td>p.2</td><td class="bold">당원 경험 혁신 방향</td>
+          <td>행사→일상 연결 고리 설계 / 당원 활동 UX 시나리오</td>
+          <td>당 홍보팀장</td>
         </tr>
         <tr>
           <td>p.3</td><td class="bold">기술 연동 현황 & 요건</td>
-          <td>Rewards·사이렌오더 API 연동 범위 / 개인정보 처리 방침</td>
-          <td>CTO / 개발팀</td>
+          <td>당원 앱·당원 활동 API 연동 범위 / 개인정보 처리 방침</td>
+          <td>당 IT팀 / 개발팀</td>
         </tr>
         <tr>
-          <td>p.4</td><td class="bold">수익 모델 상세</td>
-          <td>직접·간접 수익 채널 / 3년 시뮬레이션 테이블</td>
-          <td>CFO / 재무팀</td>
+          <td>p.4</td><td class="bold">당원 결집 효과 모델</td>
+          <td>직접·간접 결집 효과 채널 / 3개년 시뮬레이션 테이블</td>
+          <td>정책위원회 / 전략기획팀</td>
         </tr>
         <tr>
           <td>p.5</td><td class="bold">MVP 파일럿 실행 계획</td>
-          <td>3매장 선정 기준 / 타임라인 / KPI 목표치</td>
-          <td>운영팀 / 점장</td>
+          <td>3지역 선정 기준 / 타임라인 / KPI 목표치</td>
+          <td>당 운영팀 / 지역위원장</td>
         </tr>
         <tr>
           <td>p.6</td><td class="bold">리스크 & 대응 방안</td>
@@ -1896,21 +1960,31 @@ body {
 
 <!-- QR Code Section -->
 <div style="background:var(--cream); padding:60px 40px; text-align:center;">
-  <div style="display:inline-block; background:#fff; border:2px solid rgba(0,112,74,0.2); border-radius:20px; padding:32px 40px; box-shadow:0 4px 24px rgba(0,112,74,0.1);">
-    <img src="qr-proposal.jpg" alt="스타벅스 협업 제안서 QR" style="width:180px; height:180px; display:block; margin:0 auto 16px;">
-    <p style="font-family:'Orbitron',monospace; font-size:0.7rem; letter-spacing:3px; color:var(--green-dark); font-weight:700; margin:0;">스타벅스 협업 제안서 홈페이지 연결</p>
+  <div style="display:inline-flex; gap:24px; align-items:flex-end; flex-wrap:wrap; justify-content:center;">
+    <div style="text-align:center;">
+      <img src="민주-로그인.png" alt="로그인 화면" style="width:150px; border-radius:16px; box-shadow:0 8px 32px rgba(0,78,162,0.35);">
+      <p style="font-family:'Orbitron',monospace; font-size:0.65rem; letter-spacing:2px; color:var(--blue-mid); font-weight:700; margin:10px 0 0;">로그인</p>
+    </div>
+    <div style="text-align:center;">
+      <img src="민주-아날로그.png" alt="아날로그 화면" style="width:150px; border-radius:16px; box-shadow:0 8px 32px rgba(0,78,162,0.35);">
+      <p style="font-family:'Orbitron',monospace; font-size:0.65rem; letter-spacing:2px; color:var(--blue-mid); font-weight:700; margin:10px 0 0;">아날로그</p>
+    </div>
+    <div style="text-align:center;">
+      <img src="민주-디지털.png" alt="디지털 화면" style="width:150px; border-radius:16px; box-shadow:0 8px 32px rgba(0,78,162,0.35);">
+      <p style="font-family:'Orbitron',monospace; font-size:0.65rem; letter-spacing:2px; color:var(--blue-mid); font-weight:700; margin:10px 0 0;">디지털</p>
+    </div>
   </div>
 </div>
 
 <div class="section-divider"></div>
 <footer class="doc-footer">
   <div style="font-size:2rem; margin-bottom:16px;">☕</div>
-  <div style="font-family:'Orbitron'; font-size:0.75rem; color:var(--gold); letter-spacing:3px; margin-bottom:16px;">STARBUCKS × RADIOKAFE</div>
+  <div style="font-family:'Orbitron'; font-size:0.75rem; color:var(--gold); letter-spacing:3px; margin-bottom:16px;">더불어민주당 × RADIOKAFE</div>
   <p>
-    <strong>스타벅스 라디오카페</strong> 전략 제안서 · v1.0 · 2026년 2월<br>
+    <strong>더불어민주당 라디오카페</strong> 전략 제안서 · v1.0 · 2026년 2월<br>
     본 문서는 비즈니스 제안 목적으로 작성되었습니다.<br>
     수록된 수치는 업계 데이터 기반 시뮬레이션이며, 실제 결과와 다를 수 있습니다.<br><br>
-    <strong>Starbucks® 상표권은 Starbucks Corporation에 귀속됩니다.</strong><br>
+    <strong>더불어민주당® 상표권은 더불어민주당에 귀속됩니다.</strong><br>
     RadioKafe 기술 · Prepared by RadioKafe Team
   </p>
 </footer>
@@ -1962,7 +2036,7 @@ window.addEventListener('scroll', () => {
   });
   document.querySelectorAll('.doc-nav-links a').forEach(a => {
     a.style.color = a.getAttribute('href') === '#' + current
-      ? 'var(--gold)' : 'var(--green-light)';
+      ? '#CBA258' : '#004EA2';
   });
 });
 </script>
