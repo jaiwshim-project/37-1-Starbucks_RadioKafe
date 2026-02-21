@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#0a1f17">
+<html lang="ko" style="background:#150408">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>같이듣기 초대 | 스타벅스 라디오카페</title>
+  <title>같이듣기 초대 | 오세훈 라디오카페</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="같이듣기 초대 | 스타벅스 라디오카페" />
+  <meta property="og:title" content="같이듣기 초대 | 오세훈 라디오카페" />
   <meta property="og:description" content="친구와 함께 실시간 라디오를 들어요! 초대 링크를 공유하세요." />
   <meta property="og:image" content="https://og-image.jpg" />
   <meta property="og:url" content="https://listen-together.html" />
@@ -15,14 +15,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0a1f17;
-      --accent: #00704A;
-      --accent-glow: rgba(0,112,74,0.5);
+      --bg: #150408;
+      --accent: #C9151E;
+      --accent-glow: rgba(201,21,30,0.5);
       --gold: #CBA258;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -33,26 +33,26 @@
 
     /* Listen Together Card */
     .ltm-card {
-      background: #1E3932;
-      border: 1px solid rgba(0,112,74,0.4);
+      background: #3a0808;
+      border: 1px solid rgba(201,21,30,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 340px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(201,21,30,0.15);
     }
     .ltm-logo {
       font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700;
-      color: #D4E9E2; letter-spacing: 2px; margin-bottom: 6px;
+      color: #F5D4D6; letter-spacing: 2px; margin-bottom: 6px;
       text-shadow: none;
     }
     .ltm-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
+      color: #C9151E; letter-spacing: 3px; margin-bottom: 16px;
       text-shadow: none;
     }
     .ltm-station {
       font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 700;
-      color: #D4E9E2; margin-bottom: 4px;
+      color: #F5D4D6; margin-bottom: 4px;
     }
     .ltm-freq {
       font-family: 'Orbitron', monospace; font-size: 12px;
@@ -63,42 +63,42 @@
     }
     .ltm-link-box input {
       flex: 1; padding: 10px 12px; border-radius: 10px;
-      border: 2px solid rgba(0,112,74,0.4);
-      background: #122820; color: #b8d8cc;
+      border: 2px solid rgba(201,21,30,0.4);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 11px;
       outline: none;
     }
     .ltm-link-box button {
       padding: 10px 16px; border-radius: 10px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none;
-      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none;
+      color: #F5D4D6; font-family: 'Outfit', sans-serif;
       font-size: 13px; font-weight: 700; cursor: pointer;
       transition: all 0.2s; white-space: nowrap;
     }
-    .ltm-link-box button:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .ltm-link-box button:hover { box-shadow: 0 8px 24px rgba(201,21,30,0.4); }
     .ltm-greeting {
       width: 100%; padding: 10px 14px; border-radius: 10px;
-      border: 2px solid rgba(0,112,74,0.4);
-      background: #122820; color: #b8d8cc;
+      border: 2px solid rgba(201,21,30,0.4);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 13px;
       outline: none; margin-bottom: 10px; box-sizing: border-box;
       text-align: center;
     }
-    .ltm-greeting:focus { border-color: #00704A; }
-    .ltm-greeting::placeholder { color: #7ab8a0; }
+    .ltm-greeting:focus { border-color: #C9151E; }
+    .ltm-greeting::placeholder { color: #CC8888; }
     .ltm-copied {
       font-family: 'Inter', sans-serif; font-size: 12px;
-      color: #00704A; margin-bottom: 12px;
+      color: #C9151E; margin-bottom: 12px;
     }
     .ltm-copied.hidden { display: none; }
     .ltm-guide {
       text-align: left; margin-top: 24px; margin-bottom: 24px; padding: 12px 14px;
-      background: rgba(0,112,74,0.08); border-radius: 10px;
-      border-left: 3px solid #00704A;
+      background: rgba(201,21,30,0.08); border-radius: 10px;
+      border-left: 3px solid #C9151E;
     }
     .ltm-guide p {
       font-family: 'Inter', sans-serif; font-size: 13px;
-      color: #b8d8cc; line-height: 1.6;
+      color: #E0B0B0; line-height: 1.6;
       margin: 0 0 8px 0;
     }
     .ltm-guide p:last-child { margin-bottom: 0; }
@@ -106,7 +106,7 @@
     /* No station warning */
     .no-station {
       font-family: 'Inter', sans-serif; font-size: 14px;
-      color: #7ab8a0; margin-bottom: 16px;
+      color: #CC8888; margin-bottom: 16px;
       line-height: 1.6;
     }
 
@@ -114,20 +114,20 @@
     .back-link {
       display: inline-block; margin-top: 12px;
       font-family: 'Outfit', sans-serif; font-size: 14px;
-      color: #D4E9E2; text-decoration: none;
-      background: linear-gradient(135deg, #00704A, #004d33);
+      color: #F5D4D6; text-decoration: none;
+      background: linear-gradient(135deg, #C9151E, #8B0000);
       border: none; border-radius: 12px;
       padding: 10px 24px; transition: all 0.2s;
     }
     .back-link:hover {
-      box-shadow: 0 8px 24px rgba(0,112,74,0.4);
+      box-shadow: 0 8px 24px rgba(201,21,30,0.4);
     }
   </style>
 </head>
 <body>
 
 <div class="ltm-card">
-  <div class="ltm-logo">스타벅스 라디오카페</div>
+  <div class="ltm-logo">오세훈 라디오카페</div>
   <div class="ltm-title">같이듣기 초대</div>
   <div id="noStationMsg" class="no-station" style="display:none">
     먼저 라디오에서 채널을 선택해주세요.<br>다이얼을 돌려 방송국을 튜닝하세요.

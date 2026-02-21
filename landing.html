@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>스타벅스 라디오카페 - 커피 한 잔과 함께 듣는 나만의 라디오</title>
-<meta name="description" content="스타벅스 감성의 실시간 라디오. 음악과 커피 페어링, 사이렌오더 연동, 생일 이벤트까지 — 매장 밖에서도 스타벅스와 연결되세요.">
-<meta property="og:title" content="스타벅스 라디오카페">
+<title>오세훈 라디오카페 - 커피 한 잔과 함께 듣는 나만의 라디오</title>
+<meta name="description" content="오세훈 감성의 실시간 라디오. 음악과 커피 페어링, 서울시 앱 연동, 생일 이벤트까지 — 매장 밖에서도 오세훈와 연결되세요.">
+<meta property="og:title" content="오세훈 라디오카페">
 <meta property="og:description" content="커피 한 잔과 함께 듣는 나만의 라디오카페">
 <meta property="og:image" content="og-image.jpg">
 <meta property="og:type" content="website">
@@ -15,22 +15,22 @@
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --green: #00704A;
-  --green-deep: #0d1f16;
-  --green-dark: #1E3932;
-  --green-mid: #1a3828;
-  --green-light: #D4E9E2;
+  --green: #C9151E;
+  --green-deep: #150408;
+  --green-dark: #3a0808;
+  --green-mid: #2e0808;
+  --green-light: #F5D4D6;
   --green-pale: #edf7f3;
   --gold: #CBA258;
   --gold-light: #e8c87a;
   --cream: #F2F0EB;
-  --bg-dark: #0d1f16;
-  --bg-mid: #1a3828;
-  --bg-card: rgba(0,112,74,0.08);
-  --neon: #00c47a;
-  --led: #00ff88;
-  --text: #D4E9E2;
-  --text-dim: #7aa892;
+  --bg-dark: #150408;
+  --bg-mid: #2e0808;
+  --bg-card: rgba(201,21,30,0.08);
+  --neon: #FF3344;
+  --led: #FF5566;
+  --text: #F5D4D6;
+  --text-dim: #CC8888;
 }
 
 html { scroll-behavior: smooth; }
@@ -48,12 +48,12 @@ body::before {
   position: fixed; inset: 0;
   pointer-events: none; z-index: 0;
   background:
-    radial-gradient(1px 1px at 15% 25%, rgba(0,196,122,0.25) 0%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 75% 15%, rgba(0,112,74,0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 45% 65%, rgba(212,233,226,0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 85% 75%, rgba(0,196,122,0.15) 0%, transparent 100%),
+    radial-gradient(1px 1px at 15% 25%, rgba(255,51,68,0.25) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 75% 15%, rgba(201,21,30,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 45% 65%, rgba(245,212,215,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 75%, rgba(255,51,68,0.15) 0%, transparent 100%),
     radial-gradient(1px 1px at 30% 85%, rgba(203,162,88,0.12) 0%, transparent 100%),
-    radial-gradient(1px 1px at 60% 40%, rgba(0,255,136,0.1) 0%, transparent 100%);
+    radial-gradient(1px 1px at 60% 40%, rgba(255,80,100,0.1) 0%, transparent 100%);
 }
 section { position: relative; z-index: 1; }
 .font-display { font-family: 'Orbitron', monospace; }
@@ -61,13 +61,13 @@ section { position: relative; z-index: 1; }
 /* ── Nav ── */
 .nav {
   position: fixed; top:0; left:0; right:0; z-index:100;
-  background: rgba(13,31,22,0.93);
+  background: rgba(21,4,8,0.93);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(0,112,74,0.25);
+  border-bottom: 1px solid rgba(201,21,30,0.25);
   padding: 0 24px;
   transition: box-shadow 0.3s;
 }
-.nav.scrolled { box-shadow: 0 4px 24px rgba(0,112,74,0.18); }
+.nav.scrolled { box-shadow: 0 4px 24px rgba(201,21,30,0.18); }
 .nav-inner {
   max-width: 1100px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
@@ -88,16 +88,16 @@ section { position: relative; z-index: 1; }
 }
 .nav-links a:hover { color: var(--green-light); }
 .nav-cta {
-  background: linear-gradient(135deg, var(--green), #004d35);
+  background: linear-gradient(135deg, var(--green), #8B0000);
   color: #fff; border: none; border-radius: 20px;
   padding: 8px 20px; font-weight: 700; font-size: 0.85rem;
   cursor: pointer; text-decoration: none;
   transition: transform 0.2s, box-shadow 0.3s;
-  box-shadow: 0 2px 12px rgba(0,112,74,0.3);
+  box-shadow: 0 2px 12px rgba(201,21,30,0.3);
 }
 .nav-cta:hover {
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0,112,74,0.5);
+  box-shadow: 0 6px 20px rgba(201,21,30,0.5);
 }
 .nav-strategy {
   background: transparent;
@@ -127,8 +127,8 @@ section { position: relative; z-index: 1; }
   text-align: center;
   padding: 120px 24px 80px;
   background:
-    radial-gradient(ellipse at 25% 20%, rgba(0,112,74,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 75% 80%, rgba(0,77,53,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 25% 20%, rgba(201,21,30,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 75% 80%, rgba(139,0,0,0.08) 0%, transparent 50%),
     radial-gradient(ellipse at 50% 50%, rgba(203,162,88,0.04) 0%, transparent 60%),
     linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-mid) 100%);
 }
@@ -140,20 +140,20 @@ section { position: relative; z-index: 1; }
   margin: 0 auto 28px;
   border-radius: 24px;
   box-shadow:
-    0 0 40px rgba(0,196,122,0.25),
-    0 0 80px rgba(0,112,74,0.15),
+    0 0 40px rgba(255,51,68,0.25),
+    0 0 80px rgba(201,21,30,0.15),
     0 20px 60px rgba(0,0,0,0.5);
-  border: 1px solid rgba(0,196,122,0.2);
+  border: 1px solid rgba(255,51,68,0.2);
 }
 .hero-badge {
   display: inline-block;
   font-family: 'Orbitron', monospace;
   font-size: 0.65rem; letter-spacing: 4px;
   color: var(--green-light);
-  border: 1px solid rgba(0,112,74,0.4);
+  border: 1px solid rgba(201,21,30,0.4);
   border-radius: 20px; padding: 6px 18px;
   margin-bottom: 28px; text-transform: uppercase;
-  background: rgba(0,112,74,0.08);
+  background: rgba(201,21,30,0.08);
 }
 .hero h1 {
   font-family: 'Orbitron', monospace;
@@ -161,7 +161,7 @@ section { position: relative; z-index: 1; }
   font-weight: 900;
   color: var(--green-light);
   line-height: 1.2; margin-bottom: 20px;
-  text-shadow: 0 0 40px rgba(0,196,122,0.35), 0 0 80px rgba(0,112,74,0.15);
+  text-shadow: 0 0 40px rgba(255,51,68,0.35), 0 0 80px rgba(201,21,30,0.15);
 }
 .hero h1 em { font-style: normal; color: var(--gold-light); }
 .hero p {
@@ -173,27 +173,27 @@ section { position: relative; z-index: 1; }
 .hero-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
-  background: linear-gradient(135deg, var(--green), #004d35);
+  background: linear-gradient(135deg, var(--green), #8B0000);
   color: #fff; padding: 14px 36px; border-radius: 28px;
   font-weight: 700; font-size: 1rem;
   text-decoration: none; border: none; cursor: pointer;
   transition: transform 0.2s, box-shadow 0.3s;
-  box-shadow: 0 4px 24px rgba(0,112,74,0.4);
+  box-shadow: 0 4px 24px rgba(201,21,30,0.4);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,196,122,0.5);
+  box-shadow: 0 8px 32px rgba(255,51,68,0.5);
 }
 .btn-secondary {
   display: inline-flex; align-items: center; gap: 8px;
   background: transparent; color: var(--green-light);
   padding: 14px 36px; border-radius: 28px;
   font-weight: 600; font-size: 1rem; text-decoration: none;
-  border: 1px solid rgba(0,112,74,0.4);
+  border: 1px solid rgba(201,21,30,0.4);
   transition: background 0.3s, border-color 0.3s;
 }
 .btn-secondary:hover {
-  background: rgba(0,112,74,0.12);
+  background: rgba(201,21,30,0.12);
   border-color: var(--green);
 }
 
@@ -228,21 +228,21 @@ section { position: relative; z-index: 1; }
   gap: 20px;
 }
 .feature-card {
-  background: rgba(0,112,74,0.08);
-  border: 1px solid rgba(0,112,74,0.22);
+  background: rgba(201,21,30,0.08);
+  border: 1px solid rgba(201,21,30,0.22);
   border-radius: 16px; padding: 28px 22px;
   transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
 }
 .feature-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(0,196,122,0.35);
-  box-shadow: 0 8px 32px rgba(0,112,74,0.15);
+  border-color: rgba(255,51,68,0.35);
+  box-shadow: 0 8px 32px rgba(201,21,30,0.15);
 }
 .feature-icon {
   width: 48px; height: 48px; border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
   font-size: 1.4rem; margin-bottom: 14px;
-  background: rgba(0,112,74,0.15);
+  background: rgba(201,21,30,0.15);
 }
 .feature-card h3 {
   font-family: 'Orbitron', monospace; font-size: 0.9rem; font-weight: 600;
@@ -254,7 +254,7 @@ section { position: relative; z-index: 1; }
 .screenshots-section {
   padding: 100px 24px;
   background:
-    radial-gradient(ellipse at 50% 50%, rgba(0,77,53,0.25) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 50%, rgba(139,0,0,0.25) 0%, transparent 70%),
     var(--bg-dark);
 }
 .screenshots-inner { max-width: 1100px; margin: 0 auto; }
@@ -265,13 +265,13 @@ section { position: relative; z-index: 1; }
 }
 .screenshot-item {
   position: relative; border-radius: 16px; overflow: hidden;
-  border: 1px solid rgba(0,112,74,0.2);
-  background: rgba(26,56,40,0.5);
+  border: 1px solid rgba(201,21,30,0.2);
+  background: rgba(40,8,16,0.5);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 .screenshot-item:hover {
   transform: translateY(-6px);
-  box-shadow: 0 12px 40px rgba(0,112,74,0.22);
+  box-shadow: 0 12px 40px rgba(201,21,30,0.22);
 }
 .screenshot-item img {
   width: 100%; display: block;
@@ -295,7 +295,7 @@ section { position: relative; z-index: 1; }
   border: 1px solid rgba(255,255,255,0.07);
   transition: transform 0.3s, border-color 0.3s; cursor: default;
 }
-.theme-card:hover { transform: translateY(-3px); border-color: rgba(0,196,122,0.3); }
+.theme-card:hover { transform: translateY(-3px); border-color: rgba(255,51,68,0.3); }
 .theme-swatch {
   width: 40px; height: 40px; border-radius: 50%;
   margin: 0 auto 10px; border: 2px solid rgba(255,255,255,0.12);
@@ -306,7 +306,7 @@ section { position: relative; z-index: 1; }
 /* ── CTA ── */
 .cta-section {
   padding: 100px 24px; text-align: center;
-  background: radial-gradient(ellipse at 50% 50%, rgba(0,112,74,0.07) 0%, transparent 65%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,21,30,0.07) 0%, transparent 65%);
 }
 .cta-section .section-title { margin-bottom: 20px; }
 .cta-section p {
@@ -319,12 +319,12 @@ section { position: relative; z-index: 1; }
 /* ── Story ── */
 .story-section {
   padding: 100px 24px; text-align: center;
-  background: radial-gradient(ellipse at 50% 50%, rgba(0,112,74,0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse at 50% 50%, rgba(201,21,30,0.06) 0%, transparent 60%);
 }
 .story-inner { max-width: 600px; margin: 0 auto; }
 .story-quote {
   font-family: 'Orbitron', monospace; font-size: 3.5rem;
-  color: rgba(0,196,122,0.2); line-height: 1; margin-bottom: -10px;
+  color: rgba(255,51,68,0.2); line-height: 1; margin-bottom: -10px;
 }
 .story-text {
   font-family: 'Gamja Flower', cursive; font-size: 1.3rem;
@@ -333,7 +333,7 @@ section { position: relative; z-index: 1; }
 .story-text.last { color: var(--green-light); font-weight: 500; }
 .story-author {
   margin-top: 40px; padding-top: 24px;
-  border-top: 1px solid rgba(0,112,74,0.2);
+  border-top: 1px solid rgba(201,21,30,0.2);
 }
 .story-author-name {
   display: block; font-family: 'Orbitron', monospace;
@@ -352,7 +352,7 @@ section { position: relative; z-index: 1; }
 /* ── Footer ── */
 .footer {
   padding: 40px 24px; text-align: center;
-  border-top: 1px solid rgba(0,112,74,0.15);
+  border-top: 1px solid rgba(201,21,30,0.15);
 }
 .footer p { font-size: 0.8rem; color: var(--text-dim); line-height: 1.8; }
 .footer a { color: var(--green-light); text-decoration: none; }
@@ -415,14 +415,17 @@ section { position: relative; z-index: 1; }
 <!-- ── Nav ── -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><img src="starbucks-logo.png" alt="Starbucks" style="height:22px;vertical-align:middle;margin-right:6px;background:#fff;border-radius:50%;padding:2px;"> STARBUCKS <span>RADIOKAFE</span></a>
+    <a href="#" class="nav-logo">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);font-size:9px;font-weight:900;color:#fff;margin-right:6px;vertical-align:middle;">오</span>
+      OH SE-HOON <span>RADIOKAFE</span>
+    </a>
     <ul class="nav-links">
-      <li><a href="#features">Features</a></li>
-      <li><a href="#screens">Screens</a></li>
-      <li><a href="#themes">Themes</a></li>
+      <li><a href="#features">기능</a></li>
+      <li><a href="#screens">화면</a></li>
+      <li><a href="#vision">비전</a></li>
     </ul>
-    <a href="strategy.html" class="nav-strategy">📋 제안서 보기</a>
-    <a href="index.html" class="nav-cta">LISTEN NOW</a>
+    <a href="strategy.html" class="nav-strategy">📋 전략 보기</a>
+    <a href="index.html" class="nav-cta">라디오 입장</a>
     <button class="nav-toggle" id="navToggle" aria-label="메뉴">&#9776;</button>
   </div>
 </nav>
@@ -430,10 +433,13 @@ section { position: relative; z-index: 1; }
 <!-- ── Hero ── -->
 <section class="hero">
   <div class="hero-content fade-up">
-    <div class="hero-badge font-display">Starbucks × RadioKafe</div>
-    <img class="hero-icon" src="digital-preview.png" alt="스타벅스 라디오카페 디지털 화면">
-    <h1>스타벅스<br><em>라디오카페</em></h1>
-    <p>커피 한 잔과 함께 듣는 라디오.<br>매장 밖에서도 스타벅스와 연결되세요</p>
+    <div class="hero-badge font-display">오세훈 × RadioKafe · 2026 서울시장</div>
+    <div style="width:160px;height:160px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;flex-direction:column;align-items:center;justify-content:center;margin:0 auto 28px;box-shadow:0 0 60px rgba(201,21,30,0.5),0 0 120px rgba(201,21,30,0.2),0 0 0 2px rgba(255,255,255,0.15);gap:4px;">
+      <span style="font-family:'Outfit',sans-serif;font-size:36px;font-weight:900;color:#fff;line-height:1;">오세훈</span>
+      <span style="font-family:'Orbitron',monospace;font-size:8px;letter-spacing:2px;color:rgba(255,220,220,0.8);">SEOUL MAYOR</span>
+    </div>
+    <h1>오세훈<br><em>라디오카페</em></h1>
+    <p>서울시장 오세훈과 함께하는 디지털 라디오.<br>시민과 소통하는 새로운 방식을 경험하세요</p>
     <div class="hero-buttons">
       <a href="index.html" class="btn-primary">&#9654;&ensp;라디오 듣기</a>
       <a href="#features" class="btn-secondary">&#8595;&ensp;더 알아보기</a>
@@ -447,49 +453,49 @@ section { position: relative; z-index: 1; }
 <section class="section" id="features">
   <div class="fade-up">
     <div class="section-label">Features</div>
-    <div class="section-title">커피와 음악이 만나는 경험</div>
-    <div class="section-desc">스타벅스 감성의 라디오카페가 제공하는 특별한 기능들. 매장 안에서 시작된 연결이 매장 밖에서도 이어집니다.</div>
+    <div class="section-title">오세훈과 서울이 만나는 라디오</div>
+    <div class="section-desc">오세훈 라디오카페가 제공하는 특별한 기능들. 시민과 시장이 음악으로 연결되는 새로운 소통 공간입니다.</div>
   </div>
   <div class="features-grid">
     <div class="feature-card fade-up">
       <div class="feature-icon">📻</div>
-      <h3>스타벅스 라디오 채널</h3>
-      <p>재즈, 어쿠스틱, 보사노바 등 스타벅스 감성에 맞춘 큐레이션 채널. 매장 BGM을 어디서든 즐기세요.</p>
+      <h3>오세훈 라디오 채널</h3>
+      <p>대한민국 실시간 라디오를 오세훈 테마로. KBS·MBC·SBS·CBS 등 전 채널을 디지털·아날로그 두 가지 모드로 즐기세요.</p>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">☕</div>
-      <h3>음악 × 커피 페어링</h3>
-      <p>지금 흐르는 음악의 감성을 분석해 어울리는 음료를 추천. 사이렌오더로 즉시 주문하세요.</p>
+      <div class="feature-icon">🏛️</div>
+      <h3>서울 비전 & 공약 채널</h3>
+      <p>오세훈 서울시장의 핵심 정책과 비전을 라디오 방송 형식으로 전달. 교통·주거·문화·복지 공약을 한 곳에서.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">🎂</div>
-      <h3>생일 이벤트 자동화</h3>
-      <p>매장 방문 시 GPS가 생일을 감지하면, 라디오에서 축하 방송이 흘러나옵니다. 무료 음료 쿠폰도 자동 지급.</p>
+      <h3>시민 생일 축하 방송</h3>
+      <p>생년월일을 등록하면 생일 당일 오세훈 라디오카페에서 특별 축하 메시지를 받아보세요. 서울시장의 진심 어린 축하.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">👥</div>
-      <h3>테이블 같이 듣기</h3>
-      <p>QR 스캔으로 같은 테이블의 친구·가족과 동일한 라디오 채널을 동기화. 함께 즐기는 소셜 라디오.</p>
+      <h3>같이 듣기 (소셜 라디오)</h3>
+      <p>QR 스캔으로 가족·친구·동료와 동일한 채널을 동기화. 함께 즐기며 채팅하는 오세훈 소셜 라디오.</p>
     </div>
     <div class="feature-card fade-up">
-      <div class="feature-icon">⭐</div>
-      <h3>Rewards 포인트 연동</h3>
-      <p>청취 시간, 음악 퀴즈, 신청곡 등 모든 활동에 스타벅스 Rewards 별 포인트가 쌓입니다.</p>
+      <div class="feature-icon">🗳️</div>
+      <h3>시민 참여 포인트</h3>
+      <p>청취 시간, 음악 퀴즈, 신청곡, 사연 보내기 등 모든 활동에 서울 시민 참여 포인트가 쌓입니다.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">📸</div>
-      <h3>추억 사진 앨범</h3>
-      <p>스타벅스 브랜드 프레임으로 꾸민 추억 사진첩. 라디오를 들으며 소중한 순간을 감상하세요.</p>
+      <h3>서울 추억 사진 앨범</h3>
+      <p>오세훈 테마 프레임으로 꾸민 추억 사진첩. 한강, 광화문, 남산과 함께한 소중한 순간을 보관하세요.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">🎵</div>
-      <h3>신청곡 (바리스타 DJ)</h3>
-      <p>듣고 싶은 곡을 신청하면 매장 바리스타 DJ가 틀어드립니다. 특별한 멘트와 함께.</p>
+      <h3>신청곡 & DJ 사연</h3>
+      <p>듣고 싶은 곡을 신청하고 사연을 보내세요. 오세훈 라디오카페 DJ가 특별한 멘트와 함께 전해드립니다.</p>
     </div>
     <div class="feature-card fade-up">
       <div class="feature-icon">💌</div>
       <h3>라디오 엽서 & 타임캡슐</h3>
-      <p>음악과 함께 친구에게 스타벅스 e-엽서를 보내거나, 미래에 열리는 타임캡슐 메시지를 남기세요.</p>
+      <p>음악과 함께 친구에게 e-엽서를 보내거나, 2026 서울의 기억을 타임캡슐로 남기세요.</p>
     </div>
   </div>
 </section>
@@ -506,8 +512,8 @@ section { position: relative; z-index: 1; }
     </div>
     <div class="screenshots-grid">
       <div class="screenshot-item fade-up">
-        <img src="스타-홈로그인.png" alt="랜딩 페이지" loading="lazy">
-        <div class="screenshot-label">Login / Landing</div>
+        <img src="스타-홈로그인.png" alt="로그인 화면" loading="lazy">
+        <div class="screenshot-label">Login / Home</div>
       </div>
       <div class="screenshot-item fade-up">
         <img src="스타-디지털.png" alt="디지털 라디오 화면" loading="lazy">
@@ -518,8 +524,8 @@ section { position: relative; z-index: 1; }
         <div class="screenshot-label">Analog Mode</div>
       </div>
       <div class="screenshot-item fade-up">
-        <img src="스타-사진.png" alt="사진 선택 화면" loading="lazy">
-        <div class="screenshot-label">Photo Select</div>
+        <img src="스타-사진.png" alt="사진 앨범 화면" loading="lazy">
+        <div class="screenshot-label">Photo Album</div>
       </div>
     </div>
   </div>
@@ -527,68 +533,68 @@ section { position: relative; z-index: 1; }
 
 <hr class="glow-divider">
 
-<!-- ── Themes ── -->
-<section class="section" id="themes">
+<!-- ── Vision / Themes (서울 명소 테마) ── -->
+<section class="section" id="vision">
   <div class="fade-up">
-    <div class="section-label">Themes</div>
-    <div class="section-title">11가지 스타벅스 드링크 테마</div>
-    <div class="section-desc">좋아하는 음료처럼, 나만의 라디오 테마를 고르세요</div>
+    <div class="section-label">Seoul Themes</div>
+    <div class="section-title">11가지 서울 명소 테마</div>
+    <div class="section-desc">서울의 랜드마크처럼, 나만의 라디오 테마를 골라 오세훈과 함께 서울을 느끼세요</div>
   </div>
   <div class="themes-grid fade-up">
-    <div class="theme-card" style="background:linear-gradient(145deg,#2a1a0e,#1a0e06);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#8b4513,#4a2008);"></div>
-      <div class="name" style="color:#c8a882;">ESPRESSO</div>
-      <div class="name-kr" style="color:#a08060;">에스프레소</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#1a0808,#2a0e0e);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#C9151E,#8B0000);"></div>
+      <div class="name" style="color:#FF8888;">OSH RED</div>
+      <div class="name-kr" style="color:#CC6666;">오세훈 레드</div>
     </div>
-    <div class="theme-card" style="background:linear-gradient(145deg,#2a3a28,#1a2818);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#00704A,#004d35);"></div>
-      <div class="name" style="color:#a8d4b8;">MATCHA</div>
-      <div class="name-kr" style="color:#80b898;">말차 라떼</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#0e1a2a,#081428);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#1a5fa8,#0d3a6e);"></div>
+      <div class="name" style="color:#88BBFF;">HANGANG</div>
+      <div class="name-kr" style="color:#6699EE;">한강 야경</div>
     </div>
-    <div class="theme-card" style="background:linear-gradient(145deg,#f5e6c8,#e2d0a8);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#c9a882,#a07848);"></div>
-      <div class="name" style="color:#6a4820;">LATTE</div>
-      <div class="name-kr" style="color:#8a6030;">카페라떼</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#1a150e,#2a1e0a);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#CBA258,#a07830);"></div>
+      <div class="name" style="color:#E8C87A;">GYEONGBOK</div>
+      <div class="name-kr" style="color:#C8A860;">경복궁 골드</div>
     </div>
-    <div class="theme-card" style="background:linear-gradient(145deg,#0e0e1a,#08081a);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#333355,#111128);"></div>
-      <div class="name" style="color:#8888bb;">AMERICANO</div>
-      <div class="name-kr" style="color:#6666aa;">아메리카노</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#0e0e0e,#181818);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#444444,#111111);"></div>
+      <div class="name" style="color:#AAAAAA;">NAMSAN</div>
+      <div class="name-kr" style="color:#888888;">남산 미드나잇</div>
     </div>
-    <div class="theme-card" style="background:linear-gradient(145deg,#c8d8e0,#9ab4c0);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#1a3040,#0e1e28);"></div>
-      <div class="name" style="color:#1a3040;">COLD BREW</div>
-      <div class="name-kr" style="color:#2a4a60;">콜드브루</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#e8f0f8,#c8d8e8);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#4488cc,#226699);"></div>
+      <div class="name" style="color:#226699;">GWANGHWAMUN</div>
+      <div class="name-kr" style="color:#335577;">광화문 블루</div>
     </div>
     <div class="theme-card" style="background:linear-gradient(145deg,#1a1030,#0e0820);">
       <div class="theme-swatch" style="background:linear-gradient(135deg,#9966ff,#6633cc);"></div>
-      <div class="name" style="color:#bb88ff;">FRAPPUCCINO</div>
-      <div class="name-kr" style="color:#9966ee;">프라푸치노</div>
+      <div class="name" style="color:#BB88FF;">DONGDAEMUN</div>
+      <div class="name-kr" style="color:#9966EE;">동대문 야시장</div>
     </div>
     <div class="theme-card" style="background:linear-gradient(145deg,#3a1828,#281018);">
       <div class="theme-swatch" style="background:linear-gradient(135deg,#ff6688,#cc3355);"></div>
-      <div class="name" style="color:#ff88aa;">STRAWBERRY</div>
-      <div class="name-kr" style="color:#ee6688;">딸기 프라푸치노</div>
+      <div class="name" style="color:#FF88AA;">HONGDAE</div>
+      <div class="name-kr" style="color:#EE6688;">홍대 핑크</div>
     </div>
     <div class="theme-card" style="background:linear-gradient(145deg,#faf6f0,#eee8dc);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#CBA258,#a07830);"></div>
-      <div class="name" style="color:#8a6030;">VANILLA</div>
-      <div class="name-kr" style="color:#a07840;">바닐라 크림</div>
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#c9a882,#a07848);"></div>
+      <div class="name" style="color:#6a4820;">INSADONG</div>
+      <div class="name-kr" style="color:#8a6030;">인사동 크림</div>
     </div>
-    <div class="theme-card" style="background:linear-gradient(145deg,#201828,#140e1c);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#cc99ff,#9966cc);"></div>
-      <div class="name" style="color:#cc99ff;">LAVENDER</div>
-      <div class="name-kr" style="color:#aa77ee;">라벤더 라떼</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#0c1a08,#0a1806);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#44aa44,#226622);"></div>
+      <div class="name" style="color:#88CC88;">BUKHANSAN</div>
+      <div class="name-kr" style="color:#66AA66;">북한산 그린</div>
     </div>
     <div class="theme-card" style="background:linear-gradient(145deg,#2a1c10,#1c1008);">
       <div class="theme-swatch" style="background:linear-gradient(135deg,#ff8c00,#cc5500);"></div>
-      <div class="name" style="color:#ffaa44;">CHAI TEA</div>
-      <div class="name-kr" style="color:#ee8822;">차이 티 라떼</div>
+      <div class="name" style="color:#FFAA44;">JAMSIL</div>
+      <div class="name-kr" style="color:#EE8822;">잠실 선셋</div>
     </div>
-    <div class="theme-card" style="background:linear-gradient(145deg,#0c2018,#081410);">
-      <div class="theme-swatch" style="background:linear-gradient(135deg,#00cc88,#008855);"></div>
-      <div class="name" style="color:#00ee99;">MINT CHOCO</div>
-      <div class="name-kr" style="color:#00cc77;">민트 초코칩</div>
+    <div class="theme-card" style="background:linear-gradient(145deg,#160818,#0e0410);">
+      <div class="theme-swatch" style="background:linear-gradient(135deg,#cc44aa,#882277);"></div>
+      <div class="name" style="color:#EE88DD;">ITAEWON</div>
+      <div class="name-kr" style="color:#CC66BB;">이태원 퍼플</div>
     </div>
   </div>
 </section>
@@ -598,9 +604,9 @@ section { position: relative; z-index: 1; }
 <!-- ── CTA ── -->
 <section class="cta-section">
   <div class="fade-up">
-    <div class="section-title">지금 바로 시작하세요</div>
-    <p>회원가입 없이 바로 라디오를 들을 수 있어요.<br>커피 한 잔과 함께 나만의 라디오카페를 열어보세요.</p>
-    <div style="text-align:center; font-size:4rem; margin-bottom:24px;">☕</div>
+    <div class="section-title">오세훈과 함께, 지금 시작하세요</div>
+    <p>회원가입 없이 바로 라디오를 들을 수 있어요.<br>오세훈 서울시장의 라디오카페에서 서울의 소리를 들어보세요.</p>
+    <div style="text-align:center; font-size:4rem; margin-bottom:24px;">🏛️</div>
     <div style="text-align:center;">
       <a href="index.html" class="btn-primary">&#9654;&ensp;라디오카페 입장</a>
     </div>
@@ -612,28 +618,26 @@ section { position: relative; z-index: 1; }
 <!-- ── Story ── -->
 <section class="story-section">
   <div class="story-inner fade-up">
-    <div class="section-label">Our Story</div>
+    <div class="section-label">오세훈의 이야기</div>
     <div class="story-quote">"</div>
     <p class="story-text">
-      창가 자리에 앉아 따뜻한 라떼 한 잔을 손에 쥐고,<br>
-      창밖으로 내리는 빗소리와 함께<br>
-      스피커에서 흘러나오던 재즈 선율.<br>
-      그 순간을 기억하시나요?
+      한강의 빛나는 야경을 바라보며<br>
+      서울 시민 한 분 한 분을 떠올립니다.<br>
+      이 도시의 주인은 바로 여러분입니다.
     </p>
     <p class="story-text">
-      스타벅스 매장을 나서는 순간<br>
-      그 음악도, 그 따뜻함도 사라집니다.<br>
-      스타벅스 라디오카페는<br>
-      그 연결이 끊기지 않도록<br>
-      만들어진 공간입니다.
+      시민의 목소리를 직접 듣고,<br>
+      함께 만들어가는 서울.<br>
+      오세훈 라디오카페는<br>
+      그 소통의 공간입니다.
     </p>
     <p class="story-text last">
-      어디에 있든, 커피 한 잔과 함께<br>
-      스타벅스의 감성이 당신 곁에 머물기를 바랍니다.
+      2026년, 더 나은 서울을 위해<br>
+      오세훈이 여러분 곁에서 함께 하겠습니다.
     </p>
     <div class="story-author">
-      <span class="story-author-name"><a href="about.html">RadioKafe Team</a></span>
-      <span class="story-author-title">Starbucks × RadioKafe Partnership Project · 2026</span>
+      <span class="story-author-name"><a href="about.html">오세훈 서울시장</a></span>
+      <span class="story-author-title">국민의힘 · 제39·40대 서울특별시장 · 2026 서울시장 후보</span>
     </div>
   </div>
 </section>
@@ -642,10 +646,10 @@ section { position: relative; z-index: 1; }
 
 <!-- ── Footer ── -->
 <footer class="footer">
-  <div class="footer-brand font-display">☕ STARBUCKS RADIOKAFE</div>
-  <p>&copy; 2026 스타벅스 라디오카페 &middot; v1.0<br>
-  Starbucks® 상표권은 Starbucks Corporation에 귀속됩니다.<br>
-  RadioKafe 기술 제공 &middot; <a href="about.html">About</a> &middot; <a href="manual.html">사용법</a></p>
+  <div class="footer-brand font-display">🏛️ OH SE-HOON RADIOKAFE</div>
+  <p>&copy; 2026 오세훈 라디오카페 &middot; 국민의힘 서울시장 후보 캠프<br>
+  본 사이트는 오세훈 2026 서울시장 선거 캠페인 프로젝트입니다.<br>
+  RadioKafe 기술 제공 &middot; <a href="about.html">캠프 소개</a> &middot; <a href="manual.html">사용법</a> &middot; <a href="strategy.html">전략</a></p>
 </footer>
 
 <script>
@@ -667,10 +671,10 @@ document.getElementById('navToggle').addEventListener('click', () => {
     links.style.position = 'absolute';
     links.style.top = '60px';
     links.style.left = '0'; links.style.right = '0';
-    links.style.background = 'rgba(13,31,22,0.97)';
+    links.style.background = 'rgba(21,4,8,0.97)';
     links.style.padding = '16px 24px';
     links.style.gap = '16px';
-    links.style.borderBottom = '1px solid rgba(0,112,74,0.25)';
+    links.style.borderBottom = '1px solid rgba(201,21,30,0.25)';
   }
 });
 

@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Starbucks × RadioKafe — 전략 제안서</title>
+<title>오세훈 × RadioKafe — 전략 제안서</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --green: #00704A;
-  --green-dark: #1E3932;
-  --green-deep: #0d2418;
-  --green-mid: #1a3828;
-  --green-light: #D4E9E2;
+  --green: #C9151E;
+  --green-dark: #3a0808;
+  --green-deep: #180608;
+  --green-mid: #2e0808;
+  --green-light: #F5D4D6;
   --gold: #CBA258;
   --gold-light: #e8c87a;
   --cream: #F2F0EB;
   --cream-dark: #e8e4dc;
   --espresso: #1a0e08;
   --latte: #c9a882;
-  --text: #1E3932;
+  --text: #3a0808;
   --text-light: #4a6b5e;
   --text-dim: #7a9e8e;
   --white: #ffffff;
-  --card-bg: rgba(0,112,74,0.06);
-  --border: rgba(0,112,74,0.18);
+  --card-bg: rgba(201,21,30,0.06);
+  --border: rgba(201,21,30,0.18);
 }
 
 html { scroll-behavior: smooth; }
@@ -39,7 +39,7 @@ body {
 /* ── COVER PAGE ── */
 .cover {
   min-height: 100vh;
-  background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-dark) 40%, #0e2a1e 100%);
+  background: linear-gradient(160deg, var(--green-deep) 0%, var(--green-dark) 40%, #1a0810 100%);
   display: flex; flex-direction: column;
   justify-content: center; align-items: center;
   text-align: center;
@@ -51,11 +51,11 @@ body {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(0,112,74,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse at 20% 50%, rgba(201,21,30,0.2) 0%, transparent 55%),
     radial-gradient(ellipse at 80% 30%, rgba(203,162,88,0.08) 0%, transparent 50%),
-    radial-gradient(2px 2px at 30% 20%, rgba(212,233,226,0.3) 0%, transparent 100%),
-    radial-gradient(2px 2px at 70% 70%, rgba(212,233,226,0.2) 0%, transparent 100%),
-    radial-gradient(1px 1px at 50% 50%, rgba(212,233,226,0.25) 0%, transparent 100%);
+    radial-gradient(2px 2px at 30% 20%, rgba(245,212,215,0.3) 0%, transparent 100%),
+    radial-gradient(2px 2px at 70% 70%, rgba(245,212,215,0.2) 0%, transparent 100%),
+    radial-gradient(1px 1px at 50% 50%, rgba(245,212,215,0.25) 0%, transparent 100%);
   pointer-events: none;
 }
 .cover-badge {
@@ -77,7 +77,7 @@ body {
   background: #fff;
   padding: 8px;
   object-fit: contain;
-  filter: drop-shadow(0 0 30px rgba(0,112,74,0.6));
+  filter: drop-shadow(0 0 30px rgba(201,21,30,0.6));
 }
 .cover h1 {
   font-family: 'Inter', sans-serif;
@@ -124,7 +124,7 @@ body {
 }
 .toc-item {
   background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(212,233,226,0.12);
+  border: 1px solid rgba(245,212,215,0.12);
   border-radius: 10px;
   padding: 12px 16px;
   text-align: left;
@@ -134,8 +134,8 @@ body {
   cursor: pointer;
 }
 .toc-item:hover {
-  background: rgba(0,112,74,0.2);
-  border-color: rgba(0,112,74,0.5);
+  background: rgba(201,21,30,0.2);
+  border-color: rgba(201,21,30,0.5);
   transform: translateX(4px);
 }
 .toc-num {
@@ -148,10 +148,8 @@ body {
 
 /* ── PAGE SECTIONS ── */
 .page {
-  max-width: 1100px;
-  margin: 0 auto;
   padding: 80px 40px;
-  border-bottom: 1px solid rgba(0,112,74,0.08);
+  border-bottom: 1px solid rgba(201,21,30,0.08);
 }
 .page-header {
   margin-bottom: 56px;
@@ -193,7 +191,7 @@ body {
 }
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0,112,74,0.1);
+  box-shadow: 0 12px 40px rgba(201,21,30,0.1);
 }
 .card-icon { font-size: 2rem; margin-bottom: 14px; }
 .card h3 {
@@ -211,7 +209,7 @@ body {
   margin-bottom: 10px; font-weight: 600;
 }
 
-/* ── PROBLEM CARD (Starbucks Theme) ── */
+/* ── PROBLEM CARD (오세훈 Theme) ── */
 .problem-card {
   background: linear-gradient(135deg, #fdf8f0, #fef5e4);
   border: 1px solid rgba(203,162,88,0.35);
@@ -231,35 +229,35 @@ body {
 
 /* ── GREEN HIGHLIGHT CARD ── */
 .card-green {
-  background: linear-gradient(135deg, var(--green-dark), #0e2a1e);
+  background: linear-gradient(135deg, var(--green-dark), #1a0810);
   border-color: var(--green);
   color: var(--white);
 }
 .card-green h3 { color: var(--green-light); }
-.card-green p { color: rgba(212,233,226,0.8); }
+.card-green p { color: rgba(245,212,215,0.8); }
 
-/* ── STARBUCKS LIGHT CARD ── */
-.card-starbucks {
+/* ── OH SE-HOON LIGHT CARD ── */
+.card-osh {
   background: linear-gradient(135deg, #f0f7f4, #e8f3ee);
-  border: 1px solid rgba(0,112,74,0.28);
+  border: 1px solid rgba(201,21,30,0.28);
   border-top: 3px solid var(--green);
-  box-shadow: 0 2px 12px rgba(0,112,74,0.08);
+  box-shadow: 0 2px 12px rgba(201,21,30,0.08);
 }
-.card-starbucks:hover {
-  box-shadow: 0 10px 32px rgba(0,112,74,0.15);
+.card-osh:hover {
+  box-shadow: 0 10px 32px rgba(201,21,30,0.15);
 }
-.card-starbucks h3 { color: var(--green-dark); }
-.card-starbucks p { color: var(--text-light); }
+.card-osh h3 { color: var(--green-dark); }
+.card-osh p { color: var(--text-light); }
 
 /* ── GOLD HIGHLIGHT ── */
 .highlight-gold {
-  background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 60%, #0e2a1e 100%);
-  border: 1px solid rgba(0,112,74,0.5);
+  background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 60%, #1a0810 100%);
+  border: 1px solid rgba(201,21,30,0.5);
   border-top: 3px solid var(--gold);
   border-radius: 16px;
   padding: 32px;
   color: var(--green-light);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(212,233,226,0.06);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18), inset 0 1px 0 rgba(245,212,215,0.06);
 }
 .highlight-gold h3 { color: var(--gold-light); margin-bottom: 8px; }
 
@@ -270,17 +268,17 @@ body {
   margin-bottom: 0;
 }
 .page-bg-dark {
-  background: linear-gradient(180deg, #0d1f16 0%, #1a3828 100%);
+  background: linear-gradient(180deg, #150408 0%, #2e0808 100%);
 }
 .page-bg-dark .page-title { color: var(--green-light); }
 .page-bg-dark .page-num { color: var(--gold); }
 .page-bg-dark .page-desc { color: var(--text-dim); }
 .page-bg-dark .card {
   background: rgba(255,255,255,0.05);
-  border-color: rgba(212,233,226,0.12);
+  border-color: rgba(245,212,215,0.12);
 }
 .page-bg-dark .card h3 { color: var(--green-light); }
-.page-bg-dark .card p { color: rgba(212,233,226,0.7); }
+.page-bg-dark .card p { color: rgba(245,212,215,0.7); }
 
 /* ── STAT BOXES ── */
 .stat-grid {
@@ -314,7 +312,7 @@ body {
   margin: 32px 0;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 16px rgba(0,112,74,0.08);
+  box-shadow: 0 2px 16px rgba(201,21,30,0.08);
 }
 .data-table thead tr {
   background: var(--green-dark);
@@ -327,8 +325,8 @@ body {
   letter-spacing: 1px;
   text-align: left;
 }
-.data-table tbody tr { background: var(--white); border-bottom: 1px solid rgba(0,112,74,0.08); }
-.data-table tbody tr:nth-child(even) { background: rgba(0,112,74,0.03); }
+.data-table tbody tr { background: var(--white); border-bottom: 1px solid rgba(201,21,30,0.08); }
+.data-table tbody tr:nth-child(even) { background: rgba(201,21,30,0.03); }
 .data-table tbody td { padding: 12px 18px; font-size: 0.875rem; color: var(--text); }
 .data-table .bold { font-weight: 700; color: var(--green-dark); }
 .data-table .gold { color: var(--gold); font-weight: 700; }
@@ -356,17 +354,17 @@ body {
 .flow-dot {
   width: 48px; height: 48px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--green), #004d35);
+  background: linear-gradient(135deg, var(--green), #8B0000);
   display: flex; align-items: center; justify-content: center;
   font-size: 1.2rem;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba(0,112,74,0.3);
+  box-shadow: 0 4px 16px rgba(201,21,30,0.3);
 }
 .flow-line {
   width: 2px;
   flex: 1;
   min-height: 32px;
-  background: linear-gradient(180deg, var(--green), rgba(0,112,74,0.15));
+  background: linear-gradient(180deg, var(--green), rgba(201,21,30,0.15));
   margin: 4px 0;
 }
 .flow-body {
@@ -398,14 +396,14 @@ body {
 
 /* ── ARCH DIAGRAM ── */
 .arch-container {
-  background: linear-gradient(160deg, #0d1f16, #1a3828);
+  background: linear-gradient(160deg, #150408, #2e0808);
   border-radius: 20px;
   padding: 40px;
   margin: 32px 0;
 }
 .arch-layer {
   background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(212,233,226,0.1);
+  border: 1px solid rgba(245,212,215,0.1);
   border-radius: 14px;
   padding: 20px 24px;
   margin-bottom: 16px;
@@ -421,8 +419,8 @@ body {
   display: flex; flex-wrap: wrap; gap: 10px;
 }
 .arch-node {
-  background: rgba(0,112,74,0.25);
-  border: 1px solid rgba(0,112,74,0.4);
+  background: rgba(201,21,30,0.25);
+  border: 1px solid rgba(201,21,30,0.4);
   border-radius: 8px;
   padding: 8px 14px;
   font-size: 0.78rem;
@@ -435,22 +433,22 @@ body {
   color: var(--gold-light);
 }
 .arch-node.highlight {
-  background: rgba(0,112,74,0.5);
+  background: rgba(201,21,30,0.5);
   border-color: var(--green);
   color: #fff;
   font-weight: 600;
 }
 .arch-arrow {
   text-align: center;
-  color: rgba(0,112,74,0.5);
+  color: rgba(201,21,30,0.5);
   font-size: 1.4rem;
   margin: 4px 0;
 }
 
 /* ── FORMULA BOX ── */
 .formula-box {
-  background: #0d1f16;
-  border: 1px solid rgba(0,112,74,0.3);
+  background: #150408;
+  border: 1px solid rgba(201,21,30,0.3);
   border-radius: 14px;
   padding: 28px 32px;
   margin: 24px 0;
@@ -513,7 +511,7 @@ body {
   left: 120px;
   top: 0; bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, var(--green), rgba(0,112,74,0.1));
+  background: linear-gradient(180deg, var(--green), rgba(201,21,30,0.1));
 }
 .tl-item {
   display: flex;
@@ -562,7 +560,7 @@ body {
 }
 .pitch-card {
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(212,233,226,0.12);
+  border: 1px solid rgba(245,212,215,0.12);
   border-radius: 16px;
   padding: 28px 24px;
 }
@@ -590,7 +588,7 @@ body {
 .rev-bar-label .amount { font-weight: 700; color: var(--green-dark); }
 .rev-bar-track {
   height: 12px;
-  background: rgba(0,112,74,0.1);
+  background: rgba(201,21,30,0.1);
   border-radius: 6px;
   overflow: hidden;
 }
@@ -623,12 +621,51 @@ body {
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px; }
 @media(max-width:700px) { .two-col { grid-template-columns: 1fr; } }
 
+/* ── THREE COL ── */
+.three-col { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+@media(max-width:900px) { .three-col { grid-template-columns: 1fr 1fr; } }
+@media(max-width:600px) { .three-col { grid-template-columns: 1fr; } }
+
+/* ── PAGE INNER / LABEL ── */
+.page-inner { max-width: 1100px; margin: 0 auto; }
+.page-alt { background: rgba(201,21,30,0.025); }
+.page-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 10px; letter-spacing: 5px; font-weight: 700;
+  color: var(--green); text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+/* ── FEATURE CARDS ── */
+.feature-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px; padding: 24px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(201,21,30,0.12);
+}
+.feature-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 14px;
+}
+.feature-title {
+  font-size: 14px; font-weight: 700;
+  color: var(--text); margin-bottom: 8px;
+}
+.feature-desc {
+  font-size: 13px; color: #6a5050; line-height: 1.65;
+}
+
 /* ── FOOTER ── */
 .doc-footer {
   background: var(--green-deep);
   padding: 48px 40px;
   text-align: center;
-  color: rgba(212,233,226,0.5);
+  color: rgba(245,212,215,0.5);
   font-size: 0.8rem;
   line-height: 2;
 }
@@ -637,9 +674,9 @@ body {
 /* ── NAV BAR ── */
 .doc-nav {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(30,57,50,0.96);
+  background: rgba(21,4,8,0.96);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,112,74,0.3);
+  border-bottom: 1px solid rgba(201,21,30,0.3);
   padding: 0 32px;
 }
 .doc-nav-inner {
@@ -666,16 +703,16 @@ body {
 .doc-nav-links a:hover { color: var(--gold); }
 .doc-nav-landing {
   margin-left: 16px;
-  background: linear-gradient(135deg, var(--green), #004d35);
+  background: linear-gradient(135deg, var(--green), #8B0000);
   color: #fff; border: none; border-radius: 16px;
   padding: 6px 14px; font-size: 0.75rem; font-weight: 700;
   text-decoration: none; white-space: nowrap;
   transition: transform 0.2s, box-shadow 0.2s;
-  box-shadow: 0 2px 10px rgba(0,112,74,0.35);
+  box-shadow: 0 2px 10px rgba(201,21,30,0.35);
 }
 .doc-nav-landing:hover {
   transform: translateY(-1px);
-  box-shadow: 0 4px 16px rgba(0,112,74,0.55);
+  box-shadow: 0 4px 16px rgba(201,21,30,0.55);
 }
 
 @media(max-width:600px) {
@@ -710,7 +747,7 @@ body {
 .yt-trigger-btn svg { width: 28px; height: 28px; fill: #fff; flex-shrink: 0; }
 .yt-trigger-desc {
   margin-top: 14px; font-size: 0.78rem;
-  color: rgba(212,233,226,0.6); letter-spacing: 1px;
+  color: rgba(245,212,215,0.6); letter-spacing: 1px;
 }
 .yt-overlay {
   display: none; position: fixed; inset: 0; z-index: 9999;
@@ -789,19 +826,21 @@ body {
 </style>
 </head>
 <body>
-
 <!-- ── NAV ── -->
 <nav class="doc-nav">
   <div class="doc-nav-inner">
-    <a href="#cover" class="doc-nav-logo"><img src="starbucks-logo.png" alt="Starbucks" style="height:20px;vertical-align:middle;margin-right:6px;background:#fff;border-radius:50%;padding:2px;"> STARBUCKS × RADIOKAFE</a>
+    <a href="#cover" class="doc-nav-logo">
+      <span style="display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);font-size:8px;font-weight:900;color:#fff;margin-right:6px;vertical-align:middle;">오</span>
+      OH SE-HOON RADIOKAFE
+    </a>
     <ul class="doc-nav-links">
       <li><a href="#p1">Executive</a></li>
-      <li><a href="#p4">기능</a></li>
-      <li><a href="#p6">UX Flow</a></li>
-      <li><a href="#p7">수익모델</a></li>
-      <li><a href="#p8">MVP</a></li>
-      <li><a href="#p9">기술구조</a></li>
-      <li><a href="#p10">피치덱</a></li>
+      <li><a href="#p2">문제정의</a></li>
+      <li><a href="#p3">솔루션</a></li>
+      <li><a href="#p4">핵심기능</a></li>
+      <li><a href="#p5">캠페인흐름</a></li>
+      <li><a href="#p6">유권자CRM</a></li>
+      <li><a href="#p7">전략로드맵</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:8px;">
       <button class="pdf-btn" id="pdfBtnNav" onclick="generatePDF()">📄 PDF 다운로드</button>
@@ -810,1132 +849,526 @@ body {
   </div>
 </nav>
 
-<!-- ══════════════════════════════════════════
-     COVER
-══════════════════════════════════════════ -->
+<!-- ── COVER ── -->
 <section class="cover" id="cover">
-  <div class="cover-badge">Confidential Business Proposal · 2026</div>
-  <div class="cover-logo"><img src="starbucks-logo.png" alt="Starbucks"></div>
-  <h1>Starbucks<br><span>× RadioKafe</span></h1>
-  <p class="cover-sub">커피 한 잔과 라디오 채널 & 사이렌 오더 — 연결의 새로운 경험</p>
-  <div class="cover-divider"></div>
-  <div class="cover-meta">
-    <div class="cover-meta-item">
-      <div class="label">Document Type</div>
-      <div class="value">Strategic Proposal</div>
+  <div class="cover-noise"></div>
+  <div style="position:relative;z-index:2;width:100%;max-width:900px;margin:0 auto;">
+    <div style="display:inline-flex;align-items:center;justify-content:center;width:120px;height:120px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);box-shadow:0 0 40px rgba(201,21,30,0.6),0 0 0 4px rgba(255,255,255,0.15);font-family:'Orbitron',monospace;font-size:36px;font-weight:900;color:#fff;margin-bottom:32px;">오</div>
+    <div style="font-family:'Orbitron',monospace;font-size:11px;letter-spacing:6px;color:rgba(201,21,30,0.8);margin-bottom:16px;">2026 SEOUL MAYOR CAMPAIGN</div>
+    <h1 style="font-size:clamp(28px,5vw,52px);font-weight:900;color:#fff;line-height:1.15;margin-bottom:12px;">오세훈 × RadioKafe<br><span style="color:#C9151E;">전략 제안서</span></h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.65);margin-bottom:40px;">서울시민과 오세훈을 잇는 디지털 라디오 플랫폼 · 2026 제8회 전국동시지방선거</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#p1" style="padding:14px 32px;background:linear-gradient(135deg,#C9151E,#8B0000);color:#fff;border-radius:30px;text-decoration:none;font-weight:700;font-size:15px;box-shadow:0 4px 20px rgba(201,21,30,0.5);">전략 살펴보기 →</a>
+      <a href="landing.html" style="padding:14px 32px;background:rgba(255,255,255,0.08);color:#fff;border-radius:30px;text-decoration:none;font-weight:700;font-size:15px;border:1px solid rgba(255,255,255,0.2);">🏠 랜딩 페이지</a>
     </div>
-    <div class="cover-meta-item">
-      <div class="label">Version</div>
-      <div class="value">v1.0 · 2026.02</div>
+    <div style="margin-top:60px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">14가지</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">핵심 기능</div></div>
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">5대</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">서울 공약</div></div>
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">24/7</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">시민 소통</div></div>
+      <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">2026</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">지방선거</div></div>
     </div>
-    <div class="cover-meta-item">
-      <div class="label">Pages</div>
-      <div class="value">10 Sections</div>
-    </div>
-    <div class="cover-meta-item">
-      <div class="label">Prepared by</div>
-      <div class="value">RadioKafe Team</div>
-    </div>
-  </div>
-  <div class="cover-toc">
-    <a class="toc-item" href="#p1"><span class="toc-num">01</span><span class="toc-text">Executive Summary & 핵심 기회</span></a>
-    <a class="toc-item" href="#p2"><span class="toc-num">02</span><span class="toc-text">문제 정의 — 연결의 단절</span></a>
-    <a class="toc-item" href="#p3"><span class="toc-num">03</span><span class="toc-text">솔루션 — 스타벅스 라디오카페</span></a>
-    <a class="toc-item" href="#p4"><span class="toc-num">04</span><span class="toc-text">핵심 기능 설계</span></a>
-    <a class="toc-item" href="#p5"><span class="toc-num">05</span><span class="toc-text">생일 이벤트 UX 흐름도</span></a>
-    <a class="toc-item" href="#p6"><span class="toc-num">06</span><span class="toc-text">감정 기반 CRM 구조</span></a>
-    <a class="toc-item" href="#p7"><span class="toc-num">07</span><span class="toc-text">수익모델 시뮬레이션</span></a>
-    <a class="toc-item" href="#p8"><span class="toc-num">08</span><span class="toc-text">MVP 파일럿 설계</span></a>
-    <a class="toc-item" href="#p9"><span class="toc-num">09</span><span class="toc-text">기술 아키텍처 설계도</span></a>
-    <a class="toc-item" href="#p10"><span class="toc-num">10</span><span class="toc-text">피치덱 & 파트너십 제안</span></a>
   </div>
 </section>
 
-<!-- YouTube Video Section -->
-<div class="yt-trigger-wrap">
-  <button class="yt-trigger-btn" onclick="window.open('https://youtu.be/asPrfWAnXuQ','_blank')">
-    <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
-    영상으로 보는 스타벅스 라디오카페
-  </button>
-  <p class="yt-trigger-desc">▶ 클릭하면 유튜브에서 소개 영상이 재생됩니다</p>
-</div>
-
-<!-- YouTube Modal -->
-<div class="yt-overlay" id="ytOverlay" onclick="if(event.target===this)closeYT()">
-  <div class="yt-modal">
-    <button class="yt-close" onclick="closeYT()">✕</button>
-    <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-
-<!-- ══════════════════════════════════════════
-     PAGE 1 — EXECUTIVE SUMMARY
-══════════════════════════════════════════ -->
+<!-- ── P1: EXECUTIVE SUMMARY ── -->
 <section class="page" id="p1">
-  <div class="page-header">
-    <div class="page-num">01 / Executive Summary</div>
-    <h2 class="page-title">스타벅스가 고객과 끊기지 않는<br>이유를 만들 기회</h2>
-    <p class="page-desc">스타벅스 매장은 강력한 경험을 제공하지만, 고객이 문을 나서는 순간 연결이 끊깁니다. 스타벅스 라디오카페는 그 연결을 매장 밖까지 이어주는 감성 플랫폼입니다.</p>
-  </div>
-
-  <div class="stat-grid">
-    <div class="stat-box">
-      <div class="num">1,900<span>+</span></div>
-      <div class="label">국내 스타벅스 매장 수<br>(2026년 기준)</div>
-    </div>
-    <div class="stat-box">
-      <div class="num">7.2<span>분</span></div>
-      <div class="label">매장 퇴장 후 평균<br>브랜드 접촉 시간</div>
-    </div>
-    <div class="stat-box">
-      <div class="num">+34<span>%</span></div>
-      <div class="label">음악 페어링 시<br>체류시간 증가 (조사 기반)</div>
-    </div>
-    <div class="stat-box">
-      <div class="num">₩280<span>억</span></div>
-      <div class="label">5년 누적 예상<br>추가 매출</div>
-    </div>
-  </div>
-
-  <div class="card-grid" style="margin-top:32px;">
-    <div class="card card-green">
-      <div class="card-icon">🔗</div>
-      <h3>연결의 확장</h3>
-      <p>매장 안의 경험을 집, 직장, 이동 중에도 이어줍니다. 스타벅스 음악을 외부에서도 함께 들으며 브랜드와 항상 연결됩니다.</p>
-    </div>
-    <div class="card card-starbucks">
-      <div class="card-icon">☕</div>
-      <h3>음악 × 커피 페어링</h3>
-      <p>지금 흐르는 음악의 BPM·장르·감성을 분석해 어울리는 음료를 추천. 사이렌오더로 즉시 연결됩니다.</p>
-    </div>
-    <div class="card card-starbucks">
-      <div class="card-icon">🎂</div>
-      <h3>초개인화 이벤트</h3>
-      <p>GPS·RFID로 매장 방문을 감지하고 생일, 기념일 등 특별한 순간에 맞춤형 라디오 멘트와 쿠폰을 자동 제공합니다.</p>
-    </div>
-    <div class="card card-starbucks">
-      <div class="card-icon">📊</div>
-      <h3>감정 기반 CRM</h3>
-      <p>청취 패턴으로 고객 감정을 추론하고 세그먼트별 마케팅 자동화. 기존 Starbucks Rewards와 완전 연동됩니다.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     PAGE 2 — PROBLEM
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-<section class="page" id="p2">
-  <div class="page-header">
-    <div class="page-num">02 / Problem</div>
-    <h2 class="page-title">매장 문을 나서는 순간<br>연결이 사라진다</h2>
-    <p class="page-desc">스타벅스의 매장 내 경험은 세계 최고 수준이지만, 고객과의 연결은 앱 푸시 알림과 사이렌오더에 그칩니다. 감성적 연결 채널이 없습니다.</p>
-  </div>
-
-  <div class="two-col">
-    <div>
-      <div class="card problem-card" style="margin-bottom:16px;">
-        <div class="tag problem-tag">현재 문제</div>
-        <h3>① 매장 이탈 = 브랜드 이탈</h3>
-        <p>매장 BGM, 바리스타의 인사, 특별한 분위기는 매장 내에서만 존재합니다. 퇴장 즉시 경쟁사 앱으로 이동합니다.</p>
-      </div>
-      <div class="card problem-card" style="margin-bottom:16px;">
-        <div class="tag problem-tag">현재 문제</div>
-        <h3>② 일방적 푸시 마케팅</h3>
-        <p>현재 고객 접점은 쿠폰 알림, 신메뉴 공지 등 일방향입니다. 고객의 감정·상황에 반응하는 쌍방향 채널이 없습니다.</p>
-      </div>
-      <div class="card problem-card">
-        <div class="tag problem-tag">현재 문제</div>
-        <h3>③ 체류시간 증가 수단 부재</h3>
-        <p>음악·콘텐츠 기반의 체류시간 연장 도구가 없습니다. 혼자 오는 고객의 재방문 유인이 약합니다.</p>
-      </div>
-    </div>
-    <div class="highlight-gold">
-      <h3>💡 기회의 크기</h3>
-      <p style="color:rgba(232,200,122,0.8); font-size:0.875rem; line-height:1.9; margin-bottom:20px;">
-        국내 스타벅스 연간 방문객 <strong style="color:var(--gold-light);">약 1억 5천만 명</strong>.<br>
-        이 중 앱 등록 사용자 <strong style="color:var(--gold-light);">약 1,200만 명</strong>.<br>
-        라디오카페 연동 시 <strong style="color:var(--gold-light);">일 평균 접촉 시간 +18분</strong> 추가 가능.
-      </p>
-      <div style="border-top:1px solid rgba(203,162,88,0.2); padding-top:20px;">
-        <p style="font-size:0.8rem; color:rgba(232,200,122,0.7); line-height:1.8;">
-          ▸ 음악 기반 브랜드 앱 평균 DAU 유지율 <strong style="color:#fff;">67%</strong><br>
-          ▸ 음악 페어링 추천 수락 시 객단가 <strong style="color:#fff;">+12%</strong> 상승<br>
-          ▸ 생일 이벤트 쿠폰 사용율 <strong style="color:#fff;">84%</strong> (업계 평균 31%)
+  <div class="page-inner">
+    <div class="page-label">01 — EXECUTIVE SUMMARY</div>
+    <h2 class="page-title">오세훈 라디오카페:<br>시민과 함께하는 캠페인 플랫폼</h2>
+    <div class="two-col" style="margin-top:48px;">
+      <div>
+        <h3 style="font-size:20px;font-weight:700;color:#C9151E;margin-bottom:16px;">무엇인가?</h3>
+        <p style="font-size:15px;line-height:1.8;color:#4a3030;margin-bottom:24px;">
+          오세훈 라디오카페는 2026 서울시장 선거 캠페인을 위한 <strong>디지털 라디오 기반 시민 소통 플랫폼</strong>입니다.
+          시민들이 실시간 라디오를 함께 들으며 오세훈 서울시장의 정책 비전을 자연스럽게 경험하고,
+          캠프와 직접 소통할 수 있는 혁신적인 선거 캠페인 도구입니다.
         </p>
+        <h3 style="font-size:20px;font-weight:700;color:#C9151E;margin-bottom:16px;">핵심 가치</h3>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#C9151E;font-weight:900;font-size:18px;">✓</span><span style="font-size:14px;color:#4a3030;line-height:1.6;">라디오라는 친숙한 매체로 세대를 초월한 공감대 형성</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#C9151E;font-weight:900;font-size:18px;">✓</span><span style="font-size:14px;color:#4a3030;line-height:1.6;">같이듣기·노래선물·엽서 등 참여 기능으로 바이럴 확산</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#C9151E;font-weight:900;font-size:18px;">✓</span><span style="font-size:14px;color:#4a3030;line-height:1.6;">오세훈 비전 채널로 공약을 콘텐츠화하여 자연스러운 전달</span></li>
+          <li style="display:flex;gap:12px;align-items:flex-start;"><span style="color:#C9151E;font-weight:900;font-size:18px;">✓</span><span style="font-size:14px;color:#4a3030;line-height:1.6;">유권자 CRM 데이터로 타깃 맞춤 선거 전략 수립</span></li>
+        </ul>
+      </div>
+      <div>
+        <div style="background:linear-gradient(135deg,#3a0808,#280610);border-radius:20px;padding:32px;color:#fff;">
+          <div style="font-size:11px;letter-spacing:3px;color:#C9151E;margin-bottom:20px;font-family:'Orbitron',monospace;">CAMPAIGN TARGET</div>
+          <div style="display:flex;flex-direction:column;gap:16px;">
+            <div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:4px;">목표 선거</div>
+              <div style="font-size:16px;font-weight:700;">2026 제8회 전국동시지방선거</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:4px;">후보</div>
+              <div style="font-size:16px;font-weight:700;">오세훈 · 국민의힘 서울시장 후보</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:4px;">선거일</div>
+              <div style="font-size:16px;font-weight:700;">2026년 6월 3일 (수)</div>
+            </div>
+            <div>
+              <div style="font-size:13px;color:rgba(255,255,255,0.5);margin-bottom:4px;">플랫폼 출시 목표</div>
+              <div style="font-size:16px;font-weight:700;">2026년 3월 — D-90</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 3 — SOLUTION
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
+<!-- ── P2: 문제정의 ── -->
+<section class="page page-alt" id="p2">
+  <div class="page-inner">
+    <div class="page-label">02 — PROBLEM</div>
+    <h2 class="page-title">기존 선거 캠페인의<br>한계와 문제점</h2>
+    <div class="three-col" style="margin-top:48px;">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📺</div>
+        <h3 class="feature-title">일방향 소통</h3>
+        <p class="feature-desc">TV·신문 광고는 후보에서 유권자로의 일방통행. 시민이 캠프와 직접 소통하거나 참여할 창구가 없음. 디지털 세대에게 외면받는 전통 선거 방식.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📱</div>
+        <h3 class="feature-title">SNS 알고리즘 의존</h3>
+        <p class="feature-desc">유튜브·인스타·트위터는 알고리즘이 노출을 결정. 지지층 외 새로운 유권자에게 도달하기 어렵고, 플랫폼 정책 변화에 취약한 구조.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🎯</div>
+        <h3 class="feature-title">유권자 데이터 부재</h3>
+        <p class="feature-desc">누가 지지자인지, 어떤 공약에 관심있는지 데이터가 없어 맞춤 선거 전략 수립 불가. 자원 낭비적인 대규모 무차별 선거 운동에 의존.</p>
+      </div>
+    </div>
+    <div style="margin-top:48px;background:linear-gradient(135deg,rgba(201,21,30,0.08),rgba(201,21,30,0.04));border-radius:20px;padding:32px;border:1px solid rgba(201,21,30,0.15);">
+      <h3 style="font-size:20px;font-weight:700;color:#C9151E;margin-bottom:20px;text-align:center;">2026 서울 선거 환경 분석</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;text-align:center;">
+        <div><div style="font-size:32px;font-weight:900;color:#C9151E;">827만</div><div style="font-size:13px;color:#6a5050;margin-top:4px;">서울 유권자 수 (추정)</div></div>
+        <div><div style="font-size:32px;font-weight:900;color:#C9151E;">65%</div><div style="font-size:13px;color:#6a5050;margin-top:4px;">스마트폰 선거 정보 검색 비율</div></div>
+        <div><div style="font-size:32px;font-weight:900;color:#C9151E;">2040</div><div style="font-size:13px;color:#6a5050;margin-top:4px;">디지털 캠페인 핵심 세대</div></div>
+        <div><div style="font-size:32px;font-weight:900;color:#C9151E;">6.3</div><div style="font-size:13px;color:#6a5050;margin-top:4px;">선거일 (2026.06.03)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── P3: 솔루션 ── -->
 <section class="page" id="p3">
-  <div class="page-header">
-    <div class="page-num">03 / Solution</div>
-    <h2 class="page-title">스타벅스 라디오카페 —<br>감성이 이어지는 플랫폼</h2>
-    <p class="page-desc">매장 안에서 시작된 스타벅스 경험이 매장 밖에서도 끊기지 않도록. 음악·추억·커피가 하나로 연결되는 감성 플랫폼입니다.</p>
-  </div>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="tag">CORE</div>
-      <div class="card-icon">📻</div>
-      <h3>스타벅스 라디오 채널</h3>
-      <p>재즈, 어쿠스틱, 보사노바 등 스타벅스 감성에 맞는 큐레이션 채널. 매장 BGM과 동일한 분위기를 외부에서 재현.</p>
-    </div>
-    <div class="card">
-      <div class="tag">CORE</div>
-      <div class="card-icon">☕</div>
-      <h3>음악 × 커피 페어링</h3>
-      <p>현재 재생 중인 곡의 감성을 분석하여 어울리는 음료를 추천. "이 음악엔 아이스 카페라떼가 어울려요" → 사이렌오더 연결.</p>
-    </div>
-    <div class="card">
-      <div class="tag">PERSONALIZATION</div>
-      <div class="card-icon">📍</div>
-      <h3>매장 연동 실시간 이벤트</h3>
-      <p>GPS/RFID로 매장 방문 감지 → 생일·기념일 확인 → 개인화 라디오 멘트 + 무료 음료 쿠폰 자동 지급.</p>
-    </div>
-    <div class="card">
-      <div class="tag">SOCIAL</div>
-      <div class="card-icon">👥</div>
-      <h3>같이 듣기 (테이블 라디오)</h3>
-      <p>같은 매장의 테이블에서 QR 스캔으로 동일한 라디오 채널 동기화. 친구·가족과 함께 듣는 소셜 경험 제공.</p>
-    </div>
-    <div class="card">
-      <div class="tag">MEMORY</div>
-      <div class="card-icon">📸</div>
-      <h3>추억 사진 × 스타벅스 프레임</h3>
-      <p>라디오를 들으며 스타벅스 브랜드 프레임으로 꾸민 추억 사진첩 제작. SNS 공유 시 스타벅스 해시태그 자동 첨부.</p>
-    </div>
-    <div class="card">
-      <div class="tag">LOYALTY</div>
-      <div class="card-icon">⭐</div>
-      <h3>Rewards 포인트 연동</h3>
-      <p>라디오 청취 시간, 음악 퀴즈 참여, 신청곡 이용 등 모든 활동에 Starbucks Rewards 별 포인트 적립.</p>
+  <div class="page-inner">
+    <div class="page-label">03 — SOLUTION</div>
+    <h2 class="page-title">라디오카페:<br>새로운 캠페인 패러다임</h2>
+    <div class="two-col" style="margin-top:48px;align-items:center;">
+      <div>
+        <p style="font-size:16px;line-height:1.9;color:#4a3030;margin-bottom:32px;">
+          오세훈 라디오카페는 <strong>라디오라는 감성적 매체</strong>를 디지털로 재해석한 플랫폼입니다.
+          시민들이 좋아하는 음악을 들으며 자연스럽게 오세훈의 정책 메시지를 접하고,
+          지인을 초대해 함께 듣고 대화하며 캠페인을 확산시킵니다.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <div style="font-size:28px;flex-shrink:0;">📻</div>
+            <div><strong style="color:#C9151E;">오세훈 비전 채널</strong><br><span style="font-size:13px;color:#6a5050;">교통·주거·문화·복지·청년 5대 공약을 라디오 방송 형식으로 전달. 딱딱한 정책 문서가 아닌 이야기로 공약을 경험.</span></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <div style="font-size:28px;flex-shrink:0;">🎁</div>
+            <div><strong style="color:#C9151E;">소확행 9가지 기능</strong><br><span style="font-size:13px;color:#6a5050;">노래선물·같이듣기·엽서·타임캡슐 등 감성적 참여로 지지자 커뮤니티를 자발적으로 형성하고 바이럴 확산.</span></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start;padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <div style="font-size:28px;flex-shrink:0;">📊</div>
+            <div><strong style="color:#C9151E;">유권자 CRM 시스템</strong><br><span style="font-size:13px;color:#6a5050;">신청곡·사연·참여 데이터로 유권자 성향을 분석. 맞춤형 메시지 발송과 데이터 기반 선거 전략 수립.</span></div>
+          </div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(145deg,#3a0808,#1a0810);border-radius:24px;padding:40px;color:#fff;text-align:center;">
+        <div style="font-size:11px;letter-spacing:4px;color:#C9151E;margin-bottom:24px;font-family:'Orbitron',monospace;">RADIOKAFE CONCEPT</div>
+        <div style="width:100px;height:100px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px;font-weight:900;color:#fff;box-shadow:0 0 30px rgba(201,21,30,0.5);">오</div>
+        <div style="font-size:20px;font-weight:700;margin-bottom:8px;">오세훈 라디오카페</div>
+        <div style="font-size:13px;color:rgba(255,255,255,0.5);line-height:1.7;">음악 + 정책 + 소통<br>세 가지를 하나의 플랫폼에서</div>
+        <div style="margin-top:28px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.1);">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;">
+            <div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">접근 방식</div><div style="font-size:13px;color:#fff;">감성적 참여</div></div>
+            <div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">확산 방식</div><div style="font-size:13px;color:#fff;">자발적 바이럴</div></div>
+            <div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">데이터 수집</div><div style="font-size:13px;color:#fff;">비침습적 CRM</div></div>
+            <div><div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">메시지 전달</div><div style="font-size:13px;color:#fff;">스토리텔링</div></div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 4 — FEATURES
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-<section class="page" id="p4">
-  <div class="page-header">
-    <div class="page-num">04 / Core Features</div>
-    <h2 class="page-title">스타벅스를 위한<br>차별화 핵심 기능 14가지</h2>
-    <p class="page-desc">클라라 라디오카페의 검증된 기능 베이스 위에 스타벅스 전용 레이어를 추가합니다.</p>
+<!-- ── P4: 핵심기능 14가지 ── -->
+<section class="page page-alt" id="p4">
+  <div class="page-inner">
+    <div class="page-label">04 — CORE FEATURES</div>
+    <h2 class="page-title">14가지 핵심 기능</h2>
+    <p style="font-size:16px;color:#6a5050;margin-top:16px;margin-bottom:48px;">시민 소통부터 선거 전략까지, 오세훈 캠페인을 위한 완전한 디지털 도구</p>
+    <div class="three-col">
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📻</div>
+        <h3 class="feature-title">① 오세훈 비전 채널</h3>
+        <p class="feature-desc">5대 공약(교통·주거·문화·복지·청년)을 라디오 방송 형식으로 전달. 공약을 이야기로 경험.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🎵</div>
+        <h3 class="feature-title">② 실시간 라디오</h3>
+        <p class="feature-desc">대한민국 주요 FM 라디오를 실시간으로 청취. 나만의 추억 사진과 함께 감성적으로 즐기는 라디오.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">👥</div>
+        <h3 class="feature-title">③ 같이듣기 초대</h3>
+        <p class="feature-desc">지인을 초대해 함께 라디오를 들으며 채팅. 자연스러운 바이럴 확산과 지지자 네트워크 형성.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🎁</div>
+        <h3 class="feature-title">④ 노래 선물하기</h3>
+        <p class="feature-desc">좋아하는 사람에게 노래를 선물. 오세훈 캠프 이름으로 발송되어 브랜드 인지도를 자연스럽게 확산.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🎙️</div>
+        <h3 class="feature-title">⑤ 노래+음성 선물</h3>
+        <p class="feature-desc">노래에 음성 메시지를 더해 더욱 감동적인 선물. 시민이 직접 캠페인 메신저가 되는 구조.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📮</div>
+        <h3 class="feature-title">⑥ 라디오 엽서</h3>
+        <p class="feature-desc">서울의 아름다운 명소 사진과 함께 응원 메시지를 엽서로 발송. SNS 공유로 캠페인 확산.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">⏰</div>
+        <h3 class="feature-title">⑦ 타임캡슐</h3>
+        <p class="feature-desc">선거 후 열어보는 타임캡슐 메시지. 서울의 미래에 대한 기대와 희망을 담아 유권자 참여 유도.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📝</div>
+        <h3 class="feature-title">⑧ DJ 사연 보내기</h3>
+        <p class="feature-desc">오세훈 DJ에게 사연과 신청곡 발송. 채택된 사연은 비전 채널에서 방송, 참여 동기 극대화.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🎼</div>
+        <h3 class="feature-title">⑨ 음악 궁합</h3>
+        <p class="feature-desc">음악 취향으로 알아보는 오세훈 공약 궁합 테스트. 공유 기능으로 선거 참여 유도.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📸</div>
+        <h3 class="feature-title">⑩ 서울 포토앨범</h3>
+        <p class="feature-desc">나의 서울 추억 사진을 앨범으로 저장. 오세훈과 함께한 서울 이야기를 공유하는 감성 콘텐츠.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">✍️</div>
+        <h3 class="feature-title">⑪ 서울 일기</h3>
+        <p class="feature-desc">서울 시민의 하루 일기를 라디오와 함께 작성. 감성적 기록으로 플랫폼 재방문율 향상.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🎂</div>
+        <h3 class="feature-title">⑫ 생일 축하 방송</h3>
+        <p class="feature-desc">오세훈 서울시장이 직접 생일을 축하하는 맞춤 방송. 유권자와의 개인적 유대감 형성.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">🏆</div>
+        <h3 class="feature-title">⑬ 시민 참여 포인트</h3>
+        <p class="feature-desc">참여 활동마다 포인트 적립. 캠프 굿즈·이벤트 응모 등 리워드로 지속적 참여 동기 제공.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background:linear-gradient(135deg,#C9151E,#8B0000);">📊</div>
+        <h3 class="feature-title">⑭ 캠프 관리자 대시보드</h3>
+        <p class="feature-desc">유권자 참여 현황, 사연·신청곡 관리, CRM 데이터 분석까지 선거 전략 수립을 위한 종합 관리 도구.</p>
+      </div>
+    </div>
   </div>
-
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>기능명</th>
-        <th>설명</th>
-        <th>스타벅스 차별화 포인트</th>
-        <th>우선순위</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>01</td>
-        <td class="bold">실시간 스타벅스 라디오</td>
-        <td>재즈·어쿠스틱·K-Pop 커피 채널</td>
-        <td>매장 BGM과 동일 채널 동기화</td>
-        <td class="green">★★★</td>
-      </tr>
-      <tr>
-        <td>02</td>
-        <td class="bold">음악×커피 페어링 AI</td>
-        <td>곡 감성 분석 → 음료 추천</td>
-        <td>사이렌오더 즉시 연결</td>
-        <td class="green">★★★</td>
-      </tr>
-      <tr>
-        <td>03</td>
-        <td class="bold">생일 이벤트 자동화</td>
-        <td>GPS+DB 연동 생일 감지</td>
-        <td>매장 라디오로 생일 축하 방송</td>
-        <td class="green">★★★</td>
-      </tr>
-      <tr>
-        <td>04</td>
-        <td class="bold">테이블 같이 듣기</td>
-        <td>QR로 동일 채널 동기화</td>
-        <td>친구·가족 체류시간 극대화</td>
-        <td class="green">★★★</td>
-      </tr>
-      <tr>
-        <td>05</td>
-        <td class="bold">사이렌오더 인앱 연동</td>
-        <td>라디오 앱 내 원클릭 주문</td>
-        <td>추천→주문 전환율 향상</td>
-        <td class="green">★★★</td>
-      </tr>
-      <tr>
-        <td>06</td>
-        <td class="bold">감정 기반 CRM</td>
-        <td>청취 패턴으로 감정 분류</td>
-        <td>세그먼트별 쿠폰 자동 발송</td>
-        <td style="color:#e07700; font-weight:700;">★★☆</td>
-      </tr>
-      <tr>
-        <td>07</td>
-        <td class="bold">Rewards 포인트 연동</td>
-        <td>청취·퀴즈·신청곡 시 별 적립</td>
-        <td>기존 앱 생태계 확장</td>
-        <td style="color:#e07700; font-weight:700;">★★☆</td>
-      </tr>
-      <tr>
-        <td>08</td>
-        <td class="bold">매장 전용 이벤트 채널</td>
-        <td>홍대점 전용 라디오 채널 등</td>
-        <td>지역 매장 개성 & 로컬 마케팅</td>
-        <td style="color:#e07700; font-weight:700;">★★☆</td>
-      </tr>
-      <tr>
-        <td>09</td>
-        <td class="bold">추억 사진 × 스벅 프레임</td>
-        <td>브랜드 프레임 포토 앨범</td>
-        <td>SNS 바이럴 & 해시태그 확산</td>
-        <td style="color:#e07700; font-weight:700;">★★☆</td>
-      </tr>
-      <tr>
-        <td>10</td>
-        <td class="bold">음악 신청곡 (바리스타 DJ)</td>
-        <td>고객이 신청한 곡을 매장 방송</td>
-        <td>고객 참여감·특별함 극대화</td>
-        <td style="color:#e07700; font-weight:700;">★★☆</td>
-      </tr>
-      <tr>
-        <td>11</td>
-        <td class="bold">시즌 테마 채널</td>
-        <td>크리스마스·가을·봄 테마</td>
-        <td>스타벅스 계절 MD 연계 마케팅</td>
-        <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
-      </tr>
-      <tr>
-        <td>12</td>
-        <td class="bold">라디오 엽서 (e-Postcard)</td>
-        <td>음악과 함께 친구에게 엽서 전송</td>
-        <td>스타벅스 e-기프트카드 연동</td>
-        <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
-      </tr>
-      <tr>
-        <td>13</td>
-        <td class="bold">타임캡슐 메시지</td>
-        <td>미래 날짜에 열리는 음악 편지</td>
-        <td>기념일 마케팅 연계</td>
-        <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
-      </tr>
-      <tr>
-        <td>14</td>
-        <td class="bold">음악 퀴즈 게임</td>
-        <td>청취 중 참여형 음악 퀴즈</td>
-        <td>Rewards 별 추가 적립 이벤트</td>
-        <td style="color:#7aaa7a; font-weight:700;">★☆☆</td>
-      </tr>
-    </tbody>
-  </table>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 5 — BIRTHDAY UX FLOW
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
+<!-- ── P5: 캠페인 흐름 ── -->
 <section class="page" id="p5">
-  <div class="page-header">
-    <div class="page-num">05 / Birthday Event UX Flow</div>
-    <h2 class="page-title">생일 이벤트 UX 흐름도 —<br>홍길동이 홍대 매장에 왔다</h2>
-    <p class="page-desc">GPS 또는 RFID가 고객의 매장 방문을 감지하는 순간, 데이터베이스는 오늘이 생일임을 확인합니다. 그 다음부터는 마법 같은 경험이 펼쳐집니다.</p>
-  </div>
-
-  <div class="flow">
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">📍</div>
-        <div class="flow-line"></div>
-      </div>
-      <div class="flow-body">
-        <div class="pill">TRIGGER · 입장 감지</div>
-        <h4>① GPS / RFID 매장 입장 인식</h4>
-        <p>홍길동 고객의 스마트폰 GPS 위치 또는 매장 입구 RFID 리더가 방문을 실시간으로 감지. 위치 반경 50m 이내 진입 시 이벤트 파이프라인 시작.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">🗄️</div>
-        <div class="flow-line"></div>
-      </div>
-      <div class="flow-body">
-        <div class="pill">DB CHECK · 고객 정보 조회</div>
-        <h4>② Starbucks Rewards DB 조회</h4>
-        <p>고객 ID 매핑 → 생년월일, 등급, 최근 주문 메뉴, 선호 음악 장르, 알레르기 정보 등 전체 프로필 로드. 오늘 날짜 = 생일 여부 판별.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">🎂</div>
-        <div class="flow-line"></div>
-      </div>
-      <div class="flow-body">
-        <div class="pill pill-gold">BIRTHDAY CONFIRMED</div>
-        <h4>③ 생일 이벤트 트리거 발동</h4>
-        <p>생일 확인 완료 → 홍대 매장 라디오카페 채널에 다음 트랙 종료 후 생일 멘트 삽입 스케줄링. "잠시 후 홍길동 고객님의 생일 메시지가 방송됩니다."</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">🎵</div>
-        <div class="flow-line"></div>
-      </div>
-      <div class="flow-body">
-        <div class="pill">BROADCAST · 매장 방송</div>
-        <h4>④ 라디오카페 생일 방송 송출</h4>
-        <p>TTS 또는 바리스타 DJ 목소리로: <em>"스타벅스 홍대점을 찾아주신 홍길동 고객님, 오늘 생일을 진심으로 축하드립니다 🎂 오늘 하루도 행복하게 보내세요. 고객님께 어울리는 음악을 선물해 드릴게요!"</em> → 고객 선호 장르의 스페셜 트랙 재생.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">🎁</div>
-        <div class="flow-line"></div>
-      </div>
-      <div class="flow-body">
-        <div class="pill pill-gold">GIFT · 즉시 발송</div>
-        <h4>⑤ 생일 무료 음료 쿠폰 자동 지급</h4>
-        <p>고객 스마트폰에 푸시 알림: "🎂 생일 축하해요! 오늘 사용 가능한 무료 음료 쿠폰을 드립니다." 사이렌오더와 연동 — 쿠폰 자동 적용 상태로 주문 화면 오픈. 카운터 직원 화면에도 생일 고객 배지 표시.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">📸</div>
-        <div class="flow-line"></div>
-      </div>
-      <div class="flow-body">
-        <div class="pill">SOCIAL · 기억 만들기</div>
-        <h4>⑥ 생일 추억 사진 프레임 제공</h4>
-        <p>라디오카페 앱에서 스타벅스 생일 특별 프레임 잠금 해제. 오늘 들은 음악 + 생일 날짜 + 매장명이 새겨진 디지털 엽서 자동 생성. SNS 공유 시 #스타벅스생일 해시태그 자동 첨부.</p>
-      </div>
-    </div>
-    <div class="flow-step">
-      <div class="flow-left">
-        <div class="flow-dot">📊</div>
-      </div>
-      <div class="flow-body">
-        <div class="pill">CRM · 데이터 수집</div>
-        <h4>⑦ 감정·행동 데이터 CRM 저장</h4>
-        <p>방문 시간, 체류 시간, 주문 메뉴, 방송 반응 여부, 쿠폰 사용 여부, SNS 공유 여부 전체 기록 → 다음 방문 시 더 정교한 개인화 적용.</p>
-      </div>
-    </div>
-  </div>
-
-  <div style="background:var(--green-light); border-radius:14px; padding:24px 28px; margin-top:16px;">
-    <h4 style="font-size:0.9rem; font-weight:700; color:var(--green-dark); margin-bottom:8px;">🔑 핵심 데이터 포인트</h4>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; margin-top:12px;">
-      <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">84%</div>
-        <div style="font-size:0.75rem; color:var(--text-light);">생일 쿠폰 당일 사용율</div>
-      </div>
-      <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">+22분</div>
-        <div style="font-size:0.75rem; color:var(--text-light);">생일 이벤트 고객 체류 연장</div>
-      </div>
-      <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">3.2배</div>
-        <div style="font-size:0.75rm; color:var(--text-light);">SNS 공유율 (일반 방문 대비)</div>
-      </div>
-      <div style="text-align:center; background:white; border-radius:10px; padding:14px;">
-        <div style="font-size:1.6rem; font-weight:700; color:var(--green);">91%</div>
-        <div style="font-size:0.75rem; color:var(--text-light);">이벤트 경험 고객 재방문율</div>
+  <div class="page-inner">
+    <div class="page-label">05 — CAMPAIGN FLOW</div>
+    <h2 class="page-title">시민 참여 여정:<br>첫 접속부터 지지자까지</h2>
+    <div style="margin-top:48px;position:relative;">
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;">
+          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:18px;box-shadow:0 0 16px rgba(201,21,30,0.4);">1</div>
+          <div style="flex:1;padding:24px;background:rgba(201,21,30,0.05);border-radius:16px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">발견 (Discovery)</h3>
+            <p style="font-size:14px;color:#6a5050;line-height:1.7;">SNS 공유 엽서·노래선물·지인 초대로 플랫폼 최초 접속. 선거 캠페인이 아닌 감성적 라디오로 첫 인상 형성.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;">
+          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:18px;box-shadow:0 0 16px rgba(201,21,30,0.4);">2</div>
+          <div style="flex:1;padding:24px;background:rgba(201,21,30,0.05);border-radius:16px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">참여 (Engagement)</h3>
+            <p style="font-size:14px;color:#6a5050;line-height:1.7;">로그인 후 라디오 청취, 오세훈 비전 채널 탐색. 사연·신청곡·엽서 등 소소한 참여로 플랫폼과 유대감 형성.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:24px;align-items:flex-start;margin-bottom:32px;">
+          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:18px;box-shadow:0 0 16px rgba(201,21,30,0.4);">3</div>
+          <div style="flex:1;padding:24px;background:rgba(201,21,30,0.05);border-radius:16px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">전환 (Conversion)</h3>
+            <p style="font-size:14px;color:#6a5050;line-height:1.7;">공약 콘텐츠 청취로 자연스러운 지지 의사 형성. 같이듣기·노래선물로 주변에 확산 — 자발적 캠페인 참여자로 전환.</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:24px;align-items:flex-start;">
+          <div style="flex-shrink:0;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;align-items:center;justify-content:center;font-weight:900;color:#fff;font-size:18px;box-shadow:0 0 16px rgba(201,21,30,0.4);">4</div>
+          <div style="flex:1;padding:24px;background:rgba(201,21,30,0.05);border-radius:16px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">지지자 (Advocate)</h3>
+            <p style="font-size:14px;color:#6a5050;line-height:1.7;">타임캡슐·포인트 적립으로 선거일까지 지속 연결. 생일 축하 방송 등 개인화 경험으로 강력한 오세훈 지지자 완성.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 6 — CRM + ALGORITHM
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-<section class="page" id="p6">
-  <div class="page-header">
-    <div class="page-num">06 / Emotion-Based CRM + Algorithm</div>
-    <h2 class="page-title">감정 기반 CRM 구조 &<br>추천 알고리즘 수식화</h2>
-    <p class="page-desc">고객의 음악 청취 패턴을 통해 현재 감정 상태를 추론하고, 그에 최적화된 음료와 콘텐츠를 추천합니다.</p>
-  </div>
-
-  <!-- CRM Matrix -->
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">감정 × 음악 × 음료 추천 매트릭스</h3>
-  <div class="crm-grid">
-    <div class="crm-cell header">감정 상태</div>
-    <div class="crm-cell header">음악 특성</div>
-    <div class="crm-cell header">추천 음료 → 사이렌오더</div>
-
-    <div class="crm-cell">
-      <div class="emotion">😌</div>
-      <div class="emotion-name">릴렉스 · 여유</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">BPM 60-80<br>장르: 재즈·보사노바<br>조성: 장조</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">카페라떼 (따뜻)<br>카모마일 티<br>바닐라 크림 콜드브루</div>
-    </div>
-
-    <div class="crm-cell">
-      <div class="emotion">⚡</div>
-      <div class="emotion-name">에너지 · 집중</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">BPM 120-140<br>장르: 팝·일렉트로닉<br>다이나믹 레인지 높음</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">에스프레소 샷<br>아이스 아메리카노<br>질소 콜드브루</div>
-    </div>
-
-    <div class="crm-cell">
-      <div class="emotion">🌧️</div>
-      <div class="emotion-name">감성 · 노스탤지어</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">BPM 70-90<br>장르: 발라드·어쿠스틱<br>단조·감성적 가사</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">화이트 초콜릿 모카<br>카라멜 마키아토<br>자몽 허니 블랙티</div>
-    </div>
-
-    <div class="crm-cell">
-      <div class="emotion">🎉</div>
-      <div class="emotion-name">설렘 · 축제</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">BPM 130-160<br>장르: 댄스·K-Pop<br>밝은 조성·빠른 템포</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">딸기 프라푸치노<br>망고 바나나 블렌디드<br>피치 피지오</div>
-    </div>
-
-    <div class="crm-cell">
-      <div class="emotion">🍂</div>
-      <div class="emotion-name">사색 · 고요</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">BPM 50-70<br>장르: 클래식·앰비언트<br>느린 진행·미니멀</div>
-    </div>
-    <div class="crm-cell">
-      <div class="recommend">말차 라떼<br>얼 그레이 티<br>시나몬 돌체 라떼</div>
-    </div>
-  </div>
-
-  <!-- Algorithm Formula -->
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin: 40px 0 16px;">감정 기반 음료 추천 알고리즘 수식</h3>
-  <div class="formula-box">
-    <div class="formula-title">Emotion Score Function · E(t)</div>
-    <div class="formula">
-<span class="comment">// 1. 감정 점수 계산 (현재 트랙 t 기준)</span>
-<span class="var">E(t)</span> <span class="op">=</span> <span class="var">w₁</span>·<span class="var">BPM_norm(t)</span> <span class="op">+</span> <span class="var">w₂</span>·<span class="var">Valence(t)</span> <span class="op">+</span> <span class="var">w₃</span>·<span class="var">Energy(t)</span> <span class="op">-</span> <span class="var">w₄</span>·<span class="var">Acousticness(t)</span>
-
-<span class="comment">// 가중치: w₁=0.25, w₂=0.35, w₃=0.30, w₄=0.10</span>
-<span class="comment">// 모든 변수 0~1 정규화 (Spotify Audio Features API 기반)</span>
-
-<span class="comment">// 2. 시간·날씨·계절 컨텍스트 보정</span>
-<span class="var">E_context(t)</span> <span class="op">=</span> <span class="var">E(t)</span> <span class="op">×</span> (1 <span class="op">+</span> <span class="var">α</span>·<span class="var">TimeOfDay</span>) <span class="op">×</span> (1 <span class="op">+</span> <span class="var">β</span>·<span class="var">WeatherScore</span>)
-
-<span class="comment">// α: 아침 +0.15, 오후 0, 저녁 -0.10 / β: 맑음 +0.10, 비 -0.15</span>
-
-<span class="comment">// 3. 개인 선호도 히스토리 반영</span>
-<span class="var">E_personal(t)</span> <span class="op">=</span> <span class="var">E_context(t)</span> <span class="op">×</span> (1 <span class="op">-</span> <span class="var">λ</span>) <span class="op">+</span> <span class="var">λ</span> <span class="op">×</span> <span class="var">UserHistory_avg</span>
-
-<span class="comment">// λ = 0.3 (역사 반영률), 신규 고객은 λ=0</span>
-
-<span class="comment">// 4. 음료 추천 점수</span>
-<span class="var">Score(drink_i)</span> <span class="op">=</span> <span class="var">cos_sim</span>(<span class="var">E_personal(t)</span>, <span class="var">DrinkVector_i</span>) <span class="op">×</span> <span class="var">PopularityBoost_i</span>
-
-<span class="comment">// DrinkVector: 각 음료의 [달콤함, 쓴맛, 온도, 탄산, 카페인] 5차원 벡터</span>
-<span class="comment">// 상위 3개 음료 → 사이렌오더 추천 팝업으로 전달</span>
-    </div>
-  </div>
-
-  <!-- CRM Segments -->
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin: 32px 0 16px;">감정 CRM 세그먼트 자동화</h3>
-  <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-    <div class="card">
-      <div class="card-icon">😌</div>
-      <div class="tag">SEGMENT A</div>
-      <h3>릴렉서</h3>
-      <p>평균 BPM 75 이하. 주말 오후 방문 多. → <strong>따뜻한 음료 + 케이크 세트 쿠폰</strong></p>
-    </div>
-    <div class="card">
-      <div class="card-icon">💪</div>
-      <div class="tag">SEGMENT B</div>
-      <h3>에너자이저</h3>
-      <p>평균 BPM 130 이상. 평일 아침 방문 多. → <strong>아이스 에스프레소 50원 할인</strong></p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🌙</div>
-      <div class="tag">SEGMENT C</div>
-      <h3>감성가</h3>
-      <p>발라드 청취 비율 60%↑. 저녁 방문 多. → <strong>시즌 음료 신메뉴 알림 우선 발송</strong></p>
-    </div>
-    <div class="card">
-      <div class="card-icon">🎯</div>
-      <div class="tag">SEGMENT D</div>
-      <h3>소셜라이저</h3>
-      <p>같이 듣기 기능 사용 多. 그룹 방문. → <strong>1+1 쿠폰 · 테이블 이벤트 타겟팅</strong></p>
+<!-- ── P6: 유권자 CRM ── -->
+<section class="page page-alt" id="p6">
+  <div class="page-inner">
+    <div class="page-label">06 — VOTER CRM</div>
+    <h2 class="page-title">데이터 기반<br>유권자 관계 관리</h2>
+    <div class="two-col" style="margin-top:48px;">
+      <div>
+        <p style="font-size:15px;line-height:1.8;color:#4a3030;margin-bottom:32px;">
+          라디오카페의 모든 참여 활동은 Supabase 기반 CRM에 자동으로 저장됩니다.
+          사연·신청곡·청취 패턴·공약 관심도를 분석해 맞춤형 선거 전략을 수립합니다.
+        </p>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="padding:16px;background:rgba(201,21,30,0.06);border-radius:12px;border-left:4px solid #C9151E;">
+            <strong style="color:#C9151E;font-size:13px;">수집 데이터</strong>
+            <p style="font-size:13px;color:#6a5050;margin-top:4px;">닉네임·생일·관심 지역·신청곡·사연·청취 시간·공약 클릭 수</p>
+          </div>
+          <div style="padding:16px;background:rgba(201,21,30,0.06);border-radius:12px;border-left:4px solid #C9151E;">
+            <strong style="color:#C9151E;font-size:13px;">분석 항목</strong>
+            <p style="font-size:13px;color:#6a5050;margin-top:4px;">연령대별 관심 공약 · 지역별 참여율 · 바이럴 확산 경로 · 피크 사용 시간대</p>
+          </div>
+          <div style="padding:16px;background:rgba(201,21,30,0.06);border-radius:12px;border-left:4px solid #C9151E;">
+            <strong style="color:#C9151E;font-size:13px;">활용 전략</strong>
+            <p style="font-size:13px;color:#6a5050;margin-top:4px;">타깃 맞춤 노래선물 발송 · 관심 공약 맞춤 콘텐츠 · 생일 축하 개인화 방송</p>
+          </div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(145deg,#3a0808,#1a0810);border-radius:20px;padding:32px;color:#fff;">
+        <div style="font-size:11px;letter-spacing:3px;color:#C9151E;margin-bottom:20px;font-family:'Orbitron',monospace;">CRM DASHBOARD</div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.05);border-radius:8px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">총 참여 시민</span>
+            <span style="font-size:20px;font-weight:900;color:#C9151E;">12,847명</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.05);border-radius:8px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">일평균 라디오 청취</span>
+            <span style="font-size:20px;font-weight:900;color:#C9151E;">38분</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.05);border-radius:8px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">사연/신청곡 접수</span>
+            <span style="font-size:20px;font-weight:900;color:#C9151E;">4,203건</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:12px;background:rgba(255,255,255,0.05);border-radius:8px;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.6);">바이럴 초대 건수</span>
+            <span style="font-size:20px;font-weight:900;color:#C9151E;">7,521건</span>
+          </div>
+          <div style="margin-top:8px;padding:12px;background:rgba(201,21,30,0.15);border-radius:8px;text-align:center;">
+            <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-bottom:4px;">가장 인기 공약</div>
+            <div style="font-size:15px;font-weight:700;color:#fff;">🏠 청년 주거 안정</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 7 — REVENUE MODEL
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
+<!-- ── P7: 전략 로드맵 ── -->
 <section class="page" id="p7">
-  <div class="page-header">
-    <div class="page-num">07 / Revenue Model</div>
-    <h2 class="page-title">수익모델 수치 시뮬레이션</h2>
-    <p class="page-desc">보수적 가정 기준 3개년 시뮬레이션. 라디오카페는 직접 수익과 간접 수익 두 축으로 스타벅스에 가치를 제공합니다.</p>
-  </div>
-
-  <div class="two-col">
-    <div>
-      <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">💰 직접 수익 채널</h3>
-      <div class="card" style="margin-bottom:12px;">
-        <div class="tag">DIRECT 01</div>
-        <h3>음악 페어링 → 사이렌오더 업셀</h3>
-        <p>추천 수락 시 평균 객단가 +₩1,200 증가<br>
-        <strong style="color:var(--green);">일 500건 × ₩1,200 × 365일 = 연 ₩2.19억</strong></p>
+  <div class="page-inner">
+    <div class="page-label">07 — ROADMAP</div>
+    <h2 class="page-title">D-90 선거 전략<br>로드맵</h2>
+    <div style="margin-top:48px;display:flex;flex-direction:column;gap:24px;">
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(201,21,30,0.15);">
+        <div style="background:linear-gradient(135deg,#C9151E,#8B0000);padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:2px;margin-bottom:4px;opacity:0.7;">PHASE 1</div>
+          <div style="font-size:14px;font-weight:700;">D-90~D-60</div>
+          <div style="font-size:11px;opacity:0.6;margin-top:4px;">3월~4월</div>
+        </div>
+        <div style="padding:24px;background:rgba(201,21,30,0.04);">
+          <h3 style="font-size:16px;font-weight:700;color:#C9151E;margin-bottom:12px;">플랫폼 론칭 &amp; 초기 참여 확보</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>오세훈 라디오카페 공식 론칭 및 SNS 홍보</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>오세훈 비전 채널 5대 공약 콘텐츠 제작</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>초기 1만 명 참여 시민 확보 목표</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>생일 축하 방송·사연 접수 서비스 시작</li>
+          </ul>
+        </div>
       </div>
-      <div class="card" style="margin-bottom:12px;">
-        <div class="tag">DIRECT 02</div>
-        <h3>체류시간 연장 → 추가 주문</h3>
-        <p>체류 +18분 → 재주문 확률 34% 증가<br>
-        <strong style="color:var(--green);">일 300건 × ₩4,800 × 365일 = 연 ₩5.26억</strong></p>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(201,21,30,0.15);">
+        <div style="background:linear-gradient(135deg,#8B0000,#5a0000);padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:2px;margin-bottom:4px;opacity:0.7;">PHASE 2</div>
+          <div style="font-size:14px;font-weight:700;">D-60~D-30</div>
+          <div style="font-size:11px;opacity:0.6;margin-top:4px;">4월~5월</div>
+        </div>
+        <div style="padding:24px;background:rgba(201,21,30,0.04);">
+          <h3 style="font-size:16px;font-weight:700;color:#C9151E;margin-bottom:12px;">바이럴 확산 &amp; 커뮤니티 강화</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>같이듣기 초대 캠페인으로 바이럴 확산</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>라디오 엽서 SNS 공유 이벤트</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>음악 궁합 테스트 바이럴 콘텐츠 배포</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>CRM 분석으로 맞춤형 메시지 발송 시작</li>
+          </ul>
+        </div>
       </div>
-      <div class="card">
-        <div class="tag">DIRECT 03</div>
-        <h3>생일 쿠폰 재방문 유도</h3>
-        <p>생일 고객 당일 방문 + 당월 2회 추가<br>
-        <strong style="color:var(--green);">연 쿠폰 발행 120만 건 × 사용 84% × ₩4,500 = 연 ₩45.4억</strong></p>
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(201,21,30,0.15);">
+        <div style="background:linear-gradient(135deg,#5a0000,#3a0000);padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;">
+          <div style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:2px;margin-bottom:4px;opacity:0.7;">PHASE 3</div>
+          <div style="font-size:14px;font-weight:700;">D-30~D-Day</div>
+          <div style="font-size:11px;opacity:0.6;margin-top:4px;">5월~6월</div>
+        </div>
+        <div style="padding:24px;background:rgba(201,21,30,0.04);">
+          <h3 style="font-size:16px;font-weight:700;color:#C9151E;margin-bottom:12px;">최종 결집 &amp; 투표 독려</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:6px;">
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>타임캡슐 오픈 이벤트로 선거 기대감 조성</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>선거일 카운트다운 방송 및 투표 독려</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>지지자 감사 메시지 &amp; 오세훈 직접 음성 메시지</li>
+            <li style="font-size:13px;color:#4a3030;display:flex;gap:8px;"><span style="color:#C9151E;">•</span>선거일 D-1 대규모 감사 라디오 특집 방송</li>
+          </ul>
+        </div>
       </div>
-    </div>
-    <div>
-      <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">📈 간접 수익 채널</h3>
-      <div class="card" style="margin-bottom:12px;">
-        <div class="tag">INDIRECT 01</div>
-        <h3>앱 DAU 증가 → 광고/제휴</h3>
-        <p>라디오카페 월 DAU 50만 목표<br>
-        <strong style="color:var(--green);">B2B 음원 라이선스 제공 협업 가치 연 ₩8억</strong></p>
-      </div>
-      <div class="card" style="margin-bottom:12px;">
-        <div class="tag">INDIRECT 02</div>
-        <h3>SNS 바이럴 → 신규 고객 유입</h3>
-        <p>생일 방송 SNS 공유 월 3만 건<br>
-        <strong style="color:var(--green);">신규 유입 월 2,000명 × LTV ₩180,000 = 연 ₩43.2억</strong></p>
-      </div>
-      <div class="card">
-        <div class="tag">INDIRECT 03</div>
-        <h3>CRM 데이터 → 마케팅 효율화</h3>
-        <p>타겟 마케팅 전환율 3.2x 향상<br>
-        <strong style="color:var(--green);">기존 마케팅 예산 20% 절감 → 연 ₩12억 절감 효과</strong></p>
-      </div>
-    </div>
-  </div>
-
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin:40px 0 16px;">3개년 누적 수익 시뮬레이션 (보수적 기준)</h3>
-  <table class="data-table">
-    <thead>
-      <tr>
-        <th>수익 항목</th>
-        <th>1년차</th>
-        <th>2년차</th>
-        <th>3년차</th>
-        <th>누적 합계</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>음악 페어링 업셀</td>
-        <td>₩1.1억</td>
-        <td>₩2.2억</td>
-        <td>₩3.8억</td>
-        <td class="green">₩7.1억</td>
-      </tr>
-      <tr>
-        <td>체류시간 연장 추가 주문</td>
-        <td>₩2.6억</td>
-        <td>₩5.3억</td>
-        <td>₩9.2억</td>
-        <td class="green">₩17.1억</td>
-      </tr>
-      <tr>
-        <td>생일 쿠폰 재방문</td>
-        <td>₩22.7억</td>
-        <td>₩45.4억</td>
-        <td>₩68.1억</td>
-        <td class="green">₩136.2억</td>
-      </tr>
-      <tr>
-        <td>SNS 바이럴 신규 유입</td>
-        <td>₩21.6억</td>
-        <td>₩43.2억</td>
-        <td>₩64.8억</td>
-        <td class="green">₩129.6억</td>
-      </tr>
-      <tr>
-        <td>마케팅 비용 절감</td>
-        <td>₩6억</td>
-        <td>₩12억</td>
-        <td>₩18억</td>
-        <td class="green">₩36억</td>
-      </tr>
-      <tr style="background:var(--green-light) !important;">
-        <td class="bold">🔢 연간 합계</td>
-        <td class="bold">₩54억</td>
-        <td class="bold">₩108.1억</td>
-        <td class="bold">₩163.9억</td>
-        <td class="gold" style="font-size:1.1rem;">₩326억</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="rev-bar-wrap" style="margin-top:32px;">
-    <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>생일 이벤트 재방문</span><span class="amount">₩136.2억 (42%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:100%;"></div></div>
-    </div>
-    <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>SNS 바이럴 신규 유입</span><span class="amount">₩129.6억 (40%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:95%;"></div></div>
-    </div>
-    <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>마케팅 비용 절감</span><span class="amount">₩36억 (11%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:26%;"></div></div>
-    </div>
-    <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>체류시간 연장 주문</span><span class="amount">₩17.1억 (5%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:13%;"></div></div>
-    </div>
-    <div class="rev-bar-item">
-      <div class="rev-bar-label"><span>음악 페어링 업셀</span><span class="amount">₩7.1억 (2%)</span></div>
-      <div class="rev-bar-track"><div class="rev-bar-fill" style="width:5%;"></div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 8 — MVP PILOT
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-<section class="page" id="p8">
-  <div class="page-header">
-    <div class="page-num">08 / MVP Pilot Design</div>
-    <h2 class="page-title">MVP 파일럿 설계 —<br>3매장 × 3개월</h2>
-    <p class="page-desc">검증된 3개 매장에서 핵심 기능만 먼저 론칭하여 데이터를 확보합니다. 성공 지표 달성 시 전국 확대.</p>
-  </div>
-
-  <div class="card-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom:40px;">
-    <div class="card card-green">
-      <div class="card-icon">🏙️</div>
-      <h3>파일럿 매장 A</h3>
-      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">홍대입구점</p>
-      <p>2030 타겟, 음악·감성 소비 중심. SNS 바이럴 효과 최대화. 생일 파티 방문 多.</p>
-    </div>
-    <div class="card card-green">
-      <div class="card-icon">💼</div>
-      <h3>파일럿 매장 B</h3>
-      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">강남점</p>
-      <p>직장인 아침·점심 러시. 에너지 음료 업셀 테스트 최적. 고객 단가 高.</p>
-    </div>
-    <div class="card card-green">
-      <div class="card-icon">🌿</div>
-      <h3>파일럿 매장 C</h3>
-      <p style="color:var(--gold-light); font-weight:700; margin-bottom:8px;">여의도 IFC점</p>
-      <p>비즈니스 미팅 고객. 그룹 체류 多. 같이 듣기 테이블 라디오 테스트 최적.</p>
-    </div>
-  </div>
-
-  <h3 style="font-size:1rem; font-weight:700; color:var(--green-dark); margin-bottom:16px;">파일럿 타임라인</h3>
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-period">M1<br>Week 1-2</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <h4>환경 구축 & 연동</h4>
-        <ul>
-          <li>GPS/RFID 하드웨어 3매장 설치</li>
-          <li>Starbucks Rewards API 연동</li>
-          <li>사이렌오더 API 연동 테스트</li>
-          <li>라디오카페 스타벅스 버전 배포</li>
-        </ul>
+<!-- ── P8: 5대 공약 비전 ── -->
+<section class="page page-alt" id="p8">
+  <div class="page-inner">
+    <div class="page-label">08 — VISION</div>
+    <h2 class="page-title">오세훈의 5대 서울 공약<br>라디오카페로 전달하다</h2>
+    <p style="font-size:15px;color:#6a5050;margin-top:16px;margin-bottom:48px;">딱딱한 공약집 대신, 라디오 이야기로 시민의 가슴에 닿는 정책 소통</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;">
+      <div style="padding:28px;background:linear-gradient(135deg,rgba(201,21,30,0.08),rgba(201,21,30,0.03));border-radius:20px;border:1px solid rgba(201,21,30,0.15);">
+        <div style="font-size:36px;margin-bottom:12px;">🚌</div>
+        <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">① 교통 혁신</h3>
+        <p style="font-size:13px;color:#6a5050;line-height:1.7;">GTX·버스 노선 최적화·자전거 도로 확충으로 서울 교통 30분 생활권 실현. 대중교통 요금 동결 및 노인·청년 무료화 확대.</p>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-period">M1<br>Week 3-4</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <h4>소프트 런칭 (내부 테스트)</h4>
-        <ul>
-          <li>파트너(직원) 대상 베타 테스트</li>
-          <li>음악 페어링 추천 정확도 검증</li>
-          <li>생일 이벤트 플로우 시나리오 테스트</li>
-          <li>버그 수정 및 UX 개선</li>
-        </ul>
+      <div style="padding:28px;background:linear-gradient(135deg,rgba(201,21,30,0.08),rgba(201,21,30,0.03));border-radius:20px;border:1px solid rgba(201,21,30,0.15);">
+        <div style="font-size:36px;margin-bottom:12px;">🏠</div>
+        <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">② 주거 안정</h3>
+        <p style="font-size:13px;color:#6a5050;line-height:1.7;">청년·신혼 공공주택 10만 호 공급. 재개발 규제 합리화로 주거 환경 개선. 빌라·다세대 주택 안전 관리 강화.</p>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-period">M2<br>Week 1-4</div>
-      <div class="tl-dot" style="background:var(--gold);"></div>
-      <div class="tl-content" style="border-color:var(--gold);">
-        <h4>🚀 공개 파일럿 런칭</h4>
-        <ul>
-          <li>3개 매장 일반 고객 대상 공개</li>
-          <li>매장 내 QR 포스터로 앱 유도</li>
-          <li>음악 페어링 + 사이렌오더 실시간 운영</li>
-          <li>생일 이벤트 첫 발동 케이스 수집</li>
-          <li>일별 KPI 모니터링</li>
-        </ul>
+      <div style="padding:28px;background:linear-gradient(135deg,rgba(201,21,30,0.08),rgba(201,21,30,0.03));border-radius:20px;border:1px solid rgba(201,21,30,0.15);">
+        <div style="font-size:36px;margin-bottom:12px;">🎨</div>
+        <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">③ 문화 도시</h3>
+        <p style="font-size:13px;color:#6a5050;line-height:1.7;">한강 문화벨트 조성, 서울 야경 세계 10위 도시 목표. K-컬처 허브 서울로 글로벌 문화 도시 브랜딩.</p>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-period">M3<br>Week 1-2</div>
-      <div class="tl-dot"></div>
-      <div class="tl-content">
-        <h4>데이터 분석 & 최적화</h4>
-        <ul>
-          <li>추천 알고리즘 파라미터 튜닝</li>
-          <li>CRM 세그먼트 초기 분류 완성</li>
-          <li>고객 NPS 조사 실시</li>
-          <li>추가 기능 우선순위 재조정</li>
-        </ul>
+      <div style="padding:28px;background:linear-gradient(135deg,rgba(201,21,30,0.08),rgba(201,21,30,0.03));border-radius:20px;border:1px solid rgba(201,21,30,0.15);">
+        <div style="font-size:36px;margin-bottom:12px;">❤️</div>
+        <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">④ 복지 확대</h3>
+        <p style="font-size:13px;color:#6a5050;line-height:1.7;">어르신 돌봄 서비스 확대, 장애인 이동권 보장. 1인 가구 지원 센터 25개 구 전체 설치. 정신 건강 상담 무료화.</p>
       </div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-period">M3<br>Week 3-4</div>
-      <div class="tl-dot" style="background:var(--gold);"></div>
-      <div class="tl-content" style="border-color:var(--gold);">
-        <h4>📋 파일럿 결과 보고 & 전국 확대 결정</h4>
-        <ul>
-          <li>3개월 전체 KPI 결과 보고서 작성</li>
-          <li>ROI 계산 및 전국 확대 시나리오 3가지 제시</li>
-          <li>스타벅스 내부 의사결정 지원 자료 완성</li>
-        </ul>
+      <div style="padding:28px;background:linear-gradient(135deg,rgba(201,21,30,0.08),rgba(201,21,30,0.03));border-radius:20px;border:1px solid rgba(201,21,30,0.15);">
+        <div style="font-size:36px;margin-bottom:12px;">🌱</div>
+        <h3 style="font-size:17px;font-weight:700;color:#C9151E;margin-bottom:8px;">⑤ 청년 서울</h3>
+        <p style="font-size:13px;color:#6a5050;line-height:1.7;">청년 창업 지원 펀드 1조 원 조성. 청년 인턴십·취업 연계 10만 명. 청년 문화·여가 공간 대폭 확충으로 서울 청년 만족도 1위.</p>
       </div>
-    </div>
-  </div>
-
-  <div class="kpi-row">
-    <div class="kpi-badge">
-      <div class="icon">📱</div>
-      <div class="info"><div class="val">30%</div><div class="lbl">방문 고객 앱 설치율 목표</div></div>
-    </div>
-    <div class="kpi-badge">
-      <div class="icon">☕</div>
-      <div class="info"><div class="val">+₩1,200</div><div class="lbl">앱 사용자 객단가 증가</div></div>
-    </div>
-    <div class="kpi-badge">
-      <div class="icon">⏱️</div>
-      <div class="info"><div class="val">+15분</div><div class="lbl">체류시간 증가 목표</div></div>
-    </div>
-    <div class="kpi-badge">
-      <div class="icon">📸</div>
-      <div class="info"><div class="val">5,000</div><div class="lbl">월 SNS 공유 목표</div></div>
-    </div>
-    <div class="kpi-badge">
-      <div class="icon">⭐</div>
-      <div class="info"><div class="val">NPS 70+</div><div class="lbl">고객 만족도 목표</div></div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 9 — TECH ARCHITECTURE
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-<section class="page page-bg-dark" id="p9" style="max-width:100%; padding:80px 0;">
-  <div style="max-width:1100px; margin:0 auto; padding:0 40px;">
-  <div class="page-header">
-    <div class="page-num">09 / Tech Architecture</div>
-    <h2 class="page-title">기술 아키텍처 설계도</h2>
-    <p class="page-desc">스타벅스 기존 인프라와 라디오카페를 연결하는 전체 기술 스택. 보안·확장성·실시간 처리를 모두 고려한 설계입니다.</p>
-  </div>
-
-  <div class="arch-container">
-    <div class="arch-layer">
-      <div class="arch-layer-label">Client Layer · 고객 접점</div>
-      <div class="arch-nodes">
-        <div class="arch-node highlight">📱 스타벅스 라디오카페 앱 (Web PWA)</div>
-        <div class="arch-node">🖥️ 매장 디스플레이 (키오스크 연동)</div>
-        <div class="arch-node">📻 매장 스피커 시스템</div>
-        <div class="arch-node gold">🟢 Siren Order (기존 앱 연동)</div>
-        <div class="arch-node">⌚ 스마트워치 알림</div>
+<!-- ── P9: 기술 구조 ── -->
+<section class="page" id="p9">
+  <div class="page-inner">
+    <div class="page-label">09 — TECH ARCHITECTURE</div>
+    <h2 class="page-title">기술 아키텍처:<br>안정적인 플랫폼 구조</h2>
+    <div class="two-col" style="margin-top:48px;">
+      <div>
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div style="padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:15px;font-weight:700;color:#C9151E;margin-bottom:8px;">Frontend</h3>
+            <p style="font-size:13px;color:#6a5050;line-height:1.7;">순수 HTML/CSS/JavaScript — 빠른 로딩, 모바일 최적화. PWA 지원으로 앱처럼 설치 가능한 경험 제공.</p>
+          </div>
+          <div style="padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:15px;font-weight:700;color:#C9151E;margin-bottom:8px;">Backend: Supabase</h3>
+            <p style="font-size:13px;color:#6a5050;line-height:1.7;">PostgreSQL 기반 CRM 데이터베이스, 인증, 실시간 구독. 서버 운영 비용 최소화, 확장성 보장.</p>
+          </div>
+          <div style="padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:15px;font-weight:700;color:#C9151E;margin-bottom:8px;">라디오 스트리밍</h3>
+            <p style="font-size:13px;color:#6a5050;line-height:1.7;">국내 FM 라디오 공식 스트리밍 URL 연동. KBS·MBC·SBS 등 주요 방송사 라디오 24시간 청취.</p>
+          </div>
+          <div style="padding:20px;background:rgba(201,21,30,0.05);border-radius:12px;border:1px solid rgba(201,21,30,0.12);">
+            <h3 style="font-size:15px;font-weight:700;color:#C9151E;margin-bottom:8px;">보안 &amp; 개인정보</h3>
+            <p style="font-size:13px;color:#6a5050;line-height:1.7;">HTTPS 암호화, Row Level Security, 개인정보보호법 준수. 선거 캠프 데이터 관리 기준 철저 준수.</p>
+          </div>
+        </div>
+      </div>
+      <div style="background:linear-gradient(145deg,#3a0808,#1a0810);border-radius:20px;padding:32px;color:#fff;">
+        <div style="font-size:11px;letter-spacing:3px;color:#C9151E;margin-bottom:20px;font-family:'Orbitron',monospace;">TECH STACK</div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:13px;color:rgba(255,255,255,0.5);">UI Framework</span>
+            <span style="font-size:13px;color:#fff;font-weight:600;">Vanilla HTML/CSS/JS</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:13px;color:rgba(255,255,255,0.5);">Database</span>
+            <span style="font-size:13px;color:#fff;font-weight:600;">Supabase PostgreSQL</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:13px;color:rgba(255,255,255,0.5);">Auth</span>
+            <span style="font-size:13px;color:#fff;font-weight:600;">Supabase Auth</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:13px;color:rgba(255,255,255,0.5);">Storage</span>
+            <span style="font-size:13px;color:#fff;font-weight:600;">Supabase Storage</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.08);">
+            <span style="font-size:13px;color:rgba(255,255,255,0.5);">Hosting</span>
+            <span style="font-size:13px;color:#fff;font-weight:600;">GitHub Pages / Vercel</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:10px 0;">
+            <span style="font-size:13px;color:rgba(255,255,255,0.5);">Radio API</span>
+            <span style="font-size:13px;color:#fff;font-weight:600;">KBS/MBC/SBS Stream</span>
+          </div>
+        </div>
+        <div style="margin-top:20px;padding:16px;background:rgba(201,21,30,0.15);border-radius:8px;text-align:center;">
+          <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px;">예상 월 운영비</div>
+          <div style="font-size:22px;font-weight:900;color:#C9151E;">~$25/월</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:2px;">Supabase Pro 기준</div>
+        </div>
       </div>
     </div>
-
-    <div class="arch-arrow">↕</div>
-
-    <div class="arch-layer">
-      <div class="arch-layer-label">Location & Presence Layer · 위치 감지</div>
-      <div class="arch-nodes">
-        <div class="arch-node highlight">📍 GPS 위치 서비스 (반경 50m 매장 감지)</div>
-        <div class="arch-node">🏷️ RFID 리더 (매장 입구 설치)</div>
-        <div class="arch-node">📶 Bluetooth Beacon (실내 정밀 위치)</div>
-        <div class="arch-node gold">🔒 개인정보 동의 기반 옵트인</div>
-      </div>
-    </div>
-
-    <div class="arch-arrow">↕</div>
-
-    <div class="arch-layer">
-      <div class="arch-layer-label">API Gateway Layer · 서비스 연결</div>
-      <div class="arch-nodes">
-        <div class="arch-node highlight">🔌 Radio Stream API (라디오 채널 관리)</div>
-        <div class="arch-node gold">☕ Siren Order API (주문 연동)</div>
-        <div class="arch-node gold">⭐ Starbucks Rewards API (포인트 연동)</div>
-        <div class="arch-node">🎵 Music Metadata API (Spotify Audio Features)</div>
-        <div class="arch-node">🌤️ Weather API (날씨 기반 추천)</div>
-        <div class="arch-node">📣 Push Notification Service</div>
-      </div>
-    </div>
-
-    <div class="arch-arrow">↕</div>
-
-    <div class="arch-layer">
-      <div class="arch-layer-label">AI / ML Engine Layer · 추천 & 감정 분석</div>
-      <div class="arch-nodes">
-        <div class="arch-node highlight">🧠 감정 기반 음료 추천 AI (E(t) 수식 엔진)</div>
-        <div class="arch-node">🎂 생일/기념일 이벤트 트리거 엔진</div>
-        <div class="arch-node">🎯 CRM 세그먼트 자동 분류 모델</div>
-        <div class="arch-node">📊 실시간 청취 패턴 분석기</div>
-        <div class="arch-node gold">🗣️ TTS 생일 멘트 생성 (LLM 기반)</div>
-      </div>
-    </div>
-
-    <div class="arch-arrow">↕</div>
-
-    <div class="arch-layer">
-      <div class="arch-layer-label">Data Layer · 데이터 저장 & 처리</div>
-      <div class="arch-nodes">
-        <div class="arch-node highlight">🗄️ Customer CRM DB (고객 프로필·감정 히스토리)</div>
-        <div class="arch-node">🎵 Music Catalog DB (큐레이션 트랙 메타데이터)</div>
-        <div class="arch-node">📅 Event Calendar DB (생일·기념일 스케줄)</div>
-        <div class="arch-node gold">📦 Starbucks 기존 DB 연동 (Rewards·주문 데이터)</div>
-        <div class="arch-node">⚡ Redis (실시간 이벤트 큐)</div>
-        <div class="arch-node">📈 Analytics DW (행동 분석용 데이터 웨어하우스)</div>
-      </div>
-    </div>
-
-    <div class="arch-arrow">↕</div>
-
-    <div class="arch-layer">
-      <div class="arch-layer-label">Admin & Ops Layer · 운영 관리</div>
-      <div class="arch-nodes">
-        <div class="arch-node">🎛️ 매장 매니저 대시보드</div>
-        <div class="arch-node gold">📊 본사 마케팅 CRM 콘솔</div>
-        <div class="arch-node">🔧 음악 큐레이션 어드민</div>
-        <div class="arch-node">🛡️ 개인정보 관리 포털</div>
-        <div class="arch-node">⚠️ 실시간 알림 모니터링</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="two-col" style="margin-top:0;">
-    <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(212,233,226,0.12);">
-      <div class="card-icon">🔒</div>
-      <h3 style="color:var(--green-light);">보안 & 개인정보</h3>
-      <p style="color:rgba(212,233,226,0.7);">위치 정보는 명시적 옵트인 동의 후 수집. 데이터 암호화 저장. GDPR·PIPA 준수. 언제든 동의 철회 가능.</p>
-    </div>
-    <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(212,233,226,0.12);">
-      <div class="card-icon">⚡</div>
-      <h3 style="color:var(--green-light);">실시간 처리</h3>
-      <p style="color:rgba(212,233,226,0.7);">매장 방문 감지 → 이벤트 트리거 → 방송 삽입까지 평균 응답 시간 2초 이내. Redis 이벤트 큐로 처리.</p>
-    </div>
-  </div>
   </div>
 </section>
 
-<!-- ══════════════════════════════════════════
-     PAGE 10 — PITCH DECK
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-<section class="page pitch-section page-bg-dark" id="p10" style="max-width:100%; padding:80px 0;">
-  <div style="max-width:1100px; margin:0 auto; padding:0 40px;">
-  <div class="page-header" style="position:relative;">
-    <div class="page-num">10 / Pitch Deck</div>
-    <h2 class="page-title">스타벅스 설득용<br>피치덱 핵심 문구</h2>
-    <p class="page-desc">내부 보고 및 의사결정자 프레젠테이션용 6페이지 핵심 메시지. 각 슬라이드의 ONE MESSAGE를 담았습니다.</p>
-    <div class="pdf-btn-section" style="margin-top:20px;">
-      <button class="pdf-btn" id="pdfBtnSection" onclick="generatePDF()">📄 전략 제안서 PDF 다운로드</button>
+<!-- ── FOOTER ── -->
+<footer style="background:linear-gradient(160deg,#180608,#0d1208);padding:60px 40px 40px;text-align:center;border-top:1px solid rgba(201,21,30,0.2);">
+  <div style="max-width:700px;margin:0 auto;">
+    <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#C9151E,#8B0000);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:22px;font-weight:900;color:#fff;">오</div>
+    <div style="font-family:'Orbitron',monospace;font-size:14px;letter-spacing:4px;color:#C9151E;margin-bottom:12px;">OH SE-HOON RADIOKAFE</div>
+    <p style="font-size:14px;color:rgba(255,255,255,0.4);line-height:1.7;margin-bottom:32px;">
+      서울시민과 오세훈을 잇는 디지털 라디오 캠페인 플랫폼<br>
+      2026 제8회 전국동시지방선거 · 국민의힘 서울시장 후보
+    </p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;">
+      <a href="landing.html" style="padding:12px 24px;background:linear-gradient(135deg,#C9151E,#8B0000);color:#fff;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px;">🏠 랜딩 페이지</a>
+      <a href="index.html" style="padding:12px 24px;background:rgba(255,255,255,0.08);color:#fff;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.15);">📻 라디오카페 입장</a>
+      <button onclick="generatePDF()" style="padding:12px 24px;background:rgba(255,255,255,0.08);color:#fff;border-radius:24px;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.15);cursor:pointer;">📄 PDF 저장</button>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.08);padding-top:24px;">
+      <p style="font-size:12px;color:rgba(255,255,255,0.2);">© 2026 오세훈 라디오카페 · 국민의힘 서울시장 캠프 · 본 제안서는 선거 캠페인 전략 자료입니다</p>
     </div>
   </div>
-
-  <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:20px;">
-
-    <div class="pitch-card">
-      <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 01 · THE HOOK</div>
-      <div class="quote">
-        고객이 <strong>매장 문을 나서는 순간</strong>,<br>
-        스타벅스와의 연결은 끊어집니다.<br>
-        <strong>라디오카페</strong>는 그 연결을<br>
-        24시간으로 만드는 다리입니다.
-      </div>
-      <div class="source">Opening Statement · Decision Maker용</div>
-    </div>
-
-    <div class="pitch-card">
-      <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 02 · THE INSIGHT</div>
-      <div class="quote">
-        사람들은 커피를 마시는 것이 아닙니다.<br>
-        <strong>그 순간의 감성을 마십니다.</strong><br>
-        재즈가 흐르는 비 오는 오후,<br>
-        따뜻한 라떼 한 잔의 기억을<br>
-        <strong>집에서도, 출근길에서도 재현</strong>해 줍니다.
-      </div>
-      <div class="source">Emotional Insight · 마케팅 팀장용</div>
-    </div>
-
-    <div class="pitch-card">
-      <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 03 · THE NUMBER</div>
-      <div class="quote">
-        파일럿 3개 매장, 단 3개월.<br>
-        <strong>체류시간 +18분,</strong><br>
-        <strong>객단가 +₩1,200,</strong><br>
-        <strong>생일 쿠폰 사용율 84%.</strong><br>
-        전국 확대 시 <strong>3년 누적 ₩326억</strong>.
-      </div>
-      <div class="source">ROI Slide · CFO / 경영진용</div>
-    </div>
-
-    <div class="pitch-card">
-      <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 04 · THE EXPERIENCE</div>
-      <div class="quote">
-        홍길동 씨가 생일날 홍대 매장에 들어서는 순간,<br>
-        라디오에서 흘러나옵니다:<br>
-        <strong>"홍길동 고객님, 생일 축하드립니다 🎂<br>
-        오늘 음악은 특별히 준비했어요."</strong><br>
-        이 경험을 SNS에 올리지 않을 사람이 있을까요?
-      </div>
-      <div class="source">Storytelling Slide · 전 임직원용</div>
-    </div>
-
-    <div class="pitch-card">
-      <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 05 · THE MOAT</div>
-      <div class="quote">
-        음악이 고객의 <strong>감정 데이터</strong>가 됩니다.<br>
-        감정 데이터가 <strong>초개인화 CRM</strong>이 됩니다.<br>
-        초개인화 CRM이 <strong>경쟁사가 절대 복제할 수 없는<br>스타벅스만의 해자(Moat)</strong>가 됩니다.
-      </div>
-      <div class="source">Competitive Advantage · 전략 팀용</div>
-    </div>
-
-    <div class="pitch-card">
-      <div style="font-family:'Orbitron'; font-size:0.6rem; color:var(--gold); letter-spacing:3px; margin-bottom:14px;">SLIDE 06 · THE ASK</div>
-      <div class="quote">
-        우리가 요청하는 것은 단 하나입니다.<br>
-        <strong>3개 매장, 3개월, 최소 투자.</strong><br>
-        데이터가 모든 것을 말해줄 것입니다.<br>
-        스타벅스의 다음 10년을<br>
-        <strong>커피와 음악으로 함께 써 나갑시다.</strong>
-      </div>
-      <div class="source">Closing Ask · 최종 의사결정자용</div>
-    </div>
-
-  </div>
-
-  <!-- 내부 보고용 6페이지 요약본 -->
-  <div style="margin-top:48px; border-top:1px solid rgba(212,233,226,0.12); padding-top:40px;">
-    <h3 style="font-family:'Orbitron'; font-size:0.7rem; letter-spacing:3px; color:var(--gold); margin-bottom:24px;">INTERNAL REPORT · 스타벅스 내부 보고용 6페이지 전략 요약</h3>
-    <table class="data-table" style="background:rgba(255,255,255,0.04);">
-      <thead><tr><th>페이지</th><th>제목</th><th>핵심 내용</th><th>대상 독자</th></tr></thead>
-      <tbody>
-        <tr>
-          <td>p.1</td><td class="bold">Executive Summary</td>
-          <td>문제·솔루션·3년 ROI 요약 / 의사결정 필요 사항</td>
-          <td>CEO / CMO</td>
-        </tr>
-        <tr>
-          <td>p.2</td><td class="bold">고객 경험 혁신 방향</td>
-          <td>매장→외부 연결 고리 설계 / 생일 이벤트 UX 시나리오</td>
-          <td>마케팅 팀장</td>
-        </tr>
-        <tr>
-          <td>p.3</td><td class="bold">기술 연동 현황 & 요건</td>
-          <td>Rewards·사이렌오더 API 연동 범위 / 개인정보 처리 방침</td>
-          <td>CTO / 개발팀</td>
-        </tr>
-        <tr>
-          <td>p.4</td><td class="bold">수익 모델 상세</td>
-          <td>직접·간접 수익 채널 / 3년 시뮬레이션 테이블</td>
-          <td>CFO / 재무팀</td>
-        </tr>
-        <tr>
-          <td>p.5</td><td class="bold">MVP 파일럿 실행 계획</td>
-          <td>3매장 선정 기준 / 타임라인 / KPI 목표치</td>
-          <td>운영팀 / 점장</td>
-        </tr>
-        <tr>
-          <td>p.6</td><td class="bold">리스크 & 대응 방안</td>
-          <td>기술 리스크·개인정보·사용자 이탈 시나리오별 대응책</td>
-          <td>법무·컴플라이언스</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
-<div class="section-divider"></div>
-
-<!-- QR Code Section -->
-<div style="background:var(--cream); padding:60px 40px; text-align:center;">
-  <div style="display:inline-block; background:#fff; border:2px solid rgba(0,112,74,0.2); border-radius:20px; padding:32px 40px; box-shadow:0 4px 24px rgba(0,112,74,0.1);">
-    <img src="qr-proposal.jpg" alt="스타벅스 협업 제안서 QR" style="width:180px; height:180px; display:block; margin:0 auto 16px;">
-    <p style="font-family:'Orbitron',monospace; font-size:0.7rem; letter-spacing:3px; color:var(--green-dark); font-weight:700; margin:0;">스타벅스 협업 제안서 홈페이지 연결</p>
-  </div>
-</div>
-
-<div class="section-divider"></div>
-<footer class="doc-footer">
-  <div style="font-size:2rem; margin-bottom:16px;">☕</div>
-  <div style="font-family:'Orbitron'; font-size:0.75rem; color:var(--gold); letter-spacing:3px; margin-bottom:16px;">STARBUCKS × RADIOKAFE</div>
-  <p>
-    <strong>스타벅스 라디오카페</strong> 전략 제안서 · v1.0 · 2026년 2월<br>
-    본 문서는 비즈니스 제안 목적으로 작성되었습니다.<br>
-    수록된 수치는 업계 데이터 기반 시뮬레이션이며, 실제 결과와 다를 수 있습니다.<br><br>
-    <strong>Starbucks® 상표권은 Starbucks Corporation에 귀속됩니다.</strong><br>
-    RadioKafe 기술 · Prepared by RadioKafe Team
-  </p>
 </footer>
 
-
 <script>
-function openYT() {
-  document.getElementById('ytFrame').src = 'https://www.youtube.com/embed/asPrfWAnXuQ?autoplay=1';
-  document.getElementById('ytOverlay').classList.add('visible');
-}
-function closeYT() {
-  document.getElementById('ytFrame').src = '';
-  document.getElementById('ytOverlay').classList.remove('visible');
-}
-
 function generatePDF() {
-  // 모든 fade-in 요소 강제 표시 후 인쇄
-  document.querySelectorAll('.card, .stat-box, .pitch-card, .flow-body, .tl-content').forEach(el => {
-    el.style.opacity = '1';
-    el.style.transform = 'translateY(0)';
-  });
   window.print();
 }
 
-// Scroll fade-in animation
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.doc-nav');
+  if (nav) {
+    if (window.scrollY > 50) {
+      nav.style.background = 'rgba(21,4,8,0.98)';
+      nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.5)';
+    } else {
+      nav.style.background = 'rgba(21,4,8,0.95)';
+      nav.style.boxShadow = 'none';
+    }
+  }
+});
+
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1943,28 +1376,15 @@ const observer = new IntersectionObserver((entries) => {
       entry.target.style.transform = 'translateY(0)';
     }
   });
-}, { threshold: 0.08 });
+}, { threshold: 0.1 });
 
-document.querySelectorAll('.card, .stat-box, .pitch-card, .flow-body, .tl-content').forEach(el => {
+document.querySelectorAll('.page, .feature-card').forEach(el => {
   el.style.opacity = '0';
-  el.style.transform = 'translateY(20px)';
+  el.style.transform = 'translateY(30px)';
   el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
   observer.observe(el);
 });
-
-// Nav scroll highlight
-window.addEventListener('scroll', () => {
-  const sections = ['p1','p2','p3','p4','p5','p6','p7','p8','p9','p10'];
-  let current = '';
-  sections.forEach(id => {
-    const el = document.getElementById(id);
-    if (el && window.scrollY >= el.offsetTop - 80) current = id;
-  });
-  document.querySelectorAll('.doc-nav-links a').forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current
-      ? 'var(--gold)' : 'var(--green-light)';
-  });
-});
 </script>
+
 </body>
 </html>

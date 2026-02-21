@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#0a1f17">
+<html lang="ko" style="background:#150408">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>라디오 엽서 | 스타벅스 라디오카페</title>
+  <title>라디오 엽서 | 오세훈 라디오카페</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="라디오 엽서 | 스타벅스 라디오카페" />
+  <meta property="og:title" content="라디오 엽서 | 오세훈 라디오카페" />
   <meta property="og:description" content="라디오와 함께 감성 엽서를 보내세요!" />
   <meta property="og:image" content="https://og-image.jpg" />
   <meta property="og:url" content="https://radio-postcard.html" />
@@ -15,14 +15,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0a1f17;
-      --accent: #00704A;
-      --accent-glow: rgba(0,112,74,0.5);
+      --bg: #150408;
+      --accent: #C9151E;
+      --accent-glow: rgba(201,21,30,0.5);
       --gold: #CBA258;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -34,36 +34,36 @@
       content: '';
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(circle at 20% 80%, rgba(0,112,74,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0,112,74,0.04) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(201,21,30,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(201,21,30,0.04) 0%, transparent 50%);
       pointer-events: none; z-index: 0;
     }
     .hidden { display: none !important; }
 
     /* ── Gift Card Container ── */
     .gift-card {
-      background: #1E3932;
-      border: 1px solid rgba(0,112,74,0.4);
+      background: #3a0808;
+      border: 1px solid rgba(201,21,30,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 380px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(201,21,30,0.15);
       position: relative; z-index: 1;
     }
     .gift-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
+      color: #C9151E; letter-spacing: 3px; margin-bottom: 16px;
     }
 
     /* ── Step Guide ── */
     .gift-guide {
       text-align: left; margin-top: 14px; padding: 12px 14px;
-      background: rgba(0,112,74,0.08); border-radius: 10px;
-      border-left: 3px solid #00704A;
+      background: rgba(201,21,30,0.08); border-radius: 10px;
+      border-left: 3px solid #C9151E;
     }
     .gift-guide p {
       font-family: 'Inter', sans-serif; font-size: 13px;
-      color: #b8d8cc; line-height: 1.6;
+      color: #E0B0B0; line-height: 1.6;
       margin: 0 0 8px 0;
     }
     .gift-guide p:last-child { margin-bottom: 0; }
@@ -74,21 +74,21 @@
     }
     .gift-btn-next {
       flex: 1; padding: 12px; border-radius: 12px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none;
-      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none;
+      color: #F5D4D6; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
     .gift-btn-next:disabled { opacity: 0.3; cursor: default; }
-    .gift-btn-next:not(:disabled):hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .gift-btn-next:not(:disabled):hover { box-shadow: 0 8px 24px rgba(201,21,30,0.4); }
     .gift-btn-back {
       padding: 12px 16px; border-radius: 12px;
-      background: transparent; border: 1px solid rgba(0,112,74,0.4);
-      color: #7ab8a0; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(201,21,30,0.4);
+      color: #CC8888; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 600; cursor: pointer;
       transition: all 0.2s;
     }
-    .gift-btn-back:hover { border-color: #00704A; color: #D4E9E2; }
+    .gift-btn-back:hover { border-color: #C9151E; color: #F5D4D6; }
 
     /* ── Postcard Design Selector ── */
     .postcard-designs {
@@ -97,28 +97,28 @@
     }
     .design-option {
       position: relative; cursor: pointer;
-      border: 2px solid rgba(0,112,74,0.25);
+      border: 2px solid rgba(201,21,30,0.25);
       border-radius: 12px; padding: 10px;
-      background: rgba(0,112,74,0.06);
+      background: rgba(201,21,30,0.06);
       transition: all 0.3s;
       display: flex; flex-direction: column; align-items: center;
     }
-    .design-option:hover { border-color: rgba(0,112,74,0.5); }
+    .design-option:hover { border-color: rgba(201,21,30,0.5); }
     .design-option.selected {
-      border-color: #00704A;
-      background: rgba(0,112,74,0.15);
-      box-shadow: 0 0 12px rgba(0,112,74,0.3);
+      border-color: #C9151E;
+      background: rgba(201,21,30,0.15);
+      box-shadow: 0 0 12px rgba(201,21,30,0.3);
     }
     .design-option .design-label {
       font-family: 'Inter', sans-serif; font-size: 11px;
-      color: #7ab8a0; margin-top: 8px;
+      color: #CC8888; margin-top: 8px;
     }
-    .design-option.selected .design-label { color: #D4E9E2; font-weight: 600; }
+    .design-option.selected .design-label { color: #F5D4D6; font-weight: 600; }
 
     /* ── Design 1: Vintage Microphone ── */
     .design-vintage1 {
       width: 120px; height: 80px; position: relative;
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
       border-radius: 6px; overflow: hidden;
       box-shadow: inset 0 0 20px rgba(0,80,50,0.3);
     }
@@ -163,7 +163,7 @@
     /* ── Design 2: Vinyl Record ── */
     .design-vintage2 {
       width: 120px; height: 80px; position: relative;
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
       border-radius: 6px; overflow: hidden;
       box-shadow: inset 0 0 20px rgba(0,80,50,0.3);
     }
@@ -215,7 +215,7 @@
     /* ── Design 3: Retro Radio ── */
     .design-vintage3 {
       width: 120px; height: 80px; position: relative;
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
       border-radius: 6px; overflow: hidden;
       box-shadow: inset 0 0 20px rgba(0,80,50,0.3);
     }
@@ -277,7 +277,7 @@
     /* ── Design 4: Coffee Cup ── */
     .design-vintage4 {
       width: 120px; height: 80px; position: relative;
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
       border-radius: 6px; overflow: hidden;
       box-shadow: inset 0 0 20px rgba(0,80,50,0.3);
     }
@@ -344,16 +344,16 @@
     /* ── Step 2: Message Input ── */
     .gift-msg-input {
       width: 100%; padding: 12px; border-radius: 12px;
-      border: 2px solid rgba(0,112,74,0.4);
-      background: #122820; color: #b8d8cc;
+      border: 2px solid rgba(201,21,30,0.4);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 14px;
       outline: none; resize: none; min-height: 70px;
       margin-bottom: 4px;
     }
-    .gift-msg-input:focus { border-color: #00704A; }
-    .gift-msg-input::placeholder { color: #7ab8a0; }
+    .gift-msg-input:focus { border-color: #C9151E; }
+    .gift-msg-input::placeholder { color: #CC8888; }
     .msg-counter {
-      text-align: right; font-size: 11px; color: #7ab8a0;
+      text-align: right; font-size: 11px; color: #CC8888;
       margin-bottom: 12px; font-family: 'Inter', sans-serif;
     }
 
@@ -363,38 +363,38 @@
     }
     .gift-link-box input {
       flex: 1; padding: 10px 12px; border-radius: 10px;
-      border: 2px solid rgba(0,112,74,0.4);
-      background: #122820; color: #b8d8cc;
+      border: 2px solid rgba(201,21,30,0.4);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 11px; outline: none;
     }
     .gift-link-box button {
       padding: 10px 16px; border-radius: 10px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none;
-      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none;
+      color: #F5D4D6; font-family: 'Outfit', sans-serif;
       font-size: 13px; font-weight: 700; cursor: pointer;
       transition: all 0.2s; white-space: nowrap;
     }
-    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(201,21,30,0.4); }
     .gift-copied {
       font-family: 'Inter', sans-serif; font-size: 12px;
-      color: #00704A; margin-bottom: 12px;
+      color: #C9151E; margin-bottom: 12px;
     }
     .gift-copied.hidden { display: none; }
 
     /* ── Receiver Mode ── */
     .receiver-card {
-      background: #1E3932;
-      border: 1px solid rgba(0,112,74,0.4);
+      background: #3a0808;
+      border: 1px solid rgba(201,21,30,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 380px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(201,21,30,0.15);
       perspective: 800px;
       position: relative; z-index: 1;
     }
     .receiver-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #00704A; letter-spacing: 3px; margin-bottom: 20px;
+      color: #C9151E; letter-spacing: 3px; margin-bottom: 20px;
     }
 
     /* ── Envelope Animation ── */
@@ -476,20 +476,20 @@
       width: 100%; height: 160px; position: relative;
     }
     .postcard-full .postcard-message-area {
-      background: linear-gradient(180deg, #163028, #1E3932);
+      background: linear-gradient(180deg, #280610, #3a0808);
       padding: 20px; min-height: 80px;
       border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;
-      border: 1px solid rgba(0,112,74,0.3);
-      border-top: 2px dashed rgba(0,112,74,0.4);
+      border: 1px solid rgba(201,21,30,0.3);
+      border-top: 2px dashed rgba(201,21,30,0.4);
     }
     .postcard-message-text {
       font-family: 'Inter', sans-serif; font-size: 15px;
-      color: #b8d8cc; line-height: 1.7;
+      color: #E0B0B0; line-height: 1.7;
       min-height: 24px;
     }
     .typewriter-cursor {
       display: inline-block; width: 2px; height: 16px;
-      background: #00704A; margin-left: 2px;
+      background: #C9151E; margin-left: 2px;
       vertical-align: text-bottom;
       animation: blink 0.6s step-end infinite;
     }
@@ -500,16 +500,16 @@
 
     /* ── Scaled-up postcard art variants ── */
     .postcard-art.art-vintage1 {
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
     }
     .postcard-art.art-vintage2 {
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
     }
     .postcard-art.art-vintage3 {
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
     }
     .postcard-art.art-vintage4 {
-      background: linear-gradient(135deg, #163028, #1E3932);
+      background: linear-gradient(135deg, #280610, #3a0808);
     }
 
     /* Large mic for postcard art */
@@ -717,61 +717,61 @@
     }
     .receiver-chat-btn {
       width: 100%; padding: 12px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none;
-      border-radius: 12px; color: #D4E9E2;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none;
+      border-radius: 12px; color: #F5D4D6;
       font-family: 'Outfit', sans-serif; font-size: 14px;
       font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
-    .receiver-chat-btn:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .receiver-chat-btn:hover { box-shadow: 0 8px 24px rgba(201,21,30,0.4); }
 
-    /* ── Chat Panel (Starbucks theme) ── */
+    /* ── Chat Panel (오세훈 theme) ── */
     .chat-panel {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
       border: none; z-index: 100; display: flex; flex-direction: column; overflow: hidden;
     }
     .chat-header {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 12px 16px; background: rgba(0,112,74,0.12);
-      border-bottom: 1px solid rgba(0,112,74,0.25); flex-shrink: 0;
+      padding: 12px 16px; background: rgba(201,21,30,0.12);
+      border-bottom: 1px solid rgba(201,21,30,0.25); flex-shrink: 0;
     }
-    .chat-header-title { font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700; color: #00704A; letter-spacing: 2px; }
-    .chat-header-info { font-family: 'Inter', sans-serif; font-size: 11px; color: #7ab8a0; }
+    .chat-header-title { font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700; color: #C9151E; letter-spacing: 2px; }
+    .chat-header-info { font-family: 'Inter', sans-serif; font-size: 11px; color: #CC8888; }
     .chat-back-btn {
-      background: none; border: 1px solid rgba(0,112,74,0.4);
-      color: #D4E9E2; font-size: 12px; padding: 4px 10px;
+      background: none; border: 1px solid rgba(201,21,30,0.4);
+      color: #F5D4D6; font-size: 12px; padding: 4px 10px;
       border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif; white-space: nowrap;
     }
     #chatBody { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
     .chat-nickname-box { padding: 24px 16px; text-align: center; }
     .chat-nickname-box input {
-      padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(0,112,74,0.4);
-      background: #122820; color: #b8d8cc;
+      padding: 12px 16px; border-radius: 10px; border: 1px solid rgba(201,21,30,0.4);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 14px; text-align: center; outline: none; width: 65%;
     }
-    .chat-nickname-box input:focus { border-color: #00704A; }
+    .chat-nickname-box input:focus { border-color: #C9151E; }
     .chat-nickname-box button {
       margin-left: 8px; padding: 12px 20px; border-radius: 10px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none; color: #F5D4D6;
       font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; cursor: pointer;
     }
     .chat-messages { flex: 1; overflow-y: auto; padding: 12px 16px; display: flex; flex-direction: column; }
     .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(0,112,74,0.4); border-radius: 2px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(201,21,30,0.4); border-radius: 2px; }
     .chat-msg { margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.5; word-break: break-word; display: flex; flex-direction: column; max-width: 78%; }
     .chat-msg.me { align-self: flex-end; align-items: flex-end; }
     .chat-msg.other { align-self: flex-start; align-items: flex-start; }
-    .chat-msg-name { font-weight: 700; color: #00704A; font-size: 13px; margin-bottom: 3px; }
-    .chat-msg.me .chat-msg-name { color: #7ab8a0; }
-    .chat-msg-bubble { padding: 8px 14px; border-radius: 14px; line-height: 1.5; color: #b8d8cc; }
-    .chat-msg.other .chat-msg-bubble { background: rgba(0,112,74,0.15); border: 1px solid rgba(0,112,74,0.2); border-top-left-radius: 4px; }
-    .chat-msg.me .chat-msg-bubble { background: linear-gradient(135deg, #00704A, #004d33); color: #D4E9E2; border-top-right-radius: 4px; }
-    .chat-msg-system { text-align: center; color: #7ab8a0; font-size: 13px; font-style: italic; margin: 6px 0; align-self: center; }
-    .chat-input-box { display: flex; gap: 8px; padding: 10px 16px; border-top: 1px solid rgba(0,112,74,0.25); }
-    .chat-input-box input { flex: 1; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(0,112,74,0.3); background: #122820; color: #b8d8cc; font-family: 'Inter', sans-serif; font-size: 13px; outline: none; }
-    .chat-input-box input:focus { border-color: #00704A; }
-    .chat-input-box button { padding: 10px 16px; border-radius: 10px; background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
+    .chat-msg-name { font-weight: 700; color: #C9151E; font-size: 13px; margin-bottom: 3px; }
+    .chat-msg.me .chat-msg-name { color: #CC8888; }
+    .chat-msg-bubble { padding: 8px 14px; border-radius: 14px; line-height: 1.5; color: #E0B0B0; }
+    .chat-msg.other .chat-msg-bubble { background: rgba(201,21,30,0.15); border: 1px solid rgba(201,21,30,0.2); border-top-left-radius: 4px; }
+    .chat-msg.me .chat-msg-bubble { background: linear-gradient(135deg, #C9151E, #8B0000); color: #F5D4D6; border-top-right-radius: 4px; }
+    .chat-msg-system { text-align: center; color: #CC8888; font-size: 13px; font-style: italic; margin: 6px 0; align-self: center; }
+    .chat-input-box { display: flex; gap: 8px; padding: 10px 16px; border-top: 1px solid rgba(201,21,30,0.25); }
+    .chat-input-box input { flex: 1; padding: 10px 14px; border-radius: 10px; border: 1px solid rgba(201,21,30,0.3); background: #1e0808; color: #E0B0B0; font-family: 'Inter', sans-serif; font-size: 13px; outline: none; }
+    .chat-input-box input:focus { border-color: #C9151E; }
+    .chat-input-box button { padding: 10px 16px; border-radius: 10px; background: linear-gradient(135deg, #C9151E, #8B0000); border: none; color: #F5D4D6; font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; cursor: pointer; white-space: nowrap; }
   </style>
 </head>
 <body>
@@ -1203,7 +1203,7 @@ function init(){
         typewriterEffect(msgEl, msgText);
       } else {
         msgEl.textContent = '(메시지가 없습니다)';
-        msgEl.style.color = '#7ab8a0';
+        msgEl.style.color = '#CC8888';
         msgEl.style.fontStyle = 'italic';
       }
     }, 3000);

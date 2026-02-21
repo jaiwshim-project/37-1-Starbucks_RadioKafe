@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#0d1f16">
+<html lang="ko" style="background:#150408">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>스타벅스 라디오카페 | 아날로그 라디오</title>
+  <title>오세훈 라디오카페 | 아날로그 라디오</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="스타벅스 라디오카페 | 아날로그 라디오" />
+  <meta property="og:title" content="오세훈 라디오카페 | 아날로그 라디오" />
   <meta property="og:description" content="감성적인 아날로그 라디오로 대한민국 실시간 방송을 즐기세요." />
   <meta property="og:image" content="https://og-image.jpg" />
   <meta property="og:url" content="https://analog.html" />
@@ -17,37 +17,37 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     /* ============================================
-       STARBUCKS COLLAB - 단일 고정 테마
+       OH SE-HOON COLLAB - 단일 고정 테마
        ============================================ */
 
-    :root, [data-theme="starbucks"] {
-      --bg: #0d1f16;
-      --body-out1: #1E3932; --body-out2: #0f2318;
-      --body-in1: #1a3828; --body-in2: #102218;
-      --texture-color: rgba(0,112,74,0.012);
+    :root, [data-theme="osh"] {
+      --bg: #150408;
+      --body-out1: #3a0808; --body-out2: #0f2318;
+      --body-in1: #2e0808; --body-in2: #102218;
+      --texture-color: rgba(201,21,30,0.012);
       --accent: #CBA258;
       --accent-glow: rgba(203,162,88,0.6);
-      --btn-bg1: #1E3932; --btn-bg2: #0f2318;
+      --btn-bg1: #3a0808; --btn-bg2: #0f2318;
       --btn-hi1: #284e42; --btn-hi2: #182e24;
-      --btn-active1: #00704A; --btn-active2: #1E3932;
+      --btn-active1: #C9151E; --btn-active2: #3a0808;
       --btn-border: #081410;
-      --speaker-bg: #081410; --speaker-border: #041008;
-      --mesh-color: rgba(0,196,122,0.09);
-      --lcd-bg: #020e08;
-      --lcd-text: #00ff88; --lcd-dim: #00cc66; --lcd-idle: #009944;
-      --lcd-glow: rgba(0,255,136,0.7);
-      --screw1: #2a4a3e; --screw2: #1E3932; --screw-line: #0a1e14;
-      --label-color: #D4E9E2; --freq-mark: #7aa892;
-      --tick-color: #4a8870;
+      --speaker-bg: #081410; --speaker-border: #0a0208;
+      --mesh-color: rgba(255,51,68,0.09);
+      --lcd-bg: #080108;
+      --lcd-text: #FF5566; --lcd-dim: #EE2233; --lcd-idle: #CC1122;
+      --lcd-glow: rgba(255,80,100,0.7);
+      --screw1: #2a4a3e; --screw2: #3a0808; --screw-line: #0a1e14;
+      --label-color: #F5D4D6; --freq-mark: #CC8888;
+      --tick-color: #AA4444;
       --needle: #CBA258; --needle-glow: rgba(203,162,88,0.75);
-      --led-on: #00ff88; --led-glow: rgba(0,255,136,0.4);
+      --led-on: #FF5566; --led-glow: rgba(255,80,100,0.4);
       --knob-ind: #CBA258;
-      --footer-color: #7aa892; --footer-link: #D4E9E2;
+      --footer-color: #CC8888; --footer-link: #F5D4D6;
       --antenna1: #2a5a48; --antenna2: #4a8a70;
-      --preset-num: #D4E9E2; --preset-name: #a8c8b8;
-      --power-icon: #D4E9E2;
-      --neon-border: #00704A; --neon-glow: rgba(0,112,74,0.75);
-      --neon-light: rgba(0,180,100,0.28); --neon-light-glow: rgba(0,180,100,0.1);
+      --preset-num: #F5D4D6; --preset-name: #D0A0A0;
+      --power-icon: #F5D4D6;
+      --neon-border: #C9151E; --neon-glow: rgba(201,21,30,0.75);
+      --neon-light: rgba(220,30,50,0.28); --neon-light-glow: rgba(220,30,50,0.1);
     }
 
     /* 1. Wood Classic (에스프레소) */
@@ -588,7 +588,7 @@
       text-shadow: 0 -1px 0 rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.08), 0 2px 4px rgba(0,0,0,0.4);
       transition: color 0.6s;
     }
-    /* Starbucks brand */
+    /* 오세훈 brand */
     .brand-clara { color: var(--needle, #ff6b6b); }
     .brand-cafe { color: var(--accent); }
     /* Brand Mascots - hidden by default */
@@ -1163,9 +1163,9 @@
       padding: 0 4px;
     }
     .analog-listen-together-btn {
-      background: linear-gradient(135deg, rgba(0,112,74,0.15), rgba(0,77,51,0.08));
+      background: linear-gradient(135deg, rgba(201,21,30,0.15), rgba(0,77,51,0.08));
       border: 1px solid #A07830;
-      color: #D4E9E2;
+      color: #F5D4D6;
       font-family: 'Inter', sans-serif;
       font-size: 10px; font-weight: 700;
       letter-spacing: -0.3px;
@@ -1173,16 +1173,16 @@
       border-radius: 12px;
       cursor: pointer;
       transition: all 0.3s;
-      box-shadow: 0 0 8px rgba(0,112,74,0.2);
+      box-shadow: 0 0 8px rgba(201,21,30,0.2);
       white-space: nowrap;
       flex: 1;
       min-width: 0;
     }
     .analog-listen-together-btn:hover {
-      background: linear-gradient(135deg, #00704A, #004d33);
+      background: linear-gradient(135deg, #C9151E, #8B0000);
       color: #fff;
-      border-color: rgba(0,196,122,0.7);
-      box-shadow: 0 0 16px rgba(0,112,74,0.4);
+      border-color: rgba(255,51,68,0.7);
+      box-shadow: 0 0 16px rgba(201,21,30,0.4);
     }
     /* Listen Together Modal */
     .listen-together-modal {
@@ -1642,12 +1642,12 @@
 <body>
 
 <!-- Analog Radio -->
-<div class="radio" id="analogRadio" data-theme="starbucks">
+<div class="radio" id="analogRadio" data-theme="osh">
   <div class="radio-inner">
 
     <!-- Brand (1줄) -->
     <div class="radio-top-row1">
-      <div class="brand"><img src="starbucks-logo.png" alt="Starbucks" style="height:40px;object-fit:contain;vertical-align:middle;margin-right:6px;background:#fff;border-radius:50%;padding:3px;filter:drop-shadow(0 0 6px rgba(0,196,122,0.6));"><span class="brand-clara">스타벅스</span> <span class="brand-cafe">라디오카페</span></div>
+      <div class="brand"><img src="osh-logo.png" alt="오세훈" style="height:40px;object-fit:contain;vertical-align:middle;margin-right:6px;background:#fff;border-radius:50%;padding:3px;filter:drop-shadow(0 0 6px rgba(255,51,68,0.6));"><span class="brand-clara">오세훈</span> <span class="brand-cafe">라디오카페</span></div>
     </div>
     <!-- Mode Switch + Power (2줄) -->
     <div class="radio-top-row2">
@@ -1768,7 +1768,7 @@
 
     <!-- Footer -->
     <div class="analog-footer">
-      <div class="analog-footer-text">&copy; 2026 스타벅스 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
+      <div class="analog-footer-text">&copy; 2026 오세훈 라디오카페 <span style="margin:0 4px;opacity:0.5;">|</span> <a href="landing.html" style="color:var(--accent);font-weight:700;">소개</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="manual.html">사용법</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="admin.html">관리자</a> <span style="margin:0 4px;opacity:0.5;">|</span> <a href="about.html"><strong>팀스</strong></a></div>
     </div>
   </div>
 </div>
@@ -2112,12 +2112,12 @@
 
   function updateMediaSession() {
     if (!('mediaSession' in navigator)) return;
-    var stName = analogSnappedStation ? analogSnappedStation.name : '스타벅스 라디오카페';
+    var stName = analogSnappedStation ? analogSnappedStation.name : '오세훈 라디오카페';
     var stProvider = analogSnappedStation ? analogSnappedStation.provider : '';
     navigator.mediaSession.metadata = new MediaMetadata({
       title: stName,
-      artist: stProvider || '스타벅스 라디오카페',
-      album: '스타벅스 라디오카페',
+      artist: stProvider || '오세훈 라디오카페',
+      album: '오세훈 라디오카페',
       artwork: [
         { src: 'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128"><rect width="128" height="128" rx="20" fill="%23333"/><text x="64" y="72" text-anchor="middle" font-size="48" fill="%23ffd700">📻</text></svg>'), sizes: '128x128', type: 'image/svg+xml' }
       ]

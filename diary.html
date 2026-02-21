@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#0a1f17">
+<html lang="ko" style="background:#150408">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>일기쓰기 | 스타벅스 라디오카페</title>
+  <title>일기쓰기 | 오세훈 라디오카페</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="일기쓰기 | 스타벅스 라디오카페" />
+  <meta property="og:title" content="일기쓰기 | 오세훈 라디오카페" />
   <meta property="og:description" content="오늘 하루를 음악과 함께 일기로 남겨보세요!" />
   <meta property="og:image" content="https://og-image.jpg" />
   <meta property="og:url" content="https://diary.html" />
@@ -15,14 +15,14 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg: #0a1f17;
-      --accent: #00704A;
-      --accent-glow: rgba(0,112,74,0.5);
+      --bg: #150408;
+      --accent: #C9151E;
+      --accent-glow: rgba(201,21,30,0.5);
       --gold: #CBA258;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -34,25 +34,25 @@
       content: '';
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(circle at 20% 80%, rgba(0,112,74,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0,112,74,0.04) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(201,21,30,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(201,21,30,0.04) 0%, transparent 50%);
       pointer-events: none; z-index: 0;
     }
     .hidden { display: none !important; }
 
     /* ── Card Container ── */
     .diary-card {
-      background: #1E3932;
-      border: 1px solid rgba(0,112,74,0.4);
+      background: #3a0808;
+      border: 1px solid rgba(201,21,30,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 380px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(201,21,30,0.15);
       position: relative; z-index: 1;
     }
     .diary-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
+      color: #C9151E; letter-spacing: 3px; margin-bottom: 16px;
     }
 
     /* ── Buttons ── */
@@ -61,70 +61,70 @@
     }
     .diary-btn {
       flex: 1; padding: 12px; border-radius: 12px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none;
-      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none;
+      color: #F5D4D6; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
     .diary-btn:disabled { opacity: 0.3; cursor: default; }
-    .diary-btn:not(:disabled):hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); background: linear-gradient(135deg, #008a5a, #006644); }
+    .diary-btn:not(:disabled):hover { box-shadow: 0 8px 24px rgba(201,21,30,0.4); background: linear-gradient(135deg, #008a5a, #006644); }
     .diary-btn-back {
       padding: 12px 16px; border-radius: 12px;
-      background: transparent; border: 1px solid rgba(0,112,74,0.3);
-      color: #7ab8a0; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(201,21,30,0.3);
+      color: #CC8888; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 600; cursor: pointer;
       transition: all 0.2s;
     }
-    .diary-btn-back:hover { border-color: rgba(0,112,74,0.6); color: #D4E9E2; background: rgba(0,112,74,0.1); }
+    .diary-btn-back:hover { border-color: rgba(201,21,30,0.6); color: #F5D4D6; background: rgba(201,21,30,0.1); }
     .diary-btn-edit {
       flex: 1; padding: 12px; border-radius: 12px;
-      background: transparent; border: 1px solid rgba(0,112,74,0.5);
-      color: #7ab8a0; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(201,21,30,0.5);
+      color: #CC8888; font-family: 'Outfit', sans-serif;
       font-size: 14px; font-weight: 700; cursor: pointer;
       transition: all 0.2s;
     }
-    .diary-btn-edit:hover { background: rgba(0,112,74,0.15); color: #D4E9E2; }
+    .diary-btn-edit:hover { background: rgba(201,21,30,0.15); color: #F5D4D6; }
 
     /* ── Type Selector ── */
     .diary-type-btn {
       display: flex; align-items: center; justify-content: center; gap: 8px;
       width: 100%; padding: 16px; border-radius: 14px;
-      background: rgba(0,112,74,0.08); border: 2px solid rgba(0,112,74,0.25);
-      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      background: rgba(201,21,30,0.08); border: 2px solid rgba(201,21,30,0.25);
+      color: #F5D4D6; font-family: 'Outfit', sans-serif;
       font-size: 15px; font-weight: 700; cursor: pointer;
       transition: all 0.3s; margin-bottom: 8px;
     }
-    .diary-type-btn:hover { border-color: rgba(0,196,122,0.6); background: rgba(0,112,74,0.18); }
+    .diary-type-btn:hover { border-color: rgba(255,51,68,0.6); background: rgba(201,21,30,0.18); }
     .diary-type-btn .type-icon { font-size: 22px; }
 
     /* ── Text Diary ── */
     .diary-textarea {
       width: 100%; min-height: 180px; padding: 14px;
-      border-radius: 12px; border: 1px solid rgba(0,112,74,0.3);
-      background: #122820; resize: vertical;
+      border-radius: 12px; border: 1px solid rgba(201,21,30,0.3);
+      background: #1e0808; resize: vertical;
       font-family: 'Inter', sans-serif; font-size: 14px;
-      color: #b8d8cc; line-height: 1.7;
+      color: #E0B0B0; line-height: 1.7;
     }
-    .diary-textarea::placeholder { color: #7ab8a0; }
-    .diary-textarea:focus { outline: none; border-color: #00704A; box-shadow: 0 0 8px rgba(0,112,74,0.3); }
+    .diary-textarea::placeholder { color: #CC8888; }
+    .diary-textarea:focus { outline: none; border-color: #C9151E; box-shadow: 0 0 8px rgba(201,21,30,0.3); }
     .diary-char-count {
-      text-align: right; font-size: 11px; color: #7ab8a0; margin-top: 4px;
+      text-align: right; font-size: 11px; color: #CC8888; margin-top: 4px;
     }
 
     /* ── Voice Recorder ── */
     .diary-recorder {
       display: flex; flex-direction: column; align-items: center; gap: 12px;
       padding: 20px; border-radius: 14px;
-      background: rgba(0,112,74,0.06); border: 1px solid rgba(0,112,74,0.2);
+      background: rgba(201,21,30,0.06); border: 1px solid rgba(201,21,30,0.2);
     }
     .diary-rec-btn {
       width: 72px; height: 72px; border-radius: 50%;
-      background: linear-gradient(135deg, #00704A, #004d33);
+      background: linear-gradient(135deg, #C9151E, #8B0000);
       border: 3px solid rgba(255,255,255,0.15);
-      color: #D4E9E2; font-size: 28px; cursor: pointer;
+      color: #F5D4D6; font-size: 28px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: all 0.3s;
-      box-shadow: 0 4px 16px rgba(0,112,74,0.4);
+      box-shadow: 0 4px 16px rgba(201,21,30,0.4);
     }
     .diary-rec-btn:hover { transform: scale(1.05); }
     .diary-rec-btn.recording {
@@ -140,10 +140,10 @@
       color: #CBA258; font-weight: 700;
     }
     .diary-rec-status {
-      font-family: 'Inter', sans-serif; font-size: 13px; color: #7ab8a0;
+      font-family: 'Inter', sans-serif; font-size: 13px; color: #CC8888;
     }
     .diary-rec-max {
-      font-size: 11px; color: #7ab8a0;
+      font-size: 11px; color: #CC8888;
     }
     .diary-preview-audio {
       width: 100%; margin-top: 8px; border-radius: 8px;
@@ -154,28 +154,28 @@
       margin-top: 12px;
     }
     .diary-photo-label {
-      font-size: 12px; color: #7ab8a0; margin-bottom: 6px;
+      font-size: 12px; color: #CC8888; margin-bottom: 6px;
       text-align: left; font-weight: 600;
     }
     .diary-photo-upload {
-      border: 2px dashed rgba(0,112,74,0.35);
+      border: 2px dashed rgba(201,21,30,0.35);
       border-radius: 12px; padding: 16px;
       cursor: pointer; transition: all 0.3s;
-      background: rgba(0,112,74,0.05);
+      background: rgba(201,21,30,0.05);
       text-align: center;
     }
     .diary-photo-upload:hover {
-      border-color: rgba(0,196,122,0.7); background: rgba(0,112,74,0.12);
+      border-color: rgba(255,51,68,0.7); background: rgba(201,21,30,0.12);
     }
     .diary-photo-upload-icon { font-size: 24px; margin-bottom: 4px; }
-    .diary-photo-upload-text { font-size: 12px; color: #7ab8a0; }
+    .diary-photo-upload-text { font-size: 12px; color: #CC8888; }
     .diary-photo-thumbs {
       display: flex; gap: 8px; margin-top: 8px;
     }
     .diary-photo-thumb {
       position: relative; width: 80px; height: 80px;
       border-radius: 10px; overflow: hidden;
-      border: 1px solid rgba(0,112,74,0.3);
+      border: 1px solid rgba(201,21,30,0.3);
     }
     .diary-photo-thumb img {
       width: 100%; height: 100%; object-fit: cover;
@@ -198,7 +198,7 @@
     .diary-detail-photo {
       width: 100px; height: 100px; border-radius: 10px;
       overflow: hidden; cursor: pointer;
-      border: 1px solid rgba(0,112,74,0.3);
+      border: 1px solid rgba(201,21,30,0.3);
     }
     .diary-detail-photo img {
       width: 100%; height: 100%; object-fit: cover;
@@ -218,14 +218,14 @@
     .diary-list-header {
       display: flex; align-items: center; justify-content: space-between;
       margin-top: 20px; margin-bottom: 10px;
-      padding-bottom: 8px; border-bottom: 1px solid rgba(0,112,74,0.25);
+      padding-bottom: 8px; border-bottom: 1px solid rgba(201,21,30,0.25);
     }
     .diary-list-title {
       font-family: 'Outfit', sans-serif; font-size: 14px;
-      font-weight: 700; color: #00704A;
+      font-weight: 700; color: #C9151E;
     }
     .diary-list-count {
-      font-size: 12px; color: #7ab8a0;
+      font-size: 12px; color: #CC8888;
     }
     .diary-list {
       max-height: 300px; overflow-y: auto;
@@ -233,12 +233,12 @@
     .diary-item {
       display: flex; align-items: center; gap: 10px;
       padding: 10px 12px; border-radius: 10px;
-      background: rgba(0,112,74,0.08);
-      border: 1px solid rgba(0,112,74,0.15);
+      background: rgba(201,21,30,0.08);
+      border: 1px solid rgba(201,21,30,0.15);
       margin-bottom: 6px; cursor: pointer;
       transition: all 0.2s;
     }
-    .diary-item:hover { background: rgba(0,112,74,0.18); border-color: rgba(0,196,122,0.35); }
+    .diary-item:hover { background: rgba(201,21,30,0.18); border-color: rgba(255,51,68,0.35); }
     .diary-item-no {
       font-family: 'Orbitron', monospace; font-size: 12px;
       color: #CBA258; font-weight: 700; min-width: 28px;
@@ -247,34 +247,34 @@
       flex: 1; text-align: left;
     }
     .diary-item-date {
-      font-size: 12px; color: #D4E9E2; font-weight: 600;
+      font-size: 12px; color: #F5D4D6; font-weight: 600;
     }
     .diary-item-type {
-      font-size: 11px; color: #7ab8a0; margin-top: 2px;
+      font-size: 11px; color: #CC8888; margin-top: 2px;
     }
     .diary-item-icon {
-      font-size: 18px; color: #00704A;
+      font-size: 18px; color: #C9151E;
     }
     .diary-empty {
       padding: 24px; text-align: center;
-      font-size: 13px; color: #7ab8a0;
+      font-size: 13px; color: #CC8888;
     }
 
     /* ── Detail View ── */
     .diary-detail-date {
-      font-size: 12px; color: #7ab8a0; margin-bottom: 12px;
+      font-size: 12px; color: #CC8888; margin-bottom: 12px;
     }
     .diary-detail-type-badge {
       display: inline-block; padding: 3px 10px; border-radius: 8px;
       font-size: 11px; font-weight: 600; margin-bottom: 12px;
     }
-    .badge-text { background: rgba(0,112,74,0.15); color: #00704A; }
+    .badge-text { background: rgba(201,21,30,0.15); color: #C9151E; }
     .badge-voice { background: rgba(200,80,80,0.1); color: #e07070; }
     .diary-detail-content {
       text-align: left; padding: 14px;
-      background: #122820; border-radius: 12px;
-      border: 1px solid rgba(0,112,74,0.2);
-      font-size: 14px; color: #b8d8cc; line-height: 1.7;
+      background: #1e0808; border-radius: 12px;
+      border: 1px solid rgba(201,21,30,0.2);
+      font-size: 14px; color: #E0B0B0; line-height: 1.7;
       white-space: pre-wrap; word-break: break-word;
       max-height: 250px; overflow-y: auto;
     }

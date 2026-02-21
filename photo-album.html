@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko" style="background:#0a1f17">
+<html lang="ko" style="background:#150408">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>포토앨범 | 스타벅스 라디오카페</title>
+  <title>포토앨범 | 오세훈 라디오카페</title>
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="포토앨범 | 스타벅스 라디오카페" />
+  <meta property="og:title" content="포토앨범 | 오세훈 라디오카페" />
   <meta property="og:description" content="소중한 추억을 포토앨범에 담아보세요!" />
   <meta property="og:image" content="https://og-image.jpg" />
   <meta property="og:url" content="https://photo-album.html" />
@@ -16,7 +16,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -28,56 +28,56 @@
       content: '';
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
       background:
-        radial-gradient(circle at 20% 80%, rgba(0,112,74,0.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(0,112,74,0.04) 0%, transparent 50%);
+        radial-gradient(circle at 20% 80%, rgba(201,21,30,0.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(201,21,30,0.04) 0%, transparent 50%);
       pointer-events: none; z-index: 0;
     }
 
     /* Album Card */
     .album-card {
-      background: #1E3932;
-      border: 1px solid rgba(0,112,74,0.4);
+      background: #3a0808;
+      border: 1px solid rgba(201,21,30,0.4);
       border-radius: 20px; padding: 24px;
       width: 100%; max-width: 400px;
       text-align: center;
-      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(0,112,74,0.15);
+      box-shadow: 0 40px 80px rgba(0,0,0,0.4), 0 0 40px rgba(201,21,30,0.15);
       position: relative; z-index: 1;
     }
     .album-logo {
       font-family: 'Outfit', sans-serif; font-size: 20px; font-weight: 700;
-      color: #00704A; letter-spacing: 2px; margin-bottom: 6px;
+      color: #C9151E; letter-spacing: 2px; margin-bottom: 6px;
     }
     .album-title {
       font-family: 'Orbitron', monospace; font-size: 13px; font-weight: 700;
-      color: #00704A; letter-spacing: 3px; margin-bottom: 16px;
+      color: #C9151E; letter-spacing: 3px; margin-bottom: 16px;
     }
     .album-back-btn {
       position: absolute; top: 12px; left: 12px;
-      background: none; border: 1px solid rgba(0,112,74,0.4);
-      color: #7ab8a0; font-size: 12px; padding: 4px 10px;
+      background: none; border: 1px solid rgba(201,21,30,0.4);
+      color: #CC8888; font-size: 12px; padding: 4px 10px;
       border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
       white-space: nowrap; z-index: 10;
     }
-    .album-back-btn:hover { background: rgba(0,112,74,0.1); }
+    .album-back-btn:hover { background: rgba(201,21,30,0.1); }
     .album-top-bar {
       position: relative; margin-bottom: 8px;
     }
 
     /* Upload Area */
     .album-upload-area {
-      border: 2px dashed rgba(0,112,74,0.4);
+      border: 2px dashed rgba(201,21,30,0.4);
       border-radius: 16px; padding: 30px;
       cursor: pointer; transition: all 0.3s;
       margin-bottom: 16px;
-      background: rgba(0,112,74,0.05);
+      background: rgba(201,21,30,0.05);
     }
     .album-upload-area:hover, .album-upload-area.dragover {
-      border-color: rgba(0,196,122,0.8);
-      background: rgba(0,112,74,0.1);
+      border-color: rgba(255,51,68,0.8);
+      background: rgba(201,21,30,0.1);
     }
     .album-upload-icon { font-size: 40px; margin-bottom: 8px; }
-    .album-upload-text { font-size: 13px; color: #7ab8a0; }
-    .album-upload-sub { font-size: 11px; color: rgba(0,112,74,0.6); margin-top: 6px; }
+    .album-upload-text { font-size: 13px; color: #CC8888; }
+    .album-upload-sub { font-size: 11px; color: rgba(201,21,30,0.6); margin-top: 6px; }
     .album-file-input { display: none; }
 
     /* Upload Progress */
@@ -87,15 +87,15 @@
     }
     .album-progress-bar {
       width: 100%; height: 4px; border-radius: 2px;
-      background: rgba(0,112,74,0.15); overflow: hidden;
+      background: rgba(201,21,30,0.15); overflow: hidden;
     }
     .album-progress-fill {
       height: 100%; width: 0%; border-radius: 2px;
-      background: #00704A;
+      background: #C9151E;
       transition: width 0.3s;
     }
     .album-progress-text {
-      font-size: 11px; color: #7ab8a0;
+      font-size: 11px; color: #CC8888;
       margin-top: 4px;
     }
 
@@ -124,27 +124,27 @@
     .gift-link-box { display: flex; gap: 6px; margin-top: 12px; }
     .gift-link-box input {
       flex: 1; padding: 10px; border-radius: 8px;
-      background: #122820;
-      border: 2px solid rgba(0,112,74,0.3);
-      color: #b8d8cc; font-size: 11px;
+      background: #1e0808;
+      border: 2px solid rgba(201,21,30,0.3);
+      color: #E0B0B0; font-size: 11px;
       font-family: 'Inter', sans-serif; outline: none;
     }
     .gift-link-box button {
       padding: 10px 16px; border-radius: 8px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none;
-      color: #D4E9E2; font-family: 'Outfit', sans-serif;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none;
+      color: #F5D4D6; font-family: 'Outfit', sans-serif;
       font-size: 13px; font-weight: 700; cursor: pointer;
     }
-    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(0,112,74,0.4); }
+    .gift-link-box button:hover { box-shadow: 0 8px 24px rgba(201,21,30,0.4); }
     .gift-copied { color: #CBA258; font-size: 12px; margin-top: 6px; }
     .album-waiting {
-      color: #7ab8a0; font-size: 12px; margin: 10px 0;
+      color: #CC8888; font-size: 12px; margin: 10px 0;
       font-family: 'Inter', sans-serif; display: flex; align-items: center;
       justify-content: center; gap: 6px;
     }
     .waiting-dot {
       display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-      background: #00704A; animation: waitPulse 1.2s ease-in-out infinite;
+      background: #C9151E; animation: waitPulse 1.2s ease-in-out infinite;
     }
     @keyframes waitPulse {
       0%, 100% { opacity: 0.3; transform: scale(0.8); }
@@ -155,12 +155,12 @@
     /* Action Buttons */
     .album-action-btn {
       padding: 10px 20px; border-radius: 12px;
-      background: transparent; border: 1px solid rgba(0,112,74,0.5);
-      color: #7ab8a0; font-family: 'Outfit', sans-serif;
+      background: transparent; border: 1px solid rgba(201,21,30,0.5);
+      color: #CC8888; font-family: 'Outfit', sans-serif;
       font-size: 13px; font-weight: 700; cursor: pointer;
       transition: all 0.2s; margin: 4px;
     }
-    .album-action-btn:hover { background: rgba(0,112,74,0.15); color: #D4E9E2; }
+    .album-action-btn:hover { background: rgba(201,21,30,0.15); color: #F5D4D6; }
     .album-actions {
       display: flex; flex-wrap: wrap; justify-content: center;
       gap: 6px; margin-top: 12px;
@@ -168,7 +168,7 @@
 
     /* Photo Count */
     .album-photo-count {
-      font-size: 12px; color: #7ab8a0;
+      font-size: 12px; color: #CC8888;
       margin-bottom: 8px;
     }
 
@@ -186,7 +186,7 @@
       border-radius: 8px; cursor: pointer; z-index: 91;
       font-family: 'Inter', sans-serif;
     }
-    .album-slideshow-close:hover { border-color: #00704A; color: #D4E9E2; }
+    .album-slideshow-close:hover { border-color: #C9151E; color: #F5D4D6; }
     .album-slideshow {
       position: relative; width: 100%; max-width: 400px;
       aspect-ratio: 4/3; border-radius: 16px;
@@ -215,18 +215,18 @@
       color: #fff; font-size: 14px; cursor: pointer;
       font-family: 'Inter', sans-serif;
     }
-    .album-slide-btn:hover { border-color: #00704A; color: #D4E9E2; }
+    .album-slide-btn:hover { border-color: #C9151E; color: #F5D4D6; }
     .album-slide-count { color: rgba(255,255,255,0.9); font-size: 13px; }
     .album-slide-auto {
       padding: 8px 14px; border-radius: 10px;
-      background: rgba(0,112,74,0.15);
-      border: 1px solid rgba(0,112,74,0.4);
-      color: #7ab8a0; font-size: 12px; cursor: pointer;
+      background: rgba(201,21,30,0.15);
+      border: 1px solid rgba(201,21,30,0.4);
+      color: #CC8888; font-size: 12px; cursor: pointer;
       font-family: 'Inter', sans-serif;
     }
     .album-slide-auto.active {
-      background: #00704A; color: #fff;
-      border-color: #00704A;
+      background: #C9151E; color: #fff;
+      border-color: #C9151E;
     }
 
     /* View Toggle */
@@ -235,14 +235,14 @@
     }
     .album-view-btn {
       padding: 6px 14px; border-radius: 10px;
-      border: 1px solid rgba(0,112,74,0.2);
-      background: rgba(0,112,74,0.05); color: #7ab8a0;
+      border: 1px solid rgba(201,21,30,0.2);
+      background: rgba(201,21,30,0.05); color: #CC8888;
       font-family: 'Inter', sans-serif; font-size: 12px;
       cursor: pointer; transition: all 0.2s;
     }
     .album-view-btn.active {
-      border-color: #00704A; color: #D4E9E2;
-      background: rgba(0,112,74,0.2);
+      border-color: #C9151E; color: #F5D4D6;
+      background: rgba(201,21,30,0.2);
     }
 
     /* Fullscreen photo viewer (for grid click) */
@@ -269,8 +269,8 @@
       position: fixed; bottom: 16px; right: 16px;
       width: 50px; height: 50px;
       border-radius: 50%;
-      background: radial-gradient(circle at 50% 50%, #1E3932 0%, #0a1f17 40%, #1E3932 41%, #0a1f17 60%, #1E3932 61%, #122820 100%);
-      box-shadow: 0 0 10px rgba(0,112,74,0.4);
+      background: radial-gradient(circle at 50% 50%, #3a0808 0%, #150408 40%, #3a0808 41%, #150408 60%, #3a0808 61%, #1e0808 100%);
+      box-shadow: 0 0 10px rgba(201,21,30,0.4);
       animation: lpSpin 3s linear infinite;
       z-index: 50;
     }
@@ -285,10 +285,10 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Chat Panel - Starbucks theme */
+    /* Chat Panel - 오세훈 theme */
     .chat-panel {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(160deg, #0a1f17 0%, #1E3932 40%, #0d2b20 70%, #0a1f17 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
       border: none;
       z-index: 100; display: flex; flex-direction: column;
       overflow: hidden;
@@ -296,20 +296,20 @@
     .chat-header {
       display: flex; align-items: center; justify-content: space-between;
       padding: 12px 16px;
-      background: rgba(0,112,74,0.12);
-      border-bottom: 1px solid rgba(0,112,74,0.25);
+      background: rgba(201,21,30,0.12);
+      border-bottom: 1px solid rgba(201,21,30,0.25);
       flex-shrink: 0;
     }
     .chat-header-title {
       font-family: 'Orbitron', monospace; font-size: 11px; font-weight: 700;
-      color: #00704A; letter-spacing: 2px;
+      color: #C9151E; letter-spacing: 2px;
     }
     .chat-header-info {
-      font-family: 'Inter', sans-serif; font-size: 11px; color: #7ab8a0;
+      font-family: 'Inter', sans-serif; font-size: 11px; color: #CC8888;
     }
     .chat-back-btn {
-      background: none; border: 1px solid rgba(0,112,74,0.4);
-      color: #7ab8a0; font-size: 12px; padding: 4px 10px;
+      background: none; border: 1px solid rgba(201,21,30,0.4);
+      color: #CC8888; font-size: 12px; padding: 4px 10px;
       border-radius: 8px; cursor: pointer; font-family: 'Inter', sans-serif;
       white-space: nowrap;
     }
@@ -320,16 +320,16 @@
     .chat-nickname-box { padding: 24px 16px; text-align: center; }
     .chat-nickname-box input {
       padding: 12px 16px; border-radius: 10px;
-      border: 1px solid rgba(0,112,74,0.3);
-      background: #122820; color: #b8d8cc;
+      border: 1px solid rgba(201,21,30,0.3);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 14px;
       text-align: center; outline: none; width: 65%;
     }
-    .chat-nickname-box input::placeholder { color: #7ab8a0; }
-    .chat-nickname-box input:focus { border-color: #00704A; }
+    .chat-nickname-box input::placeholder { color: #CC8888; }
+    .chat-nickname-box input:focus { border-color: #C9151E; }
     .chat-nickname-box button {
       margin-left: 8px; padding: 12px 20px; border-radius: 10px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none; color: #F5D4D6;
       font-family: 'Outfit', sans-serif; font-size: 14px;
       font-weight: 700; cursor: pointer;
     }
@@ -338,7 +338,7 @@
       display: flex; flex-direction: column;
     }
     .chat-messages::-webkit-scrollbar { width: 4px; }
-    .chat-messages::-webkit-scrollbar-thumb { background: rgba(0,112,74,0.4); border-radius: 2px; }
+    .chat-messages::-webkit-scrollbar-thumb { background: rgba(201,21,30,0.4); border-radius: 2px; }
     .chat-msg {
       margin-bottom: 10px; font-family: 'Inter', sans-serif; font-size: 15px;
       line-height: 1.5; word-break: break-word;
@@ -347,42 +347,42 @@
     .chat-msg.me { align-self: flex-end; align-items: flex-end; }
     .chat-msg.other { align-self: flex-start; align-items: flex-start; }
     .chat-msg-name {
-      font-weight: 700; color: #00704A; font-size: 13px; margin-bottom: 3px;
+      font-weight: 700; color: #C9151E; font-size: 13px; margin-bottom: 3px;
     }
-    .chat-msg.me .chat-msg-name { color: #7ab8a0; }
+    .chat-msg.me .chat-msg-name { color: #CC8888; }
     .chat-msg-bubble {
       padding: 8px 14px; border-radius: 14px;
-      line-height: 1.5; color: #D4E9E2;
+      line-height: 1.5; color: #F5D4D6;
     }
     .chat-msg.other .chat-msg-bubble {
-      background: rgba(0,112,74,0.15);
-      border: 1px solid rgba(0,112,74,0.2);
+      background: rgba(201,21,30,0.15);
+      border: 1px solid rgba(201,21,30,0.2);
       border-top-left-radius: 4px;
     }
     .chat-msg.me .chat-msg-bubble {
-      background: #00704A; color: #fff;
+      background: #C9151E; color: #fff;
       border-top-right-radius: 4px;
     }
     .chat-msg-system {
-      text-align: center; color: #7ab8a0;
+      text-align: center; color: #CC8888;
       font-size: 13px; font-style: italic; margin: 6px 0;
       align-self: center;
     }
     .chat-input-box {
       display: flex; gap: 8px; padding: 10px 16px;
-      border-top: 1px solid rgba(0,112,74,0.25);
+      border-top: 1px solid rgba(201,21,30,0.25);
     }
     .chat-input-box input {
       flex: 1; padding: 10px 14px; border-radius: 10px;
-      border: 1px solid rgba(0,112,74,0.25);
-      background: #122820; color: #b8d8cc;
+      border: 1px solid rgba(201,21,30,0.25);
+      background: #1e0808; color: #E0B0B0;
       font-family: 'Inter', sans-serif; font-size: 13px; outline: none;
     }
-    .chat-input-box input::placeholder { color: #7ab8a0; }
-    .chat-input-box input:focus { border-color: #00704A; }
+    .chat-input-box input::placeholder { color: #CC8888; }
+    .chat-input-box input:focus { border-color: #C9151E; }
     .chat-input-box button {
       padding: 10px 16px; border-radius: 10px;
-      background: linear-gradient(135deg, #00704A, #004d33); border: none; color: #D4E9E2;
+      background: linear-gradient(135deg, #C9151E, #8B0000); border: none; color: #F5D4D6;
       font-family: 'Outfit', sans-serif; font-size: 13px;
       font-weight: 700; cursor: pointer; white-space: nowrap;
     }
@@ -390,19 +390,19 @@
     /* Empty state */
     .album-empty {
       padding: 30px 16px;
-      color: #7ab8a0;
+      color: #CC8888;
       font-size: 14px;
     }
 
     /* Guide */
     .album-guide {
       text-align: left; margin-top: 14px; padding: 12px 14px;
-      background: rgba(0,112,74,0.06); border-radius: 10px;
-      border-left: 3px solid #00704A;
+      background: rgba(201,21,30,0.06); border-radius: 10px;
+      border-left: 3px solid #C9151E;
     }
     .album-guide p {
       font-family: 'Inter', sans-serif; font-size: 13px;
-      color: #D4E9E2; line-height: 1.6;
+      color: #F5D4D6; line-height: 1.6;
       margin: 0 0 8px 0;
     }
     .album-guide p:last-child { margin-bottom: 0; }
@@ -414,7 +414,7 @@
   <div class="album-top-bar">
     <button class="album-back-btn" onclick="history.back()">&#9664; 이전</button>
   </div>
-  <div class="album-logo">스타벅스 라디오카페</div>
+  <div class="album-logo">오세훈 라디오카페</div>
   <div class="album-title" id="albumTitle">라디오 포토앨범</div>
 
   <!-- Creator / Upload Section -->
