@@ -628,7 +628,16 @@ body {
 
 /* ── PAGE INNER / LABEL ── */
 .page-inner { max-width: 1100px; margin: 0 auto; }
-.page-alt { background: rgba(201,21,30,0.025); }
+
+/* 교차 섹션 배경 */
+.page { background: #FAF7F7; }
+.page-alt { background: #F0E8E8; }
+.page-dark { background: linear-gradient(160deg, #3a0808 0%, #280610 60%, #1a0818 100%); color: #fff; }
+.page-dark .page-label { color: rgba(201,21,30,0.9); }
+.page-dark .page-title { color: #F5D4D6; }
+.page-dark .feature-card { background: rgba(255,255,255,0.05); border-color: rgba(201,21,30,0.25); }
+.page-dark .feature-title { color: #F5D4D6; }
+.page-dark .feature-desc { color: rgba(245,212,214,0.65); }
 .page-label {
   font-family: 'Orbitron', monospace;
   font-size: 10px; letter-spacing: 5px; font-weight: 700;
@@ -866,6 +875,70 @@ body {
       <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">5대</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">서울 공약</div></div>
       <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">24/7</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">시민 소통</div></div>
       <div style="text-align:center;"><div style="font-size:28px;font-weight:900;color:#C9151E;">2026</div><div style="font-size:11px;color:rgba(255,255,255,0.5);margin-top:4px;">지방선거</div></div>
+    </div>
+
+    <!-- 문서 메타 -->
+    <div style="margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;max-width:700px;margin-left:auto;margin-right:auto;">
+      <div style="padding:16px;border-right:1px solid rgba(255,255,255,0.08);text-align:center;">
+        <div style="font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:6px;">DOCUMENT TYPE</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;">Strategic Proposal</div>
+      </div>
+      <div style="padding:16px;border-right:1px solid rgba(255,255,255,0.08);text-align:center;">
+        <div style="font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:6px;">VERSION</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;">v1.0 · 2026.02</div>
+      </div>
+      <div style="padding:16px;border-right:1px solid rgba(255,255,255,0.08);text-align:center;">
+        <div style="font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:6px;">PAGES</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;">10 Sections</div>
+      </div>
+      <div style="padding:16px;text-align:center;">
+        <div style="font-family:'Orbitron',monospace;font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.35);margin-bottom:6px;">PREPARED BY</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;">RadioKafe Team</div>
+      </div>
+    </div>
+
+    <!-- 10개 섹션 버튼 TOC -->
+    <div style="margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:900px;margin-left:auto;margin-right:auto;">
+      <a href="#p1" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">01</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">Executive Summary — 캠페인 플랫폼 개요</span>
+      </a>
+      <a href="#p2" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">02</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">문제 정의 — 기존 선거 캠페인의 한계</span>
+      </a>
+      <a href="#p3" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">03</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">솔루션 — 라디오카페 새로운 패러다임</span>
+      </a>
+      <a href="#p4" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">04</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">핵심 기능 14가지</span>
+      </a>
+      <a href="#p5" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">05</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">캠페인 흐름 — 첫 접속부터 지지자까지</span>
+      </a>
+      <a href="#p6" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">06</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">유권자 CRM &amp; 데이터 분석</span>
+      </a>
+      <a href="#p7" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">07</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">전략 로드맵 — D-90 선거 계획</span>
+      </a>
+      <a href="#p8" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">08</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">5대 서울 공약 비전</span>
+      </a>
+      <a href="#p9" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">09</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">기술 아키텍처 설계도</span>
+      </a>
+      <a href="#p10" style="display:flex;align-items:flex-start;gap:10px;padding:14px 16px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;text-decoration:none;color:#fff;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,21,30,0.25)';this.style.borderColor='rgba(201,21,30,0.5)'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.borderColor='rgba(255,255,255,0.12)'">
+        <span style="font-family:'Orbitron',monospace;font-size:11px;color:#C9151E;font-weight:700;flex-shrink:0;margin-top:1px;">10</span>
+        <span style="font-size:12px;line-height:1.45;color:rgba(255,255,255,0.85);">오세훈의 약속 — 피치덱 핵심 문구</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1325,6 +1398,58 @@ body {
           <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:4px;">예상 월 운영비</div>
           <div style="font-size:22px;font-weight:900;color:#C9151E;">~$25/월</div>
           <div style="font-size:11px;color:rgba(255,255,255,0.3);margin-top:2px;">Supabase Pro 기준</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── P10: 피치덱 핵심 문구 ── -->
+<section class="page page-dark" id="p10">
+  <div class="page-inner">
+    <div class="page-label">10 — PITCH DECK</div>
+    <h2 class="page-title">오세훈의 약속:<br>피치덱 핵심 문구</h2>
+    <p style="font-size:15px;color:rgba(245,212,214,0.65);margin-top:16px;margin-bottom:48px;">서울시민에게 전달할 오세훈 라디오카페의 핵심 메시지</p>
+    <div style="display:flex;flex-direction:column;gap:24px;">
+      <div style="padding:32px;background:rgba(201,21,30,0.15);border-radius:20px;border:1px solid rgba(201,21,30,0.3);border-left:5px solid #C9151E;">
+        <div style="font-family:'Orbitron',monospace;font-size:10px;letter-spacing:3px;color:#C9151E;margin-bottom:12px;">HEADLINE</div>
+        <p style="font-size:22px;font-weight:700;color:#F5D4D6;line-height:1.5;">"서울시민의 일상에 흐르는 라디오처럼,<br>오세훈은 언제나 여러분과 함께합니다."</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+        <div style="padding:24px;background:rgba(255,255,255,0.05);border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-size:11px;letter-spacing:2px;color:#C9151E;margin-bottom:10px;font-family:'Orbitron',monospace;">VISION</div>
+          <p style="font-size:15px;font-weight:700;color:#F5D4D6;margin-bottom:8px;">더 나은 서울을 위한<br>디지털 소통 혁신</p>
+          <p style="font-size:13px;color:rgba(245,212,214,0.6);line-height:1.65;">선거는 하루이지만, 오세훈의 서울시민 소통은 365일 계속됩니다. 라디오카페는 선거 이후에도 시민과 시장을 잇는 영구적 소통 채널입니다.</p>
+        </div>
+        <div style="padding:24px;background:rgba(255,255,255,0.05);border-radius:16px;border:1px solid rgba(255,255,255,0.1);">
+          <div style="font-size:11px;letter-spacing:2px;color:#C9151E;margin-bottom:10px;font-family:'Orbitron',monospace;">PROMISE</div>
+          <p style="font-size:15px;font-weight:700;color:#F5D4D6;margin-bottom:8px;">시민의 목소리를<br>정책으로 만드는 서울</p>
+          <p style="font-size:13px;color:rgba(245,212,214,0.6);line-height:1.65;">신청곡 한 곡, 사연 한 줄이 오세훈 서울시장의 정책 결정에 반영됩니다. 라디오카페는 시민 의견이 살아 숨 쉬는 열린 정책 플랫폼입니다.</p>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+        <div style="padding:20px;background:rgba(201,21,30,0.1);border-radius:12px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">🏛️</div>
+          <div style="font-size:14px;font-weight:700;color:#F5D4D6;margin-bottom:6px;">신뢰의 서울</div>
+          <div style="font-size:12px;color:rgba(245,212,214,0.55);line-height:1.5;">시민이 믿고 의지할 수 있는<br>투명한 행정의 오세훈</div>
+        </div>
+        <div style="padding:20px;background:rgba(201,21,30,0.1);border-radius:12px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">🌟</div>
+          <div style="font-size:14px;font-weight:700;color:#F5D4D6;margin-bottom:6px;">활력의 서울</div>
+          <div style="font-size:12px;color:rgba(245,212,214,0.55);line-height:1.5;">청년이 꿈꾸고 어르신이<br>행복한 역동적인 서울</div>
+        </div>
+        <div style="padding:20px;background:rgba(201,21,30,0.1);border-radius:12px;text-align:center;">
+          <div style="font-size:32px;margin-bottom:8px;">💪</div>
+          <div style="font-size:14px;font-weight:700;color:#F5D4D6;margin-bottom:6px;">도약의 서울</div>
+          <div style="font-size:12px;color:rgba(245,212,214,0.55);line-height:1.5;">세계가 주목하는<br>글로벌 도시 서울을 만듭니다</div>
+        </div>
+      </div>
+      <div style="padding:28px;background:linear-gradient(135deg,rgba(201,21,30,0.2),rgba(139,0,0,0.2));border-radius:16px;border:1px solid rgba(201,21,30,0.4);text-align:center;">
+        <div style="font-size:18px;font-weight:900;color:#fff;margin-bottom:8px;">오세훈 × RadioKafe — 함께 만드는 2026 서울</div>
+        <div style="font-size:14px;color:rgba(255,255,255,0.6);">지금 바로 오세훈 라디오카페를 경험하세요.</div>
+        <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+          <a href="landing.html" style="padding:12px 28px;background:linear-gradient(135deg,#C9151E,#8B0000);color:#fff;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px;box-shadow:0 4px 16px rgba(201,21,30,0.4);">🏠 지금 시작하기</a>
+          <a href="index.html" style="padding:12px 28px;background:rgba(255,255,255,0.1);color:#fff;border-radius:24px;text-decoration:none;font-weight:700;font-size:14px;border:1px solid rgba(255,255,255,0.2);">📻 라디오카페 입장</a>
         </div>
       </div>
     </div>
