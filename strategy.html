@@ -689,6 +689,49 @@ body {
   .formula-box { padding: 20px; }
 }
 
+/* ── YOUTUBE MODAL ── */
+.yt-trigger-wrap {
+  background: linear-gradient(160deg, var(--green-deep), var(--green-dark));
+  padding: 48px 24px; text-align: center;
+}
+.yt-trigger-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: #fff; border: none; border-radius: 50px;
+  padding: 16px 36px; font-size: 1rem; font-weight: 700;
+  cursor: pointer; letter-spacing: 1px;
+  box-shadow: 0 4px 24px rgba(255,68,68,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.yt-trigger-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(255,68,68,0.6);
+}
+.yt-trigger-btn svg { width: 28px; height: 28px; fill: #fff; flex-shrink: 0; }
+.yt-trigger-desc {
+  margin-top: 14px; font-size: 0.78rem;
+  color: rgba(212,233,226,0.6); letter-spacing: 1px;
+}
+.yt-overlay {
+  display: none; position: fixed; inset: 0; z-index: 9999;
+  background: rgba(0,0,0,0.88); backdrop-filter: blur(6px);
+  justify-content: center; align-items: center;
+}
+.yt-overlay.visible { display: flex; }
+.yt-modal {
+  position: relative; width: 90%; max-width: 860px;
+  aspect-ratio: 16/9; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 0 60px rgba(0,0,0,0.7);
+}
+.yt-modal iframe { width: 100%; height: 100%; border: none; }
+.yt-close {
+  position: absolute; top: -40px; right: 0;
+  background: none; border: none; color: #fff;
+  font-size: 2rem; cursor: pointer; line-height: 1;
+  opacity: 0.8; transition: opacity 0.2s;
+}
+.yt-close:hover { opacity: 1; }
+
 /* ── PDF BUTTON ── */
 .pdf-btn {
   display: inline-flex; align-items: center; gap: 6px;
@@ -807,6 +850,23 @@ body {
     <a class="toc-item" href="#p10"><span class="toc-num">10</span><span class="toc-text">피치덱 & 파트너십 제안</span></a>
   </div>
 </section>
+
+<!-- YouTube Video Section -->
+<div class="yt-trigger-wrap">
+  <button class="yt-trigger-btn" onclick="window.open('https://youtu.be/asPrfWAnXuQ','_blank')">
+    <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+    영상으로 보는 스타벅스 라디오카페
+  </button>
+  <p class="yt-trigger-desc">▶ 클릭하면 유튜브에서 소개 영상이 재생됩니다</p>
+</div>
+
+<!-- YouTube Modal -->
+<div class="yt-overlay" id="ytOverlay" onclick="if(event.target===this)closeYT()">
+  <div class="yt-modal">
+    <button class="yt-close" onclick="closeYT()">✕</button>
+    <iframe id="ytFrame" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</div>
 
 <div class="section-divider"></div>
 
@@ -1857,6 +1917,15 @@ body {
 
 
 <script>
+function openYT() {
+  document.getElementById('ytFrame').src = 'https://www.youtube.com/embed/asPrfWAnXuQ?autoplay=1';
+  document.getElementById('ytOverlay').classList.add('visible');
+}
+function closeYT() {
+  document.getElementById('ytFrame').src = '';
+  document.getElementById('ytOverlay').classList.remove('visible');
+}
+
 function generatePDF() {
   // 모든 fade-in 요소 강제 표시 후 인쇄
   document.querySelectorAll('.card, .stat-box, .pitch-card, .flow-body, .tl-content').forEach(el => {
