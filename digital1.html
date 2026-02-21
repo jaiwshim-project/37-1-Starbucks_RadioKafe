@@ -971,6 +971,9 @@
       box-shadow: 0 3px 6px rgba(0,0,0,0.3), 0 0 4px rgba(80,180,255,0.15), inset 0 1px 0 rgba(255,255,255,0.06);
     }
     .preset-btn.preset-empty { opacity: 0.35; cursor: default; border-style: dashed; }
+    .preset-btn.preset-blank { cursor: default; }
+    .preset-btn.preset-blank:hover { transform: none; box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
+    .preset-btn.preset-blank:active { transform: none; }
     .preset-btn.preset-empty:hover { transform: none; box-shadow: 0 3px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.06); }
     .preset-btn.preset-empty:active { transform: none; }
     .preset-num {
@@ -1434,6 +1437,29 @@
     .tarot-login-msg {
       text-align: center; padding: 30px 10px;
       font-family: 'Inter', sans-serif; font-size: 15px; color: #bbb; line-height: 1.8;
+    }
+
+    /* === Image Preview Modal === */
+    .img-preview-overlay {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.85); z-index: 9999;
+      justify-content: center; align-items: center;
+    }
+    .img-preview-overlay.visible { display: flex; }
+    .img-preview-modal {
+      position: relative; width: 92%; max-width: 400px; max-height: 90vh;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 0 40px rgba(0,0,0,0.6);
+    }
+    .img-preview-modal img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
+    }
+    .img-preview-close {
+      position: absolute; top: 10px; right: 12px;
+      background: rgba(0,0,0,0.55); border: none; color: #fff;
+      font-size: 22px; width: 32px; height: 32px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      line-height: 1;
     }
 
     /* === CONTROL PANEL === */
@@ -2130,6 +2156,14 @@
   </div>
 </div>
 
+<!-- Image Preview Modal -->
+<div class="img-preview-overlay" id="imgPreviewOverlay" onclick="if(event.target===this)closeImgPreview()">
+  <div class="img-preview-modal">
+    <button class="img-preview-close" onclick="closeImgPreview()">&times;</button>
+    <img id="imgPreviewSrc" src="" alt="preview">
+  </div>
+</div>
+
 <!-- Tarot Modal -->
 <div class="tarot-overlay" id="tarotOverlay" onclick="if(event.target===this)closeTarot()">
   <div class="tarot-modal">
@@ -2154,11 +2188,11 @@
     {id:'obs',name:'OBS 라디오',url:'https://vod3.obs.co.kr:444/live/obsstream1/radio.stream/playlist.m3u8',freq:'99.9 MHz',freqNum:99.9,logoText:'OBS',provider:'OBS'},
     {id:'tarot',name:'타로 점보기',url:'',freq:'타로',freqNum:0,logoText:'타로 점보기',provider:'CLARA',isTarot:true},
     {id:'fortune',name:'오늘의 운세',url:'',freq:'운세',freqNum:0,logoText:'오늘의 운세',provider:'CLARA',isFortune:true},
-    {id:'wqxr',name:'WQXR',url:'https://stream.wqxr.org/wqxr',freq:'미국',freqNum:0,logoText:'WQXR',provider:'WQXR',flag:'us'},
-    {id:'ottava',name:'OTTAVA',url:'https://sslv.smartstream.ne.jp/ottava/_definst_/live01/chunklist.m3u8',freq:'일본',freqNum:0,logoText:'OTTAVA',provider:'OTTAVA',flag:'jp'},
-    {id:'france-musique',name:'France Musique',url:'https://stream.radiofrance.fr/francemusique/francemusique.m3u8',freq:'프랑스',freqNum:0,logoText:'France M',provider:'Radio France',flag:'fr'},
-    {id:'br-klassik',name:'BR Klassik',url:'https://dispatcher.rndfnk.com/br/brklassik/live/mp3/high',freq:'독일',freqNum:0,logoText:'BR Klassik',provider:'BR',flag:'de'},
-    {id:'classic-fm',name:'Classic FM',url:'http://media-the.musicradio.com/ClassicFMMP3',freq:'영국',freqNum:0,logoText:'Classic FM',provider:'Global',flag:'gb'}
+    {id:'wqxr',name:'Starbucks Korea',url:'https://stream.wqxr.org/wqxr',freq:'스타벅스',freqNum:0,logoText:'STARBUCKS',provider:'Starbucks',customImg:'starbucks-logo.png',pageLink:'https://www.starbucks.co.kr/index.do'},
+    {id:'ottava',name:'사이렌 오더',url:'',freq:'사이렌 오더',freqNum:0,logoText:'사이렌 오더',provider:'Starbucks',customImg:'starbucks-logo.png',isImgPreview:true,previewImg:'siren-order-preview.jpg'},
+    {id:'france-musique',name:'Online Store',url:'',freq:'온라인 스토어',freqNum:0,logoText:'ONLINE STORE',provider:'Starbucks',customImg:'starbucks-logo.png',isImgPreview:true,previewImg:'online-store-preview.jpg'},
+    {id:'br-klassik',blank:true,name:'',url:'',freq:'',freqNum:0,logoText:'',provider:''},
+    {id:'classic-fm',blank:true,name:'',url:'',freq:'',freqNum:0,logoText:'',provider:''}
   ];
 
   // === Theme Names ===
@@ -2265,11 +2299,13 @@
     var c = document.getElementById('presetButtons');
     c.innerHTML = STATIONS.map(function(s,i) {
       var cat = s.isTarot || s.isFortune ? ' preset-special' : s.flag ? ' preset-foreign' : '';
-      var cls = 'preset-btn' + cat + (s.empty ? ' preset-empty' : '');
+      var cls = 'preset-btn' + cat + (s.empty ? ' preset-empty' : '') + (s.blank ? ' preset-blank' : '');
       var nameHtml;
       if(s.empty) nameHtml='';
+      else if(s.blank) nameHtml='';
       else if(s.isTarot) nameHtml='<span class="preset-tarot-cards">🂠🂠🂠</span>';
       else if(s.isFortune) nameHtml='<span class="preset-lucky7">7</span>';
+      else if(s.customImg) nameHtml='<img src="'+s.customImg+'" alt="'+s.name+'" style="height:13px;vertical-align:middle;">';
       else if(s.flag) nameHtml='<img src="https://flagcdn.com/24x18/'+s.flag+'.png" alt="'+s.flag+'" style="height:13px;vertical-align:middle;">';
       else nameHtml=s.name.replace(/\s+/g,' ').split(' ')[0];
       return '<button class="'+cls+'" data-id="'+s.id+'" onclick="selectStation(\''+s.id+'\')">' +
@@ -2904,6 +2940,15 @@
     };
   }
 
+  function openImgPreview(src){
+    document.getElementById('imgPreviewSrc').src = src;
+    document.getElementById('imgPreviewOverlay').classList.add('visible');
+  }
+  function closeImgPreview(){
+    document.getElementById('imgPreviewOverlay').classList.remove('visible');
+    document.getElementById('imgPreviewSrc').src = '';
+  }
+
   function openFortuneModal(){
     var loggedUser = annivLoggedUser || localStorage.getItem('radioUsername');
     if(!loggedUser){
@@ -3118,9 +3163,11 @@
   function selectStation(id){
     if(!isPowered){isPowered=true;document.getElementById('powerBtn').classList.add('on');}
     var station=STATIONS.find(function(s){return s.id===id;});
-    if(!station||station.empty)return;
+    if(!station||station.empty||station.blank)return;
     if(station.isFortune){openFortuneModal();return;}
     if(station.isTarot){openTarotModal();return;}
+    if(station.isImgPreview){openImgPreview(station.previewImg);return;}
+    if(station.pageLink){window.open(station.pageLink,'_blank');return;}
     currentStation=station;
     document.querySelectorAll('.preset-btn').forEach(function(b){b.classList.toggle('active',b.dataset.id===id);});
     document.getElementById('lcdIdle').classList.add('hidden');
