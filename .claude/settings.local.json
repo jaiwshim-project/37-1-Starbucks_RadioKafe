@@ -15,7 +15,18 @@
       "Bash(git init:*)",
       "Bash(git remote add:*)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(/tmp/verify_digital1.js:*)",
+      "Bash(git -C \"/c/01 Claude-Code/37-1 스타벅스 라디오카페\" status)",
+      "Bash(xargs:*)",
+      "Bash(grep:*)",
+      "Bash(cd:*)",
+      "Bash(python:*)",
+      "Bash(cat:*)",
+      "Bash(PYTHONUTF8=1 python:*)",
+      "Bash(done)",
+      "Bash(rm:*)"
     ]
   }
 }

@@ -18,11 +18,11 @@
       --bg: #150408;
       --accent: #C9151E;
       --accent-glow: rgba(201,21,30,0.5);
-      --gold: #CBA258;
+      --gold: #C9151E;
     }
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #200810 70%, #150408 100%);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -231,7 +231,7 @@
       position: absolute;
       bottom: 0; left: 10px; right: 10px;
       height: 3px;
-      background: linear-gradient(90deg, transparent, rgba(203,162,88,0.6), transparent);
+      background: linear-gradient(90deg, transparent, rgba(201,21,30,0.6), transparent);
       border-radius: 2px;
     }
 
@@ -300,8 +300,8 @@
     .capsule-band {
       position: absolute;
       top: 106px; left: 0; right: 0; height: 14px;
-      background: linear-gradient(180deg, #CBA258, #b08840, #CBA258);
-      box-shadow: 0 0 12px rgba(203,162,88,0.5);
+      background: linear-gradient(180deg, #C9151E, #b08840, #C9151E);
+      box-shadow: 0 0 12px rgba(201,21,30,0.5);
       z-index: 1;
     }
 
@@ -379,10 +379,10 @@
     .sparkle {
       position: absolute;
       width: 4px; height: 4px;
-      background: #CBA258;
+      background: #C9151E;
       border-radius: 50%;
       opacity: 0;
-      box-shadow: 0 0 6px #CBA258;
+      box-shadow: 0 0 6px #C9151E;
     }
     .capsule-opened .sparkle {
       animation: sparkle-fly 1.5s ease-out forwards;
@@ -429,7 +429,7 @@
     }
     .parchment-ornament {
       margin-top: 12px;
-      font-size: 18px; color: #CBA258;
+      font-size: 18px; color: #C9151E;
       letter-spacing: 8px;
     }
 
@@ -455,7 +455,7 @@
     /* Chat Panel - 오세훈 green theme */
     .chat-panel {
       position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #200810 70%, #150408 100%);
       border: none; z-index: 100; display: flex; flex-direction: column; overflow: hidden;
     }
     .chat-header {
