@@ -16,7 +16,7 @@
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #0d2b20 70%, #150408 100%);
+      background: linear-gradient(160deg, #150408 0%, #3a0808 40%, #200810 70%, #150408 100%);
       min-height: 100vh;
       display: flex;
       align-items: flex-start;
@@ -45,8 +45,8 @@
     }
 
     @keyframes landingPulse {
-      0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(203,162,88,0.8), 0 0 8px rgba(203,162,88,0.5); }
-      50% { opacity: 0.7; text-shadow: 0 0 10px rgba(203,162,88,0.4), 0 0 4px rgba(203,162,88,0.2); }
+      0%, 100% { opacity: 1; text-shadow: 0 0 20px rgba(201,21,30,0.8), 0 0 8px rgba(201,21,30,0.5); }
+      50% { opacity: 0.7; text-shadow: 0 0 10px rgba(201,21,30,0.4), 0 0 4px rgba(201,21,30,0.2); }
     }
 
     @keyframes landingFloat {
@@ -151,8 +151,8 @@
       text-shadow: 0 0 12px rgba(255,51,68,0.5);
     }
     .photo-brand-cafe {
-      color: #CBA258;
-      text-shadow: 0 0 10px rgba(203,162,88,0.4);
+      color: #F5D4D6;
+      text-shadow: 0 0 10px rgba(201,21,30,0.4);
     }
     .photo-brand-sub {
       display: block;
@@ -170,7 +170,7 @@
 
     /* LCD area */
     .photo-lcd {
-      background: linear-gradient(180deg, #061510, #0a0208);
+      background: linear-gradient(180deg, #200810, #180608);
       border-radius: 14px;
       padding: 16px 18px;
       margin-bottom: 16px;
@@ -198,8 +198,8 @@
     .photo-lcd-count {
       font-family: 'Orbitron', monospace;
       font-size: 24px; font-weight: 900;
-      color: #CBA258; margin-top: 10px;
-      text-shadow: 0 0 20px rgba(203,162,88,0.8), 0 0 8px rgba(203,162,88,0.5);
+      color: #C9151E; margin-top: 10px;
+      text-shadow: 0 0 20px rgba(201,21,30,0.8), 0 0 8px rgba(201,21,30,0.5);
       animation: landingPulse 2s ease-in-out infinite;
     }
 
@@ -453,16 +453,16 @@
     /* Screws */
     .photo-screw {
       position: absolute; width: 8px; height: 8px;
-      background: linear-gradient(145deg, #CBA258, #A07830);
-      border-radius: 50%; border: 1px solid rgba(203,162,88,0.3);
+      background: linear-gradient(145deg, #C9151E, #8B0000);
+      border-radius: 50%; border: 1px solid rgba(201,21,30,0.3);
       z-index: 2;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 0 4px rgba(203,162,88,0.3);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,0.4), 0 0 4px rgba(201,21,30,0.3);
     }
     .photo-screw::after {
       content: '';
       position: absolute; top: 50%; left: 50%;
       transform: translate(-50%,-50%) rotate(35deg);
-      width: 4px; height: 0.5px; background: rgba(139,94,20,0.8);
+      width: 4px; height: 0.5px; background: rgba(255,255,255,0.3);
     }
     .photo-screw-tl { top: 10px; left: 10px; }
     .photo-screw-tr { top: 10px; right: 10px; }

@@ -22,28 +22,28 @@
 
     :root, [data-theme="osh"] {
       --bg: #150408;
-      --body-out1: #3a0808; --body-out2: #0f2318;
-      --body-in1: #2e0808; --body-in2: #102218;
+      --body-out1: #3a0808; --body-out2: #200808;
+      --body-in1: #2e0808; --body-in2: #1a0810;
       --texture-color: rgba(201,21,30,0.012);
-      --accent: #CBA258;
-      --accent-glow: rgba(203,162,88,0.6);
-      --btn-bg1: #3a0808; --btn-bg2: #0f2318;
-      --btn-hi1: #284e42; --btn-hi2: #182e24;
+      --accent: #C9151E;
+      --accent-glow: rgba(201,21,30,0.6);
+      --btn-bg1: #3a0808; --btn-bg2: #200808;
+      --btn-hi1: #4a1020; --btn-hi2: #2e0810;
       --btn-active1: #C9151E; --btn-active2: #3a0808;
-      --btn-border: #081410;
-      --speaker-bg: #081410; --speaker-border: #0a0208;
+      --btn-border: #180408;
+      --speaker-bg: #180408; --speaker-border: #140208;
       --mesh-color: rgba(255,51,68,0.09);
-      --lcd-bg: #080108;
+      --lcd-bg: #180208;
       --lcd-text: #FF5566; --lcd-dim: #EE2233; --lcd-idle: #CC1122;
       --lcd-glow: rgba(255,80,100,0.7);
-      --screw1: #2a4a3e; --screw2: #3a0808; --screw-line: #0a1e14;
+      --screw1: #2a0808; --screw2: #3a0808; --screw-line: #1a0408;
       --label-color: #F5D4D6; --freq-mark: #CC8888;
       --tick-color: #AA4444;
-      --needle: #CBA258; --needle-glow: rgba(203,162,88,0.75);
+      --needle: #C9151E; --needle-glow: rgba(201,21,30,0.75);
       --led-on: #FF5566; --led-glow: rgba(255,80,100,0.4);
-      --knob-ind: #CBA258;
+      --knob-ind: #C9151E;
       --footer-color: #CC8888; --footer-link: #F5D4D6;
-      --antenna1: #2a5a48; --antenna2: #4a8a70;
+      --antenna1: #2a0818; --antenna2: #480818;
       --preset-num: #F5D4D6; --preset-name: #D0A0A0;
       --power-icon: #F5D4D6;
       --neon-border: #C9151E; --neon-glow: rgba(201,21,30,0.75);
@@ -642,22 +642,22 @@
       display: none;
       width: 30px; height: 30px;
       border-radius: 50%;
-      background: rgba(203,162,88,0.15);
-      border: 2px dashed #CBA258;
-      color: #CBA258;
+      background: rgba(201,21,30,0.15);
+      border: 2px dashed #C9151E;
+      color: #C9151E;
       font-size: 18px; line-height: 1;
       cursor: pointer;
       flex-shrink: 0;
       align-self: center;
       margin-left: 3px;
       transition: all 0.3s ease;
-      box-shadow: 0 0 6px rgba(203,162,88,0.2);
+      box-shadow: 0 0 6px rgba(201,21,30,0.2);
     }
     .photo-upload-btn:hover {
-      background: rgba(203,162,88,0.35);
+      background: rgba(201,21,30,0.35);
       color: #fff;
-      border-color: #e8c870;
-      box-shadow: 0 0 12px rgba(203,162,88,0.5);
+      border-color: #E02030;
+      box-shadow: 0 0 12px rgba(201,21,30,0.5);
     }
     .photo-upload-btn.has-photos { display: flex; align-items: center; justify-content: center; }
     .brand-photos { display: contents; }
@@ -1163,8 +1163,8 @@
       padding: 0 4px;
     }
     .analog-listen-together-btn {
-      background: linear-gradient(135deg, rgba(201,21,30,0.15), rgba(0,77,51,0.08));
-      border: 1px solid #A07830;
+      background: linear-gradient(135deg, rgba(201,21,30,0.15), rgba(139,0,0,0.08));
+      border: 1px solid rgba(201,21,30,0.4);
       color: #F5D4D6;
       font-family: 'Inter', sans-serif;
       font-size: 10px; font-weight: 700;
